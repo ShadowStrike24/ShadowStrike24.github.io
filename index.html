@@ -229,6 +229,47 @@
             background: var(--primary-hover);
         }
 
+        /* Neden Biz Bölümü */
+        .why-us-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .why-us-box h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .why-item {
+            background: var(--bg-body);
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .why-item h4 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-item p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
         /* Coaching & Lead Section */
         .coaching-section {
             background: #ffffff;
@@ -315,7 +356,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v2.5 — Student Workstation</div>
+        <div class="window-title">AI Campus v2.6 — Student Workstation</div>
         <div></div>
     </div>
 
@@ -387,12 +428,31 @@
             </div>
         </div>
 
+        <!-- Neden Bizim Eğitim Koçluğumuz? Bölümü -->
+        <div class="why-us-box">
+            <h2>🎯 Neden Bizim Eğitim Koçluğumuzu Seçmelisiniz?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h4>1. Doğru Yapay Zeka Kullanımı</h4>
+                    <p>Yapay zekayı sadece kopya çekmek veya ödev yaptırmak için değil; konuları gerçekten öğrenmek, mantığını kavramak ve kalıcı beceri kazanmak için kullanmayı öğretiyoruz.</p>
+                </div>
+                <div class="why-item">
+                    <h4>2. Kişiselleştirilmiş Strateji</h4>
+                    <p>Her öğrencinin eksik olduğu dersler, öğrenme hızı ve hedefleri farklıdır. Standart programlar yerine tamamen senin seviyene ve eksiklerine özel çalışma planları hazırlıyoruz.</p>
+                </div>
+                <div class="why-item">
+                    <h4>3. Zaman ve Stres Yönetimi</h4>
+                    <p>Sınav haftalarında ve yoğun ödev dönemlerinde neye nereden çalışacağını bilmeme stresini bitiriyor; günlerini en verimli şekilde planlayarak zamandan tasarruf sağlıyoruz.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Coaching & Lead Form Section (Formspree Entegreli) -->
         <div class="coaching-section">
             <div class="coaching-info">
                 <h2>🎓 Birebir Eğitim Koçluğu & Detaylı Bilgi</h2>
                 <p>Yapay zeka araçlarını derslerinde nasıl en verimli şekilde kullanacağını öğrenmek, kişiselleştirilmiş ders çalışma programı ve akademik destek almak için bilgilerini bırak.</p>
-                <p style="font-size: 0.85rem; color: #64748b;">* Formu gönderdiğinde bilgilerin doğrudan e-posta adresine iletilir.</p>
+                <p style="font-size: 0.85rem; color: #64748b;">* Formu gönderdiğinde bilgiler doğrudan e-posta adresine iletilir[span_0](start_span)[span_0](end_span).</p>
             </div>
             
             <form class="coaching-form" action="https://formspree.io/f/xwllownd" method="POST">
