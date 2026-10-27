@@ -1,113 +1,417 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Gaming & Tech Blog</title>
+    <title>StrikeTactics | eFootball 2027 Pro Taktik & Meta Rehberi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #131b2e;
+            --accent-green: #00ff88;
+            --accent-gold: #ffb700;
+            --accent-blue: #00d2ff;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
         }
+
+        /* Header & Nav */
         header {
-            background-color: #1e293b;
-            padding: 2rem 1rem;
+            background: rgba(19, 27, 46, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: #fff; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-green);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(180deg, rgba(10, 14, 23, 0.4) 0%, var(--bg-dark) 100%),
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop') center/cover;
+            padding: 5rem 2rem;
             text-align: center;
-            border-bottom: 2px solid #38bdf8;
+            border-bottom: 1px solid var(--border-color);
         }
-        header h1 {
-            margin: 0;
-            color: #38bdf8;
-            font-size: 2.2rem;
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        header p {
-            color: #94a3b8;
-            margin-top: 0.5rem;
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
         }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        article {
-            background-color: #1e293b;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-        }
-        article h2 {
-            color: #f1f5f9;
-            margin-top: 0;
-        }
-        .date {
-            color: #38bdf8;
+
+        .badge {
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--accent-green);
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: bold;
+            font-weight: 700;
+            border: 1px solid var(--accent-green);
+            display: inline-block;
             margin-bottom: 1rem;
         }
-        p {
-            color: #cbd5e1;
+
+        /* Main Content Layout */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 2rem;
         }
-        ul {
-            color: #cbd5e1;
-            padding-left: 1.2rem;
-        }
-        footer {
-            text-align: center;
+
+        /* Article Card */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
             padding: 2rem;
-            color: #64748b;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Pitch Graphic */
+        .pitch {
+            background: #1e3d29;
+            background-image: radial-gradient(#2d5a3d 2px, transparent 2px);
+            background-size: 16px 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .pitch-grid {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+
+        .pitch-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .player-tag {
+            background: rgba(0,0,0,0.75);
+            border: 1px solid var(--accent-green);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: bold;
             font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,255,136,0.2);
+        }
+
+        /* Stat Grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(0, 210, 255, 0.08);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.2rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        .meta-list {
+            list-style: none;
+        }
+
+        .meta-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta-list li:last-child { border: none; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Apex Gaming & Tech Blog</h1>
-        <p>Your Ultimate Hub for Mobile Gaming Tactics & Tech Tips</p>
+        <div class="logo">
+            <i class="fa-solid fa-gamepad"></i> Strike<span>Tactics</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#efootball" class="active">eFootball 2027</a></li>
+                <li><a href="#suarez">Suárez Rehberi</a></li>
+                <li><a href="#ai-tools">Öğrenci AI</a></li>
+            </ul>
+        </nav>
     </header>
 
+    <section class="hero">
+        <span class="badge"><i class="fa-solid fa-bolt"></i> GÜNCEL META REHBERİ</span>
+        <h1>eFootball 2027 Pro Taktikler & Kadro Mimarisi</h1>
+        <p>Klasman maçlarında üst sıralara tırmanmanızı sağlayacak detaylı antrenman dağılımları, gizli saha içi ayarları ve profesyonel ipuçları.</p>
+    </section>
+
     <div class="container">
-        
-        <!-- BLOG YAZISI 1 -->
-        <article>
-            <div class="date">OCTOBER 26, 2026</div>
-            <h2>eFootball Mobile: Ultimate Starter Guide & Pro Tactics</h2>
-            <p>Mastering build-up play and defensive positioning is key to dominating the pitch in eFootball Mobile. Here are the essential strategies every player needs to know:</p>
-            
-            <h3>1. Tactical Synergy & Manager Proficiency</h3>
-            <p>Ensure your squad matches your manager's preferred playstyle (Quick Counter or Possession Game). Boosting team playstyle proficiency above 85 unlocks significant stat boosts for your players.</p>
+        <!-- Main Articles -->
+        <main>
+            <!-- Article 1: Luis Suarez Special -->
+            <article id="suarez" class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div>
+                        <span class="badge" style="border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(255, 183, 0, 0.1);">Özel Oyuncu İncelemesi</span>
+                        <h2 class="card-title">Starter Set Luis Suárez: Maximum Derece ve Antrenman Dağılımı</h2>
+                    </div>
+                </div>
 
-            <h3>2. Mastering Defensive Timing</h3>
-            <p>Avoid reckless tackles. Instead, hold down the match-up button to intercept passing lanes and force opponents into low-probability shots.</p>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1000&auto=format&fit=crop" alt="Football Player Concept">
+                </div>
 
-            <h3>3. Efficient Build-Up Play</h3>
-            <p>Use short passes in midfield to draw out defenders before launching through-balls to high-speed wingers.</p>
-        </article>
+                <p>Luis Suárez Starter Set kartı, ceza sahası içerisindeki öldürücü bitiriciliği ve fiziksel temasıyla eFootball 2027'nin en etkili Fırsatçı Golcü (Fox in the Box) kartlarından biridir. Otomatik antrenman yerine doğru stat dağılımı yapıldığında rakip stoperleri kelimenin tam anlamıyla sürklase eder.</p>
 
-        <!-- BLOG YAZISI 2 -->
-        <article>
-            <div class="date">OCTOBER 26, 2026</div>
-            <h2>Top AI Productivity Tools for Students in 2026</h2>
-            <p>Boost your academic workflow with these essential AI tools designed for high school and college students:</p>
+                <h3>Önerilen Antrenman Puanı Dağılımı:</h3>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">8 Nokta</div>
+                        <div class="stat-label">Şut (Bitiricilik 92+)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">4 Nokta</div>
+                        <div class="stat-label">Top Sürme & Kontrol</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">8 Nokta</div>
+                        <div class="stat-label">Hızlanma & Denge</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">6 Nokta</div>
+                        <div class="stat-label">Fiziksel Güç</div>
+                    </div>
+                </div>
 
-            <ul>
-                <li><strong>Presentation Tools:</strong> Create stunning visual slides instantly for biology, chemistry, and history presentations.</li>
-                <li><strong>Study Assistants:</strong> Utilize AI tutors to break down complex physics and mathematics problems step-by-step.</li>
-                <li><strong>Research Managers:</strong> Organize citations and key takeaways from long academic papers automatically.</li>
-            </ul>
-        </article>
+                <div class="tip-box">
+                    <h4><i class="fa-solid fa-lightbulb"></i> Pro İpucu: Beceriler</h4>
+                    <p>Suárez'e mutlaka <strong>"İlk Dokunuşta Şut" (One-touch Pass)</strong> ve <strong>"Çift Dokunuş" (Double Touch)</strong> yeteneklerini ekleyin. Ceza sahası yayı üzerindeyken dönüş şutlarında ağları havalandırma oranı %80'in üzerindedir.</p>
+                </div>
+            </article>
 
+            <!-- Article 2: 4-1-2-3 Meta Tactical Setup -->
+            <article id="efootball" class="card">
+                <div class="card-header">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <div>
+                        <h2 class="card-title">Klasman Kırma Dizilişi: 4-1-2-3 Hızlı Kontratak</h2>
+                    </div>
+                </div>
+
+                <p>Mevcut yamada en yüksek galibiyet oranına sahip diziliş 4-1-2-3'tür. İki adet OFO (Hücumcu Orta Saha) ile rakip ceza sahasına yapılan sürpriz koşular savunma hatlarını tamamen bozar.</p>
+
+                <!-- Pitch Design -->
+                <div class="pitch">
+                    <div class="pitch-grid">
+                        <div class="pitch-row">
+                            <div class="player-tag">LWF</div>
+                            <div class="player-tag" style="border-color: var(--accent-gold);">CF (Suárez)</div>
+                            <div class="player-tag">RWF</div>
+                        </div>
+                        <div class="pitch-row">
+                            <div class="player-tag" style="background: #112233;">AMF (OFO)</div>
+                            <div class="player-tag" style="background: #112233;">AMF (OFO)</div>
+                        </div>
+                        <div class="pitch-row">
+                            <div class="player-tag" style="background: #331111;">DMF (MÖ)</div>
+                        </div>
+                        <div class="pitch-row">
+                            <div class="player-tag">LB</div>
+                            <div class="player-tag">CB</div>
+                            <div class="player-tag">CB</div>
+                            <div class="player-tag">RB</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Talimatlar ve Ayarlar:</h3>
+                <ul style="margin-left: 20px; color: var(--text-muted); margin-bottom: 1.5rem;">
+                    <li><strong>Taktik Anlayış:</strong> Hızlı Kontratak (Quick Counter)</li>
+                    <li><strong>Gelişmiş Talimat 1:</strong> Çapa (DMF üzerine koyun, defansın önünden ayrılmaz).</li>
+                    <li><strong>Gelişmiş Talimat 2:</strong> Defansif (Beklerinize verin, kontra atakta yakalanmayın).</li>
+                </ul>
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-card">
+                <h3 class="sidebar-title"><i class="fa-solid fa-fire"></i> Meta Dereceleri</h3>
+                <ul class="meta-list">
+                    <li><span>L. Suárez (Starter)</span> <strong style="color:var(--accent-gold)">S+ Tier</strong></li>
+                    <li><span>4-1-2-3 Diziliş</span> <strong style="color:var(--accent-green)">S Tier</strong></li>
+                    <li><span>Hızlı Kontratak</span> <strong style="color:var(--accent-green)">S Tier</strong></li>
+                    <li><span>Zamanlı Pas</span> <strong style="color:var(--accent-blue)">A+ Tier</strong></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card" id="ai-tools">
+                <h3 class="sidebar-title"><i class="fa-solid fa-graduation-cap"></i> Öğrenci AI Araçları</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ders çalışırken ve sunum hazırlarken zaman kazandıran en iyi ücretsiz AI araçları:</p>
+                <ul class="meta-list">
+                    <li><span>Gamma App</span> <small>Sunum Hazırlığı</small></li>
+                    <li><span>ChatGPT-4o</span> <small>Özet & Problem</small></li>
+                    <li><span>DeepL</span> <small>Akademik Çeviri</small></li>
+                </ul>
+            </div>
+        </aside>
     </div>
-
-    <footer>
-        &copy; 2026 Apex Gaming & Tech Blog. Built with GitHub Pages.
-    </footer>
 
 </body>
 </html>
