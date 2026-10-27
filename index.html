@@ -208,7 +208,7 @@
             margin-bottom: 3.5rem;
         }
 
-        /* Tool Cards & Hareket Efekti */
+        /* Tool Cards */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -345,7 +345,7 @@
             background: #64748b;
         }
 
-        /* Sınıf Seviyelerine Göre Koçluk Kartları & Hareket */
+        /* SINIFLAR İÇİN TIKLANABİLİR AKORDEON (ACILIR KAPANIR) KARTLAR */
         .classes-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -380,13 +380,21 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.5rem;
+            cursor: pointer;
+            user-select: none;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
         .class-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--primary);
             box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .class-badge {
@@ -397,18 +405,50 @@
             font-weight: 700;
             padding: 0.25rem 0.6rem;
             border-radius: 6px;
-            margin-bottom: 0.75rem;
             border: 1px solid var(--border-color);
+        }
+
+        .toggle-hint {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .class-card h3 {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
+            margin: 0.6rem 0 0.3rem 0;
         }
 
-        .class-card p {
+        /* Bilgi İçin Tıklayın Yazısı */
+        .click-prompt {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-style: italic;
+        }
+
+        /* Açılır kapanır içerik alanı */
+        .class-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .class-card.active .class-content {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 0.8rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 0.8rem;
+        }
+
+        .class-content p {
             font-size: 0.9rem;
             color: var(--text-sub);
             line-height: 1.5;
@@ -702,41 +742,88 @@
             </div>
         </div>
 
-        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ -->
+        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ (TIKLANABİLİR AKORDEON) -->
         <div class="classes-section">
             <h2>📚 Sınıf Seviyelerine Göre Eğitim Koçluğu Programımız</h2>
-            <p class="classes-subtitle">Her öğrencinin yaşına, okul müfredatına ve sınav hedeflerine özel uyguladığımız stratejik koçluk adımları:</p>
+            <p class="classes-subtitle">Detayları görmek için istediğiniz sınıf kutusuna tıklayabilirsiniz:</p>
             
             <div class="class-grid">
-                <div class="class-card">
-                    <span class="class-badge">8. Sınıf / LGS</span>
+                <!-- 8. Sınıf -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">8. Sınıf / LGS</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>Temel Atma & Sınav Disiplini</h3>
-                    <p>LGS maratonunda zaman yönetimi, yeni nesil soru çözme teknikleri ve yapay zeka destekli eksik kapatma kampları ile tam odaklanma sağlıyoruz.</p>
+                    <p class="click-prompt">LGS koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>LGS maratonunda zaman yönetimi, yeni nesil soru çözme teknikleri ve yapay zeka destekli eksik kapatma kampları ile tam odaklanma sağlıyoruz.</p>
+                    </div>
                 </div>
-                <div class="class-card">
-                    <span class="class-badge">9. Sınıf</span>
+
+                <!-- 9. Sınıf -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">9. Sınıf</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>Lise Altyapısı & Çalışma Alışkanlığı</h3>
-                    <p>Ortaokuldan liseye geçişteki zorlukları aşma, ders çalışma disiplini kazanma ve temel fen/matematik kavramlarını sağlam oturtma rehberliği.</p>
+                    <p class="click-prompt">9. sınıf koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>Ortaokuldan liseye geçişteki zorlukları aşma, ders çalışma disiplini kazanma ve temel fen/matematik kavramlarını sağlam oturtma rehberliği.</p>
+                    </div>
                 </div>
-                <div class="class-card">
-                    <span class="class-badge">10. Sınıf</span>
+
+                <!-- 10. Sınıf -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">10. Sınıf</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>Alan Seçimi & Temel Beceriler</h3>
-                    <p>Sayısal/Sözel alan seçimi rehberliği, TYT temellerinin atılması ve yapay zeka araçlarıyla (Gamma, ChatGPT) ders projelerinde fark yaratma.</p>
+                    <p class="click-prompt">10. sınıf koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>Sayısal/Sözel alan seçimi rehberliği, TYT temellerinin atılması ve yapay zeka araçlarıyla (Gamma, ChatGPT) ders projelerinde fark yaratma.</p>
+                    </div>
                 </div>
-                <div class="class-card">
-                    <span class="class-badge">11. Sınıf</span>
+
+                <!-- 11. Sınıf -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">11. Sınıf</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>YKS Maratonuna Erken Başlangıç</h3>
-                    <p>11. sınıf konularının titizlikle öğrenilmesi, yaz dönemi stratejik planlaması ve YKS hazırlığında rakiplerin önüne geçecek özel çalışma programı.</p>
+                    <p class="click-prompt">11. sınıf koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>11. sınıf konularının titizlikle öğrenilmesi, yaz dönemi stratejik planlaması ve YKS hazırlığında rakiplerin önüne geçecek özel çalışma programı.</p>
+                    </div>
                 </div>
-                <div class="class-card">
-                    <span class="class-badge">12. Sınıf / YKS</span>
+
+                <!-- 12. Sınıf -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">12. Sınıf / YKS</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>Zirveye Ulaşış & Sınav Koçluğu</h3>
-                    <p>Yoğun deneme analizleri, net artırma taktikleri, stres yönetimi ve her hafta birebir yapılan nokta atışı eksik kapatma görüşmeleri.</p>
+                    <p class="click-prompt">12. sınıf koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>Yoğun deneme analizleri, net artırma taktikleri, stres yönetimi ve her hafta birebir yapılan nokta atışı eksik kapatma görüşmeleri.</p>
+                    </div>
                 </div>
-                <div class="class-card">
-                    <span class="class-badge">Üniversite</span>
+
+                <!-- Üniversite -->
+                <div class="class-card" onclick="toggleClassCard(this)">
+                    <div class="class-header">
+                        <span class="class-badge">Üniversite</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
                     <h3>Akademik Araştırma & Verimlilik</h3>
-                    <p>Akademik makale tarama, DeepL ile yabancı kaynak çevirileri, proje yönetimi ve ileri düzey yapay zeka araçlarıyla zamanı katlama.</p>
+                    <p class="click-prompt">Üniversite koçluk detaylarını görmek için tıkla.</p>
+                    <div class="class-content">
+                        <p>Akademik makale tarama, DeepL ile yabancı kaynak çevirileri, proje yönetimi ve ileri düzey yapay zeka araçlarıyla zamanı katlama.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -822,6 +909,17 @@
     </footer>
 
     <script>
+        // Sınıf Kartlarını Açıp Kapatma Fonksiyonu (Akordeon)
+        function toggleClassCard(card) {
+            card.classList.toggle('active');
+            const hint = card.querySelector('.toggle-hint');
+            if (card.classList.contains('active')) {
+                hint.innerHTML = 'Gizle ▴';
+            } else {
+                hint.innerHTML = 'Bilgi İçin Tıklayın ▾';
+            }
+        }
+
         // Theme Toggle Logic
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
