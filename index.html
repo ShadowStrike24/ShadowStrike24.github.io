@@ -315,7 +315,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v2.4 — Student Workstation</div>
+        <div class="window-title">AI Campus v2.5 — Student Workstation</div>
         <div></div>
     </div>
 
@@ -387,26 +387,26 @@
             </div>
         </div>
 
-        <!-- Coaching & Lead Form Section -->
+        <!-- Coaching & Lead Form Section (Formspree Entegreli) -->
         <div class="coaching-section">
             <div class="coaching-info">
                 <h2>🎓 Birebir Eğitim Koçluğu & Detaylı Bilgi</h2>
                 <p>Yapay zeka araçlarını derslerinde nasıl en verimli şekilde kullanacağını öğrenmek, kişiselleştirilmiş ders çalışma programı ve akademik destek almak için bilgilerini bırak.</p>
-                <p style="font-size: 0.85rem; color: #64748b;">* E-posta adresin üzerinden seninle en kısa sürede iletişime geçilecektir.</p>
+                <p style="font-size: 0.85rem; color: #64748b;">* Formu gönderdiğinde bilgilerin doğrudan e-posta adresine iletilir.</p>
             </div>
             
-            <form class="coaching-form" onsubmit="alert('Başvurunuz alındı! En kısa sürede sizinle iletişime geçilecektir.'); return false;">
+            <form class="coaching-form" action="https://formspree.io/f/xwllownd" method="POST">
                 <div class="form-group">
-                    <input type="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
+                    <input type="email" name="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
                 </div>
                 <div class="form-group">
-                    <select required>
+                    <select name="seviye" required>
                         <option value="" disabled selected>Sınıf / Eğitim Seviyeniz</option>
-                        <option value="9">9. Sınıf</option>
-                        <option value="10">10. Sınıf</option>
-                        <option value="11">11. Sınıf</option>
-                        <option value="12">12. Sınıf / Üniversite Hazırlık</option>
-                        <option value="uni">Üniversite</option>
+                        <option value="9. Sinif">9. Sınıf</option>
+                        <option value="10. Sinif">10. Sınıf</option>
+                        <option value="11. Sinif">11. Sınıf</option>
+                        <option value="12. Sinif / Universite Hazirlik">12. Sınıf / Üniversite Hazırlık</option>
+                        <option value="Universite">Üniversite</option>
                     </select>
                 </div>
                 <button type="submit" class="submit-btn">Detaylı Bilgi & Koçluk İstiyorum</button>
