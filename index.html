@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Campus | Öğrenci & Eğitim Koçluğu Portalı</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google SEO Meta Etiketleri -->
+    <title>AI Campus | Yapay Zeka Destekli Birebir Eğitim Koçluğu Portalı</title>
+    <meta name="description" content="Lise ve üniversite öğrencileri için yapay zeka araçları destekli akademik başarı, sınav hazırlığı ve kişiselleştirilmiş eğitim koçluğu programı.">
+    <meta name="keywords" content="eğitim koçluğu, yapay zeka ders çalışma, LGS YKS koçluk, akademik başarı, gamma app, chatgpt ders çalışma">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-body: #f8fafc;
@@ -81,7 +84,7 @@
 
         .logo {
             font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
             letter-spacing: -0.5px;
             display: flex;
@@ -101,24 +104,25 @@
         /* Hero */
         .hero {
             max-width: 900px;
-            margin: 3rem auto 2rem auto;
+            margin: 3.5rem auto 2.5rem auto;
             text-align: center;
             padding: 0 1.5rem;
         }
 
         .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
+            font-size: 2.6rem;
+            font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             letter-spacing: -1px;
+            line-height: 1.25;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-sub);
-            max-width: 680px;
-            margin: 0 auto;
+            max-width: 720px;
+            margin: 0 auto 1.5rem auto;
         }
 
         /* Main Container */
@@ -129,7 +133,7 @@
         }
 
         .section-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text-main);
@@ -178,7 +182,7 @@
 
         .card h3 {
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-main);
             margin-bottom: 0.6rem;
         }
@@ -229,45 +233,92 @@
             background: var(--primary-hover);
         }
 
-        /* Neden Biz Bölümü */
-        .why-us-box {
+        /* Neden Biz Bölümü - Detaylandırılmış */
+        .why-us-section {
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             margin-bottom: 3.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
         }
 
-        .why-us-box h2 {
-            font-size: 1.5rem;
+        .why-us-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             text-align: center;
+        }
+
+        .why-us-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
         }
 
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
         }
 
-        .why-item {
+        .why-card {
             background: var(--bg-body);
-            padding: 1.25rem;
-            border-radius: 10px;
+            padding: 1.5rem;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
         }
 
-        .why-item h4 {
-            font-size: 1.05rem;
+        .why-card h3 {
+            font-size: 1.15rem;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
         }
 
-        .why-item p {
-            font-size: 0.9rem;
+        .why-card p {
+            font-size: 0.92rem;
             color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        /* Program Adımları */
+        .steps-box {
+            background: var(--accent-bg);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            border: 1px solid #dbeafe;
+        }
+
+        .steps-box h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .steps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .step-item {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .step-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
         }
 
         /* Coaching & Lead Section */
@@ -275,22 +326,24 @@
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         @media (max-width: 768px) {
             .coaching-section {
                 grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
             }
         }
 
         .coaching-info h2 {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
+            font-weight: 800;
             color: var(--text-main);
             margin-bottom: 0.8rem;
         }
@@ -305,9 +358,13 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            background: var(--bg-body);
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 0.85rem 1rem;
             border: 1px solid var(--border-color);
@@ -315,9 +372,10 @@
             font-size: 0.95rem;
             outline: none;
             transition: border 0.2s;
+            background: #ffffff;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: var(--primary);
         }
 
@@ -325,9 +383,10 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0.85rem;
+            padding: 0.95rem;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
             transition: background 0.2s;
         }
@@ -356,7 +415,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v2.6 — Student Workstation</div>
+        <div class="window-title">AI Campus v3.0 — Premier Student Workstation</div>
         <div></div>
     </div>
 
@@ -364,37 +423,37 @@
         <div class="nav-container">
             <div class="logo">
                 AI Campus 
-                <span class="nav-badge">Öğrenci Portalı</span>
+                <span class="nav-badge">Öğrenci & Koçluk Portalı</span>
             </div>
-            <div style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Yapay Zeka & Eğitim Rehberliği</div>
+            <div style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Geleceğin Eğitim Metodolojisi</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Ders Başarını Yapay Zeka ve Eğitim Koçluğu İle İkiye Katla</h1>
-        <p>Ödev hazırlama, sınav revizyonu ve bilimsel araştırmalarda en yüksek verimi alabileceğin yapay zeka araçları ve birebir akademik yönlendirme.</p>
+        <h1>Ders Başarını Yapay Zeka Gücü ve Uzman Eğitim Koçluğu İle İkiye Katla</h1>
+        <p>Geleneksel ve verimsiz ders çalışma yöntemlerini geride bırakın. En modern yapay zeka araçlarını ve birebir kişiselleştirilmiş koçluk sistemini kullanarak zamanınızı %50 daha verimli yönetin.</p>
     </div>
 
     <div class="container">
         
         <div class="section-title">
-            <span>⚡ Detaylı AI Araç Rehberi</span>
+            <span>⚡ Öğrenciler İçin Seçkin AI Araç Rehberi</span>
         </div>
         
         <div class="grid">
-            <!-- Gamma -->
+            <!-- Gamma App -->
             <div class="card">
                 <div>
                     <span class="tool-badge">Sunum & Tasarım</span>
                     <h3>Gamma App</h3>
-                    <p>Konu başlığından saniyeler içinde etkileşimli slaytlar, görsel kartlar ve ders sunumları hazırlar.</p>
+                    <p>Konu başlığınızı veya ders notlarınızı girerek saniyeler içinde etkileşimli slaytlar, görsel kartlar ve akademik sunumlar oluşturun.</p>
                     <ul class="detail-list">
-                        <li><strong>Otomatik İçerik:</strong> Ana fikirleri otomatik olarak slayt alanlarına böler.</li>
-                        <li><strong>Dışa Aktarma:</strong> Hazırlanan sunumları doğrudan PDF formatında indirme imkanı.</li>
-                        <li><strong>Akademik İpucu:</strong> Biyoloji, tarih veya fizik sunumlarında görsel taslağı hızlıca kurar.</li>
+                        <li><strong>Otomatik Yapılandırma:</strong> Karmaşık biyoloji, tarih veya fizik konularını slaytlara düzenli böler.</li>
+                        <li><strong>PDF Çıktısı:</strong> Tek tıkla ödev formatında PDF olarak indirme imkanı.</li>
+                        <li><strong>Görsel Estetik:</strong> Tasarım bilgisi gerektirmeden profesyonel grafikler hazırlar.</li>
                     </ul>
                 </div>
-                <a href="https://gamma.app" target="_blank" class="btn">Gamma'yı Kullan →</a>
+                <a href="https://gamma.app" target="_blank" class="btn">Gamma App'i Aç →</a>
             </div>
 
             <!-- ChatGPT-4o -->
@@ -402,14 +461,14 @@
                 <div>
                     <span class="tool-badge">Soru & Analiz</span>
                     <h3>ChatGPT-4o</h3>
-                    <p>Görsel tanıma yeteneğiyle karmaşık soruları, matematik denklemlerini ve notları anında analiz eder.</p>
+                    <p>Görsel ve metin tanıma yeteneğiyle çözemediğiniz matematik sorularını veya sözel paragraf konularını adım adım analiz eder.</p>
                     <ul class="detail-list">
-                        <li><strong>Görsel Analiz:</strong> Soru fotoğrafını yükleyip detaylı adım adım çözüm alma.</li>
-                        <li><strong>Özel Soru Üretimi:</strong> Sınav konularını vererek özelleştirilmiş test soruları yazdırma.</li>
-                        <li><strong>Müfredat Uyumu:</strong> Lise ve akademik seviyelere göre özel anlatım tekniği.</li>
+                        <li><strong>Fotoğraflı Çözüm:</strong> Soru görselini yükleyerek detaylı ve mantıklı açıklama alma.</li>
+                        <li><strong>Özel Test Üretimi:</strong> Sınav müfredatınıza uygun özelleştirilmiş alıştırma soruları hazırlatma.</li>
+                        <li><strong>Birebir Öğretmen Modu:</strong> "Bana doğrudan cevabı verme, ipucu vererek öğret" seçeneği.</li>
                     </ul>
                 </div>
-                <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT'yi Aç →</a>
+                <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT-4o'yu Aç →</a>
             </div>
 
             <!-- DeepL -->
@@ -417,67 +476,91 @@
                 <div>
                     <span class="tool-badge">Akademik Çeviri</span>
                     <h3>DeepL Translate</h3>
-                    <p>Yabancı kaynak ve makale araştırmalarında bağlamı bozmayan en doğru yapay zeka çevirmeni.</p>
+                    <p>Yabancı dildeki makaleleri, ders materyallerini ve araştırma kaynaklarını anlam kaybı olmadan Türkçeye çevirin.</p>
                     <ul class="detail-list">
-                        <li><strong>Doğal Dil İşleme:</strong> Robotik kelime çevirisi yerine anlam odaklı cümle kurma.</li>
-                        <li><strong>Belge Çevirisi:</strong> PDF veya Word dosyalarını yapısını bozmadan çevirme.</li>
-                        <li><strong>Terim Uyumluğu:</strong> Akademik ve teknik ifadeleri tam karşılığıyla sunma.</li>
+                        <li><strong>Doğal Dil İşleme:</strong> Kalıp ve deyimleri kelimesi kelimesine değil, bağlama uygun çevirir.</li>
+                        <li><strong>Doküman Çevirisi:</strong> Tüm PDF veya Word belgesinin yapısını bozmadan çevirme yeteneği.</li>
+                        <li><strong>Teknik Terim Uyumluğu:</strong> Akademik dilde en güvenilir çeviri standardı.</li>
                     </ul>
                 </div>
-                <a href="https://www.deepl.com" target="_blank" class="btn">DeepL'i Aç →</a>
+                <a href="https://www.deepl.com" target="_blank" class="btn">DeepL Çeviri'yi Aç →</a>
             </div>
         </div>
 
-        <!-- Neden Bizim Eğitim Koçluğumuz? Bölümü -->
-        <div class="why-us-box">
-            <h2>🎯 Neden Bizim Eğitim Koçluğumuzu Seçmelisiniz?</h2>
+        <!-- Neden Bizim Eğitim Koçluğumuz? (Detaylı & İkna Edici) -->
+        <div class="why-us-section">
+            <h2>🎓 Neden AI Campus Eğitim Koçluğunu Seçmelisiniz?</h2>
+            <p class="why-us-subtitle">Sadece ders çalıştırmıyoruz; öğrencilere doğru çalışma metodolojisini ve teknolojiyi doğru kullanmayı öğretiyoruz.</p>
+            
             <div class="why-grid">
-                <div class="why-item">
-                    <h4>1. Doğru Yapay Zeka Kullanımı</h4>
-                    <p>Yapay zekayı sadece kopya çekmek veya ödev yaptırmak için değil; konuları gerçekten öğrenmek, mantığını kavramak ve kalıcı beceri kazanmak için kullanmayı öğretiyoruz.</p>
+                <div class="why-card">
+                    <h3>1. Yapay Zekayı Doğru Kullanma Sanatı</h3>
+                    <p>Çoğu öğrenci yapay zekayı sadece ödev kopyalamak için kullanır ve gelişemez. Biz, yapay zekayı bir <strong>"Özel Öğretmen"</strong> ve <strong>"Soru Üretici"</strong> olarak kullanmayı öğreterek öğrencinin mantık yürütme kapasitesini artırıyoruz.</p>
                 </div>
-                <div class="why-item">
-                    <h4>2. Kişiselleştirilmiş Strateji</h4>
-                    <p>Her öğrencinin eksik olduğu dersler, öğrenme hızı ve hedefleri farklıdır. Standart programlar yerine tamamen senin seviyene ve eksiklerine özel çalışma planları hazırlıyoruz.</p>
+                <div class="why-card">
+                    <h3>2. Kişiselleştirilmiş Birebir Çalışma Programı</h3>
+                    <p>Kopyala-yapıştır matbu programlar kullanmıyoruz. Öğrencinin günlük uyku düzenine, okul saatlerine, eksik olduğu derslere ve öğrenme hızına özel haftalık dinamik takip çizelgesi hazırlıyoruz.</p>
                 </div>
-                <div class="why-item">
-                    <h4>3. Zaman ve Stres Yönetimi</h4>
-                    <p>Sınav haftalarında ve yoğun ödev dönemlerinde neye nereden çalışacağını bilmeme stresini bitiriyor; günlerini en verimli şekilde planlayarak zamandan tasarruf sağlıyoruz.</p>
+                <div class="why-card">
+                    <h3>3. Zaman Yönetimi ve Sınav Stresi Kontrolü</h3>
+                    <p>Sınav haftasında neye çalışacağını bilememe kaygısını ortadan kaldırıyoruz. Pomodoro tekniği, akıllı not tutma yöntemleri ve zaman bloklama ile saatlerce masada verimsiz oturmayı engelliyoruz.</p>
+                </div>
+            </div>
+
+            <div class="steps-box">
+                <h3>🚀 4 Adımda Başarıya Giden Koçluk Süreci:</h3>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <strong>Adım 1: Durum Analizi</strong>
+                        Öğrencinin mevcut netleri, eksik konuları ve öğrenme stili belirlenir.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 2: Özel Program</strong>
+                        Haftalık hedefler ve AI araçlarıyla entegre ders planı oluşturulur.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 3: Düzenli Takip</strong>
+                        Haftalık birebir görüşmelerle ilerleme ve net artışları denetlenir.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 4: Sonuç & Başarı</strong>
+                        Sınav kaygısından arınmış, kendi kendine öğrenme becerisi kazanmış birey.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Coaching & Lead Form Section (Formspree Entegreli) -->
+        <!-- Coaching & Lead Form Section -->
         <div class="coaching-section">
             <div class="coaching-info">
-                <h2>🎓 Birebir Eğitim Koçluğu & Detaylı Bilgi</h2>
-                <p>Yapay zeka araçlarını derslerinde nasıl en verimli şekilde kullanacağını öğrenmek, kişiselleştirilmiş ders çalışma programı ve akademik destek almak için bilgilerini bırak.</p>
-                <p style="font-size: 0.85rem; color: #64748b;">* Formu gönderdiğinde bilgiler doğrudan e-posta adresine iletilir[span_0](start_span)[span_0](end_span).</p>
+                <h2>📩 Ücretsiz Ön Görüşme ve Detaylı Bilgi Alın</h2>
+                <p>Yapay zeka entegreli eğitim koçluğu programımız hakkında detaylı bilgi almak, öğrencinizin seviyesini değerlendirmek ve size özel çalışma haritası çıkarmak için formu doldurun.</p>
+                <p style="font-size: 0.88rem; color: #475569; font-weight: 500;">
+                    ✓ Başvurunuz doğrudan koçluk ekibimizin e-posta adresine iletilecek ve 24 saat içinde dönüş yapılacaktır[span_1](start_span)[span_1](end_span).
+                </p>
             </div>
             
             <form class="coaching-form" action="https://formspree.io/f/xwllownd" method="POST">
+                <div class="form-group">
+                    <input type="text" name="ad_soyad" placeholder="Adınız Soyadınız" required>
+                </div>
                 <div class="form-group">
                     <input type="email" name="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
                 </div>
                 <div class="form-group">
                     <select name="seviye" required>
                         <option value="" disabled selected>Sınıf / Eğitim Seviyeniz</option>
+                        <option value="8. Sinif / LGS">8. Sınıf / LGS Hazırlık</option>
                         <option value="9. Sinif">9. Sınıf</option>
                         <option value="10. Sinif">10. Sınıf</option>
                         <option value="11. Sinif">11. Sınıf</option>
-                        <option value="12. Sinif / Universite Hazirlik">12. Sınıf / Üniversite Hazırlık</option>
+                        <option value="12. Sinif / YKS">12. Sınıf / YKS Hazırlık</option>
                         <option value="Universite">Üniversite</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Detaylı Bilgi & Koçluk İstiyorum</button>
+                <div class="form-group">
+                    <textarea name="not" rows="3" placeholder="Özellikle destek almak istediğiniz dersler veya sormak istedikleriniz (Opsiyonel)"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Detaylı Bilgi & Ön Görüşme İste →</button>
             </form>
         </div>
-
-    </div>
-
-    <footer>
-        © 2026 AI Campus — Tüm Hakları Saklıdır. Öğrenciler İçin Özel Olarak Tasarlanmıştır.
-    </footer>
-
-</body>
-</html>
