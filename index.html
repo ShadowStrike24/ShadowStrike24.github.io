@@ -274,6 +274,74 @@
             background: #64748b;
         }
 
+        /* Sınıf Seviyelerine Göre Koçluk Sistemi (YENİ EKLENEN BÖLÜM) */
+        .classes-section {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .classes-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .classes-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .class-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-3px);
+            border-color: #cbd5e1;
+        }
+
+        .class-badge {
+            display: inline-block;
+            background: var(--accent-bg);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .class-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .class-card p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
         /* Prompt Library Section */
         .prompt-section {
             background: #ffffff;
@@ -461,7 +529,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v3.2 — Student Interactive Workstation</div>
+        <div class="window-title">AI Campus v3.3 — Student Interactive Workstation</div>
         <div></div>
     </div>
 
@@ -482,7 +550,7 @@
 
     <div class="container">
         
-        <!-- İnteraktif Pomodoro Sayacı (Ziyaretçiyi Sitede Tutma Taktiği) -->
+        <!-- İnteraktif Pomodoro Sayacı -->
         <div class="timer-box">
             <h3>⏱️ Odaklanmış Çalışma Sayacı (Pomodoro)</h3>
             <p style="font-size: 0.9rem; color: var(--text-sub);">Ders çalışırken zamanınızı kontrol edin ve odağınızı koruyun.</p>
@@ -545,7 +613,46 @@
             </div>
         </div>
 
-        <!-- Öğrenci AI Prompt Kütüphanesi (Ziyaretçiyi Sitede Tutma Taktiği 2) -->
+        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ (YENİ) -->
+        <div class="classes-section">
+            <h2>📚 Sınıf Seviyelerine Göre Eğitim Koçluğu Programımız</h2>
+            <p class="classes-subtitle">Her öğrencinin yaşına, okul müfredatına ve sınav hedeflerine özel uyguladığımız stratejik koçluk adımları:</p>
+            
+            <div class="class-grid">
+                <div class="class-card">
+                    <span class="class-badge">8. Sınıf / LGS</span>
+                    <h3>Temel Atma & Sınav Disiplini</h3>
+                    <p>LGS maratonunda zaman yönetimi, yeni nesil soru çözme teknikleri ve yapay zeka destekli eksik kapatma kampları ile tam odaklanma sağlıyoruz.</p>
+                </div>
+                <div class="class-card">
+                    <span class="class-badge">9. Sınıf</span>
+                    <h3>Lise Altyapısı & Çalışma Alışkanlığı</h3>
+                    <p>Ortaokuldan liseye geçişteki zorlukları aşma, ders çalışma disiplini kazanma ve temel fen/matematik kavramlarını sağlam oturtma rehberliği.</p>
+                </div>
+                <div class="class-card">
+                    <span class="class-badge">10. Sınıf</span>
+                    <h3>Alan Seçimi & Temel Beceriler</h3>
+                    <p>Sayısal/Sözel alan seçimi rehberliği, TYT temellerinin atılması ve yapay zeka araçlarıyla (Gamma, ChatGPT) ders projelerinde fark yaratma.</p>
+                </div>
+                <div class="class-card">
+                    <span class="class-badge">11. Sınıf</span>
+                    <h3>YKS Maratonuna Erken Başlangıç</h3>
+                    <p>11. sınıf konularının titizlikle öğrenilmesi, yaz dönemi stratejik planlaması ve YKS hazırlığında rakiplerin önüne geçecek özel çalışma programı.</p>
+                </div>
+                <div class="class-card">
+                    <span class="class-badge">12. Sınıf / YKS</span>
+                    <h3>Zirveye Ulaşış & Sınav Koçluğu</h3>
+                    <p>Yoğun deneme analizleri, net artırma taktikleri, stres yönetimi ve her hafta birebir yapılan nokta atışı eksik kapatma görüşmeleri.</p>
+                </div>
+                <div class="class-card">
+                    <span class="class-badge">Üniversite</span>
+                    <h3>Akademik Araştırma & Verimlilik</h3>
+                    <p>Akademik makale tarama, DeepL ile yabancı kaynak çevirileri, proje yönetimi ve ileri düzey yapay zeka araçlarıyla zamanı katlama.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Öğrenci AI Prompt Kütüphanesi -->
         <div class="prompt-section">
             <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">💡 ChatGPT İçin Hazır Ders Çalışma Komutları (Prompts)</h2>
             <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1rem;">Bu komutları kopyalayıp ChatGPT'ye yapıştırarak ders çalışma veriminizi 5 katına çıkarın.</p>
