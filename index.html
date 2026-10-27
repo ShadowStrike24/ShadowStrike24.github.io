@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Campus | Öğrenciler İçin Premium Yapay Zeka Portalı</title>
+    <title>AI Campus | Öğrenci & Eğitim Koçluğu Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,6 +30,37 @@
             line-height: 1.6;
         }
 
+        /* Top Window Bar (3 Dots Style) */
+        .window-bar {
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+
+        .window-title {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
         /* Navbar */
         header {
             background: #ffffff;
@@ -37,8 +68,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(8px);
-            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .nav-container {
@@ -51,7 +80,7 @@
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
@@ -69,30 +98,30 @@
             font-weight: 600;
         }
 
-        /* Hero Bölümü */
+        /* Hero */
         .hero {
             max-width: 900px;
-            margin: 3.5rem auto 2.5rem auto;
+            margin: 3rem auto 2rem auto;
             text-align: center;
             padding: 0 1.5rem;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             letter-spacing: -1px;
         }
 
         .hero p {
             font-size: 1.1rem;
             color: var(--text-sub);
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto;
         }
 
-        /* Ana İçerik Grid */
+        /* Main Container */
         .container {
             max-width: 1100px;
             margin: 0 auto 4rem auto;
@@ -100,23 +129,23 @@
         }
 
         .section-title {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
-        /* Kart Tasarımları */
+        /* Tool Cards */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -135,10 +164,6 @@
             border-color: #cbd5e1;
         }
 
-        .card-top {
-            margin-bottom: 1rem;
-        }
-
         .tool-badge {
             display: inline-block;
             background: var(--accent-bg);
@@ -149,34 +174,42 @@
             border-radius: 6px;
             margin-bottom: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .card p {
             font-size: 0.95rem;
             color: var(--text-sub);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.2rem;
         }
 
-        .pro-tip {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            padding: 0.85rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: var(--text-main);
-            margin-bottom: 1.25rem;
+        .detail-list {
+            list-style: none;
+            margin-bottom: 1.2rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1rem;
         }
 
-        .pro-tip strong {
+        .detail-list li {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .detail-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
             color: var(--primary);
+            font-weight: bold;
         }
 
         .btn {
@@ -196,37 +229,70 @@
             background: var(--primary-hover);
         }
 
-        /* Alt Strateji Kutusu */
-        .strategy-box {
+        /* Coaching & Lead Section */
+        .coaching-section {
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
         }
 
-        .strategy-box h2 {
-            font-size: 1.5rem;
+        @media (max-width: 768px) {
+            .coaching-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .coaching-info h2 {
+            font-size: 1.6rem;
             color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .coaching-info p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
             margin-bottom: 1rem;
         }
 
-        .strategy-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        .coaching-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .strategy-item h4 {
-            font-size: 1.05rem;
-            color: var(--primary);
-            margin-bottom: 0.4rem;
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
         }
 
-        .strategy-item p {
-            font-size: 0.9rem;
-            color: var(--text-sub);
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.85rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-hover);
         }
 
         /* Footer */
@@ -242,83 +308,111 @@
 </head>
 <body>
 
+    <!-- 3 Dots Top Bar -->
+    <div class="window-bar">
+        <div class="dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">AI Campus v2.4 — Student Workstation</div>
+        <div></div>
+    </div>
+
     <header>
         <div class="nav-container">
             <div class="logo">
                 AI Campus 
-                <span class="nav-badge">Pro Student</span>
+                <span class="nav-badge">Öğrenci Portalı</span>
             </div>
-            <div style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Akademik & Proje Destek Portalı</div>
+            <div style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Yapay Zeka & Eğitim Rehberliği</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Derslerinde ve Projelerinde En Büyük Yapay Zeka Gücün</h1>
-        <p>Araştırma, sunum, ödev ve sınav hazırlık süreçlerini hızlandıran, en yüksek verimi alabileceğin seçkin yapay zeka araçları rehberi.</p>
+        <h1>Ders Başarını Yapay Zeka ve Eğitim Koçluğu İle İkiye Katla</h1>
+        <p>Ödev hazırlama, sınav revizyonu ve bilimsel araştırmalarda en yüksek verimi alabileceğin yapay zeka araçları ve birebir akademik yönlendirme.</p>
     </div>
 
     <div class="container">
-        <h2 class="section-title">⚡ En Çok Kullanılan Premium Araçlar</h2>
+        
+        <div class="section-title">
+            <span>⚡ Detaylı AI Araç Rehberi</span>
+        </div>
         
         <div class="grid">
             <!-- Gamma -->
             <div class="card">
-                <div class="card-top">
+                <div>
                     <span class="tool-badge">Sunum & Tasarım</span>
                     <h3>Gamma App</h3>
-                    <p>Sadece ana konu başlıklarını girerek saniyeler içinde profesyonel tasarımlı slaytlar, web sayfaları ve dokümanlar oluştur.</p>
-                    <div class="pro-tip">
-                        <strong>Öğrenci Tüyosu:</strong> Proje ödevlerinde hazırladığın sunumları PDF formatına çevirerek doğrudan hocalarına sunabilirsin.
-                    </div>
+                    <p>Konu başlığından saniyeler içinde etkileşimli slaytlar, görsel kartlar ve ders sunumları hazırlar.</p>
+                    <ul class="detail-list">
+                        <li><strong>Otomatik İçerik:</strong> Ana fikirleri otomatik olarak slayt alanlarına böler.</li>
+                        <li><strong>Dışa Aktarma:</strong> Hazırlanan sunumları doğrudan PDF formatında indirme imkanı.</li>
+                        <li><strong>Akademik İpucu:</strong> Biyoloji, tarih veya fizik sunumlarında görsel taslağı hızlıca kurar.</li>
+                    </ul>
                 </div>
-                <a href="https://gamma.app" target="_blank" class="btn">Gamma'yı Aç →</a>
+                <a href="https://gamma.app" target="_blank" class="btn">Gamma'yı Kullan →</a>
             </div>
 
             <!-- ChatGPT-4o -->
             <div class="card">
-                <div class="card-top">
-                    <span class="tool-badge">Analiz & Problem Çözme</span>
+                <div>
+                    <span class="tool-badge">Soru & Analiz</span>
                     <h3>ChatGPT-4o</h3>
-                    <p>Karmaşık formülleri, grafik sorularını veya uzun metin görsellerini yükleyerek adım adım, mantığıyla beraber çözüm öğren.</p>
-                    <div class="pro-tip">
-                        <strong>Öğrenci Tüyosu:</strong> Soru çözerken "Bana cevabı direkt söyleme, mantığını adım adım ipucu vererek öğret" komutunu kullan.
-                    </div>
+                    <p>Görsel tanıma yeteneğiyle karmaşık soruları, matematik denklemlerini ve notları anında analiz eder.</p>
+                    <ul class="detail-list">
+                        <li><strong>Görsel Analiz:</strong> Soru fotoğrafını yükleyip detaylı adım adım çözüm alma.</li>
+                        <li><strong>Özel Soru Üretimi:</strong> Sınav konularını vererek özelleştirilmiş test soruları yazdırma.</li>
+                        <li><strong>Müfredat Uyumu:</strong> Lise ve akademik seviyelere göre özel anlatım tekniği.</li>
+                    </ul>
                 </div>
                 <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT'yi Aç →</a>
             </div>
 
             <!-- DeepL -->
             <div class="card">
-                <div class="card-top">
+                <div>
                     <span class="tool-badge">Akademik Çeviri</span>
                     <h3>DeepL Translate</h3>
-                    <p>Yabancı makaleleri ve akademik kaynakları robotik olmadan, tam bağlamına ve cümle yapısına uygun şekilde Türkçeye çevir.</p>
-                    <div class="pro-tip">
-                        <strong>Öğrenci Tüyosu:</strong> İngilizce araştırma ödevlerinde kaynak taraması yaparken en güvenilir ve doğal çeviri kaynağıdır.
-                    </div>
+                    <p>Yabancı kaynak ve makale araştırmalarında bağlamı bozmayan en doğru yapay zeka çevirmeni.</p>
+                    <ul class="detail-list">
+                        <li><strong>Doğal Dil İşleme:</strong> Robotik kelime çevirisi yerine anlam odaklı cümle kurma.</li>
+                        <li><strong>Belge Çevirisi:</strong> PDF veya Word dosyalarını yapısını bozmadan çevirme.</li>
+                        <li><strong>Terim Uyumluğu:</strong> Akademik ve teknik ifadeleri tam karşılığıyla sunma.</li>
+                    </ul>
                 </div>
                 <a href="https://www.deepl.com" target="_blank" class="btn">DeepL'i Aç →</a>
             </div>
         </div>
 
-        <!-- Strateji Bölümü -->
-        <div class="strategy-box">
-            <h2>🚀 Başarı İçin Yapay Zeka Kullanım Stratejileri</h2>
-            <div class="strategy-list">
-                <div class="strategy-item">
-                    <h4>1. Akıllı Soru Üretme</h4>
-                    <p>Çalıştığın ders notlarını kopyalayıp yapay zekaya verin ve "Bu konudan çıkabilecek 10 adet zorlu sınav sorusu hazırla" diyerek kendinizi test edin.</p>
-                </div>
-                <div class="strategy-item">
-                    <h4>2. Basitleştirme Yöntemi</h4>
-                    <p>Anlamakta zorlandığınız karmaşık bilimsel konuları "Bunu 15 yaşında bir lise öğrencisine anlatır gibi açıkla" komutuyla netleştirin.</p>
-                </div>
-                <div class="strategy-item">
-                    <h4>3. Planlı Zaman Yönetimi</h4>
-                    <p>Ödev teslim tarihlerinizi ve sınav haftanızı yapay zekaya girerek günlük çalışmanız gereken özel bir program çıkarttırın.</p>
-                </div>
+        <!-- Coaching & Lead Form Section -->
+        <div class="coaching-section">
+            <div class="coaching-info">
+                <h2>🎓 Birebir Eğitim Koçluğu & Detaylı Bilgi</h2>
+                <p>Yapay zeka araçlarını derslerinde nasıl en verimli şekilde kullanacağını öğrenmek, kişiselleştirilmiş ders çalışma programı ve akademik destek almak için bilgilerini bırak.</p>
+                <p style="font-size: 0.85rem; color: #64748b;">* E-posta adresin üzerinden seninle en kısa sürede iletişime geçilecektir.</p>
             </div>
+            
+            <form class="coaching-form" onsubmit="alert('Başvurunuz alındı! En kısa sürede sizinle iletişime geçilecektir.'); return false;">
+                <div class="form-group">
+                    <input type="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="" disabled selected>Sınıf / Eğitim Seviyeniz</option>
+                        <option value="9">9. Sınıf</option>
+                        <option value="10">10. Sınıf</option>
+                        <option value="11">11. Sınıf</option>
+                        <option value="12">12. Sınıf / Üniversite Hazırlık</option>
+                        <option value="uni">Üniversite</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Detaylı Bilgi & Koçluk İstiyorum</button>
+            </form>
         </div>
+
     </div>
 
     <footer>
