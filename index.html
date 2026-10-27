@@ -117,7 +117,6 @@
             align-items: center;
         }
 
-        /* Logo Tasarımı */
         .logo-wrapper {
             display: flex;
             align-items: center;
@@ -184,6 +183,29 @@
             margin: 0 auto 1.5rem auto;
         }
 
+        /* Social Proof Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.2rem;
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
         /* Main Container */
         .container {
             max-width: 1100px;
@@ -199,6 +221,120 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        /* SIMULATOR STYLES */
+        .simulator-box {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.1);
+        }
+
+        .simulator-box h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .simulator-box p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 1.5rem;
+        }
+
+        .sim-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .sim-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+
+        .sim-input-group input, .sim-input-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+            font-weight: 600;
+        }
+
+        .sim-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .sim-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .sim-result {
+            display: none;
+            margin-top: 2rem;
+            background: var(--accent-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .sim-result h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+        }
+
+        .sim-result-content {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .sim-result-bullets {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .sim-result-bullets li {
+            margin-bottom: 0.5rem;
+            color: var(--text-sub);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .grid {
@@ -345,7 +481,7 @@
             background: #64748b;
         }
 
-        /* SINIFLAR İÇİN TIKLANABİLİR AKORDEON (ACILIR KAPANIR) KARTLAR */
+        /* SINIFLAR İÇİN TIKLANABİLİR AKORDEON KARTLAR */
         .classes-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -424,14 +560,12 @@
             margin: 0.6rem 0 0.3rem 0;
         }
 
-        /* Bilgi İçin Tıklayın Yazısı */
         .click-prompt {
             font-size: 0.85rem;
             color: var(--text-sub);
             font-style: italic;
         }
 
-        /* Açılır kapanır içerik alanı */
         .class-content {
             max-height: 0;
             overflow: hidden;
@@ -636,6 +770,30 @@
             transform: translateY(-2px);
         }
 
+        /* Fixed WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -656,7 +814,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v3.5 — Student Interactive Workstation</div>
+        <div class="window-title">AI Campus v3.6 — Student Interactive Workstation</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
             🌙 Koyu Mod
         </button>
@@ -678,6 +836,54 @@
     </div>
 
     <div class="container">
+
+        <!-- Social Proof Bandı -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h4>+450</h4>
+                <p>Başarılı Öğrenci</p>
+            </div>
+            <div class="stat-item">
+                <h4>%98</h4>
+                <p>Net Artış Oranı</p>
+            </div>
+            <div class="stat-item">
+                <h4>24 Saat</h4>
+                <p>Hızlı Geri Dönüş</p>
+            </div>
+        </div>
+
+        <!-- YENİ: AI DESTEKLİ HEDEF & NET HESAPLAMA SİMÜLATÖRÜ -->
+        <div class="simulator-box">
+            <h2>🎯 AI Destekli Hedef & Net İlerleme Simülatörü</h2>
+            <p>Mevcut durumunuzu ve hedefinizdeki net sayısı yazın; yapay zeka altyapımız hedefinize ulaşmanız için size özel haftalık çalışma ve koçluk planınızı hesaplasın.</p>
+            
+            <div class="sim-inputs">
+                <div class="sim-input-group">
+                    <label>Sınıf Seviyeniz</label>
+                    <select id="simGrade">
+                        <option value="LGS">8. Sınıf / LGS</option>
+                        <option value="Lise">9 - 10 - 11. Sınıf</option>
+                        <option value="YKS" selected>12. Sınıf / YKS</option>
+                    </select>
+                </div>
+                <div class="sim-input-group">
+                    <label>Şu Anki Netiniz (Ortalama)</label>
+                    <input type="number" id="currentNet" placeholder="Örn: 45" min="0" max="120">
+                </div>
+                <div class="sim-input-group">
+                    <label>Hedeflediğiniz Net</label>
+                    <input type="number" id="targetNet" placeholder="Örn: 75" min="0" max="120">
+                </div>
+            </div>
+            <button class="sim-btn" onclick="calculateStrategy()">⚡ AI Strateji ve Koçluk Planımı Oluştur</button>
+
+            <!-- Sonuç Kutusu -->
+            <div class="sim-result" id="simResult">
+                <h3 id="resTitle">🚀 Strateji Raporunuz Hazır!</h3>
+                <div class="sim-result-content" id="resContent"></div>
+            </div>
+        </div>
         
         <!-- İnteraktif Pomodoro Sayacı -->
         <div class="timer-box">
@@ -742,13 +948,12 @@
             </div>
         </div>
 
-        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ (TIKLANABİLİR AKORDEON) -->
+        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ -->
         <div class="classes-section">
             <h2>📚 Sınıf Seviyelerine Göre Eğitim Koçluğu Programımız</h2>
             <p class="classes-subtitle">Detayları görmek için istediğiniz sınıf kutusuna tıklayabilirsiniz:</p>
             
             <div class="class-grid">
-                <!-- 8. Sınıf -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">8. Sınıf / LGS</span>
@@ -761,7 +966,6 @@
                     </div>
                 </div>
 
-                <!-- 9. Sınıf -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">9. Sınıf</span>
@@ -774,7 +978,6 @@
                     </div>
                 </div>
 
-                <!-- 10. Sınıf -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">10. Sınıf</span>
@@ -787,7 +990,6 @@
                     </div>
                 </div>
 
-                <!-- 11. Sınıf -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">11. Sınıf</span>
@@ -800,7 +1002,6 @@
                     </div>
                 </div>
 
-                <!-- 12. Sınıf -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">12. Sınıf / YKS</span>
@@ -813,7 +1014,6 @@
                     </div>
                 </div>
 
-                <!-- Üniversite -->
                 <div class="class-card" onclick="toggleClassCard(this)">
                     <div class="class-header">
                         <span class="class-badge">Üniversite</span>
@@ -841,7 +1041,7 @@
 
             <div class="prompt-card" style="margin-top: 1rem;">
                 <strong>2. Karmaşık Konuları Basitleştirme Komutu:</strong>
-                <div class="prompt-text" id="p2">"Şu konuyu: [Konu Adı] bana 15 yaşında bir lise öğrencisinin en basit şekliyle anlayabileceği günlük hayat örnekleri ve benzetmelerle açıkla."</div>
+                <div class="prompt-text" id="p2">"Şu konuyu: [Konu Adı] bana 15 yaşında bir lise öğrencisinin en basit şekliyle anlayabileceği günlük hayat örnekleri me benzetmelerle açıkla."</div>
                 <button class="copy-btn" onclick="copyText('p2')">Komutu Kopyala 📋</button>
             </div>
         </div>
@@ -868,7 +1068,7 @@
         </div>
 
         <!-- Coaching & Lead Form Section -->
-        <div class="coaching-section">
+        <div class="coaching-section" id="formArea">
             <div class="coaching-info">
                 <h2>📩 Ücretsiz Ön Görüşme ve Detaylı Bilgi Alın</h2>
                 <p>Yapay zeka entegreli eğitim koçluğu programımız hakkında detaylı bilgi almak, öğrencinizin seviyesini değerlendirmek ve size özel çalışma haritası çıkarmak için formu doldurun.</p>
@@ -904,11 +1104,56 @@
 
     </div>
 
+    <!-- Sabit WhatsApp İletişim Butonu -->
+    <a href="https://wa.me/?text=Merhaba,%20AI%20Campus%20egitim%20koclugu%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float">
+        💬 WhatsApp Hızlı İletişim
+    </a>
+
     <footer>
         © 2026 AI Campus — Tüm Hakları Saklıdır. Öğrenciler İçin Özel Olarak Tasarlanmıştır.
     </footer>
 
     <script>
+        // AI Net & Hedef Hesaplama Fonksiyonu
+        function calculateStrategy() {
+            const current = parseFloat(document.getElementById('currentNet').value);
+            const target = parseFloat(document.getElementById('targetNet').value);
+            const grade = document.getElementById('simGrade').value;
+            const resBox = document.getElementById('simResult');
+            const resContent = document.getElementById('resContent');
+
+            if (isNaN(current) || isNaN(target)) {
+                alert("Lütfen hem şu anki netinizi hem de hedeflediğiniz neti girin.");
+                return;
+            }
+
+            if (target <= current) {
+                alert("Hedef netiniz şu anki netinizden yüksek olmalıdır.");
+                return;
+            }
+
+            const netDiff = (target - current).toFixed(1);
+            const weeklyPomodoro = Math.ceil(netDiff * 1.8);
+
+            resContent.innerHTML = `
+                <p><strong>🎯 Hedef Analizi:</strong> Hedefinize ulaşmak için netlerinizi <strong>+${netDiff} Net</strong> artırmanız gerekiyor.</p>
+                <p style="margin-top: 0.5rem;"><strong>⏱️ Tavsiye Edilen Çalışma Tempomuz:</strong> AI Campus sisteminde haftalık ortalama <strong>${weeklyPomodoro} Pomodoro Seansı</strong> (25 dk odaklanma) ile bu farkı kapatabiliriz.</p>
+                
+                <div style="margin-top: 1.2rem; background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h4 style="color: var(--primary); font-weight:700; margin-bottom: 0.5rem;">💡 AI Campus Birebir Koçluk Sistemi Olarak Sizin İçin Neler Yapacağız?</h4>
+                    <ul class="sim-result-bullets">
+                        <li><strong>Nokta Atışı Eksik Tespiti:</strong> Kaybettiğiniz ${netDiff} netin tam olarak hangi alt konulardan kaynaklandığını yapay zeka analizleriyle bulacağız.</li>
+                        <li><strong>Kişiselleştirilmiş Haftalık Çizelge:</strong> Sizi zorlamayan, okul derslerinizle uyumlu ve yapay zeka destekli haftalık soru çözüm kampları hazırlayacağız.</li>
+                        <li><strong>Özel AI Komut & Soru Çözüm Desteği:</strong> Takıldığınız soru kalıplarını ChatGPT ve ek araçlarımızla mantığını öğrenene kadar adım adım inceleyeceğiz.</li>
+                    </ul>
+                    <p style="margin-top: 0.8rem; font-weight: 600; font-size: 0.9rem; color: var(--primary);">✨ Bu hedef imkansız değil! Aşağıdaki başvuru formunu doldurarak hemen ilk strateji görüşmenizi planlayalım.</p>
+                </div>
+            `;
+
+            resBox.style.display = 'block';
+            resBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Sınıf Kartlarını Açıp Kapatma Fonksiyonu (Akordeon)
         function toggleClassCard(card) {
             card.classList.toggle('active');
