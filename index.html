@@ -3,415 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StrikeTactics | eFootball 2027 Pro Taktik & Meta Rehberi</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>AI Campus | Öğrenciler İçin Yapay Zeka Rehberi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0e17;
-            --bg-card: #131b2e;
-            --accent-green: #00ff88;
-            --accent-gold: #ffb700;
-            --accent-blue: #00d2ff;
-            --text-main: #f0f4f8;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --primary: #2563eb;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border-color: #e2e8f0;
+            --accent-tag: #eff6ff;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
+            padding: 0;
         }
 
-        /* Header & Nav */
+        /* Header / Navbar */
         header {
-            background: rgba(19, 27, 46, 0.95);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--accent-green);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .logo span { color: #fff; }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
         }
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
 
-        nav a:hover, nav a.active {
-            color: var(--accent-green);
-        }
-
-        /* Hero Banner */
-        .hero {
-            background: linear-gradient(180deg, rgba(10, 14, 23, 0.4) 0%, var(--bg-dark) 100%),
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop') center/cover;
-            padding: 5rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #fff, var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
         }
 
         .badge {
-            background: rgba(0, 255, 136, 0.15);
-            color: var(--accent-green);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            border: 1px solid var(--accent-green);
             display: inline-block;
-            margin-bottom: 1rem;
+            background: var(--accent-tag);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
         }
 
-        /* Main Content Layout */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 2.5fr 1fr;
-            gap: 2rem;
-        }
-
-        /* Article Card */
-        .card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-header i {
-            font-size: 2rem;
-            color: var(--accent-green);
-        }
-
-        .card-title {
-            font-size: 1.8rem;
-            color: #fff;
-        }
-
-        .img-container {
-            width: 100%;
-            height: 350px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin: 1.5rem 0;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Pitch Graphic */
-        .pitch {
-            background: #1e3d29;
-            background-image: radial-gradient(#2d5a3d 2px, transparent 2px);
-            background-size: 16px 16px;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            position: relative;
-        }
-
-        .pitch-grid {
-            display: grid;
-            grid-template-rows: repeat(4, 1fr);
-            gap: 15px;
-            text-align: center;
-        }
-
-        .pitch-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .player-tag {
-            background: rgba(0,0,0,0.75);
-            border: 1px solid var(--accent-green);
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0,255,136,0.2);
-        }
-
-        /* Stat Grid */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 1.5rem 0;
-        }
-
-        .stat-box {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Tip Box */
-        .tip-box {
-            background: rgba(0, 210, 255, 0.08);
-            border-left: 4px solid var(--accent-blue);
-            padding: 1.2rem;
-            border-radius: 0 10px 10px 0;
-            margin: 1.5rem 0;
-        }
-
-        .tip-box h4 {
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Sidebar */
-        .sidebar-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .sidebar-title {
+        .card h3 {
             font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .meta-list {
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .pro-tip {
+            background: #f1f5f9;
+            padding: 0.75rem;
+            border-left: 3px solid var(--primary);
+            font-size: 0.85rem;
+            color: var(--text-main);
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Pro Strategy Box */
+        .featured-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .featured-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .featured-box ul {
             list-style: none;
         }
 
-        .meta-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .featured-box li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-sub);
+            font-size: 0.95rem;
         }
 
-        .meta-list li:last-child { border: none; }
+        .featured-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            background: #ffffff;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-gamepad"></i> Strike<span>Tactics</span>
+        <div class="nav-container">
+            <div class="logo">AI Campus</div>
+            <div class="tagline">Akademik & Eğitim Rehberi</div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#efootball" class="active">eFootball 2027</a></li>
-                <li><a href="#suarez">Suárez Rehberi</a></li>
-                <li><a href="#ai-tools">Öğrenci AI</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="hero">
-        <span class="badge"><i class="fa-solid fa-bolt"></i> GÜNCEL META REHBERİ</span>
-        <h1>eFootball 2027 Pro Taktikler & Kadro Mimarisi</h1>
-        <p>Klasman maçlarında üst sıralara tırmanmanızı sağlayacak detaylı antrenman dağılımları, gizli saha içi ayarları ve profesyonel ipuçları.</p>
-    </section>
-
     <div class="container">
-        <!-- Main Articles -->
-        <main>
-            <!-- Article 1: Luis Suarez Special -->
-            <article id="suarez" class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-trophy"></i>
-                    <div>
-                        <span class="badge" style="border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(255, 183, 0, 0.1);">Özel Oyuncu İncelemesi</span>
-                        <h2 class="card-title">Starter Set Luis Suárez: Maximum Derece ve Antrenman Dağılımı</h2>
-                    </div>
-                </div>
+        
+        <div class="hero">
+            <h1>Öğrenciler İçin Yapay Zeka Araçları</h1>
+            <p>Ders verimliliğini 10 katına çıkaracak, sunum, ödev ve sınav hazırlıklarında hayat kurtaran premium yapay zeka çözümleri.</p>
+        </div>
 
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1000&auto=format&fit=crop" alt="Football Player Concept">
-                </div>
-
-                <p>Luis Suárez Starter Set kartı, ceza sahası içerisindeki öldürücü bitiriciliği ve fiziksel temasıyla eFootball 2027'nin en etkili Fırsatçı Golcü (Fox in the Box) kartlarından biridir. Otomatik antrenman yerine doğru stat dağılımı yapıldığında rakip stoperleri kelimenin tam anlamıyla sürklase eder.</p>
-
-                <h3>Önerilen Antrenman Puanı Dağılımı:</h3>
-                <div class="stat-grid">
-                    <div class="stat-box">
-                        <div class="stat-value">8 Nokta</div>
-                        <div class="stat-label">Şut (Bitiricilik 92+)</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">4 Nokta</div>
-                        <div class="stat-label">Top Sürme & Kontrol</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">8 Nokta</div>
-                        <div class="stat-label">Hızlanma & Denge</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">6 Nokta</div>
-                        <div class="stat-label">Fiziksel Güç</div>
-                    </div>
-                </div>
-
-                <div class="tip-box">
-                    <h4><i class="fa-solid fa-lightbulb"></i> Pro İpucu: Beceriler</h4>
-                    <p>Suárez'e mutlaka <strong>"İlk Dokunuşta Şut" (One-touch Pass)</strong> ve <strong>"Çift Dokunuş" (Double Touch)</strong> yeteneklerini ekleyin. Ceza sahası yayı üzerindeyken dönüş şutlarında ağları havalandırma oranı %80'in üzerindedir.</p>
-                </div>
-            </article>
-
-            <!-- Article 2: 4-1-2-3 Meta Tactical Setup -->
-            <article id="efootball" class="card">
-                <div class="card-header">
-                    <i class="fa-solid fa-diagram-project"></i>
-                    <div>
-                        <h2 class="card-title">Klasman Kırma Dizilişi: 4-1-2-3 Hızlı Kontratak</h2>
-                    </div>
-                </div>
-
-                <p>Mevcut yamada en yüksek galibiyet oranına sahip diziliş 4-1-2-3'tür. İki adet OFO (Hücumcu Orta Saha) ile rakip ceza sahasına yapılan sürpriz koşular savunma hatlarını tamamen bozar.</p>
-
-                <!-- Pitch Design -->
-                <div class="pitch">
-                    <div class="pitch-grid">
-                        <div class="pitch-row">
-                            <div class="player-tag">LWF</div>
-                            <div class="player-tag" style="border-color: var(--accent-gold);">CF (Suárez)</div>
-                            <div class="player-tag">RWF</div>
-                        </div>
-                        <div class="pitch-row">
-                            <div class="player-tag" style="background: #112233;">AMF (OFO)</div>
-                            <div class="player-tag" style="background: #112233;">AMF (OFO)</div>
-                        </div>
-                        <div class="pitch-row">
-                            <div class="player-tag" style="background: #331111;">DMF (MÖ)</div>
-                        </div>
-                        <div class="pitch-row">
-                            <div class="player-tag">LB</div>
-                            <div class="player-tag">CB</div>
-                            <div class="player-tag">CB</div>
-                            <div class="player-tag">RB</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Talimatlar ve Ayarlar:</h3>
-                <ul style="margin-left: 20px; color: var(--text-muted); margin-bottom: 1.5rem;">
-                    <li><strong>Taktik Anlayış:</strong> Hızlı Kontratak (Quick Counter)</li>
-                    <li><strong>Gelişmiş Talimat 1:</strong> Çapa (DMF üzerine koyun, defansın önünden ayrılmaz).</li>
-                    <li><strong>Gelişmiş Talimat 2:</strong> Defansif (Beklerinize verin, kontra atakta yakalanmayın).</li>
-                </ul>
-            </article>
-        </main>
-
-        <!-- Sidebar -->
-        <aside>
-            <div class="sidebar-card">
-                <h3 class="sidebar-title"><i class="fa-solid fa-fire"></i> Meta Dereceleri</h3>
-                <ul class="meta-list">
-                    <li><span>L. Suárez (Starter)</span> <strong style="color:var(--accent-gold)">S+ Tier</strong></li>
-                    <li><span>4-1-2-3 Diziliş</span> <strong style="color:var(--accent-green)">S Tier</strong></li>
-                    <li><span>Hızlı Kontratak</span> <strong style="color:var(--accent-green)">S Tier</strong></li>
-                    <li><span>Zamanlı Pas</span> <strong style="color:var(--accent-blue)">A+ Tier</strong></li>
-                </ul>
+        <h2 class="section-title">⚡ En Etkili AI Araçları</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Sunum & Tasarım</span>
+                <h3>Gamma App</h3>
+                <p>Sadece bir konu başlığı vererek saniyeler içinde tam sayfa, profesyonel sunumlar ve slaytlar hazırlamanızı sağlar.</p>
+                <div class="pro-tip"><strong>İpucu:</strong> Slayt taslaklarını PDF olarak indirip ders anlatımlarında doğrudan kullanabilirsiniz.</div>
             </div>
 
-            <div class="sidebar-card" id="ai-tools">
-                <h3 class="sidebar-title"><i class="fa-solid fa-graduation-cap"></i> Öğrenci AI Araçları</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ders çalışırken ve sunum hazırlarken zaman kazandıran en iyi ücretsiz AI araçları:</p>
-                <ul class="meta-list">
-                    <li><span>Gamma App</span> <small>Sunum Hazırlığı</small></li>
-                    <li><span>ChatGPT-4o</span> <small>Özet & Problem</small></li>
-                    <li><span>DeepL</span> <small>Akademik Çeviri</small></li>
-                </ul>
+            <div class="card">
+                <span class="badge">Matematik & Fen</span>
+                <h3>ChatGPT-4o (Görsel Analiz)</h3>
+                <p>Karmaşık denklem, grafik veya soru görsellerini yükleyerek adım adım açıklamayla çözüm alabilirsiniz.</p>
+                <div class="pro-tip"><strong>İpucu:</strong> "Çözümü anlatırken 10. sınıf müfredatına göre açıkla" yazarak daha net cevap alabilirsiniz.</div>
             </div>
-        </aside>
+
+            <div class="card">
+                <span class="badge">Akademik Çeviri</span>
+                <h3>DeepL Translate</h3>
+                <p>Klasik çeviri araçlarına kıyasla akademik ve teknik metinleri tam anlam derinliğiyle çeviren lider platform.</p>
+                <div class="pro-tip"><strong>İpucu:</strong> Makale incelemelerinde ve yabancı kaynak araştırmalarında en doğru terim karşılıklarını sunar.</div>
+            </div>
+        </div>
+
+        <div class="featured-box">
+            <h2>💡 Yapay Zeka İle Sınavlara Hazırlanma Rehberi</h2>
+            <ul>
+                <li><strong>Özet Çıkartma:</strong> Uzun ders notlarınızı AI'a yükleyip "Bana bu konudan çıkarılabilecek 10 kritik sınav sorusu yaz" komutunu verin.</li>
+                <li><strong>Kavram Testi:</strong> Anlamakta zorlandığınız biyoloji veya fizik kavramlarını "15 yaşındaki birine anlatır gibi basit anlat" komutuyla pekiştirin.</li>
+                <li><strong>Kodlama ve Problem Çözme:</strong> Hata yaptığınız soruların çözümünü doğrudan sorgulatarak mantığını kavrayın.</li>
+            </ul>
+        </div>
+
     </div>
+
+    <footer>
+        © 2026 AI Campus — Öğrenciler İçin Hazırlanmış Özel Yapay Zeka Portalı
+    </footer>
 
 </body>
 </html>
