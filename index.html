@@ -91,10 +91,12 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .theme-toggle-btn:hover {
             border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* Navbar */
@@ -115,7 +117,7 @@
             align-items: center;
         }
 
-        /* Yeni Güven Veren Logo Tasarımı */
+        /* Logo Tasarımı */
         .logo-wrapper {
             display: flex;
             align-items: center;
@@ -206,7 +208,7 @@
             margin-bottom: 3.5rem;
         }
 
-        /* Tool Cards */
+        /* Tool Cards & Hareket Efekti */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -215,11 +217,14 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: var(--primary);
+            box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.15);
         }
 
         .tool-badge {
@@ -281,10 +286,12 @@
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         .btn:hover {
             background: var(--primary-hover);
+            transform: translateY(-1px);
         }
 
         /* Interactive Focus Timer Widget */
@@ -295,6 +302,12 @@
             padding: 2rem;
             margin-bottom: 3.5rem;
             text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
         }
 
         .timer-box h3 {
@@ -321,13 +334,18 @@
             font-weight: 600;
             cursor: pointer;
             margin: 0 4px;
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+
+        .timer-controls button:hover {
+            transform: scale(1.05);
         }
 
         .timer-controls button.reset {
             background: #64748b;
         }
 
-        /* Sınıf Seviyelerine Göre Koçluk Sistemi */
+        /* Sınıf Seviyelerine Göre Koçluk Kartları & Hareket */
         .classes-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -362,6 +380,13 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.5rem;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.08);
         }
 
         .class-badge {
@@ -404,6 +429,11 @@
             border-radius: 10px;
             padding: 1.25rem;
             margin-top: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .prompt-card:hover {
+            transform: translateY(-3px);
         }
 
         .prompt-text {
@@ -428,6 +458,11 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.03);
         }
 
         /* Neden Biz Bölümü */
@@ -465,6 +500,12 @@
             padding: 1.5rem;
             border-radius: 12px;
             border: 1px solid var(--border-color);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
         }
 
         .why-card h3 {
@@ -531,6 +572,7 @@
             outline: none;
             background: var(--card-bg);
             color: var(--text-main);
+            transition: border-color 0.2s ease;
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -546,10 +588,12 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.15s ease;
         }
 
         .submit-btn:hover {
             background: var(--primary-hover);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -580,7 +624,6 @@
 
     <header>
         <div class="nav-container">
-            <!-- Yeni Güven Veren Profesyonel Logo Alanı -->
             <a href="#" class="logo-wrapper">
                 <div class="logo-icon">AI</div>
                 <div class="logo-text">AI <span>Campus</span></div>
