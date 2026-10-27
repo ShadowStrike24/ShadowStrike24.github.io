@@ -162,7 +162,7 @@
         /* Hero */
         .hero {
             max-width: 900px;
-            margin: 3.5rem auto 2.5rem auto;
+            margin: 3rem auto 1.5rem auto;
             text-align: center;
             padding: 0 1.5rem;
         }
@@ -180,7 +180,38 @@
             font-size: 1.15rem;
             color: var(--text-sub);
             max-width: 720px;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto;
+        }
+
+        /* YENİ: Üst Sınıf Filtreleme Sekmeleri (Segmentleri) */
+        .grade-segments {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 1.5rem auto 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .segment-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+        }
+
+        .segment-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* Social Proof Stats Bar */
@@ -527,6 +558,11 @@
             box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.08);
         }
 
+        .class-card.highlight {
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.25);
+        }
+
         .class-header {
             display: flex;
             justify-content: space-between;
@@ -814,7 +850,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Campus v3.6 — Student Interactive Workstation</div>
+        <div class="window-title">AI Campus v3.7 — Student Interactive Workstation</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
             🌙 Koyu Mod
         </button>
@@ -835,6 +871,16 @@
         <p>Geleneksel ve verimsiz ders çalışma yöntemlerini geride bırakın. En modern yapay zeka araçlarını ve birebir kişiselleştirilmiş koçluk sistemini kullanarak zamanınızı %50 daha verimli yönetin.</p>
     </div>
 
+    <!-- Üst Sınıf Filtreleme Sekmeleri (Segmentleri) -->
+    <div class="grade-segments">
+        <button class="segment-btn" onclick="scrollToClass(0)">📚 8. Sınıf / LGS</button>
+        <button class="segment-btn" onclick="scrollToClass(1)">📐 9. Sınıf</button>
+        <button class="segment-btn" onclick="scrollToClass(2)">🧪 10. Sınıf</button>
+        <button class="segment-btn" onclick="scrollToClass(3)">🚀 11. Sınıf</button>
+        <button class="segment-btn" onclick="scrollToClass(4)">🏆 12. Sınıf / YKS</button>
+        <button class="segment-btn" onclick="scrollToClass(5)">🎓 Üniversite</button>
+    </div>
+
     <div class="container">
 
         <!-- Social Proof Bandı -->
@@ -853,10 +899,10 @@
             </div>
         </div>
 
-        <!-- YENİ: AI DESTEKLİ HEDEF & NET HESAPLAMA SİMÜLATÖRÜ -->
+        <!-- AI Destekli Hedef & Net Hesaplama Simülatörü -->
         <div class="simulator-box">
             <h2>🎯 AI Destekli Hedef & Net İlerleme Simülatörü</h2>
-            <p>Mevcut durumunuzu ve hedefinizdeki net sayısı yazın; yapay zeka altyapımız hedefinize ulaşmanız için size özel haftalık çalışma ve koçluk planınızı hesaplasın.</p>
+            <p>Mevcut durumunuzu ve hedefinizdeki net sayısını yazın; yapay zeka altyapımız hedefinize ulaşmanız için size özel haftalık çalışma ve koçluk planınızı hesaplasın.</p>
             
             <div class="sim-inputs">
                 <div class="sim-input-group">
@@ -878,7 +924,6 @@
             </div>
             <button class="sim-btn" onclick="calculateStrategy()">⚡ AI Strateji ve Koçluk Planımı Oluştur</button>
 
-            <!-- Sonuç Kutusu -->
             <div class="sim-result" id="simResult">
                 <h3 id="resTitle">🚀 Strateji Raporunuz Hazır!</h3>
                 <div class="sim-result-content" id="resContent"></div>
@@ -902,7 +947,6 @@
         </div>
         
         <div class="grid">
-            <!-- Gamma App -->
             <div class="card">
                 <div>
                     <span class="tool-badge">Sunum & Tasarım</span>
@@ -917,7 +961,6 @@
                 <a href="https://gamma.app" target="_blank" class="btn">Gamma App'i Aç →</a>
             </div>
 
-            <!-- ChatGPT-4o -->
             <div class="card">
                 <div>
                     <span class="tool-badge">Soru & Analiz</span>
@@ -932,7 +975,6 @@
                 <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT-4o'yu Aç →</a>
             </div>
 
-            <!-- DeepL -->
             <div class="card">
                 <div>
                     <span class="tool-badge">Akademik Çeviri</span>
@@ -1041,7 +1083,7 @@
 
             <div class="prompt-card" style="margin-top: 1rem;">
                 <strong>2. Karmaşık Konuları Basitleştirme Komutu:</strong>
-                <div class="prompt-text" id="p2">"Şu konuyu: [Konu Adı] bana 15 yaşında bir lise öğrencisinin en basit şekliyle anlayabileceği günlük hayat örnekleri me benzetmelerle açıkla."</div>
+                <div class="prompt-text" id="p2">"Şu konuyu: [Konu Adı] bana 15 yaşında bir lise öğrencisinin en basit şekliyle anlayabileceği günlük hayat örnekleri ve benzetmelerle açıkla."</div>
                 <button class="copy-btn" onclick="copyText('p2')">Komutu Kopyala 📋</button>
             </div>
         </div>
@@ -1114,11 +1156,29 @@
     </footer>
 
     <script>
+        // Üst Segmentlere Tıklayınca İlgili Sınıfa Gitme ve Açma Fonksiyonu
+        function scrollToClass(index) {
+            const cards = document.querySelectorAll('.class-card');
+            const targetCard = cards[index];
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Eğer kart kapalıysa aç ve dikkat çekici renk ver
+                if (!targetCard.classList.contains('active')) {
+                    toggleClassCard(targetCard);
+                }
+                
+                targetCard.classList.add('highlight');
+                setTimeout(() => {
+                    targetCard.classList.remove('highlight');
+                }, 1500);
+            }
+        }
+
         // AI Net & Hedef Hesaplama Fonksiyonu
         function calculateStrategy() {
             const current = parseFloat(document.getElementById('currentNet').value);
             const target = parseFloat(document.getElementById('targetNet').value);
-            const grade = document.getElementById('simGrade').value;
             const resBox = document.getElementById('simResult');
             const resContent = document.getElementById('resContent');
 
