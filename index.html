@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Campus | Yapay Zeka Destekli Birebir Eğitim Koçluğu Portalı</title>
-    <meta name="description" content="Lise ve üniversite öğrencileri için yapay zeka araçları destekli akademik başarı, sınav hazırlığı ve kişiselleştirilmiş eğitim koçluğu programı.">
-    <meta name="keywords" content="eğitim koçluğu, yapay zeka ders çalışma, LGS YKS koçluk, akademik başarı, gamma app, chatgpt ders çalışma">
+    <title>AI Language Academy | Yapay Zeka Destekli Dil Öğrenme Portalı</title>
+    <meta name="description" content="İspanyolca, İngilizce ve Rusça dillerini yapay zeka destekli pratik kartları ve slayt metodolojisiyle hızlıca öğrenin.">
+    <meta name="keywords" content="dil öğrenme, ispanyolca kelimeler, ingilizce gramer, rusça alfabe, ai language academy">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,7 +20,6 @@
             --window-bar-bg: #f1f5f9;
         }
 
-        /* Dark Mode Renk Degiskenleri */
         [data-theme="dark"] {
             --bg-body: #0f172a;
             --card-bg: #1e293b;
@@ -47,7 +46,7 @@
             line-height: 1.6;
         }
 
-        /* Top Window Bar (3 Dots Style) */
+        /* Window Bar */
         .window-bar {
             background: var(--window-bar-bg);
             border-bottom: 1px solid var(--border-color);
@@ -78,7 +77,6 @@
             font-weight: 500;
         }
 
-        /* Dark Mode Switch Button */
         .theme-toggle-btn {
             background: var(--accent-bg);
             border: 1px solid var(--border-color);
@@ -91,7 +89,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
         .theme-toggle-btn:hover {
@@ -183,61 +181,40 @@
             margin: 0 auto;
         }
 
-        /* YENİ: Üst Sınıf Filtreleme Sekmeleri (Segmentleri) */
-        .grade-segments {
+        /* Language Segments */
+        .lang-segments {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             flex-wrap: wrap;
             max-width: 900px;
             margin: 1.5rem auto 3rem auto;
             padding: 0 1rem;
         }
 
-        .segment-btn {
+        .lang-btn {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .segment-btn:hover {
+        .lang-btn.active, .lang-btn:hover {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
             transform: translateY(-2px);
         }
 
-        /* Social Proof Stats Bar */
-        .stats-bar {
-            display: flex;
-            justify-content: space-around;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 1.2rem;
-            margin-bottom: 3.5rem;
-            text-align: center;
-        }
-
-        .stat-item h4 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .stat-item p {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-        }
-
-        /* Main Container */
         .container {
             max-width: 1100px;
             margin: 0 auto 4rem auto;
@@ -249,125 +226,9 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
-        /* SIMULATOR STYLES */
-        .simulator-box {
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-            box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.1);
-        }
-
-        .simulator-box h2 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .simulator-box p {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            margin-bottom: 1.5rem;
-        }
-
-        .sim-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .sim-inputs {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .sim-input-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 0.4rem;
-        }
-
-        .sim-input-group input, .sim-input-group select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: var(--bg-body);
-            color: var(--text-main);
-            outline: none;
-            font-weight: 600;
-        }
-
-        .sim-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .sim-btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .sim-result {
-            display: none;
-            margin-top: 2rem;
-            background: var(--accent-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.75rem;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .sim-result h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-weight: 800;
-        }
-
-        .sim-result-content {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .sim-result-bullets {
-            margin-top: 1rem;
-            padding-left: 1.2rem;
-        }
-
-        .sim-result-bullets li {
-            margin-bottom: 0.5rem;
-            color: var(--text-sub);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* Öğretici Slayt / Kart Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -375,7 +236,6 @@
             margin-bottom: 3.5rem;
         }
 
-        /* Tool Cards */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -385,7 +245,6 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .card:hover {
@@ -394,12 +253,12 @@
             box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.15);
         }
 
-        .tool-badge {
+        .lang-badge {
             display: inline-block;
             background: var(--accent-bg);
             color: var(--primary);
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             padding: 0.3rem 0.7rem;
             border-radius: 6px;
             margin-bottom: 0.75rem;
@@ -443,25 +302,7 @@
             font-weight: bold;
         }
 
-        .btn {
-            display: block;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-        }
-
-        /* Interactive Focus Timer Widget */
+        /* Timer */
         .timer-box {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -469,19 +310,6 @@
             padding: 2rem;
             margin-bottom: 3.5rem;
             text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .timer-box:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
-        }
-
-        .timer-box h3 {
-            font-size: 1.3rem;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
         }
 
         .timer-display {
@@ -501,19 +329,14 @@
             font-weight: 600;
             cursor: pointer;
             margin: 0 4px;
-            transition: transform 0.15s ease, background-color 0.2s ease;
-        }
-
-        .timer-controls button:hover {
-            transform: scale(1.05);
         }
 
         .timer-controls button.reset {
             background: #64748b;
         }
 
-        /* SINIFLAR İÇİN TIKLANABİLİR AKORDEON KARTLAR */
-        .classes-section {
+        /* Akordeon Müfredat Kartları */
+        .levels-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -521,7 +344,7 @@
             margin-bottom: 3.5rem;
         }
 
-        .classes-section h2 {
+        .levels-section h2 {
             font-size: 1.75rem;
             font-weight: 800;
             color: var(--text-main);
@@ -529,47 +352,35 @@
             text-align: center;
         }
 
-        .classes-subtitle {
+        .levels-subtitle {
             text-align: center;
             color: var(--text-sub);
             margin-bottom: 2.5rem;
             font-size: 1rem;
         }
 
-        .class-grid {
+        .level-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .class-card {
+        .level-card {
             background: var(--bg-body);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.5rem;
             cursor: pointer;
             user-select: none;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .class-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.08);
-        }
-
-        .class-card.highlight {
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.25);
-        }
-
-        .class-header {
+        .level-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .class-badge {
+        .level-badge {
             display: inline-block;
             background: var(--accent-bg);
             color: var(--primary);
@@ -584,12 +395,9 @@
             font-size: 0.8rem;
             color: var(--primary);
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
-        .class-card h3 {
+        .level-card h3 {
             font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-main);
@@ -602,29 +410,28 @@
             font-style: italic;
         }
 
-        .class-content {
+        .level-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
             opacity: 0;
-            margin-top: 0;
         }
 
-        .class-card.active .class-content {
-            max-height: 200px;
+        .level-card.active .level-content {
+            max-height: 250px;
             opacity: 1;
             margin-top: 0.8rem;
             border-top: 1px dashed var(--border-color);
             padding-top: 0.8rem;
         }
 
-        .class-content p {
+        .level-content p {
             font-size: 0.9rem;
             color: var(--text-sub);
             line-height: 1.5;
         }
 
-        /* Prompt Library Section */
+        /* Prompt Section */
         .prompt-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -639,11 +446,6 @@
             border-radius: 10px;
             padding: 1.25rem;
             margin-top: 1rem;
-            transition: transform 0.2s ease;
-        }
-
-        .prompt-card:hover {
-            transform: translateY(-3px);
         }
 
         .prompt-text {
@@ -668,627 +470,11 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 0.5rem;
-            transition: transform 0.15s ease, background-color 0.2s ease;
         }
 
-        .copy-btn:hover {
-            transform: scale(1.03);
-        }
-
-        /* Neden Biz Bölümü */
-        .why-us-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem 2.5rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .why-us-section h2 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .why-us-subtitle {
-            text-align: center;
-            color: var(--text-sub);
-            margin-bottom: 2.5rem;
-            font-size: 1rem;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.75rem;
-        }
-
-        .why-card {
-            background: var(--bg-body);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.25s ease, border-color 0.25s ease;
-        }
-
-        .why-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-        }
-
-        .why-card h3 {
-            font-size: 1.15rem;
-            color: var(--primary);
-            margin-bottom: 0.6rem;
-            font-weight: 700;
-        }
-
-        .why-card p {
-            font-size: 0.92rem;
-            color: var(--text-sub);
-            line-height: 1.6;
-        }
-
-        /* Coaching & Lead Section */
-        .coaching-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem 2.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .coaching-section {
-                grid-template-columns: 1fr;
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        .coaching-info h2 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.8rem;
-        }
-
-        .coaching-info p {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            margin-bottom: 1rem;
-        }
-
-        .coaching-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background: var(--bg-body);
-            padding: 1.75rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 0.95rem;
-            outline: none;
-            background: var(--card-bg);
-            color: var(--text-main);
-            transition: border-color 0.2s ease;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--primary);
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.95rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.15s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Fixed WhatsApp Floating Button */
+        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
             right: 25px;
             background: #25d366;
-            color: white;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: transform 0.2s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            background: var(--card-bg);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- 3 Dots Top Bar + Theme Switcher -->
-    <div class="window-bar">
-        <div class="dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-        </div>
-        <div class="window-title">AI Campus v3.7 — Student Interactive Workstation</div>
-        <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
-            🌙 Koyu Mod
-        </button>
-    </div>
-
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo-wrapper">
-                <div class="logo-icon">AI</div>
-                <div class="logo-text">AI <span>Campus</span></div>
-            </a>
-            <div class="nav-badge">Öğrenci & Koçluk Portalı</div>
-        </div>
-    </header>
-
-    <div class="hero">
-        <h1>Ders Başarını Yapay Zeka Gücü ve Uzman Eğitim Koçluğu İle İkiye Katla</h1>
-        <p>Geleneksel ve verimsiz ders çalışma yöntemlerini geride bırakın. En modern yapay zeka araçlarını ve birebir kişiselleştirilmiş koçluk sistemini kullanarak zamanınızı %50 daha verimli yönetin.</p>
-    </div>
-
-    <!-- Üst Sınıf Filtreleme Sekmeleri (Segmentleri) -->
-    <div class="grade-segments">
-        <button class="segment-btn" onclick="scrollToClass(0)">📚 8. Sınıf / LGS</button>
-        <button class="segment-btn" onclick="scrollToClass(1)">📐 9. Sınıf</button>
-        <button class="segment-btn" onclick="scrollToClass(2)">🧪 10. Sınıf</button>
-        <button class="segment-btn" onclick="scrollToClass(3)">🚀 11. Sınıf</button>
-        <button class="segment-btn" onclick="scrollToClass(4)">🏆 12. Sınıf / YKS</button>
-        <button class="segment-btn" onclick="scrollToClass(5)">🎓 Üniversite</button>
-    </div>
-
-    <div class="container">
-
-        <!-- Social Proof Bandı -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <h4>+450</h4>
-                <p>Başarılı Öğrenci</p>
-            </div>
-            <div class="stat-item">
-                <h4>%98</h4>
-                <p>Net Artış Oranı</p>
-            </div>
-            <div class="stat-item">
-                <h4>24 Saat</h4>
-                <p>Hızlı Geri Dönüş</p>
-            </div>
-        </div>
-
-        <!-- AI Destekli Hedef & Net Hesaplama Simülatörü -->
-        <div class="simulator-box">
-            <h2>🎯 AI Destekli Hedef & Net İlerleme Simülatörü</h2>
-            <p>Mevcut durumunuzu ve hedefinizdeki net sayısını yazın; yapay zeka altyapımız hedefinize ulaşmanız için size özel haftalık çalışma ve koçluk planınızı hesaplasın.</p>
-            
-            <div class="sim-inputs">
-                <div class="sim-input-group">
-                    <label>Sınıf Seviyeniz</label>
-                    <select id="simGrade">
-                        <option value="LGS">8. Sınıf / LGS</option>
-                        <option value="Lise">9 - 10 - 11. Sınıf</option>
-                        <option value="YKS" selected>12. Sınıf / YKS</option>
-                    </select>
-                </div>
-                <div class="sim-input-group">
-                    <label>Şu Anki Netiniz (Ortalama)</label>
-                    <input type="number" id="currentNet" placeholder="Örn: 45" min="0" max="120">
-                </div>
-                <div class="sim-input-group">
-                    <label>Hedeflediğiniz Net</label>
-                    <input type="number" id="targetNet" placeholder="Örn: 75" min="0" max="120">
-                </div>
-            </div>
-            <button class="sim-btn" onclick="calculateStrategy()">⚡ AI Strateji ve Koçluk Planımı Oluştur</button>
-
-            <div class="sim-result" id="simResult">
-                <h3 id="resTitle">🚀 Strateji Raporunuz Hazır!</h3>
-                <div class="sim-result-content" id="resContent"></div>
-            </div>
-        </div>
-        
-        <!-- İnteraktif Pomodoro Sayacı -->
-        <div class="timer-box">
-            <h3>⏱️ Odaklanmış Çalışma Sayacı (Pomodoro)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-sub);">Ders çalışırken zamanınızı kontrol edin ve odağınızı koruyun.</p>
-            <div class="timer-display" id="timer">25:00</div>
-            <div class="timer-controls">
-                <button onclick="startTimer()">Başlat</button>
-                <button onclick="pauseTimer()">Durdur</button>
-                <button class="reset" onclick="resetTimer()">Sıfırla</button>
-            </div>
-        </div>
-
-        <div class="section-title">
-            <span>⚡ Öğrenciler İçin Seçkin AI Araç Rehberi</span>
-        </div>
-        
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <span class="tool-badge">Sunum & Tasarım</span>
-                    <h3>Gamma App</h3>
-                    <p>Konu başlığınızı veya ders notlarınızı girerek saniyeler içinde etkileşimli slaytlar, görsel kartlar ve akademik sunumlar oluşturun.</p>
-                    <ul class="detail-list">
-                        <li><strong>Otomatik Yapılandırma:</strong> Biyoloji, tarih veya fizik konularını slaytlara düzenli böler.</li>
-                        <li><strong>PDF Çıktısı:</strong> Tek tıkla ödev formatında PDF olarak indirme imkanı.</li>
-                        <li><strong>Görsel Estetik:</strong> Tasarım bilgisi gerektirmeden profesyonel grafikler hazırlar.</li>
-                    </ul>
-                </div>
-                <a href="https://gamma.app" target="_blank" class="btn">Gamma App'i Aç →</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <span class="tool-badge">Soru & Analiz</span>
-                    <h3>ChatGPT-4o</h3>
-                    <p>Görsel ve metin tanıma yeteneğiyle çözemediğiniz matematik sorularını veya sözel paragraf konularını adım adım analiz eder.</p>
-                    <ul class="detail-list">
-                        <li><strong>Fotoğraflı Çözüm:</strong> Soru görselini yükleyerek detaylı ve mantıklı açıklama alma.</li>
-                        <li><strong>Özel Test Üretimi:</strong> Sınav müfredatınıza uygun özelleştirilmiş alıştırma soruları hazırlatma.</li>
-                        <li><strong>Birebir Öğretmen Modu:</strong> "Bana doğrudan cevabı verme, ipucu vererek öğret" seçeneği.</li>
-                    </ul>
-                </div>
-                <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT-4o'yu Aç →</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <span class="tool-badge">Akademik Çeviri</span>
-                    <h3>DeepL Translate</h3>
-                    <p>Yabancı dildeki makaleleri, ders materyallerini ve araştırma kaynaklarını anlam kaybı olmadan Türkçeye çevirin.</p>
-                    <ul class="detail-list">
-                        <li><strong>Doğal Dil İşleme:</strong> Kalıp ve deyimleri kelimesi kelimesine değil, bağlama uygun çevirir.</li>
-                        <li><strong>Doküman Çevirisi:</strong> Tüm PDF veya Word belgesinin yapısını bozmadan çevirme yeteneği.</li>
-                        <li><strong>Teknik Terim Uyumluğu:</strong> Akademik dilde en güvenilir çeviri standardı.</li>
-                    </ul>
-                </div>
-                <a href="https://www.deepl.com" target="_blank" class="btn">DeepL Çeviri'yi Aç →</a>
-            </div>
-        </div>
-
-        <!-- SINIF SEVİYELERİNE GÖRE KOÇLUK SİSTEMİMİZ -->
-        <div class="classes-section">
-            <h2>📚 Sınıf Seviyelerine Göre Eğitim Koçluğu Programımız</h2>
-            <p class="classes-subtitle">Detayları görmek için istediğiniz sınıf kutusuna tıklayabilirsiniz:</p>
-            
-            <div class="class-grid">
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">8. Sınıf / LGS</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Temel Atma & Sınav Disiplini</h3>
-                    <p class="click-prompt">LGS koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>LGS maratonunda zaman yönetimi, yeni nesil soru çözme teknikleri ve yapay zeka destekli eksik kapatma kampları ile tam odaklanma sağlıyoruz.</p>
-                    </div>
-                </div>
-
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">9. Sınıf</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Lise Altyapısı & Çalışma Alışkanlığı</h3>
-                    <p class="click-prompt">9. sınıf koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>Ortaokuldan liseye geçişteki zorlukları aşma, ders çalışma disiplini kazanma ve temel fen/matematik kavramlarını sağlam oturtma rehberliği.</p>
-                    </div>
-                </div>
-
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">10. Sınıf</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Alan Seçimi & Temel Beceriler</h3>
-                    <p class="click-prompt">10. sınıf koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>Sayısal/Sözel alan seçimi rehberliği, TYT temellerinin atılması ve yapay zeka araçlarıyla (Gamma, ChatGPT) ders projelerinde fark yaratma.</p>
-                    </div>
-                </div>
-
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">11. Sınıf</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>YKS Maratonuna Erken Başlangıç</h3>
-                    <p class="click-prompt">11. sınıf koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>11. sınıf konularının titizlikle öğrenilmesi, yaz dönemi stratejik planlaması ve YKS hazırlığında rakiplerin önüne geçecek özel çalışma programı.</p>
-                    </div>
-                </div>
-
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">12. Sınıf / YKS</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Zirveye Ulaşış & Sınav Koçluğu</h3>
-                    <p class="click-prompt">12. sınıf koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>Yoğun deneme analizleri, net artırma taktikleri, stres yönetimi ve her hafta birebir yapılan nokta atışı eksik kapatma görüşmeleri.</p>
-                    </div>
-                </div>
-
-                <div class="class-card" onclick="toggleClassCard(this)">
-                    <div class="class-header">
-                        <span class="class-badge">Üniversite</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Akademik Araştırma & Verimlilik</h3>
-                    <p class="click-prompt">Üniversite koçluk detaylarını görmek için tıkla.</p>
-                    <div class="class-content">
-                        <p>Akademik makale tarama, DeepL ile yabancı kaynak çevirileri, proje yönetimi ve ileri düzey yapay zeka araçlarıyla zamanı katlama.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Öğrenci AI Prompt Kütüphanesi -->
-        <div class="prompt-section">
-            <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">💡 ChatGPT İçin Hazır Ders Çalışma Komutları (Prompts)</h2>
-            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1rem;">Bu komutları kopyalayıp ChatGPT'ye yapıştırarak ders çalışma veriminizi 5 katına çıkarın.</p>
-            
-            <div class="prompt-card">
-                <strong>1. Sınava Özel Zorlu Soru Hazırlatma Komutu:</strong>
-                <div class="prompt-text" id="p1">"Bana [Ders Adı ve Konu] konusundan Lise / YKS seviyesinde 5 adet zorlu çoktan seçmeli soru hazırla. Soruların cevaplarını hemen verme, ben yanıtladıktan sonra tek tek kontrol et."</div>
-                <button class="copy-btn" onclick="copyText('p1')">Komutu Kopyala 📋</button>
-            </div>
-
-            <div class="prompt-card" style="margin-top: 1rem;">
-                <strong>2. Karmaşık Konuları Basitleştirme Komutu:</strong>
-                <div class="prompt-text" id="p2">"Şu konuyu: [Konu Adı] bana 15 yaşında bir lise öğrencisinin en basit şekliyle anlayabileceği günlük hayat örnekleri ve benzetmelerle açıkla."</div>
-                <button class="copy-btn" onclick="copyText('p2')">Komutu Kopyala 📋</button>
-            </div>
-        </div>
-
-        <!-- Neden Bizim Eğitim Koçluğumuz? -->
-        <div class="why-us-section">
-            <h2>🎓 Neden AI Campus Eğitim Koçluğunu Seçmelisiniz?</h2>
-            <p class="why-us-subtitle">Sadece ders çalıştırmıyoruz; öğrencilere doğru çalışma metodolojisini ve teknolojiyi doğru kullanmayı öğretiyoruz.</p>
-            
-            <div class="why-grid">
-                <div class="why-card">
-                    <h3>1. Yapay Zekayı Doğru Kullanma Sanatı</h3>
-                    <p>Çoğu öğrenci yapay zekayı sadece ödev kopyalamak için kullanır ve gelişemez. Biz, yapay zekayı bir <strong>"Özel Öğretmen"</strong> ve <strong>"Soru Üretici"</strong> olarak kullanmayı öğreteceğiz.</p>
-                </div>
-                <div class="why-card">
-                    <h3>2. Kişiselleştirilmiş Birebir Çalışma Programı</h3>
-                    <p>Kopyala-yapıştır matbu programlar kullanmıyoruz. Öğrencinin günlük uyku düzenine, okul saatlerine ve eksik olduğu derslere özel dinamik takip çizelgesi hazırlıyoruz.</p>
-                </div>
-                <div class="why-card">
-                    <h3>3. Zaman Yönetimi ve Sınav Stresi Kontrolü</h3>
-                    <p>Sınav haftasında neye çalışacağını bilememe kaygısını ortadan kaldırıyoruz. Akıllı not tutma yöntemleri ile saatlerce masada verimsiz oturmayı engelliyoruz.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Coaching & Lead Form Section -->
-        <div class="coaching-section" id="formArea">
-            <div class="coaching-info">
-                <h2>📩 Ücretsiz Ön Görüşme ve Detaylı Bilgi Alın</h2>
-                <p>Yapay zeka entegreli eğitim koçluğu programımız hakkında detaylı bilgi almak, öğrencinizin seviyesini değerlendirmek ve size özel çalışma haritası çıkarmak için formu doldurun.</p>
-                <p style="font-size: 0.88rem; color: var(--text-sub); font-weight: 500;">
-                    ✓ Başvurunuz doğrudan koçluk ekibimizin e-posta adresine iletilecek ve 24 saat içinde dönüş yapılacaktır.
-                </p>
-            </div>
-            
-            <form class="coaching-form" action="https://formspree.io/f/xwllownd" method="POST">
-                <div class="form-group">
-                    <input type="text" name="ad_soyad" placeholder="Adınız Soyadınız" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
-                </div>
-                <div class="form-group">
-                    <select name="seviye" required>
-                        <option value="" disabled selected>Sınıf / Eğitim Seviyeniz</option>
-                        <option value="8. Sinif / LGS">8. Sınıf / LGS Hazırlık</option>
-                        <option value="9. Sinif">9. Sınıf</option>
-                        <option value="10. Sinif">10. Sınıf</option>
-                        <option value="11. Sinif">11. Sınıf</option>
-                        <option value="12. Sinif / YKS">12. Sınıf / YKS Hazırlık</option>
-                        <option value="Universite">Üniversite</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea name="not" rows="3" placeholder="Özellikle destek almak istediğiniz dersler veya sormak istedikleriniz (Opsiyonel)"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Detaylı Bilgi & Ön Görüşme İste →</button>
-            </form>
-        </div>
-
-    </div>
-
-    <!-- Sabit WhatsApp İletişim Butonu -->
-    <a href="https://wa.me/?text=Merhaba,%20AI%20Campus%20egitim%20koclugu%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float">
-        💬 WhatsApp Hızlı İletişim
-    </a>
-
-    <footer>
-        © 2026 AI Campus — Tüm Hakları Saklıdır. Öğrenciler İçin Özel Olarak Tasarlanmıştır.
-    </footer>
-
-    <script>
-        // Üst Segmentlere Tıklayınca İlgili Sınıfa Gitme ve Açma Fonksiyonu
-        function scrollToClass(index) {
-            const cards = document.querySelectorAll('.class-card');
-            const targetCard = cards[index];
-            if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Eğer kart kapalıysa aç ve dikkat çekici renk ver
-                if (!targetCard.classList.contains('active')) {
-                    toggleClassCard(targetCard);
-                }
-                
-                targetCard.classList.add('highlight');
-                setTimeout(() => {
-                    targetCard.classList.remove('highlight');
-                }, 1500);
-            }
-        }
-
-        // AI Net & Hedef Hesaplama Fonksiyonu
-        function calculateStrategy() {
-            const current = parseFloat(document.getElementById('currentNet').value);
-            const target = parseFloat(document.getElementById('targetNet').value);
-            const resBox = document.getElementById('simResult');
-            const resContent = document.getElementById('resContent');
-
-            if (isNaN(current) || isNaN(target)) {
-                alert("Lütfen hem şu anki netinizi hem de hedeflediğiniz neti girin.");
-                return;
-            }
-
-            if (target <= current) {
-                alert("Hedef netiniz şu anki netinizden yüksek olmalıdır.");
-                return;
-            }
-
-            const netDiff = (target - current).toFixed(1);
-            const weeklyPomodoro = Math.ceil(netDiff * 1.8);
-
-            resContent.innerHTML = `
-                <p><strong>🎯 Hedef Analizi:</strong> Hedefinize ulaşmak için netlerinizi <strong>+${netDiff} Net</strong> artırmanız gerekiyor.</p>
-                <p style="margin-top: 0.5rem;"><strong>⏱️ Tavsiye Edilen Çalışma Tempomuz:</strong> AI Campus sisteminde haftalık ortalama <strong>${weeklyPomodoro} Pomodoro Seansı</strong> (25 dk odaklanma) ile bu farkı kapatabiliriz.</p>
-                
-                <div style="margin-top: 1.2rem; background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <h4 style="color: var(--primary); font-weight:700; margin-bottom: 0.5rem;">💡 AI Campus Birebir Koçluk Sistemi Olarak Sizin İçin Neler Yapacağız?</h4>
-                    <ul class="sim-result-bullets">
-                        <li><strong>Nokta Atışı Eksik Tespiti:</strong> Kaybettiğiniz ${netDiff} netin tam olarak hangi alt konulardan kaynaklandığını yapay zeka analizleriyle bulacağız.</li>
-                        <li><strong>Kişiselleştirilmiş Haftalık Çizelge:</strong> Sizi zorlamayan, okul derslerinizle uyumlu ve yapay zeka destekli haftalık soru çözüm kampları hazırlayacağız.</li>
-                        <li><strong>Özel AI Komut & Soru Çözüm Desteği:</strong> Takıldığınız soru kalıplarını ChatGPT ve ek araçlarımızla mantığını öğrenene kadar adım adım inceleyeceğiz.</li>
-                    </ul>
-                    <p style="margin-top: 0.8rem; font-weight: 600; font-size: 0.9rem; color: var(--primary);">✨ Bu hedef imkansız değil! Aşağıdaki başvuru formunu doldurarak hemen ilk strateji görüşmenizi planlayalım.</p>
-                </div>
-            `;
-
-            resBox.style.display = 'block';
-            resBox.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Sınıf Kartlarını Açıp Kapatma Fonksiyonu (Akordeon)
-        function toggleClassCard(card) {
-            card.classList.toggle('active');
-            const hint = card.querySelector('.toggle-hint');
-            if (card.classList.contains('active')) {
-                hint.innerHTML = 'Gizle ▴';
-            } else {
-                hint.innerHTML = 'Bilgi İçin Tıklayın ▾';
-            }
-        }
-
-        // Theme Toggle Logic
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const themeBtn = document.getElementById('themeBtn');
-            
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeBtn.innerHTML = '🌙 Koyu Mod';
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeBtn.innerHTML = '☀️ Aydınlık Mod';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Load Saved Theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('themeBtn').innerHTML = '☀️ Aydınlık Mod';
-        }
-
-        // Pomodoro Timer Logic
-        let timerInterval;
-        let timeLeft = 25 * 60;
-
-        function updateDisplay() {
-            let minutes = Math.floor(timeLeft / 60);
-            let seconds = timeLeft % 60;
-            document.getElementById('timer').innerText = 
-                `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        function startTimer() {
-            if (!timerInterval) {
-                timerInterval = setInterval(() => {
-                    if (timeLeft > 0) {
-                        timeLeft--;
-                        updateDisplay();
-                    } else {
-                        clearInterval(timerInterval);
-                        alert("Süre doldu! Mola verebilirsin.");
-                    }
-                }, 1000);
-            }
-        }
-
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        }
-
-        function resetTimer() {
-            pauseTimer();
-            timeLeft = 25 * 60;
-            updateDisplay();
-        }
-
-        function copyText(id) {
-            let text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("Komut panoya kopyalandı! ChatGPT'ye yapıştırabilirsiniz.");
-        }
-    </script>
-</body>
-</html>
