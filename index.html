@@ -478,3 +478,287 @@
             bottom: 25px;
             right: 25px;
             background: #25d366;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            background: var(--card-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Window Bar -->
+    <div class="window-bar">
+        <div class="dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">AI Language Academy — Interactive Learning Hub</div>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
+            🌙 Koyu Mod
+        </button>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-wrapper">
+                <div class="logo-icon">AI</div>
+                <div class="logo-text">AI <span>Language Hub</span></div>
+            </a>
+            <div class="nav-badge">İspanyolca • İngilizce • Rusça</div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>İspanyolca, İngilizce ve Rusça Öğretici Pratik Kartları</h1>
+        <p>İstediğiniz dili seçin; kelime öbeklerini, gramer yapılarını ve slayt kartlarını inceleyerek kendi hızınızda pratik yapın.</p>
+    </div>
+
+    <!-- Dil Seçim Sekmeleri -->
+    <div class="lang-segments">
+        <button class="lang-btn active" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca (Español)</button>
+        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce (English)</button>
+        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça (Русский)</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Dinamik Öğretici Slayt / Kart Alanı -->
+        <div class="section-title" id="langSectionTitle">
+            🇪🇸 İspanyolca Temel Öğretici Kartlar
+        </div>
+        
+        <div class="grid" id="langCardsGrid">
+            <!-- JavaScript ile dolacak -->
+        </div>
+
+        <!-- Pomodoro Odak Sayacı -->
+        <div class="timer-box">
+            <h3>⏱️ Odaklanmış Çalışma Sayacı (Pomodoro)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-sub);">Dil ezberlerken ve kelime çalışırken zamanınızı kontrol edin.</p>
+            <div class="timer-display" id="timer">25:00</div>
+            <div class="timer-controls">
+                <button onclick="startTimer()">Başlat</button>
+                <button onclick="pauseTimer()">Durdur</button>
+                <button class="reset" onclick="resetTimer()">Sıfırla</button>
+            </div>
+        </div>
+
+        <!-- Akordeon Müfredat / Seviye Kartları -->
+        <div class="levels-section">
+            <h2>📚 Dil Seviyeleri ve Temel Müfredat</h2>
+            <p class="levels-subtitle">Detayları görmek istediğiniz seviye kartına tıklayabilirsiniz:</p>
+            
+            <div class="level-grid">
+                <div class="level-card" onclick="toggleLevelCard(this)">
+                    <div class="level-header">
+                        <span class="level-badge">A1 - A2 Seviyesi</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
+                    <h3>Temel Tanışma & Kelimeler</h3>
+                    <p class="click-prompt">İçerik detayları için tıkla.</p>
+                    <div class="level-content">
+                        <p>Alfabe, günlük temel selamlama kalıpları, sayı renk bilgisi ve basit cümle kurma mantığı.</p>
+                    </div>
+                </div>
+
+                <div class="level-card" onclick="toggleLevelCard(this)">
+                    <div class="level-header">
+                        <span class="level-badge">B1 - B2 Seviyesi</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
+                    <h3>Gramer & Günlük Cümleler</h3>
+                    <p class="click-prompt">İçerik detayları için tıkla.</p>
+                    <div class="level-content">
+                        <p>Zaman ekleri (geçmiş/gelecek zaman), sıfatlar, yol tarif etme ve karmaşık günlük diyalog kalıpları.</p>
+                    </div>
+                </div>
+
+                <div class="level-card" onclick="toggleLevelCard(this)">
+                    <div class="level-header">
+                        <span class="level-badge">C1 - C2 Seviyesi</span>
+                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
+                    </div>
+                    <h3>İleri Düzey & Deyimler</h3>
+                    <p class="click-prompt">İçerik detayları için tıkla.</p>
+                    <div class="level-content">
+                        <p>Atasözleri, argo/deyim kullanımları, akademik makale okuma ve anadili seviyesinde akıcı konuşma taktikleri.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ChatGPT Pratik Komutları -->
+        <div class="prompt-section">
+            <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">💡 ChatGPT İçin Dil Öğrenme Komutları</h2>
+            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1rem;">Bu komutları kopyalayıp ChatGPT'ye yapıştırarak kendinize özel kelime testleri oluşturabilirsiniz.</p>
+            
+            <div class="prompt-card">
+                <strong>1. Kelime Kartı Üretme Komutu:</strong>
+                <div class="prompt-text" id="p1">"Bana [İspanyolca / İngilizce / Rusça] dilinde günlük hayatta en çok kullanılan 10 kelimeyi ver. Yanlarına Türkçe anlamlarını ve örnek birer cümle ekle."</div>
+                <button class="copy-btn" onclick="copyText('p1')">Komutu Kopyala 📋</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sabit WhatsApp İletişim Butonu -->
+    <a href="https://wa.me/?text=Merhaba,%20dil%20ogrenme%20siteniz%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float">
+        💬 Soru Sor / İletişim
+    </a>
+
+    <footer>
+        © 2026 AI Language Hub — Tüm Hakları Saklıdır.
+    </footer>
+
+    <script>
+        const langHubData = {
+            es: {
+                title: "🇪🇸 İspanyolca Temel Öğretici Kartlar",
+                cards: [
+                    { title: "Temel Selamlaşma", badge: "Kelime Slaytı 1", text: "İspanyolca konuşmaya ilk adım:", list: ["¡Hola! (Merhaba)", "Buenos días (Günaydın)", "¿Cómo estás? (Nasılsın?)"] },
+                    { title: "Sık Kullanılan Fiiller", badge: "Gramer Kartı", text: "En çok kullanılan temel eylemler:", list: ["Ser (Olmak)", "Tener (Sahip olmak)", "Ir (Gitmek)"] },
+                    { title: "Pratik Kalıplar", badge: "Cümle Slaytı", text: "Günlük hayatta hayat kurtaran kalıplar:", list: ["Por favor (Lütfen)", "Gracias (Teşekkürler)", "Lo siento (Üzgünüm)"] }
+                ]
+            },
+            en: {
+                title: "🇬🇧 İngilizce Temel Öğretici Kartlar",
+                cards: [
+                    { title: "Günlük Başlangıç", badge: "Vocabulary", text: "Essential daily expressions:", list: ["Hello / Hi (Merhaba)", "Good morning (Günaydın)", "How are you? (Nasılsın?)"] },
+                    { title: "Core Verbs", badge: "Grammar Card", text: "Most frequent action verbs:", list: ["To be (Olmak)", "To have (Sahip olmak)", "To go (Gitmek)"] },
+                    { title: "Useful Phrases", badge: "Phrases", text: "Life-saving expressions:", list: ["Please (Lütfen)", "Thank you (Teşekkürler)", "I understand (Anlıyorum)"] }
+                ]
+            },
+            ru: {
+                title: "🇷🇺 Rusça Temel Öğretici Kartlar",
+                cards: [
+                    { title: "Приветствие (Selamlaşma)", badge: "Alfabe ve Sözcükler", text: "Temel Rusça tanışma ifadeleri:", list: ["Здравствуйте (Zdravstvuyte - Merhaba)", "Доброе утро (Dobroye utro - Günaydın)", "Как дела? (Kak dela? - Nasıl?)"] },
+                    { title: "Основные глаголы (Fiiller)", badge: "Gramer", text: "Temel fiil kullanımları:", list: ["Быть (Byt' - Olmak)", "Иметь (Imet' - Sahip olmak)", "Идти (Idti - Gitmek)"] },
+                    { title: "Полезные фразы (Kalıplar)", badge: "Sözcükler", text: "Günlük pratik sözcükler:", list: ["Пожалуйста (Pozhaluysta - Lütfen)", "Спасибо (Spasibo - Teşekkürler)", "Я понимаю (Ya ponimayu - Anlıyorum)"] }
+                ]
+            }
+        };
+
+        function switchLanguage(langKey) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + langKey);
+            if(activeBtn) activeBtn.classList.add('active');
+
+            const data = langHubData[langKey];
+            document.getElementById('langSectionTitle').innerText = data.title;
+            
+            const grid = document.getElementById('langCardsGrid');
+            grid.innerHTML = '';
+
+            data.cards.forEach(c => {
+                let listItems = c.list.map(item => `<li>${item}</li>`).join('');
+                grid.innerHTML += `
+                    <div class="card">
+                        <div>
+                            <span class="lang-badge">${c.badge}</span>
+                            <h3>${c.title}</h3>
+                            <p>${c.text}</p>
+                            <ul class="detail-list">
+                                ${listItems}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        window.onload = function() {
+            switchLanguage('es');
+        };
+
+        function toggleLevelCard(card) {
+            card.classList.toggle('active');
+            const hint = card.querySelector('.toggle-hint');
+            if (card.classList.contains('active')) {
+                hint.innerHTML = 'Gizle ▴';
+            } else {
+                hint.innerHTML = 'Bilgi İçin Tıklayın ▾';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const themeBtn = document.getElementById('themeBtn');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeBtn.innerHTML = '🌙 Koyu Mod';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = '☀️ Aydınlık Mod';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('themeBtn').innerHTML = '☀️ Aydınlık Mod';
+        }
+
+        let timerInterval = null;
+        let timeLeft = 25 * 60;
+
+        function updateDisplay() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById('timer').innerText = 
+                `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function startTimer() {
+            if (!timerInterval) {
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        alert("Süre doldu! Harika bir dil çalışma seansı geçirdin.");
+                    }
+                }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            timeLeft = 25 * 60;
+            updateDisplay();
+        }
+
+        function copyText(id) {
+            let text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text);
+            alert("Komut panoya kopyalandı!");
+        }
+    </script>
+</body>
+</html>
