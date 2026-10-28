@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Yapay Zeka Destekli Dil Öğrenme Portalı</title>
-    <meta name="description" content="İspanyolca, İngilizce ve Rusça dillerini yapay zeka destekli pratik kartları ve slayt metodolojisiyle hızlıca öğrenin.">
-    <meta name="keywords" content="dil öğrenme, ispanyolca kelimeler, ingilizce gramer, rusça alfabe, ai language academy">
+    <title>AI Language Academy | İnteraktif Dil Öğrenme Portalı</title>
+    <meta name="description" content="İspanyolca, İngilizce ve Rusça dillerini sıfırdan ileri seviyeye adım adım ve bölüm bölüm öğrenin.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -89,7 +88,6 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            transition: transform 0.2s ease;
         }
 
         .theme-toggle-btn:hover {
@@ -97,7 +95,7 @@
             transform: translateY(-2px);
         }
 
-        /* Navbar */
+        /* Header */
         header {
             background: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
@@ -160,35 +158,35 @@
         /* Hero */
         .hero {
             max-width: 900px;
-            margin: 3rem auto 1.5rem auto;
+            margin: 2.5rem auto 1.5rem auto;
             text-align: center;
             padding: 0 1.5rem;
         }
 
         .hero h1 {
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             letter-spacing: -1px;
             line-height: 1.25;
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-sub);
             max-width: 720px;
             margin: 0 auto;
         }
 
-        /* Language Segments */
+        /* Language Tabs */
         .lang-segments {
             display: flex;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
             max-width: 900px;
-            margin: 1.5rem auto 3rem auto;
+            margin: 1.5rem auto 2.5rem auto;
             padding: 0 1rem;
         }
 
@@ -222,87 +220,94 @@
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
             color: var(--text-main);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
         }
 
-        /* Öğretici Slayt / Kart Grid */
-        .grid {
+        /* Lesson Sections (Bölüm Bölüm Anlatım) */
+        .lesson-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3.5rem;
         }
 
-        .card {
+        @media (max-width: 600px) {
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lesson-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 14px;
             padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
+        .lesson-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.15);
+            transform: translateY(-3px);
         }
 
-        .lang-badge {
-            display: inline-block;
-            background: var(--accent-bg);
-            color: var(--primary);
-            font-size: 0.75rem;
+        .lesson-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lesson-card p {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .content-box {
+            background: var(--bg-body);
             border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
         }
 
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.6rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-            margin-bottom: 1.2rem;
-        }
-
-        .detail-list {
-            list-style: none;
-            margin-bottom: 1.2rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 1rem;
-        }
-
-        .detail-list li {
+        .content-box table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.88rem;
+        }
+
+        .content-box th, .content-box td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .content-box th {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .content-box td {
             color: var(--text-sub);
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.2rem;
         }
 
-        .detail-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
+        .pronunciation {
             color: var(--primary);
-            font-weight: bold;
+            font-style: italic;
+            font-size: 0.82rem;
         }
 
-        /* Timer */
+        /* Timer Box */
         .timer-box {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -335,144 +340,7 @@
             background: #64748b;
         }
 
-        /* Akordeon Müfredat Kartları */
-        .levels-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem 2.5rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .levels-section h2 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .levels-subtitle {
-            text-align: center;
-            color: var(--text-sub);
-            margin-bottom: 2.5rem;
-            font-size: 1rem;
-        }
-
-        .level-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .level-card {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .level-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .level-badge {
-            display: inline-block;
-            background: var(--accent-bg);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-        }
-
-        .toggle-hint {
-            font-size: 0.8rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .level-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin: 0.6rem 0 0.3rem 0;
-        }
-
-        .click-prompt {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            font-style: italic;
-        }
-
-        .level-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-        }
-
-        .level-card.active .level-content {
-            max-height: 250px;
-            opacity: 1;
-            margin-top: 0.8rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 0.8rem;
-        }
-
-        .level-content p {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            line-height: 1.5;
-        }
-
-        /* Prompt Section */
-        .prompt-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .prompt-card {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .prompt-text {
-            font-size: 0.9rem;
-            color: var(--text-main);
-            font-family: monospace;
-            background: var(--card-bg);
-            padding: 0.8rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            margin-top: 0.5rem;
-            white-space: pre-wrap;
-        }
-
-        .copy-btn {
-            background: var(--accent-bg);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-
-        /* Floating WhatsApp Button */
+        /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -510,7 +378,7 @@
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
         </div>
-        <div class="window-title">AI Language Academy — Interactive Learning Hub</div>
+        <div class="window-title">AI Language Hub — Bölüm Bölüm Kapsamlı Dil Rehberi</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
             🌙 Koyu Mod
         </button>
@@ -522,37 +390,37 @@
                 <div class="logo-icon">AI</div>
                 <div class="logo-text">AI <span>Language Hub</span></div>
             </a>
-            <div class="nav-badge">İspanyolca • İngilizce • Rusça</div>
+            <div class="nav-badge">Gerçek Eğitim İçeriği</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>İspanyolca, İngilizce ve Rusça Öğretici Pratik Kartları</h1>
-        <p>İstediğiniz dili seçin; kelime öbeklerini, gramer yapılarını ve slayt kartlarını inceleyerek kendi hızınızda pratik yapın.</p>
+        <h1>Sıfırdan İleri Seviyeye Bölüm Bölüm Dil Öğrenimi</h1>
+        <p>İlginizi çeken dili seçin; okunuş kurallarından gramer yapısına, en çok kullanılan kelimelerden pratik cümle kalıplarına kadar adım adım öğrenin.</p>
     </div>
 
     <!-- Dil Seçim Sekmeleri -->
     <div class="lang-segments">
-        <button class="lang-btn active" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca (Español)</button>
-        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce (English)</button>
-        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça (Русский)</button>
+        <button class="lang-btn active" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca Rehberi</button>
+        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce Rehberi</button>
+        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça Rehberi</button>
     </div>
 
     <div class="container">
 
-        <!-- Dinamik Öğretici Slayt / Kart Alanı -->
-        <div class="section-title" id="langSectionTitle">
-            🇪🇸 İspanyolca Temel Öğretici Kartlar
-        </div>
-        
-        <div class="grid" id="langCardsGrid">
-            <!-- JavaScript ile dolacak -->
+        <!-- Dinamik Ders Bölümleri -->
+        <div class="section-title" id="langTitle">
+            🇪🇸 İspanyolca Kapsamlı Ders Müfredatı
         </div>
 
-        <!-- Pomodoro Odak Sayacı -->
+        <div class="lesson-grid" id="lessonGrid">
+            <!-- JavaScript ile zengin ders içeriği eklenecek -->
+        </div>
+
+        <!-- Pomodoro Çalışma Sayacı -->
         <div class="timer-box">
             <h3>⏱️ Odaklanmış Çalışma Sayacı (Pomodoro)</h3>
-            <p style="font-size: 0.9rem; color: var(--text-sub);">Dil ezberlerken ve kelime çalışırken zamanınızı kontrol edin.</p>
+            <p style="font-size: 0.9rem; color: var(--text-sub);">Her ders bölümünü inceledikten sonra 25 dakikalık odaklanmış pratik yapın.</p>
             <div class="timer-display" id="timer">25:00</div>
             <div class="timer-controls">
                 <button onclick="startTimer()">Başlat</button>
@@ -561,97 +429,197 @@
             </div>
         </div>
 
-        <!-- Akordeon Müfredat / Seviye Kartları -->
-        <div class="levels-section">
-            <h2>📚 Dil Seviyeleri ve Temel Müfredat</h2>
-            <p class="levels-subtitle">Detayları görmek istediğiniz seviye kartına tıklayabilirsiniz:</p>
-            
-            <div class="level-grid">
-                <div class="level-card" onclick="toggleLevelCard(this)">
-                    <div class="level-header">
-                        <span class="level-badge">A1 - A2 Seviyesi</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Temel Tanışma & Kelimeler</h3>
-                    <p class="click-prompt">İçerik detayları için tıkla.</p>
-                    <div class="level-content">
-                        <p>Alfabe, günlük temel selamlama kalıpları, sayı renk bilgisi ve basit cümle kurma mantığı.</p>
-                    </div>
-                </div>
-
-                <div class="level-card" onclick="toggleLevelCard(this)">
-                    <div class="level-header">
-                        <span class="level-badge">B1 - B2 Seviyesi</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>Gramer & Günlük Cümleler</h3>
-                    <p class="click-prompt">İçerik detayları için tıkla.</p>
-                    <div class="level-content">
-                        <p>Zaman ekleri (geçmiş/gelecek zaman), sıfatlar, yol tarif etme ve karmaşık günlük diyalog kalıpları.</p>
-                    </div>
-                </div>
-
-                <div class="level-card" onclick="toggleLevelCard(this)">
-                    <div class="level-header">
-                        <span class="level-badge">C1 - C2 Seviyesi</span>
-                        <span class="toggle-hint">Bilgi İçin Tıklayın ▾</span>
-                    </div>
-                    <h3>İleri Düzey & Deyimler</h3>
-                    <p class="click-prompt">İçerik detayları için tıkla.</p>
-                    <div class="level-content">
-                        <p>Atasözleri, argo/deyim kullanımları, akademik makale okuma ve anadili seviyesinde akıcı konuşma taktikleri.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ChatGPT Pratik Komutları -->
-        <div class="prompt-section">
-            <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">💡 ChatGPT İçin Dil Öğrenme Komutları</h2>
-            <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1rem;">Bu komutları kopyalayıp ChatGPT'ye yapıştırarak kendinize özel kelime testleri oluşturabilirsiniz.</p>
-            
-            <div class="prompt-card">
-                <strong>1. Kelime Kartı Üretme Komutu:</strong>
-                <div class="prompt-text" id="p1">"Bana [İspanyolca / İngilizce / Rusça] dilinde günlük hayatta en çok kullanılan 10 kelimeyi ver. Yanlarına Türkçe anlamlarını ve örnek birer cümle ekle."</div>
-                <button class="copy-btn" onclick="copyText('p1')">Komutu Kopyala 📋</button>
-            </div>
-        </div>
-
     </div>
 
     <!-- Sabit WhatsApp İletişim Butonu -->
-    <a href="https://wa.me/?text=Merhaba,%20dil%20ogrenme%20siteniz%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/?text=Merhaba,%20dil%20ogrenme%20rehberiniz%20hakkinda%20soru%20sormak%20istiyorum." target="_blank" class="whatsapp-float">
         💬 Soru Sor / İletişim
     </a>
 
     <footer>
-        © 2026 AI Language Hub — Tüm Hakları Saklıdır.
+        © 2026 AI Language Hub — İnteraktif Dil Öğrenim Portalı.
     </footer>
 
     <script>
-        const langHubData = {
+        // KAPSAMLI DERS İÇERİKLERİ (BÖLÜM BÖLÜM)
+        const fullLanguageLessons = {
             es: {
-                title: "🇪🇸 İspanyolca Temel Öğretici Kartlar",
-                cards: [
-                    { title: "Temel Selamlaşma", badge: "Kelime Slaytı 1", text: "İspanyolca konuşmaya ilk adım:", list: ["¡Hola! (Merhaba)", "Buenos días (Günaydın)", "¿Cómo estás? (Nasılsın?)"] },
-                    { title: "Sık Kullanılan Fiiller", badge: "Gramer Kartı", text: "En çok kullanılan temel eylemler:", list: ["Ser (Olmak)", "Tener (Sahip olmak)", "Ir (Gitmek)"] },
-                    { title: "Pratik Kalıplar", badge: "Cümle Slaytı", text: "Günlük hayatta hayat kurtaran kalıplar:", list: ["Por favor (Lütfen)", "Gracias (Teşekkürler)", "Lo siento (Üzgünüm)"] }
+                title: "🇪🇸 İspanyolca Kapsamlı Ders Rehberi",
+                lessons: [
+                    {
+                        title: "1. Bölüm: Okunuş & Telaffuz Kuralları",
+                        desc: "İspanyolca yazıldığı gibi okunan bir dildir ancak birkaç kritik harf kuralı bulunur:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Harf/Kombinasyon</th><th>Okunuş Kuralı</th><th>Örnek Sözcük</th></tr>
+                                <tr><td><strong>C</strong> (e, i öncesi)</td><td>"S" veya peltek "S" okunur</td><td>Gracias <span class="pronunciation">(Grasyas)</span></td></tr>
+                                <tr><td><strong>J</strong> (Her zaman)</td><td>Boğazdan sert "H" okunur</td><td>Jalapeño <span class="pronunciation">(Halapenyo)</span></td></tr>
+                                <tr><td><strong>LL</strong> (Çift L)</td><td>"Y" sesi verir</td><td>Llama <span class="pronunciation">(Yama)</span></td></tr>
+                                <tr><td><strong>H</strong> (Her zaman)</td><td>Sessizdir, hiç okunmaz</td><td>Hola <span class="pronunciation">(Ola)</span></td></tr>
+                                <tr><td><strong>Ñ</strong> (Dalgalı N)</td><td>"NY" sesi verir</td><td>España <span class="pronunciation">(Espanya)</span></td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "2. Bölüm: Temel Gramer & Cümle Kurma",
+                        desc: "İspanyolca cümle kurarken Özne + Yüklem + Nesne sıralaması kullanılır. Fiiller özneye göre çekimlenir:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Özne (İspanyolca)</th><th>Türkçe Anlamı</th><th>"Hablar" (Konuşmak) Çekimi</th></tr>
+                                <tr><td>Yo</td><td>Ben</td><td>Hablo <span class="pronunciation">(Konuşuyorum)</span></td></tr>
+                                <tr><td>Tú</td><td>Sen</td><td>Hablas <span class="pronunciation">(Konuşuyorsun)</span></td></tr>
+                                <tr><td>Él / Ella</td><td>O (Erkek / Kadın)</td><td>Habla <span class="pronunciation">(Konuşuyor)</span></td></tr>
+                                <tr><td>Nosotros</td><td>Biz</td><td>Hablamos <span class="pronunciation">(Konuşuyoruz)</span></td></tr>
+                                <tr><td>Ellos / Ellas</td><td>Onlar</td><td>Hablan <span class="pronunciation">(Konuşuyorlar)</span></td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "3. Bölüm: Hayat Kurtaran Kelimeler & Kalıplar",
+                        desc: "Günlük hayatta, restoranda ve seyahat ederken en çok ihtiyaç duyacağınız sözcükler:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Kelime / İfade</th><th>Okunuşu</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>¡Buenos días!</td><td>Bvenos diyas</td><td>Günaydın</td></tr>
+                                <tr><td>Por favor</td><td>Por favor</td><td>Lütfen</td></tr>
+                                <tr><td>Muchas gracias</td><td>Muças grasyas</td><td>Çok teşekkürler</td></tr>
+                                <tr><td>¿Cuánto cuesta?</td><td>Kvanto kvesta?</td><td>Ne kadar tutuyor?</td></tr>
+                                <tr><td>La cuenta, por favor</td><td>La kventa, por favor</td><td>Hesap lütfen</td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "4. Bölüm: Pratik Diyalog Örnekleri",
+                        desc: "İspanyolca pratik diyalog kurma simülasyonu:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Konuşan</th><th>İspanyolca Cümle</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>A:</td><td>¡Hola! ¿Cómo te llamas?</td><td>Merhaba! Adın ne?</td></tr>
+                                <tr><td>B:</td><td>Me llamo Carlos, ¿y tú?</td><td>Benim adım Carlos, ya senin?</td></tr>
+                                <tr><td>A:</td><td>Mucho gusto. Soy de Turquía.</td><td>Tanıştığıma memnun oldum. Türkiyeliyim.</td></tr>
+                                <tr><td>B:</td><td>¡Encantado! Bienvenida.</td><td>Harika! Hoş geldin.</td></tr>
+                            </table>
+                        `
+                    }
                 ]
             },
             en: {
-                title: "🇬🇧 İngilizce Temel Öğretici Kartlar",
-                cards: [
-                    { title: "Günlük Başlangıç", badge: "Vocabulary", text: "Essential daily expressions:", list: ["Hello / Hi (Merhaba)", "Good morning (Günaydın)", "How are you? (Nasılsın?)"] },
-                    { title: "Core Verbs", badge: "Grammar Card", text: "Most frequent action verbs:", list: ["To be (Olmak)", "To have (Sahip olmak)", "To go (Gitmek)"] },
-                    { title: "Useful Phrases", badge: "Phrases", text: "Life-saving expressions:", list: ["Please (Lütfen)", "Thank you (Teşekkürler)", "I understand (Anlıyorum)"] }
+                title: "🇬🇧 İngilizce Kapsamlı Ders Rehberi",
+                lessons: [
+                    {
+                        title: "1. Bölüm: Okunuş & Telaffuz İpuçları",
+                        desc: "İngilizce kelimelerde harf kombinasyonlarının çıkardığı temel sesler:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Kombinasyon</th><th>Okunuş Ses Karşılığı</th><th>Örnek Sözcük</th></tr>
+                                <tr><td><strong>TH</strong></td><td>Peltek "T/S" veya "D" sesi</td><td>Think <span class="pronunciation">(Tink)</span> / This <span class="pronunciation">(Dis)</span></td></tr>
+                                <tr><td><strong>SH</strong></td><td>Türkçedeki "Ş" sesi</td><td>Ship <span class="pronunciation">(Şip)</span></td></tr>
+                                <tr><td><strong>CH</strong></td><td>Türkçedeki "Ç" sesi</td><td>Chair <span class="pronunciation">(Çeyır)</span></td></tr>
+                                <tr><td><strong>TION</strong></td><td>Kelimelerin sonunda "ŞIN" okunur</td><td>Action <span class="pronunciation">(Ekşın)</span></td></tr>
+                                <tr><td><strong>OUGH</strong></td><td>Cümleye göre "AF" veya "O" okunur</td><td>Tough <span class="pronunciation">(Taf)</span></td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "2. Bölüm: Temel Gramer & Zaman Yapısı",
+                        desc: "Geniş Zaman (Present Simple) ve Şimdiki Zaman (Present Continuous) mantığı:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Zaman Tipi</th><th>Kullanım Amacı</th><th>Cümle Yapısı Örneği</th></tr>
+                                <tr><td>Present Simple</td><td>Genel doğruluklar & alışkanlıklar</td><td>I work every day. <span class="pronunciation">(Her gün çalışırım)</span></td></tr>
+                                <tr><td>Present Continuous</td><td>Şu an yapılan eylemler (-ing)</td><td>I am working now. <span class="pronunciation">(Şu an çalışıyorum)</span></td></tr>
+                                <tr><td>Past Simple</td><td>Geçmişte tamamlanmış işler</td><td>I worked yesterday. <span class="pronunciation">(Dün çalıştım)</span></td></tr>
+                                <tr><td>Future (Will)</td><td>Gelecek zaman planları</td><td>I will work tomorrow. <span class="pronunciation">(Yarın çalışacağım)</span></td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "3. Bölüm: Günlük Hayat & İş Kalıpları",
+                        desc: "Yurtdışında veya iş ortamında en çok kullanılan pratik ifadeler:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>İfade</th><th>Okunuşu</th><th>Türkçe Karşılığı</th></tr>
+                                <tr><td>How is it going?</td><td>Hav iz it goying?</td><td>Nasıl gidiyor? / Ne haber?</td></tr>
+                                <tr><td>Could you help me?</td><td>Kud yu help mi?</td><td>Bana yardım edebilir misiniz?</td></tr>
+                                <tr><td>I didn't catch that.</td><td>Ayy didınt kəç det</td><td>Bunu tam anlayamadım / yakalayamadım.</td></tr>
+                                <tr><td>Let's keep in touch.</td><td>Lets kiip in taç</td><td>İletişimde kalalım.</td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "4. Bölüm: Pratik Diyalog Örneği",
+                        desc: "Sokakta veya bir kafede geçen günlük konuşma:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Konuşan</th><th>İngilizce Cümle</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>A:</td><td>Excuse me, where is the station?</td><td>Affedersiniz, istasyon nerede?</td></tr>
+                                <tr><td>B:</td><td>Go straight and turn left.</td><td>Düz gidin ve sola dönün.</td></tr>
+                                <tr><td>A:</td><td>Thank you so much!</td><td>Çok teşekkür ederim!</td></tr>
+                                <tr><td>B:</td><td>You are welcome!</td><td>Rica ederim!</td></tr>
+                            </table>
+                        `
+                    }
                 ]
             },
             ru: {
-                title: "🇷🇺 Rusça Temel Öğretici Kartlar",
-                cards: [
-                    { title: "Приветствие (Selamlaşma)", badge: "Alfabe ve Sözcükler", text: "Temel Rusça tanışma ifadeleri:", list: ["Здравствуйте (Zdravstvuyte - Merhaba)", "Доброе утро (Dobroye utro - Günaydın)", "Как дела? (Kak dela? - Nasıl?)"] },
-                    { title: "Основные глаголы (Fiiller)", badge: "Gramer", text: "Temel fiil kullanımları:", list: ["Быть (Byt' - Olmak)", "Иметь (Imet' - Sahip olmak)", "Идти (Idti - Gitmek)"] },
-                    { title: "Полезные фразы (Kalıplar)", badge: "Sözcükler", text: "Günlük pratik sözcükler:", list: ["Пожалуйста (Pozhaluysta - Lütfen)", "Спасибо (Spasibo - Teşekkürler)", "Я понимаю (Ya ponimayu - Anlıyorum)"] }
+                title: "🇷🇺 Rusça Kapsamlı Ders Rehberi",
+                lessons: [
+                    {
+                        title: "1. Bölüm: Kiril Alfabesi & Ses Karşılıkları",
+                        desc: "Rusça öğrenmenin ilk adımı Kiril alfabesini tanımaktır:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Kiril Harfi</th><th>Türkçe Ses Karşılığı</th><th>Örnek Rusça Kelime</th></tr>
+                                <tr><td><strong>Б б</strong></td><td>Türkçedeki "B" sesi</td><td>Бабушка <span class="pronunciation">(Babuşka - Nene)</span></td></tr>
+                                <tr><td><strong>В в</strong></td><td>Türkçedeki "V" sesi</td><td>Вода <span class="pronunciation">(Vada - Su)</span></td></tr>
+                                <tr><td><strong>Д д</strong></td><td>Türkçedeki "D" sesi</td><td>Дом <span class="pronunciation">(Dom - Ev)</span></td></tr>
+                                <tr><td><strong>Ж ж</strong></td><td>Türkçedeki "J" sesi</td><td>Жизнь <span class="pronunciation">(Jizn - Hayat)</span></td></tr>
+                                <tr><td><strong>Р р</strong></td><td>Türkçedeki "R" sesi</td><td>Ресторан <span class="pronunciation">(Restoran)</span></td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "2. Bölüm: Temel Gramer & İsim Halleri",
+                        desc: "Rusçada kelimeler cümlenin içindeki konumuna göre (İsim Halleri / Падеж) değişir:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Özne (Rusça)</th><th>Okunuşu</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>Я</td><td>Ya</td><td>Ben</td></tr>
+                                <tr><td>Ты</td><td>Ty</td><td>Sen</td></tr>
+                                <tr><td>Он / Она</td><td>On / Ana</td><td>O (Erkek / Kadın)</td></tr>
+                                <tr><td>Мы</td><td>My</td><td>Biz</td></tr>
+                                <tr><td>Вы</td><td>Vy</td><td>Siz (Nezaket)</td></tr>
+                                <tr><td>Они</td><td>Ani</td><td>Onlar</td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "3. Bölüm: Günlük Hayatta En Çok Kullanılan İfadeler",
+                        desc: "Rusça konuşurken hayat kurtaran temel sözcükler:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Rusça İfade</th><th>Okunuşu</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>Здравствуйте</td><td>Zdravst-vuy-te</td><td>Merhaba (Resmi)</td></tr>
+                                <tr><td>Привет</td><td>Privet</td><td>Selam (Samimi)</td></tr>
+                                <tr><td>Спасибо</td><td>Spasibo</td><td>Teşekkürler</td></tr>
+                                <tr><td>Пожалуйста</td><td>Pozhaluysta</td><td>Lütfen / Rica ederim</td></tr>
+                                <tr><td>Сколько это стоит?</td><td>Skolko eto stoyit?</td><td>Bu ne kadar?</td></tr>
+                            </table>
+                        `
+                    },
+                    {
+                        title: "4. Bölüm: Pratik Diyalog Örneği",
+                        desc: "Temel seviye Rusça tanışma diyaloğu:",
+                        tableHtml: `
+                            <table>
+                                <tr><th>Konuşan</th><th>Rusça Cümle</th><th>Türkçe Anlamı</th></tr>
+                                <tr><td>A:</td><td>Привет! Как тебя зовут?</td><td>Selam! Adın ne?</td></tr>
+                                <tr><td>B:</td><td>Привет! Меня зовут Анна.</td><td>Selam! Benim adım Anna.</td></tr>
+                                <tr><td>A:</td><td>Очень приятно!</td><td>Çok memnun oldum!</td></tr>
+                                <tr><td>B:</td><td>Мне тоже!</td><td>Ben de!</td></tr>
+                            </table>
+                        `
+                    }
                 ]
             }
         };
@@ -661,23 +629,19 @@
             const activeBtn = document.getElementById('btn-' + langKey);
             if(activeBtn) activeBtn.classList.add('active');
 
-            const data = langHubData[langKey];
-            document.getElementById('langSectionTitle').innerText = data.title;
+            const data = fullLanguageLessons[langKey];
+            document.getElementById('langTitle').innerText = data.title;
             
-            const grid = document.getElementById('langCardsGrid');
+            const grid = document.getElementById('lessonGrid');
             grid.innerHTML = '';
 
-            data.cards.forEach(c => {
-                let listItems = c.list.map(item => `<li>${item}</li>`).join('');
+            data.lessons.forEach(l => {
                 grid.innerHTML += `
-                    <div class="card">
-                        <div>
-                            <span class="lang-badge">${c.badge}</span>
-                            <h3>${c.title}</h3>
-                            <p>${c.text}</p>
-                            <ul class="detail-list">
-                                ${listItems}
-                            </ul>
+                    <div class="lesson-card">
+                        <h3>📖 ${l.title}</h3>
+                        <p>${l.desc}</p>
+                        <div class="content-box">
+                            ${l.tableHtml}
                         </div>
                     </div>
                 `;
@@ -687,16 +651,6 @@
         window.onload = function() {
             switchLanguage('es');
         };
-
-        function toggleLevelCard(card) {
-            card.classList.toggle('active');
-            const hint = card.querySelector('.toggle-hint');
-            if (card.classList.contains('active')) {
-                hint.innerHTML = 'Gizle ▴';
-            } else {
-                hint.innerHTML = 'Bilgi İçin Tıklayın ▾';
-            }
-        }
 
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -737,7 +691,7 @@
                         updateDisplay();
                     } else {
                         clearInterval(timerInterval);
-                        alert("Süre doldu! Harika bir dil çalışma seansı geçirdin.");
+                        alert("Süre doldu! Harika bir dil dersi tamamladın.");
                     }
                 }, 1000);
             }
@@ -752,12 +706,6 @@
             pauseTimer();
             timeLeft = 25 * 60;
             updateDisplay();
-        }
-
-        function copyText(id) {
-            let text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text);
-            alert("Komut panoya kopyalandı!");
         }
     </script>
 </body>
