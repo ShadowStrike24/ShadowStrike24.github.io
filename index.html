@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Akıllı Geçmiş Yönetimi & Gelişmiş Telaffuz Akademi</title>
+    <title>AI Language Academy | İnteraktif Dil ve Gramer Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -113,7 +113,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Akıllı Konuşma & Telaffuz Portalı</div>
+        <div class="window-title">AI Language Academy — İnteraktif Dil Portalı</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -129,7 +129,7 @@
 
     <div class="hero">
         <h1>Çoklu Dil Telaffuz & Akıllı Gramer Akademi</h1>
-        <p>10-15 farklı telaffuz cümlesi ile pratik yapın, diller arası geçişte sohbetinizi yönetin ve anında gramer hatalarınızı düzeltin.</p>
+        <p>Gelişmiş telaffuz cümleleriyle pratik yapın, canlı sohbet robotu ile konuşun ve gramer denetçisiyle hatalarınızı düzeltin.</p>
     </div>
 
     <div class="lang-segments">
@@ -158,7 +158,7 @@
 
             <div>
                 <button class="holo-btn" onclick="startHologramVoice()">🎙️ Cümleyi Okuyorum</button>
-                <button class="holo-btn secondary" onclick="playNaturalVoice()">🔊 Doğal İnsan Sesiyle Dinle</button>
+                <button class="holo-btn secondary" onclick="playNaturalVoice()">🔊 Doğal Sesle Dinle</button>
                 <button class="holo-btn change-phrase" onclick="changeTargetPhrase()">🎲 Başka Cümle Getir</button>
             </div>
             <div id="accentScore" style="margin-top:0.8rem; font-weight:700; font-size:0.85rem; color:#93c5fd;">Skor: %0</div>
@@ -256,6 +256,12 @@
                     "Îro heva pir xweş û germ e."
                 ],
                 chatInit: "🤖 AI Koç (A1): Silav! Rojbaş. Navê te çi ye û tu çawa yî?",
+                chatResponses: {
+                    default: "Gelek baş e! Ez fêm dikim. Tu îro çi dikî?",
+                    greetings: "Silav! Ez gelek baş im, spas dikim. Tu çawa yî?",
+                    name: "Navê min Koçê AI ye. Navê te gelek xweş e!",
+                    plans: "Plana min heye ku alîkariya te di hînbûna ziman de bikim!"
+                },
                 slides: {
                     A1: [
                         { title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" },
@@ -296,6 +302,12 @@
                     "Nos vemos mañana por la tarde."
                 ],
                 chatInit: "🤖 AI Koç (A1): ¡Hola! ¿Cómo te llamas y de dónde eres?",
+                chatResponses: {
+                    default: "¡Excelente! Me alegra hablar contigo. ¿Qué haces hoy?",
+                    greetings: "¡Hola! Estoy muy bien, gracias por preguntar. ¿Y tú?",
+                    name: "Mi nombre es AI Coach. ¡Es un gusto conocerte!",
+                    plans: "¡Suena genial! Me gusta ayudarte a practicar español."
+                },
                 slides: {
                     A1: [
                         { title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." },
@@ -331,6 +343,12 @@
                     "See you later this evening!"
                 ],
                 chatInit: "🤖 AI Koç (A1): Hello! What is your name and how are you today?",
+                chatResponses: {
+                    default: "That's interesting! How is your day going so far?",
+                    greetings: "Hello! I'm doing great, thank you for asking. How about you?",
+                    name: "I am your AI Language Coach. Nice to meet you!",
+                    plans: "Sounds good! Let's continue practicing together."
+                },
                 slides: {
                     A1: [
                         { title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." },
@@ -366,6 +384,12 @@
                     "До скорой встречи!"
                 ],
                 chatInit: "🤖 AI Koç (A1): Привет! Как тебя зовут и как дела?",
+                chatResponses: {
+                    default: "Замечательно! Расскажи мне больше об этом.",
+                    greetings: "Привет! У меня всё отлично, спасибо. А у тебя как?",
+                    name: "Меня зовут ИИ-Коуч. Очень приятно познакомиться!",
+                    plans: "Отличный план! Давай продолжим заниматься."
+                },
                 slides: {
                     A1: [
                         { title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" },
@@ -392,7 +416,6 @@
         let currentPhraseIdx = 0;
         let userHasChatted = false;
 
-        // AKILLI DİL DEĞİŞTİRME UYARISI
         function handleLanguageSwitch(newLang) {
             if (newLang === currentLang) return;
 
@@ -530,10 +553,14 @@
                     chatBox.innerHTML += `<div class="msg grammar-alert">${grammarError}</div>`;
                 }
 
-                if (currentLang === 'ku') aiReply = "Gelek baş e! Ez fam dikim. Tu dixwazî li ser çi biaxivî?";
-                else if (currentLang === 'es') aiReply = "¡Excelente! Es un placer conversar contigo. ¿Qué haces hoy?";
-                else if (currentLang === 'en') aiReply = "Awesome! It is great talking with you. What are your plans for today?";
-                else aiReply = "Замечательно! Очень приятно с тобой общаться.";
+                const responses = academyData[currentLang].chatResponses;
+                if (lower.includes("hello") || lower.includes("hola") || lower.includes("silav") || lower.includes("привет")) {
+                    aiReply = responses.greetings;
+                } else if (lower.includes("name") || lower.includes("llamo") || lower.includes("nav") || lower.includes("зовут")) {
+                    aiReply = responses.name;
+                } else {
+                    aiReply = responses.default;
+                }
 
                 chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
