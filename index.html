@@ -508,7 +508,7 @@
             margin: 0.5rem 0 1rem 0;
         }
 
-        /* GELİŞMİŞ TEST MODÜLÜ (Paylaştığın Stiller) */
+        /* GELİŞMİŞ TEST MODÜLÜ */
         .full-quiz-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -720,7 +720,7 @@
 
     <div class="hero">
         <h1>Profesyonel AI Dil Akademisi & Sınav Merkezi</h1>
-        <p>Bağlamsal sohbet motoru, telaffuz koçu, özelleştirilebilir sayaç ve gelişmiş test modülü ile tam donanımlı pratik yapın.</p>
+        <p>Bağlamsal sohbet motoru, telaffuz koçu, özelleştirilebilir sayaç ve istediğiniz sayıda soru üreten gelişmiş test modülü.</p>
     </div>
 
     <div class="lang-segments">
@@ -778,10 +778,10 @@
             </div>
         </div>
 
-        <!-- GELİŞMİŞ TEST MODÜLÜ (Paylaştığın Stillerle Entegre) -->
+        <!-- GELİŞMİŞ TEST MODÜLÜ (DİNAMİK SORU SAYISI DÜZELTİLDİ) -->
         <div class="full-quiz-section">
             <h3>📝 Gelişmiş Bilgi ve Sınav Modülü</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Seviyenize ve dilinize göre kapsamlı çoktan seçmeli sınav olun, sonuçlarınızı takip edin.</p>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">İstediğiniz soru sayısını girerek seviyenize ve dilinize göre kapsamlı sınav olun.</p>
 
             <div id="quizSetupView">
                 <div class="full-quiz-controls">
@@ -803,8 +803,8 @@
                         </select>
                     </div>
                     <div>
-                        <label>Soru Sayısı</label>
-                        <input type="number" id="quizCountInput" value="3" min="1" max="5">
+                        <label>Soru Sayısı (Örn: 20)</label>
+                        <input type="number" id="quizCountInput" value="5" min="1" max="50">
                     </div>
                 </div>
                 <button class="full-quiz-btn" onclick="startFullQuiz()">Sınavı Başlat 🚀</button>
@@ -812,7 +812,7 @@
 
             <div id="quizActiveView" hidden>
                 <div class="full-quiz-meta">
-                    <span id="quizProgressText">Soru 1 / 3</span>
+                    <span id="quizProgressText">Soru 1 / 5</span>
                     <span id="quizScoreBadge">Skor: 0</span>
                 </div>
                 <div class="full-quiz-progress"><div id="quizProgressBar"></div></div>
@@ -887,7 +887,7 @@
         <div class="section-title" style="font-size:1.3rem; font-weight:800; margin-bottom:1rem">📖 Derinlemesine Öğretmen Gramer Modülleri</div>
         <div class="lesson-grid" id="lessonGrid"></div>
 
-        <!-- İSTEĞE BAĞLI ÇALIŞMA SAYACI -->
+        <!-- ÇALIŞMA SAYACI -->
         <div class="timer-box">
             <h3>⏱️ Özelleştirilebilir Çalışma Sayacı</h3>
             <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.8rem;">İstediğiniz süreyi seçebilir veya kendi dakikanızı yazıp ayarlayabilirsiniz.</p>
@@ -940,7 +940,14 @@
                 quizPool: [
                     { q: "'Rojbaş' kelimesinin Türkçe anlamı nedir?", options: ["Günaydın", "İyi geceler", "Nasılsın", "Güle güle"], answer: 0, expl: "Rojbaş, Kurmancî'de Günaydın demektir." },
                     { q: "'Ez' şahıs zamiri ne anlama gelir?", options: ["Sen", "Ben", "O", "Biz"], answer: 1, expl: "Ez kelimesi 'Ben' demektir." },
-                    { q: "'Spas dikim' ne demek?", options: ["Merhaba", "Teşekkür ederim", "Hoşça kal", "Lütfen"], answer: 1, expl: "Spas dikim teşekkür ederim anlamına gelir." }
+                    { q: "'Spas dikim' ne demek?", options: ["Merhaba", "Teşekkür ederim", "Hoşça kal", "Lütfen"], answer: 1, expl: "Spas dikim teşekkür ederim anlamına gelir." },
+                    { q: "'Tu çawa yî?' sorusunun karşılığı nedir?", options: ["Nasılsın?", "Adın ne?", "Nerelisin?", "Görüşürüz"], answer: 0, expl: "Tu çawa yî? 'Nasılsın?' demektir." },
+                    { q: "'B Spas' veya 'Spas' ne anlama gelir?", options: ["Teşekkürler", "Lütfen", "Üzgünüm", "Evet"], answer: 0, expl: "Spas teşekkürler demektir." },
+                    { q: "Kürtçede 'Evet' kelimesi nedir?", options: ["Na", "Erê", "Belê", "Gelek"], answer: 1, expl: "Erê 'evet' demektir." },
+                    { q: "Kürtçede 'Hayır' kelimesi nedir?", options: ["Na", "Erê", "Baş e", "Spas"], answer: 0, expl: "Na 'hayır' demektir." },
+                    { q: "'Heval' kelimesinin anlamı nedir?", options: ["Düşman", "Arkadaş", "Kardeş", "Yabancı"], answer: 1, expl: "Heval arkadaş demektir." },
+                    { q: "'Bajar' kelimesinin anlamı nedir?", options: ["Köy", "Şehir", "Ev", "Yol"], answer: 1, expl: "Bajar şehir demektir." },
+                    { q: "'Mal' kelimesinin anlamı nedir?", options: ["Okul", "Ev", "Araba", "Bahçe"], answer: 1, expl: "Mal ev demektir." }
                 ],
                 slides: {
                     A1: [
@@ -969,7 +976,14 @@
                 quizPool: [
                     { q: "¿Qué significa 'Hola'?", options: ["Adiós", "Hola", "Gracias", "Por favor"], answer: 1, expl: "Hola significa Merhaba." },
                     { q: "¿Cómo se dice 'Günaydın' en español?", options: ["Buenas noches", "Buenas tardes", "Buenos días", "Hasta luego"], answer: 2, expl: "Buenos días, Günaydın demektir." },
-                    { q: "¿Qué pronombre significa 'Ben'?", options: ["Tú", "Yo", "Él", "Ellos"], answer: 1, expl: "Yo significa Ben." }
+                    { q: "¿Qué pronombre significa 'Ben'?", options: ["Tú", "Yo", "Él", "Ellos"], answer: 1, expl: "Yo significa Ben." },
+                    { q: "¿Qué significa 'Gracias'?", options: ["Teşekkürler", "Lütfen", "Özür dilerim", "Hoşça kal"], answer: 0, expl: "Gracias teşekkürler demektir." },
+                    { q: "¿Cómo se dice 'Evet' en español?", options: ["No", "Sí", "Tal vez", "Por favor"], answer: 1, expl: "Sí 'evet' demektir." },
+                    { q: "¿Qué significa 'Agua'?", options: ["Ekmek", "Su", "Süt", "Et"], answer: 1, expl: "Agua su demektir." },
+                    { q: "¿Qué significa 'Libro'?", options: ["Kalem", "Kitap", "Masa", "Defter"], answer: 1, expl: "Libro kitap demektir." },
+                    { q: "¿Cómo se dice 'Güle güle'?", options: ["Hola", "Adiós", "Gracias", "Buenos días"], answer: 1, expl: "Adiós güle güle demektir." },
+                    { q: "¿Qué significa 'Amigo'?", options: ["Düşman", "Arkadaş", "Öğretmen", "Doktor"], answer: 1, expl: "Amigo arkadaş demektir." },
+                    { q: "¿Qué significa 'Casa'?", options: ["Okul", "Ev", "Park", "Cadde"], answer: 1, expl: "Casa ev demektir." }
                 ],
                 slides: {
                     A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
@@ -995,7 +1009,14 @@
                 quizPool: [
                     { q: "What is the past tense of 'go'?", options: ["goed", "went", "gone", "going"], answer: 1, expl: "Go fiilinin geçmiş zamanı went olur." },
                     { q: "Which pronoun is used for a female singular person?", options: ["He", "She", "It", "They"], answer: 1, expl: "Kız/kadın için She kullanılır." },
-                    { q: "What does 'Thank you' mean in Turkish?", options: ["Teşekkür ederim", "Lütfen", "Merhaba", "Güle güle"], answer: 0, expl: "Thank you teşekkür ederim demektir." }
+                    { q: "What does 'Thank you' mean in Turkish?", options: ["Teşekkür ederim", "Lütfen", "Merhaba", "Güle güle"], answer: 0, expl: "Thank you teşekkür ederim demektir." },
+                    { q: "What is the plural of 'child'?", options: ["childs", "children", "childes", "kid"], answer: 1, expl: "Child kelimesinin çoğulu children'dır." },
+                    { q: "Which word is an adjective?", options: ["Run", "Quickly", "Beautiful", "Table"], answer: 2, expl: "Beautiful (Güzel) bir sıfattır." },
+                    { q: "What does 'Apple' mean?", options: ["Armut", "Elma", "Muz", "Üzüm"], answer: 1, expl: "Apple elma demektir." },
+                    { q: "What is the opposite of 'Hot'?", options: ["Warm", "Cold", "Cool", "Dry"], answer: 1, expl: "Hot kelimesinin zıttı cold (soğuk) tur." },
+                    { q: "Which auxiliary verb is used with 'I' in Present Continuous?", options: ["is", "are", "am", "be"], answer: 2, expl: "I zamiri am yardımcı fiilini alır." },
+                    { q: "What does 'Water' mean?", options: ["Süt", "Çay", "Su", "Kahve"], answer: 2, expl: "Water su demektir." },
+                    { q: "How do you say 'Güle güle' in English?", options: ["Hello", "Goodbye", "Please", "Thanks"], answer: 1, expl: "Goodbye güle güle demektir." }
                 ],
                 slides: {
                     A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
@@ -1021,7 +1042,14 @@
                 quizPool: [
                     { q: "В harfi hangi sesi verir?", options: ["V", "B", "P", "F"], answer: 0, expl: "Kiril alfabesindeki В harfi V sesini verir." },
                     { q: "'Привет' kelimesinin anlamı nedir?", options: ["Hoşça kal", "Merhaba", "Teşekkürler", "Lütfen"], answer: 1, expl: "Привет, Merhaba demektir." },
-                    { q: "Hangisi zamirdir?", options: ["Я", "Стол", "Дом", "Книга"], answer: 0, expl: "Я (Ben) bir zamirdir." }
+                    { q: "Hangisi zamirdir?", options: ["Я", "Стол", "Дом", "Книга"], answer: 0, expl: "Я (Ben) bir zamirdir." },
+                    { q: "Как дела? ne demek?", options: ["Nasılsın?", "Adın ne?", "Neredesin?", "Ne yapıyorsun?"], answer: 0, expl: "Как дела? Nasılsın/işler nasıl demektir." },
+                    { q: "'Спасибо' kelimesinin anlamı nedir?", options: ["Lütfen", "Teşekkür ederim", "Özür dilerim", "Evet"], answer: 1, expl: "Спасибо teşekkür ederim demektir." },
+                    { q: "'Да' kelimesinin anlamı nedir?", options: ["Hayır", "Evet", "Belki", "Asla"], answer: 1, expl: "Да evet demektir." },
+                    { q: "'Нет' kelimesinin anlamı nedir?", options: ["Evet", "Hayır", "Tamam", "Lütfen"], answer: 1, expl: "Нет hayır demektir." },
+                    { q: "'Книга' ne demektir?", options: ["Defter", "Kitap", "Kalem", "Masa"], answer: 1, expl: "Книга kitap demektir." },
+                    { q: "'Вода' kelimesinin anlamı nedir?", options: ["Ekmek", "Su", "Süt", "Çay"], answer: 1, expl: "Вода su demektir." },
+                    { q: "'До свидания' ne demek?", options: ["Merhaba", "Günaydın", "Hoşça kal / Görüşmek üzere", "Teşekkürler"], answer: 2, expl: "До свидания görüşmek üzere demektir." }
                 ],
                 slides: {
                     A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
@@ -1144,13 +1172,20 @@
             }, 700);
         }
 
-        // GELİŞMİŞ TEST FONKSİYONLARI
+        // GELİŞMİŞ TEST FONKSİYONLARI (DİNAMİK SAYI DESTEĞİ)
         function startFullQuiz() {
             const lang = document.getElementById('quizLangSelect').value;
-            const count = parseInt(document.getElementById('quizCountInput').value) || 3;
+            let count = parseInt(document.getElementById('quizCountInput').value) || 5;
             
             const pool = academyData[lang].quizPool || academyData['ku'].quizPool;
-            quizState.questions = pool.slice(0, count);
+            
+            // Eğer havuzdaki soru sayısı istenenden azsa, havuzu çoğaltarak istenen sayıya tamamla
+            let selectedQuestions = [];
+            while (selectedQuestions.length < count) {
+                selectedQuestions = selectedQuestions.concat(pool);
+            }
+            quizState.questions = selectedQuestions.slice(0, count);
+
             quizState.currentIndex = 0;
             quizState.correctCount = 0;
             quizState.incorrectCount = 0;
