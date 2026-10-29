@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Dinamik Diyalog & Gramer Portalı</title>
+    <title>AI Language Academy | Akıllı Sohbet ve Telaffuz Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-body: #f8fafc;
             --card-bg: #ffffff;
             --primary: #2563eb;
-            --primary-hover: #1d4ed8;
             --text-main: #0f172a;
             --text-sub: #475569;
             --border-color: #e2e8f0;
@@ -22,7 +21,6 @@
             --bg-body: #0f172a;
             --card-bg: #1e293b;
             --primary: #3b82f6;
-            --primary-hover: #60a5fa;
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --border-color: #334155;
@@ -113,7 +111,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Dinamik Diyalog Modülü</div>
+        <div class="window-title">AI Language Academy — Akıllı Sohbet Portalı</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -129,7 +127,7 @@
 
     <div class="hero">
         <h1>Çoklu Dil Telaffuz & Akıllı Gramer Akademi</h1>
-        <p>Asla tekrara düşmeyen dinamik diyalog motoru ve anlık gramer tarayıcısı ile akıcı şekilde pratik yapın.</p>
+        <p>Asla tekrara düşmeyen akıllı sohbet motoru ve gramer denetçisi ile rahatça pratik yapın.</p>
     </div>
 
     <div class="lang-segments">
@@ -146,7 +144,7 @@
         <!-- TELAFFUZ KOÇU -->
         <div class="ai-hologram-section">
             <h3 id="holoTitle" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Yapay Zeka Telaffuz & Konuşma Koçu</h3>
-            <p style="font-size: 0.85rem; color: #cbd5e1;">Aşağıdaki cümleyi okuyun. 'Başka Cümle Getir' butonuyla yeni pratik cümlelerine geçebilirsiniz.</p>
+            <p style="font-size: 0.85rem; color: #cbd5e1;">Cümleyi okuyun, 'Başka Cümle Getir' ile yeni pratik cümlelerine geçin.</p>
 
             <div class="hologram-target-box" id="targetPhraseBox">
                 🎯 Hedef Cümle Yükleniyor...
@@ -167,7 +165,7 @@
         <!-- SOHBET VE GERÇEK ZAMANLI GRAMER TARAYICISI -->
         <div class="daily-life-chat-section">
             <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Günlük Hayat Sohbeti & Otomatik Gramer Tarayıcısı</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Dinamik sohbet motoru mesajlarınızı analiz eder ve her defasında farklı, akıllı bir yanıt üretir.</p>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Yazdığınız mesaja göre yapay zeka her defasında farklı bir yanıt üretir ve hatalarınızı uyarır.</p>
 
             <div class="chat-level-bar">
                 <button class="chat-lvl-btn active" onclick="setChatLevel('A1')">A1 Günlük Tanışma</button>
@@ -261,26 +259,23 @@
                     "Ev pirsbûneke pir girîng e. Li gorî te çima wiha ye?",
                     "Ez fêm dikim. Tu dikarî bêtir agahî bidî min?",
                     "Rojeke pir baş e ji bo hînbûna tiştên nû!",
-                    "Wusa dixuye ku tu di vî warî de zana yî."
+                    "Wusa dixuye ku tu di vî warî de zana yî.",
+                    "Bê guman! Em dikarin vê mijarê dirêj bikin.",
+                    "Ez dixwazim pirsên din jî ji te bikim, tu çi difikirî?"
                 ],
                 slides: {
                     A1: [
                         { title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" },
-                        { title: "A1: Şahıs Zamirleri", desc: "Ez (Ben), Tu (Sen), Ew (O).", q: "'Ez' kelimesi Sen demektir.", ans: false, expl: "Yanlış! Ez 'Ben' demektir." },
-                        { title: "A1: Hal Hatır Sorma", desc: "Tu çawa yî? - Ez baş im.", q: "'Ez baş im' Ben iyiyim demektir.", ans: true, expl: "Doğru!" }
+                        { title: "A1: Şahıs Zamirleri", desc: "Ez (Ben), Tu (Sen), Ew (O).", q: "'Ez' kelimesi Sen demektir.", ans: false, expl: "Yanlış! Ez 'Ben' demektir." }
                     ],
-                    A2: [
-                        { title: "A2: Fiil Zamanları", desc: "Geçmiş ve Şimdiki Zaman.", q: "Fiil cümlede sonda yer alabilir.", ans: true, expl: "Doğru!" },
-                        { title: "A2: Sayılar", desc: "Yek, Dû, Sê, Çar.", q: "'Çar' sayısı 5 demektir.", ans: false, expl: "Yanlış! Çar 4 demektir." }
-                    ],
+                    A2: [{ title: "A2: Fiil Zamanları", desc: "Geçmiş ve Şimdiki Zaman.", q: "Fiil cümlede sonda yer alabilir.", ans: true, expl: "Doğru!" }],
                     B1: [{ title: "B1: İsim Halleri", desc: "Eril ve Dişil ayrımı.", q: "Kürtçede dişil takılar vardır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Akıcı Sohbet", desc: "Deyimler ve atasözleri.", q: "Mecazlar yaygındır.", ans: true, expl: "Doğru!" }],
+                    B2: [{ title: "B2: Akıcı Sohbet", desc: "Deyimler.", q: "Mecazlar yaygındır.", ans: true, expl: "Doğru!" }],
                     C1: [{ title: "C1: Edebi Dil", desc: "Klasik metinler.", q: "Gramer derinliği yüksektir.", ans: true, expl: "Doğru!" }],
                     C2: [{ title: "C2: Uzmanlık", desc: "Tam yetkinlik.", q: "Anadili seviyesidir.", ans: true, expl: "Doğru!" }]
                 },
                 lessons: [
-                    { title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi (Çiya)</td></tr><tr><td>Ê ê</td><td>Uzatmalı E (Êvar)</td></tr></table>` },
-                    { title: "2. Modül: Zamirler", desc: "Şahıs zamirleri.", tableHtml: `<table><tr><th>Zamir</th><th>Anlam</th></tr><tr><td>Ez</td><td>Ben</td></tr><tr><td>Tu</td><td>Sen</td></tr></table>` }
+                    { title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi (Çiya)</td></tr><tr><td>Ê ê</td><td>Uzatmalı E (Êvar)</td></tr></table>` }
                 ]
             },
             es: {
@@ -306,13 +301,12 @@
                     "Es una perspectiva excelente. ¿Qué opinas al respecto?",
                     "Entiendo perfectamente. ¿Cómo planeas lograrlo?",
                     "¡Excelente práctica! Sigue adelante con esa actitud.",
-                    "Me fascina conversar contigo sobre estos temas."
+                    "Me fascina conversar contigo sobre estos temas.",
+                    "Eso abre un debate muy curioso. ¿No crees?",
+                    "Podemos profundizar más si lo deseas."
                 ],
                 slides: {
-                    A1: [
-                        { title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." },
-                        { title: "A1: Zamirler", desc: "Yo, Tú, Él.", q: "'Yo' Ben demektir.", ans: true, expl: "Doğru!" }
-                    ],
+                    A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
                     A2: [{ title: "A2: Ser/Estar", desc: "Kalıcı ve geçici.", q: "Evde olmak Estar ister.", ans: true, expl: "Doğru!" }],
                     B1: [{ title: "B1: Reflexivos", desc: "Dönüşlü fiiller.", q: "Me levanto.", ans: true, expl: "Doğru!" }],
                     B2: [{ title: "B2: Subjuntivo", desc: "Dilek kipi.", q: "Şüphede Subjuntivo.", ans: true, expl: "Doğru!" }],
@@ -346,13 +340,12 @@
                     "I see your point clearly. What do you think comes next?",
                     "Awesome insight! How does this affect your daily routine?",
                     "Great vocabulary usage! Let's build on that.",
-                    "Every conversation helps you improve. What else is on your mind?"
+                    "Every conversation helps you improve. What else is on your mind?",
+                    "That sounds like a productive way to spend your day.",
+                    "I appreciate your thoughtful response. Let's keep going!"
                 ],
                 slides: {
-                    A1: [
-                        { title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." },
-                        { title: "A1: Pronouns", desc: "This, That.", q: "This yakındaki nesneler içindir.", ans: true, expl: "Doğru!" }
-                    ],
+                    A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
                     A2: [{ title: "A2: Past Simple", desc: "Geçmiş zaman.", q: "Go kelimesinin geçmişi went olur.", ans: true, expl: "Doğru!" }],
                     B1: [{ title: "B1: Present Perfect", desc: "Have V3.", q: "Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" }],
                     B2: [{ title: "B2: Passives", desc: "Edilgen çatı.", q: "to be + V3 kuralıdır.", ans: true, expl: "Doğru!" }],
@@ -386,13 +379,12 @@
                     "Прекрасная мысль. Как ты планируешь это осуществить?",
                     "Я полностью тебя понимаю. Что было дальше?",
                     "Отличный уровень словарного запаса! Продолжай в том же духе.",
-                    "Замечательный диалог у нас получается."
+                    "Замечательный диалог у нас получается.",
+                    "Это действительно важный вопрос для обсуждения.",
+                    "Давай рассмотрим этот пример более подробно."
                 ],
                 slides: {
-                    A1: [
-                        { title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" },
-                        { title: "A1: Zamirler", desc: "Я, Ты, Он.", q: "'Я' Ben demektir.", ans: true, expl: "Doğru!" }
-                    ],
+                    A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
                     A2: [{ title: "A2: İsim Halleri", desc: "Падежи yapısı.", q: "Canlı nesneler değişir.", ans: true, expl: "Doğru!" }],
                     B1: [{ title: "B1: Aspektler", desc: "Fiil türleri.", q: "Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" }],
                     B2: [{ title: "B2: Edatlar", desc: "Genitif.", q: "Без genitif ister.", ans: true, expl: "Doğru!" }],
@@ -411,6 +403,7 @@
         let selectedChatLevel = 'A1';
         let currentPhraseIdx = 0;
         let userHasChatted = false;
+        let lastReplyIdx = -1;
 
         function handleLanguageSwitch(newLang) {
             if (newLang === currentLang) return;
@@ -468,12 +461,7 @@
                 const utterance = new SpeechSynthesisUtterance(text);
                 const voices = window.speechSynthesis.getVoices();
 
-                let bestVoice = null;
-                if (currentLang === 'es') bestVoice = voices.find(v => v.lang.includes('es') && (v.name.includes('Google') || v.name.includes('Natural')));
-                else if (currentLang === 'en') bestVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Google') || v.name.includes('Natural')));
-                else if (currentLang === 'ru') bestVoice = voices.find(v => v.lang.includes('ru') && (v.name.includes('Google') || v.name.includes('Natural')));
-                else bestVoice = voices.find(v => v.lang.includes('tr'));
-
+                let bestVoice = voices.find(v => v.lang.includes(currentLang === 'es' ? 'es' : (currentLang === 'en' ? 'en' : (currentLang === 'ru' ? 'ru' : 'tr'))));
                 if (bestVoice) utterance.voice = bestVoice;
                 utterance.rate = 0.88;
                 utterance.pitch = 1.05;
@@ -549,9 +537,14 @@
                 }
 
                 const replies = academyData[currentLang].dynamicReplies;
-                const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                let nextIdx;
+                do {
+                    nextIdx = Math.floor(Math.random() * replies.length);
+                } while (nextIdx === lastReplyIdx && replies.length > 1);
+                lastReplyIdx = nextIdx;
 
-                chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${randomReply}</div>`;
+                const aiReply = replies[nextIdx];
+                chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 700);
         }
