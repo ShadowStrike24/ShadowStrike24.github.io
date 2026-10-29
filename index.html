@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Akıllı Sohbet ve Telaffuz Portalı</title>
+    <title>AI Language Academy | Profesyonel Dil ve Akıllı Sohbet Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -111,7 +111,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Akıllı Sohbet Portalı</div>
+        <div class="window-title">AI Language Academy — Profesyonel Sohbet Motoru</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -126,8 +126,8 @@
     </header>
 
     <div class="hero">
-        <h1>Çoklu Dil Telaffuz & Akıllı Gramer Akademi</h1>
-        <p>Asla tekrara düşmeyen akıllı sohbet motoru ve gramer denetçisi ile rahatça pratik yapın.</p>
+        <h1>Profesyonel AI Dil Akademisi & İlerlemeli Sohbet</h1>
+        <p>Aşamalı ve asla tekrara düşmeyen profesyonel öğretmen diyalog motoruyla akıcı pratik yapın.</p>
     </div>
 
     <div class="lang-segments">
@@ -164,8 +164,8 @@
 
         <!-- SOHBET VE GERÇEK ZAMANLI GRAMER TARAYICISI -->
         <div class="daily-life-chat-section">
-            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Günlük Hayat Sohbeti & Otomatik Gramer Tarayıcısı</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Yazdığınız mesaja göre yapay zeka her defasında farklı bir yanıt üretir ve hatalarınızı uyarır.</p>
+            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Profesyonel Günlük Hayat Sohbeti & Gramer Denetçisi</h3>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Öğretmen her mesajınızda sohbeti bir sonraki konuya (Hobiler -> İş -> Seyahat -> Hayaller) taşır, asla aynı soruyu sormaz.</p>
 
             <div class="chat-level-bar">
                 <button class="chat-lvl-btn active" onclick="setChatLevel('A1')">A1 Günlük Tanışma</button>
@@ -253,15 +253,13 @@
                     "Cihê otobüsê li kuderê ye?",
                     "Îro heva pir xweş û germ e."
                 ],
-                chatInit: "🤖 AI Koç: Silav! Rojbaş. Em dikarin li ser kîjan mijarê biaxivin?",
-                dynamicReplies: [
-                    "Gelek xweş! Qala vê yekê bike, ez guhdarî dikim.",
-                    "Ev pirsbûneke pir girîng e. Li gorî te çima wiha ye?",
-                    "Ez fêm dikim. Tu dikarî bêtir agahî bidî min?",
-                    "Rojeke pir baş e ji bo hînbûna tiştên nû!",
-                    "Wusa dixuye ku tu di vî warî de zana yî.",
-                    "Bê guman! Em dikarin vê mijarê dirêj bikin.",
-                    "Ez dixwazim pirsên din jî ji te bikim, tu çi difikirî?"
+                chatInit: "🤖 AI Koç: Silav! Rojbaş. Em dest pê bikin: Navê te çi ye û tu ji kû derê yî?",
+                // Profesyonel Aşamalı Soru Matrisi (Asla tekrara düşmez)
+                steps: [
+                    "Gelek xweş! Navê te pir xweş e. Ka behsa rojên xwe yên asayî bike: Tu di rojên normal de çend caran pirtûkan dixwînî?",
+                    "Ev pirsbûneke balkêş e. Niha em derbasî mijareke din bibin: Xwarina te ya herî bijare çi ye û tu dikarî wê çêbikî?",
+                    "Destxweş! Xwarineke xweş e. Werin em li ser geşt û sefere biaxivin: Heta niha tu çûyî kîjan bajarî an welatî?",
+                    "Asta te ya axaftinê ber bi pêş ve diçe! Pirsên me yên pêşketî: Plana te ya sibe çi ye? Tu dixwazî ​​çi bikî?"
                 ],
                 slides: {
                     A1: [
@@ -295,15 +293,12 @@
                     "¿Cuánto cuesta este libro?",
                     "Nos vemos mañana por la tarde."
                 ],
-                chatInit: "🤖 AI Koç: ¡Hola! ¿De qué tema te gustaría hablar hoy?",
-                dynamicReplies: [
-                    "¡Qué interesante! Cuéntame más detalles sobre eso.",
-                    "Es una perspectiva excelente. ¿Qué opinas al respecto?",
-                    "Entiendo perfectamente. ¿Cómo planeas lograrlo?",
-                    "¡Excelente práctica! Sigue adelante con esa actitud.",
-                    "Me fascina conversar contigo sobre estos temas.",
-                    "Eso abre un debate muy curioso. ¿No crees?",
-                    "Podemos profundizar más si lo deseas."
+                chatInit: "🤖 AI Koç: ¡Hola! Empecemos: ¿Cómo te llamas y a qué te dedicas?",
+                steps: [
+                    "¡Excelente respuesta! Cuéntame más: ¿Qué te gusta hacer en tu tiempo libre los fines de semana?",
+                    "Muy interesante. Ahora hablemos de comida: ¿Cuál es tu plato tradicional favorito de tu país?",
+                    "¡Qué rico suena! Pasemos a otro tema: Si pudieras viajar a cualquier país hispanohablante mañana, ¿a dónde irías?",
+                    "¡Tu nivel está mejorando mucho! Última pregunta avanzada: ¿Cuáles son tus metas principales para este año?"
                 ],
                 slides: {
                     A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
@@ -334,15 +329,12 @@
                     "How much does this cost?",
                     "See you later this evening!"
                 ],
-                chatInit: "🤖 AI Koç: Hello! What topic would you like to explore today?",
-                dynamicReplies: [
-                    "That is a fascinating point! Tell me more about it.",
-                    "I see your point clearly. What do you think comes next?",
-                    "Awesome insight! How does this affect your daily routine?",
-                    "Great vocabulary usage! Let's build on that.",
-                    "Every conversation helps you improve. What else is on your mind?",
-                    "That sounds like a productive way to spend your day.",
-                    "I appreciate your thoughtful response. Let's keep going!"
+                chatInit: "🤖 AI Koç: Hello! Let's start: What is your name and what do you do?",
+                steps: [
+                    "Wonderful! Tell me about your hobbies: What do you usually do to relax after a busy day?",
+                    "That sounds relaxing. Now, let's talk about travel: What is the most memorable place you have ever visited?",
+                    "Incredible experience! Let's move to future plans: What is your biggest career or personal goal for next year?",
+                    "You are showing great fluency! Advanced question: If you could change one thing in the world, what would it be and why?"
                 ],
                 slides: {
                     A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
@@ -373,15 +365,12 @@
                     "Сколько стоит эта книга?",
                     "До скорой встречи!"
                 ],
-                chatInit: "🤖 AI Koç: Привет! Какую тему мы обсудим сегодня?",
-                dynamicReplies: [
-                    "Это очень интересно! Расскажи подробнее.",
-                    "Прекрасная мысль. Как ты планируешь это осуществить?",
-                    "Я полностью тебя понимаю. Что было дальше?",
-                    "Отличный уровень словарного запаса! Продолжай в том же духе.",
-                    "Замечательный диалог у нас получается.",
-                    "Это действительно важный вопрос для обсуждения.",
-                    "Давай рассмотрим этот пример более подробно."
+                chatInit: "🤖 AI Koç: Привет! Начнем: Как тебя зовут и чем ты занимаешься?",
+                steps: [
+                    "Отличный ответ! Расскажи о своих увлечениях: Что тебе нравится делать в свободное время?",
+                    "Интересное хобби. Давай поговорим о путешествиях: В каких городах или странах ты уже побывал?",
+                    "Замечательно! Перейдем к планам на будущее: Кем ты видишь себя через пять лет?",
+                    "У тебя прекрасный прогресс! Сложный вопрос для финала: Что для тебя самое главное в общении с людьми?"
                 ],
                 slides: {
                     A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
@@ -403,7 +392,7 @@
         let selectedChatLevel = 'A1';
         let currentPhraseIdx = 0;
         let userHasChatted = false;
-        let lastReplyIdx = -1;
+        let chatStepCounter = 0;
 
         function handleLanguageSwitch(newLang) {
             if (newLang === currentLang) return;
@@ -413,6 +402,7 @@
                 if (resetChat) {
                     document.getElementById('chatBox').innerHTML = "";
                     userHasChatted = false;
+                    chatStepCounter = 0;
                 }
             }
 
@@ -536,14 +526,11 @@
                     chatBox.innerHTML += `<div class="msg grammar-alert">${grammarError}</div>`;
                 }
 
-                const replies = academyData[currentLang].dynamicReplies;
-                let nextIdx;
-                do {
-                    nextIdx = Math.floor(Math.random() * replies.length);
-                } while (nextIdx === lastReplyIdx && replies.length > 1);
-                lastReplyIdx = nextIdx;
+                // Aşamalı Profesyonel Soru Matrisi (Döngüye girmez, adım adım ilerler)
+                const steps = academyData[currentLang].steps;
+                const aiReply = steps[chatStepCounter % steps.length];
+                chatStepCounter++;
 
-                const aiReply = replies[nextIdx];
                 chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 700);
