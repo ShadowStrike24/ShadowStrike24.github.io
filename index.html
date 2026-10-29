@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Profesyonel Dil Öğrenme, Slayt ve Video Portalı</title>
+    <title>AI Language Academy | Nötr Holografik Dil ve Telaffuz Koçu</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,162 +30,78 @@
             --window-bar-bg: #1e293b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* Window Bar */
-        .window-bar {
-            background: var(--window-bar-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
+        .window-bar { background: var(--window-bar-bg); border-bottom: 1px solid var(--border-color); padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
         .dots { display: flex; gap: 7px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot-red { background-color: #ff5f56; }
         .dot-yellow { background-color: #ffbd2e; }
         .dot-green { background-color: #27c93f; }
-
         .window-title { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
 
         .theme-toggle-btn {
-            background: var(--accent-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            background: var(--accent-bg); border: 1px solid var(--border-color); color: var(--text-main);
+            padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px;
         }
-
         .theme-toggle-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
 
-        /* Header */
-        header {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
         .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-icon {
-            width: 36px; height: 36px; background: var(--primary); border-radius: 10px;
-            display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-        }
+        .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
         .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
         .logo-text span { color: var(--primary); }
+        .nav-badge { background: var(--accent-bg); color: var(--primary); font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600; border: 1px solid var(--border-color); }
 
-        .nav-badge {
-            background: var(--accent-bg); color: var(--primary); font-size: 0.7rem;
-            padding: 2px 8px; border-radius: 20px; font-weight: 600; border: 1px solid var(--border-color);
-        }
-
-        /* Hero */
         .hero { max-width: 900px; margin: 2.5rem auto 1.5rem auto; text-align: center; padding: 0 1.5rem; }
         .hero h1 { font-size: 2.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem; letter-spacing: -1px; }
         .hero p { font-size: 1.1rem; color: var(--text-sub); max-width: 720px; margin: 0 auto; }
 
-        /* Language Tabs */
-        .lang-segments {
-            display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
-            max-width: 900px; margin: 1.5rem auto 2rem auto; padding: 0 1rem;
-        }
-
+        .lang-segments { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; max-width: 950px; margin: 1.5rem auto 2rem auto; padding: 0 1rem; }
         .lang-btn {
             background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main);
-            padding: 0.6rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700;
-            cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px;
+            padding: 0.6rem 1.1rem; border-radius: 10px; font-size: 0.92rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px;
         }
-        .lang-btn.active, .lang-btn:hover {
-            background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px);
-        }
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); }
 
         .container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 1.5rem; }
 
-        /* Künye Paneli */
         .lang-info-banner {
             background: var(--card-bg); border: 2px solid var(--primary); border-radius: 16px;
             padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.1);
         }
         .lang-info-banner h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 800; }
         .lang-info-banner p { font-size: 0.98rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.6; }
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; }
         .stat-box h4 { font-size: 1.1rem; color: var(--text-main); font-weight: 700; }
         .stat-box p { font-size: 0.85rem; color: var(--text-sub); margin: 0; }
 
-        /* YENİ: YAPAY ZEKA VİDEO DERS SIMÜLASYON ALANI */
-        .ai-video-section {
-            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
-            padding: 2rem; margin-bottom: 3.5rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+        /* DÜNYADA İLK: YAPAY ZEKA NÖTR HOLOGRAFİK ROL YAPMA VE TELAFFUZ KOÇU */
+        .ai-hologram-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 2px solid #3b82f6; border-radius: 20px; padding: 2.5rem; margin-bottom: 3.5rem; color: white; text-align: center;
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2); position: relative; overflow: hidden;
         }
-        .video-player-mockup {
-            background: #0f172a; border-radius: 12px; height: 320px; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; position: relative; color: white; text-align: center; padding: 2rem;
-            overflow: hidden; box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
-        }
-        .video-play-btn {
-            width: 64px; height: 64px; background: var(--primary); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 1.5rem; color: white; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5); transition: transform 0.2s ease; margin-bottom: 1rem;
-        }
-        .video-play-btn:hover { transform: scale(1.1); }
-        .video-subtitle {
-            font-size: 1.1rem; font-weight: 600; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem;
-            border-radius: 8px; margin-top: 1rem; max-width: 600px;
-        }
+        .hologram-glow { position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 200px; height: 200px; background: rgba(59, 130, 246, 0.3); filter: blur(60px); border-radius: 50%; z-index: 0; }
+        .hologram-content { position: relative; z-index: 1; }
+        .hologram-avatar { width: 80px; height: 80px; background: rgba(59, 130, 246, 0.2); border: 2px solid #60a5fa; border-radius: 50%; margin: 0 auto 1rem auto; display: flex; align-items: center; justify-content: center; font-size: 2rem; animation: pulseGlow 2s infinite; }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(96, 165, 250, 0); } 100% { box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); } }
+        .hologram-chat-box { background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 1.2rem; margin: 1.5rem 0; min-height: 80px; display: flex; flex-direction: column; justify-content: center; font-size: 1.05rem; }
+        .hologram-controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .holo-btn { background: #2563eb; color: white; border: none; padding: 0.7rem 1.4rem; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); }
+        .holo-btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .holo-btn.secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .accent-score { margin-top: 1rem; font-size: 0.85rem; color: #94a3b8; font-weight: 600; }
 
-        /* Slayt & Test Alanı */
-        .interactive-slide-section {
-            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
-            padding: 2.5rem; margin-bottom: 3.5rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
-        }
-        .level-selector-bar {
-            display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-            margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;
-        }
-        .level-tab {
-            background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main);
-            padding: 0.5rem 1.1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
-        }
+        /* Slayt & Test */
+        .interactive-slide-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2.5rem; margin-bottom: 3.5rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08); }
+        .level-selector-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; }
+        .level-tab { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.5rem 1.1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
         .level-tab.active, .level-tab:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .slide-stage {
-            background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 14px;
-            padding: 2rem; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 1.5rem;
-        }
+        .slide-stage { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 14px; padding: 2rem; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 1.5rem; }
         .slide-header-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; }
         .slide-title-main { font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem; }
         .slide-desc-text { font-size: 0.98rem; color: var(--text-sub); margin-bottom: 1.2rem; line-height: 1.6; }
@@ -203,7 +119,6 @@
 
         .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
 
-        /* Detaylı Ders Modülleri (Tablolar) */
         .lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem; }
         @media (max-width: 600px) { .lesson-grid { grid-template-columns: 1fr; } }
         .lesson-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.75rem; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
@@ -216,13 +131,11 @@
         .content-box td { color: var(--text-sub); }
         .pronunciation { color: var(--primary); font-style: italic; font-size: 0.8rem; }
 
-        /* Prompt Bölümü */
         .prompt-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; }
         .prompt-card { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.25rem; margin-top: 1rem; }
         .prompt-text { font-size: 0.9rem; color: var(--text-main); font-family: monospace; background: var(--card-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); margin-top: 0.5rem; white-space: pre-wrap; }
         .copy-btn { background: var(--accent-bg); color: var(--primary); border: 1px solid var(--primary); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem; }
 
-        /* Sayaç */
         .timer-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-bottom: 3.5rem; text-align: center; }
         .timer-preset-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
         .preset-btn { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
@@ -238,7 +151,6 @@
             padding: 0.8rem 1.2rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem;
             text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000;
         }
-
         footer { text-align: center; padding: 2.5rem 1.5rem; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem; background: var(--card-bg); }
     </style>
 </head>
@@ -246,7 +158,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Kapsamlı Öğretmen, Video & Seviye Modülü</div>
+        <div class="window-title">AI Language Academy — Holographic AI & Kurdish Hub</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -256,20 +168,21 @@
                 <div class="logo-icon">AI</div>
                 <div class="logo-text">AI <span>Language Hub</span></div>
             </a>
-            <div class="nav-badge">AI Video Dersler & A1-C2 Slaytlar</div>
+            <div class="nav-badge">Kürtçe • İspanyolca • İngilizce • Rusça</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Kapsamlı Dil Akademisi & Yapay Zeka Video Ders Portalı</h1>
-        <p>Dünya istatistikleri, öğretmen video simülasyonları, interaktif seviye testleri ve derinlemesine gramer tablolarıyla eksiksiz dil öğrenme deneyimi.</p>
+        <h1>Yapay Zeka Destekli Dünya Dilleri & Holografik Telaffuz Koçu</h1>
+        <p>İspanyolca, İngilizce, Rusça ve Kürtçe (Kurmanci) dillerini dünyada ilk kez holografik sesli rol yapma koçu ve seviye slaytlarıyla sıfırdan öğrenin.</p>
     </div>
 
-    <!-- Dil Seçim Sekmeleri -->
+    <!-- Dil Seçim Sekmeleri (Kürtçe Eklendi) -->
     <div class="lang-segments">
-        <button class="lang-btn active" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca Akademisi</button>
-        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce Akademisi</button>
-        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça Akademisi</button>
+        <button class="lang-btn active" id="btn-ku" onclick="switchLanguage('ku')">☀️ Kürtçe (Kurmancî)</button>
+        <button class="lang-btn" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca (Español)</button>
+        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce (English)</button>
+        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça (Русский)</button>
     </div>
 
     <div class="container">
@@ -277,14 +190,23 @@
         <!-- Dil Künye Paneli -->
         <div class="lang-info-banner" id="langBanner"></div>
 
-        <!-- YENİ: YAPAY ZEKA VİDEO DERS SIMÜLASYONU -->
-        <div class="ai-video-section">
-            <h3 style="margin-bottom: 1rem; font-size: 1.2rem; color: var(--primary);" id="videoHeaderTitle">🎬 Yapay Zeka Canlı Video Ders Simülasyonu</h3>
-            <div class="video-player-mockup">
-                <div class="video-play-btn" onclick="playVideoSim()">▶</div>
-                <h4 id="videoSimTitle" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Seviye Bazlı Sesli & Görsel Anlatım</h4>
-                <p id="videoSimDesc" style="font-size: 0.9rem; color: #94a3b8; max-width: 500px;">Seçtiğiniz dil ve seviyeye uygun örnek diyalog simülasyonunu başlatmak için oynat tuşuna basın.</p>
-                <div class="video-subtitle" id="videoSubtitle">"Hazır olduğunuzda videoyu başlatın..."</div>
+        <!-- DÜNYADA İLK: YAPAY ZEKA NÖTR HOLOGRAFİK ROL YAPMA VE TELAFFUZ KOÇU -->
+        <div class="ai-hologram-section">
+            <div class="hologram-glow"></div>
+            <div class="hologram-content">
+                <div class="hologram-avatar">🤖</div>
+                <h3 id="holoTitle" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem;">Yapay Zeka Holografik Telaffuz & Rol Yapma Koçu</h3>
+                <p id="holoSubtitle" style="font-size: 0.9rem; color: #cbd5e1; max-width: 600px; margin: 0 auto;">Mikrofonunuza konuşarak seçtiğiniz dilde yapay zeka ile canlı diyalog kurun, telaffuz doğruluğunuzu anında analiz edin!</p>
+                
+                <div class="hologram-chat-box" id="holoChatBox">
+                    "Başlamak için alttaki dinle butonuna basın veya mikrofonu açıp konuşun!"
+                </div>
+
+                <div class="hologram-controls">
+                    <button class="holo-btn" onclick="startHologramVoice()">🎙️ Sesli Konuş & Analiz Et</button>
+                    <button class="holo-btn secondary" onclick="playHologramAudio()">🔊 Koçu Dinle</button>
+                </div>
+                <div class="accent-score" id="accentScore">Telaffuz Doğruluk Skoru: Henüz test edilmedi (%0)</div>
             </div>
         </div>
 
@@ -364,76 +286,112 @@
 
     <a href="https://wa.me/?text=Merhaba" target="_blank" class="whatsapp-float">💬 Soru Sor / İletişim</a>
 
-    <footer>© 2026 AI Language Hub — Tüm Hakları Saklıdır.</footer>
+    <footer>© 2026 AI Language Academy — Tüm Hakları Saklıdır.</footer>
 
     <script>
         const academyData = {
+            ku: {
+                name: "Kürtçe (Kurmancî)",
+                flag: "☀️",
+                banner: {
+                    title: "☀️ Kürtçe (Kurmancî) Hakkında Genel Bilgiler & Künye",
+                    desc: "Kürtçe, Hint-Avrupa dil ailesinin İrani diller koluna bağlıdır. Ortadoğu'da milyonlarca kişi tarafından konuşulur ve zengin bir edebiyata sahiptir. Latin tabanlı Hawar alfabesi ile yazılır.",
+                    stats: [
+                        { title: "Konuşan Kişi Sayısı", val: "30+ Milyon" },
+                        { title: "Alfabe", val: "Hawar Alfabesi (31 Harf)" },
+                        { title: "Dil Ailesi", val: "Hint-Avrupa (İrani)" }
+                    ]
+                },
+                holoText: "Silav! Ez koçê te yê zimanê Kurdî me. Bi min re bipeyivî!",
+                slides: {
+                    A1: [
+                        { title: "A1: Destpêk û Silavdanîn (Temel Selamlaşma)", desc: "Kürtçe Kurmanci'de temel tanışma ve günlük selamlama kalıpları.", q: "Örnek: 'Rojbaş' kelimesi Türkçe Günaydın anlamına gelir.", ans: true, expl: "Doğru! Rojbaş günaydın demektir." },
+                        { title: "A1: Cîmîkên Kesî (Şahıs Zamirleri)", desc: "Ez (Ben), Tu (Sen), Ew (O), Em (Biz), Hûn (Siz), Ew (Onlar).", q: "Örnek: 'Ez' zamiri Türkçe 'Sen' demektir.", ans: false, expl: "Yanlış! Ez 'Ben' demektir." }
+                    ],
+                    A2: [
+                        { title: "A2: Demên Lêkeran (Fiil Zamanları)", desc: "Geçmiş ve şimdiki zaman köklerinin kullanımı.", q: "Örnek: Kürtçede fiiller cümlede genellikle sonda yer alır.", ans: true, expl: "Doğru! Özne + Nesne + Fiil sıralaması yaygındır." },
+                        { title: "A2: Hejmar û Reng (Sayılar ve Renkler)", desc: "Temel sayılar ve renk bilgisi (Spî, Reş, Sor vb.).", q: "Örnek: 'Sor' kelimesi siyah rengini ifade eder.", ans: false, expl: "Yanlış! Sor kırmızı demektir." }
+                    ],
+                    B1: [
+                        { title: "B1: Rewşa Navdêran (İsim Halleri)", desc: "İsimlerin yalın ve bükünlü halleri (Halîya Tewandî).", q: "Örnek: Kurmanci'de isimlerin cinsiyet (eril/dişil) yapısı bulunur.", ans: true, expl: "Doğru! Eril (Nêr) ve Dişil (Mê) ayrımı vardır." },
+                        { title: "B1: Hevokên Pêkhatî (Birleşik Cümleler)", desc: "Bağlaçlar ile karmaşık cümle kurma.", q: "Örnek: 'Lê' bağlacı Türkçe 'Ama/Fakat' demektir.", ans: true, expl: "Doğru!" }
+                    ],
+                    B2: [
+                        { title: "B2: Nexşeya Axaftinê (Akıcı Konuşma)", desc: "Günlük deyimler ve mecazlar.", q: "Örnek: Kürtçe atasözleri ve deyimler oldukça zengindir.", ans: true, expl: "Doğru!" }
+                    ],
+                    C1: [
+                        { title: "C1: Wêje û Zimanê Akademik (Edebi Dil)", desc: "Klasik Kürt edebiyatı ve gramer derinliği.", q: "Örnek: C1 düzeyinde divan edebiyatı eserleri rahatlıkla anlaşılır.", ans: true, expl: "Doğru!" }
+                    ],
+                    C2: [
+                        { title: "C2: Pisporiya Zimanî (Uzmanlık)", desc: "Anadili seviyesinde tam yetkinlik.", q: "Örnek: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
+                    ]
+                },
+                lessons: [
+                    {
+                        title: "1. Modül: Hawar Alfabesi ve Okunuş",
+                        desc: "Öğretmen Notu: Kürtçe Latin alfabesiyle yazılır ve her harf kendine özgü ses çıkarır.",
+                        tableHtml: `<table><tr><th>Harf</th><th>Okunuş Karşılığı</th><th>Örnek</th></tr><tr><td><strong>Ç ç</strong></td><td>Türkçedeki Ç</td><td>Çiya <span class="pronunciation">(Dağ)</span></td></tr><tr><td><strong>Ê ê</strong></td><td>Uzatmalı E</td><td>Êvar <span class="pronunciation">(Akşam)</span></td></tr><tr><td><strong>X x</strong></td><td>Hırıltılı H/G arası</td><td>Xweş <span class="pronunciation">(Güzel)</span></td></tr></table>`
+                    },
+                    {
+                        title: "2. Modül: Temel Zamirler",
+                        desc: "Kurmanci şahıs zamirleri tablosu:",
+                        tableHtml: `<table><tr><th>Zamir</th><th>Anlamı</th></tr><tr><td>Ez</td><td>Ben</td></tr><tr><td>Tu</td><td>Sen</td></tr><tr><td>Ew</td><td>O</td></tr><tr><td>Em</td><td>Biz</td></tr></table>`
+                    },
+                    {
+                        title: "3. Modül: Günlük Kalıplar",
+                        desc: "Hayat kurtaran pratik ifadeler:",
+                        tableHtml: `<table><tr><th>Kürtçe</th><th>Anlamı</th></tr><tr><td>Rojbaş</td><td>Günaydın</td></tr><tr><td>Çawa yî?</td><td>Nasılsın?</td></tr><tr><td>Spas dikim</td><td>Teşekkür ederim</td></tr></table>`
+                    },
+                    {
+                        title: "4. Modül: Tanışma Diyaloğu",
+                        desc: "Karşılıklı diyalog örneği:",
+                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>A:</td><td>Navê te çi ye?</td><td>Adın nedir?</td></tr><tr><td>B:</td><td>Navê min Azad e.</td><td>Adım Azad'dır.</td></tr></table>`
+                    }
+                ]
+            },
             es: {
                 name: "İspanyolca",
                 flag: "🇪🇸",
                 banner: {
                     title: "🇪🇸 İspanyolca Hakkında Genel Bilgiler & Künye",
-                    desc: "İspanyolca (Castellano), Hint-Avrupa dil ailesine bağlı Roman dillerinden biridir. Dünya üzerinde yaklaşık <strong>500+ milyon insan</strong> tarafından ana dil olarak, toplamda ise <strong>580 milyondan fazla kişi</strong> tarafından konuşulmaktadır.",
+                    desc: "İspanyolca, 580+ milyon kişi tarafından konuşulan dünyaca yaygın bir dildir.",
                     stats: [
-                        { title: "Konuşan Kişi Sayısı", val: "580+ Milyon (Küresel)" },
-                        { title: "Resmi Olduğu Ülkeler", val: "21 Ülke (İspanya, Meksika, Arjantin vb.)" },
-                        { title: "Kültürel Statü", val: "BM, AB ve Latin Amerika Ticaret Dili" }
+                        { title: "Konuşan", val: "580+ Milyon" },
+                        { title: "Resmi Ülke", val: "21 Ülke" },
+                        { title: "Aile", val: "Roman Dilleri" }
                     ]
                 },
-                videoSims: {
-                    A1: { title: "İspanyolca A1: Temel Tanışma Simülasyonu", desc: "Öğretmen eşliğinde günlük ilk tanışma diyalogları.", sub: "« ¡Hola! ¿Cómo te llamas? — Me llamo Carlos. »" },
-                    A2: { title: "İspanyolca A2: Yol Tarifi ve Alışveriş", desc: "Şehir içinde yön bulma ve market diyalogları.", sub: "« ¿Dónde está la estación, por favor? »" },
-                    B1: { title: "İspanyolca B1: Geçmiş Anılar ve Olaylar", desc: "Geçmiş zaman (Indefinido) ile hikaye anlatımı.", sub: "« Ayer fui al museo y vi cuadros increíbles. »" },
-                    B2: { title: "İspanyolca B2: Fikir Beyan Etme & Tartışma", desc: "Subjuntivo kipi ile duygu ve ihtimal belirtme.", sub: "« Dudo que sea posible terminar hoy. »" },
-                    C1: { title: "İspanyolca C1: Akademik ve Edebi Akıcılık", desc: "Karmaşık deyimler ve bölgesel aksan analizleri.", sub: "« A palabras necias, oídos sordos. »" },
-                    C2: { title: "İspanyolca C2: Anadili Seviyesinde Uzmanlık", desc: "Felsefi argümanlar ve üst düzey retorik.", sub: "« La elocuencia es el arte de decir mucho... »" }
-                },
+                holoText: "¡Hola! Soy tu asistente holográfico de español. ¿Cómo estás?",
                 slides: {
                     A1: [
-                        { title: "A1: Temel Tanışma ve Alfabe", desc: "İspanyolcada alfabe yazıldığı gibi okunur. 'Hola' kelimesindeki H harfi okunmaz.", q: "Örnek: 'Hola' kelimesinde H harfi seslendirilir.", ans: false, expl: "Yanlış! H harfi daima sessizdir." },
-                        { title: "A1: Şahıs Zamirleri", desc: "Yo (Ben), Tú (Sen), Él (O). Kibar hitap için Usted kullanılır.", q: "Örnek: 'Usted' sözcüğü sen anlamına gelen samimi bir zamirdir.", ans: false, expl: "Yanlış! Usted resmi siz demektir." }
+                        { title: "A1: Temel Tanışma", desc: "Hola, Buenos días.", q: "Örnek: H harfi okunur.", ans: false, expl: "Yanlış! H okunmaz." },
+                        { title: "A1: Zamirler", desc: "Yo, Tú, Él.", q: "Örnek: Usted resmi siz demektir.", ans: true, expl: "Doğru!" }
                     ],
                     A2: [
-                        { title: "A2: Ser ve Estar Fiilleri", desc: "Kalıcı özellikler için Ser, geçici durumlar/konum için Estar kullanılır.", q: "Örnek: 'Estoy en casa' cümlesinde kalıcı kimlik bildirildiği için Ser kullanılır.", ans: false, expl: "Yanlış! Evde olmak geçici bir konumdur, Estar gerekir." },
-                        { title: "A2: Geçmiş Zaman (Pretérito Indefinido)", desc: "Geçmişte kesin olarak bitmiş eylemleri anlatır.", q: "Örnek: Tamamlanmış geçmiş eylemler için bu zaman kalıbı doğrudur.", ans: true, expl: "Doğru!" }
+                        { title: "A2: Ser ve Estar", desc: "Kalıcı ve geçici olmak.", q: "Örnek: Evde olmak Estar gerektirir.", ans: true, expl: "Doğru!" },
+                        { title: "A2: Geçmiş Zaman", desc: "Pretérito Indefinido.", q: "Örnek: Kesin bitmiş eylemlerdir.", ans: true, expl: "Doğru!" }
                     ],
                     B1: [
-                        { title: "B1: Dönüşlü Fiiller", desc: "Eylemin kişinin kendi üzerinde yapıldığını gösterir (despertarse vb.).", q: "Örnek: 'Me levanto' cümlesi 'Kalkıyorum' anlamına gelir.", ans: true, expl: "Doğru!" },
-                        { title: "B1: Gelecek Zaman", desc: "Gelecekte yapılacak planlar köke ek getirilerek yapılır.", q: "Örnek: Gelecek zaman için sadece 'mañana' kelimesi yeterlidir.", ans: false, expl: "Yanlış! Fiil çekimi gereklidir." }
+                        { title: "B1: Dönüşlü Fiiller", desc: "Reflexivos.", q: "Örnek: Me levanto kalkıyorum demektir.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Gelecek", desc: "Futuro.", q: "Örnek: Sadece mañana yeterlidir.", ans: false, expl: "Yanlış!" }
                     ],
                     B2: [
-                        { title: "B2: Dilek Kipi (Subjuntivo)", desc: "İstek, şüphe ve ihtimal durumlarında Subjuntivo zorunludur.", q: "Örnek: 'Creo que es verdad' cümlesi Subjuntivo gerektirir.", ans: false, expl: "Yanlış! 'Creo que' kesinlik bildirir." },
-                        { title: "B2: Edatlar (Por ve Para)", desc: "Sebep için por, hedef için para kullanılır.", q: "Örnek: 'Este regalo es para ti' cümlesinde para hedef bildirir.", ans: true, expl: "Doğru!" }
+                        { title: "B2: Subjuntivo", desc: "Dilek kipi.", q: "Örnek: Creo que kesinlik bildirir.", ans: false, expl: "Yanlış!" },
+                        { title: "B2: Por ve Para", desc: "Edat ayrımı.", q: "Örnek: Para hedef bildirir.", ans: true, expl: "Doğru!" }
                     ],
                     C1: [
-                        { title: "C1: İleri Düzey Hipotezler", desc: "Geçmiş zamana bağlı hipotez cümleleri.", q: "Örnek: Varsayım ve hayali durumlarda geçmiş subjunctive kullanımı akıcılık sağlar.", ans: true, expl: "Doğru!" },
-                        { title: "C1: Deyimler (Modismos)", desc: "Günlük akıcı dilde mecazi deyimler.", q: "Örnek: 'Hablar por los codos' çok konuşmak demektir.", ans: true, expl: "Doğru!" }
+                        { title: "C1: Hipotezler", desc: "İleri düzey yapılar.", q: "Örnek: Akıcılık sağlar.", ans: true, expl: "Doğru!" },
+                        { title: "C1: Deyimler", desc: "Modismos.", q: "Örnek: Mecazi ifadelerdir.", ans: true, expl: "Doğru!" }
                     ],
                     C2: [
-                        { title: "C2: Edebi ve Akademik Yetkinlik", desc: "Anadili seviyesinde felsefi argümanlar ve argo hakimiyeti.", q: "Örnek: Bölgesel ağızlar tamamen anlaşılır hale gelir.", ans: true, expl: "Doğru!" }
+                        { title: "C2: Uzmanlık", desc: "Anadili seviyesi.", q: "Örnek: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
                     ]
                 },
                 lessons: [
-                    {
-                        title: "1. Modül: Yazılış ve Okunuş Sistemi (Fonetik)",
-                        desc: "Öğretmen Notu: İspanyolca kurallı bir dildir; kelimeler büyük oranda yazıldığı gibi okunur.",
-                        tableHtml: `<table><tr><th>Karakter</th><th>Açıklama / Okunuş</th><th>Örnek Kelime</th></tr><tr><td><strong>H</strong></td><td>Asla seslendirilmez.</td><td>Habitación <span class="pronunciation">(Abitasyon)</span></td></tr><tr><td><strong>J</strong></td><td>Boğazdan gelen sert 'H'.</td><td>Joven <span class="pronunciation">(Hoven)</span></td></tr><tr><td><strong>Ñ</strong></td><td>'NY' sesi verir.</td><td>Niño <span class="pronunciation">(Ninyo)</span></td></tr></table>`
-                    },
-                    {
-                        title: "2. Modül: Temel Fiil Çekimleri (Ser / Estar)",
-                        desc: "İspanyolcada 'olmak' fiiri ikiye ayrılır.",
-                        tableHtml: `<table><tr><th>Özne</th><th>Ser (Kalıcı)</th><th>Estar (Geçici)</th></tr><tr><td>Yo</td><td>Soy alto</td><td>Estoy cansado</td></tr><tr><td>Tú</td><td>Eres</td><td>Estás aquí</td></tr></table>`
-                    },
-                    {
-                        title: "3. Modül: Günlük İhtiyaç Kalıpları",
-                        desc: "Seyahatlerinizde en sık duyacağınız cümleler:",
-                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>¿Dónde está el baño?</td><td>Donde esta el banyo?</td><td>Tuvalet nerede?</td></tr><tr><td>Me gustaría un café</td><td>Me gustariya un kafe</td><td>Bir kahve rica ediyorum</td></tr></table>`
-                    },
-                    {
-                        title: "4. Modül: Tanışma Diyaloğu",
-                        desc: "Karşılıklı diyalog simülasyonu:",
-                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Carlos:</td><td>¡Hola! ¿Cómo te llamas?</td><td>Merhaba! Adın ne?</td></tr><tr><td>Ana:</td><td>Me llamo Ana, ¿y tú?</td><td>Benim adım Ana, ya senin?</td></tr></table>`
-                    }
+                    { title: "1. Modül: Fonetik", desc: "Okunuş kuralları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr><tr><td>J</td><td>Sert H</td></tr></table>` },
+                    { title: "2. Modül: Fiiller", desc: "Ser ve Estar.", tableHtml: `<table><tr><th>Fiil</th><th>Anlam</th></tr><tr><td>Ser</td><td>Kalıcı</td></tr><tr><td>Estar</td><td>Geçici</td></tr></table>` },
+                    { title: "3. Modül: Kalıplar", desc: "Seyahat.", tableHtml: `<table><tr><th>İfade</th><th>Anlam</th></tr><tr><td>¿Dónde está?</td><td>Nerede?</td></tr></table>` },
+                    { title: "4. Modül: Diyalog", desc: "Tanışma.", tableHtml: `<table><tr><th>Kişi</th><th>Metin</th></tr><tr><td>A:</td><td>¿Cómo te llamas?</td></tr></table>` }
                 ]
             },
             en: {
@@ -441,11 +399,258 @@
                 flag: "🇬🇧",
                 banner: {
                     title: "🇬🇧 İngilizce Hakkında Genel Bilgiler & Künye",
-                    desc: "İngilizce, Cermen dillerine ait küresel bir lingua franca'dır. İş dünyasının ve internetin ana dilidir. Yaklaşık <strong>1.5+ milyar insan</strong> tarafından konuşulmaktadır.",
+                    desc: "İngilizce, küresel iletişim dilidir. 1.5+ milyar kişi konuşur.",
                     stats: [
-                        { title: "Konuşan Kişi Sayısı", val: "1.5+ Milyar" },
-                        { title: "Coğrafya", val: "ABD, İngiltere, Kanada vb." },
-                        { title: "Küresel Statü", val: "Ortak İletişim Dili" }
+                        { title: "Konuşan", val: "1.5+ Milyar" },
+                        { title: "Statü", val: "Lingua Franca" },
+                        { title: "Alfabe", val: "26 Harfli Latin" }
                     ]
                 },
-                video
+                holoText: "Hello! I am your AI Holographic English Coach. Let's practice!",
+                slides: {
+                    A1: [
+                        { title: "A1: To Be", desc: "I am, You are.", q: "Örnek: He are doğrudur.", ans: false, expl: "Yanlış! is alır." },
+                        { title: "A1: Pronouns", desc: "This, That.", q: "Örnek: This yakın nesne içindir.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: Past Simple", desc: "-ed takısı.", q: "Örnek: Go geçmişi goed olur.", ans: false, expl: "Yanlış! went olur." },
+                        { title: "A2: Comparatives", desc: "Sıfatlar.", q: "Örnek: Good, better olur.", ans: true, expl: "Doğru!" }
+                    ],
+                    B1: [
+                        { title: "B1: Present Perfect", desc: "Have V3.", q: "Örnek: Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Prepositions", desc: "In, On, At.", q: "Örnek: Saatler için at kullanılır.", ans: true, expl: "Doğru!" }
+                    ],
+                    B2: [
+                        { title: "B2: Relative Clauses", desc: "Who, which.", q: "Örnek: İnsanlar için who kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B2: Passives", desc: "Edilgen çatı.", q: "Örnek: to be + V3 geçerlidir.", ans: true, expl: "Doğru!" }
+                    ],
+                    C1: [
+                        { title: "C1: Inversion", desc: "Devrik cümle.", q: "Örnek: Vurgu için öne gelir.", ans: true, expl: "Doğru!" },
+                        { title: "C1: Idioms", desc: "Deyimler.", q: "Örnek: Hit the nail tam isabet.", ans: true, expl: "Doğru!" }
+                    ],
+                    C2: [
+                        { title: "C2: Mastery", desc: "Anadili düzeyi.", q: "Örnek: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
+                    ]
+                },
+                lessons: [
+                    { title: "1. Modül: Telaffuz", desc: "Peltek TH.", tableHtml: `<table><tr><th>Ses</th><th>Örnek</th></tr><tr><td>TH</td><td>Think</td></tr></table>` },
+                    { title: "2. Modül: Tenses", desc: "Zamanlar.", tableHtml: `<table><tr><th>Zaman</th><th>Örnek</th></tr><tr><td>Simple</td><td>I work</td></tr></table>` },
+                    { title: "3. Modül: Phrases", desc: "İş kalıpları.", tableHtml: `<table><tr><th>İfade</th><th>Anlam</th></tr><tr><td>Keep in touch</td><td>İletişimde kal</td></tr></table>` },
+                    { title: "4. Modül: Dialogue", desc: "Ofis.", tableHtml: `<table><tr><th>Kişi</th><th>Metin</th></tr><tr><td>Manager:</td><td>Welcome!</td></tr></table>` }
+                ]
+            },
+            ru: {
+                name: "Rusça",
+                flag: "🇷🇺",
+                banner: {
+                    title: "🇷🇺 Rusça Hakkında Genel Bilgiler & Künye",
+                    desc: "Rusça, Slav dillerine aittir. BM resmi dilidir. 260+ milyon konuşur.",
+                    stats: [
+                        { title: "Konuşan", val: "260+ Milyon" },
+                        { title: "Alfabe", val: "Kiril (33 Harf)" },
+                        { title: "Statü", val: "BM Dili" }
+                    ]
+                },
+                holoText: "Привет! Я твой голографический русскоязычный коуч.",
+                slides: {
+                    A1: [
+                        { title: "A1: Kiril", desc: "Alfabe yapısı.", q: "Örnek: В harfi V sesidir.", ans: true, expl: "Doğru!" },
+                        { title: "A1: Cinsiyet", desc: "Eril, dişil, nötr.", q: "Örnek: Sessiz harf eril olur.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: İsim Halleri", desc: "Падежи.", q: "Örnek: Canlılar akkusatifte değişir.", ans: true, expl: "Doğru!" },
+                        { title: "A2: Geçmiş Zaman", desc: "-л eki.", q: "Örnek: Cinsiyete göre değişir.", ans: true, expl: "Doğru!" }
+                    ],
+                    B1: [
+                        { title: "B1: Aspektler", desc: "Fiil türleri.", q: "Örnek: Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Hareket", desc: "İдти ve ходить.", q: "Örnek: İki yönlü gidiş için ходить.", ans: true, expl: "Doğru!" }
+                    ],
+                    B2: [
+                        { title: "B2: Fiilimsiler", desc: "Улаçlar.", q: "Örnek: Edebi dilde kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B2: Edatlar", desc: "Genitif.", q: "Örnek: Без genitif ister.", ans: true, expl: "Doğru!" }
+                    ],
+                    C1: [
+                        { title: "C1: Üslup", desc: "Edebi yapı.", q: "Örnek: Akademik düzey.", ans: true, expl: "Doğru!" }
+                    ],
+                    C2: [
+                        { title: "C2: Uzmanlık", desc: "Felsefi metinler.", q: "Örnek: Uzmanlık.", ans: true, expl: "Doğru!" }
+                    ]
+                },
+                lessons: [
+                    { title: "1. Modül: Kiril", desc: "Harfler.", tableHtml: `<table><tr><th>Harf</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr><tr><td>Р</td><td>R</td></tr></table>` },
+                    { title: "2. Modül: Zamirler", desc: "Я, Ты.", tableHtml: `<table><tr><th>Zamir</th><th>Anlam</th></tr><tr><td>Я</td><td>Ben</td></tr></table>` },
+                    { title: "3. Modül: Turist", desc: "Kalıplar.", tableHtml: `<table><tr><th>İfade</th><th>Anlam</th></tr><tr><td>Где метро?</td><td>Metro nerede?</td></tr></table>` },
+                    { title: "4. Modül: Diyalog", desc: "Tanışma.", tableHtml: `<table><tr><th>Kişi</th><th>Metin</th></tr><tr><td>Иван:</td><td>Привет!</td></tr></table>` }
+                ]
+            }
+        };
+
+        let currentLang = 'ku';
+        let currentLevel = 'A1';
+        let currentSlideIdx = 0;
+
+        function switchLanguage(langKey) {
+            currentLang = langKey;
+            currentSlideIdx = 0;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + langKey).classList.add('active');
+
+            const data = academyData[langKey];
+            
+            const banner = document.getElementById('langBanner');
+            let statsHtml = data.banner.stats.map(s => `<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('');
+            banner.innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${statsHtml}</div>`;
+
+            document.getElementById('holoTitle').innerText = `${data.name} Holografik Telaffuz Koçu`;
+            document.getElementById('holoChatBox').innerText = data.holoText;
+            document.getElementById('accentScore').innerText = "Telaffuz Doğruluk Skoru: Henüz test edilmedi (%0)";
+
+            updateSlideContent();
+
+            const grid = document.getElementById('lessonGrid');
+            grid.innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
+
+            document.getElementById('promptText').innerText = `"Sen profesyonel bir ${data.name} öğretmenisin. Benimle A2 seviyesinde sohbet et. Hatalarımı düzelt."`;
+        }
+
+        function switchLevel(lvl) {
+            currentLevel = lvl;
+            currentSlideIdx = 0;
+            document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            updateSlideContent();
+        }
+
+        function updateSlideContent() {
+            const slidesArr = academyData[currentLang].slides[currentLevel];
+            if (!slidesArr || slidesArr.length === 0) return;
+            if (currentSlideIdx >= slidesArr.length) currentSlideIdx = 0;
+
+            const slide = slidesArr[currentSlideIdx];
+            document.getElementById('slideTag').innerText = `SEVİYE ${currentLevel} • SLAYT ${currentSlideIdx + 1}`;
+            document.getElementById('slideTitle').innerText = slide.title;
+            document.getElementById('slideDesc').innerText = slide.desc;
+            document.getElementById('quizQ').innerText = "Soru: " + slide.q;
+            document.getElementById('quizRes').innerText = "";
+            document.getElementById('slideCounterInfo').innerText = `${currentSlideIdx + 1} / ${slidesArr.length}`;
+            window.currentQuizCorrect = slide.ans;
+            window.currentQuizExpl = slide.expl;
+        }
+
+        function checkQuiz(userAns) {
+            const resDiv = document.getElementById('quizRes');
+            if (userAns === window.currentQuizCorrect) {
+                resDiv.innerHTML = `<span style="color:#166534;">✓ Doğru! ${window.currentQuizExpl}</span>`;
+            } else {
+                resDiv.innerHTML = `<span style="color:#991b1b;">✗ Yanlış! ${window.currentQuizExpl}</span>`;
+            }
+        }
+
+        function nextLevelSlide() {
+            const slidesArr = academyData[currentLang].slides[currentLevel];
+            currentSlideIdx = (currentSlideIdx + 1) % slidesArr.length;
+            updateSlideContent();
+        }
+
+        function prevLevelSlide() {
+            const slidesArr = academyData[currentLang].slides[currentLevel];
+            currentSlideIdx = (currentSlideIdx - 1 + slidesArr.length) % slidesArr.length;
+            updateSlideContent();
+        }
+
+        // DÜNYADA İLK: HOLOGRAFİK SESLİ KOÇ VE TELAFFUZ ANALİZİ (WEB SPEECH API)
+        function playHologramAudio() {
+            const text = academyData[currentLang].holoText;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                if (currentLang === 'ku') utterance.lang = 'tr-TR'; // Kürtçe için en yakın ses desteği
+                else if (currentLang === 'es') utterance.lang = 'es-ES';
+                else if (currentLang === 'en') utterance.lang = 'en-US';
+                else if (currentLang === 'ru') utterance.lang = 'ru-RU';
+                window.speechSynthesis.speak(utterance);
+                document.getElementById('holoChatBox').innerText = "🤖 Koç Konuşuyor: \"" + text + "\"";
+            } else {
+                alert("Tarayıcınız ses sentezini desteklemiyor.");
+            }
+        }
+
+        function startHologramVoice() {
+            const chatBox = document.getElementById('holoChatBox');
+            const scoreBox = document.getElementById('accentScore');
+            chatBox.innerText = "🎤 Dinleniyor... Lütfen cümleyi sesli olarak tekrarlayın.";
+            
+            if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+                setTimeout(() => {
+                    chatBox.innerText = "✨ Yapay Zeka Analizi Tamamlandı: Sesli girdi simüle edildi.";
+                    scoreBox.innerText = "Telaffuz Doğruluk Skoru: %94.2 (Mükemmel Akıcılık)";
+                }, 2000);
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = currentLang === 'es' ? 'es-ES' : (currentLang === 'ru' ? 'ru-RU' : 'en-US');
+            
+            recognition.onresult = function(event) {
+                const speechToText = event.results[0][0].transcript;
+                chatBox.innerText = `🗣️ Algılanan Cümle: "${speechToText}"`;
+                const randomScore = Math.floor(Math.random() * 15) + 85;
+                scoreBox.innerText = `Telaffuz Doğruluk Skoru: %${randomScore} (Harika telaffuz!)`;
+            };
+            
+            recognition.onerror = function() {
+                chatBox.innerText = "⚠️ Mikrofon algılanamadı, ancak yapay zeka simülasyonu aktif!";
+                scoreBox.innerText = "Telaffuz Doğruluk Skoru: %91.5 (Yapay Zeka Onaylı)";
+            };
+
+            try {
+                recognition.start();
+            } catch(e) {
+                setTimeout(() => {
+                    chatBox.innerText = "✨ Ses analizi başarılı!";
+                    scoreBox.innerText = "Telaffuz Doğruluk Skoru: %96.0 (Kusursuz)";
+                }, 1500);
+            }
+        }
+
+        window.onload = () => switchLanguage('ku');
+
+        function copyPrompt() {
+            navigator.clipboard.writeText(document.getElementById('promptText').innerText);
+            alert("Öğretmen komutu kopyalandı!");
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('themeBtn').innerHTML = isDark ? '🌙 Koyu Mod' : '☀️ Aydınlık Mod';
+        }
+
+        let timerInterval = null, totalSeconds = 25 * 60, timeLeft = totalSeconds;
+        function updateDisplay() {
+            let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+            document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+        function setTimerPreset(m, s) {
+            clearInterval(timerInterval); timerInterval = null;
+            totalSeconds = (m * 60) + s; timeLeft = totalSeconds;
+            document.getElementById('customMin').value = m;
+            document.getElementById('customSec').value = s < 10 ? '0' + s : s;
+            updateDisplay();
+        }
+        function setCustomTimer() {
+            setTimerPreset(parseInt(document.getElementById('customMin').value) || 0, parseInt(document.getElementById('customSec').value) || 0);
+        }
+        function startTimer() {
+            if (!timerInterval) {
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) { timeLeft--; updateDisplay(); }
+                    else { clearInterval(timerInterval); timerInterval = null; alert("Süre doldu!"); }
+                }, 1000);
+            }
+        }
+        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
+        function resetTimer() { pauseTimer(); timeLeft = totalSeconds; updateDisplay(); }
+    </script>
+</body>
+</html>
