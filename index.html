@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Profesyonel Dil ve Sınav Portalı</title>
+    <title>AI Language Academy | Canlı Gemini AI Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,681 +30,83 @@
             --window-bar-bg: #1e293b;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .window-bar {
-            background: var(--window-bar-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .dots {
-            display: flex;
-            gap: 7px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
+        .window-bar { background: var(--window-bar-bg); border-bottom: 1px solid var(--border-color); padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .dots { display: flex; gap: 7px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot-red { background-color: #ff5f56; }
         .dot-yellow { background-color: #ffbd2e; }
         .dot-green { background-color: #27c93f; }
-
-        .window-title {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            font-weight: 500;
-        }
-
-        .theme-toggle-btn {
-            background: var(--accent-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        header {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .logo-text span {
-            color: var(--primary);
-        }
-
-        .hero {
-            max-width: 900px;
-            margin: 2rem auto 1.5rem;
-            text-align: center;
-            padding: 0 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-sub);
-        }
-
-        .lang-segments {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 1.5rem auto;
-        }
-
-        .lang-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto 4rem;
-            padding: 0 1.5rem;
-        }
-
-        .lang-info-banner {
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 1rem;
-        }
-
-        /* TELAFFUZ KOÇU */
-        .ai-hologram-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border: 2px solid #3b82f6;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            color: white;
-            text-align: center;
-        }
-
-        .hologram-target-box {
-            background: rgba(37, 99, 235, 0.25);
-            border: 1px solid #3b82f6;
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #60a5fa;
-        }
-
-        .hologram-user-speech {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: #e2e8f0;
-        }
-
-        .holo-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 0.7rem 1.2rem;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 0 4px;
-        }
-
-        .holo-btn.secondary {
-            background: rgba(255,255,255,0.15);
-        }
-
-        .holo-btn.change-phrase {
-            background: #059669;
-            color: white;
-        }
-
-        /* CANLI SOHBET VE GRAMER */
-        .daily-life-chat-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .chat-level-bar {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-
-        .chat-lvl-btn {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.4rem 0.9rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .chat-lvl-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .chat-box {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.2rem;
-            min-height: 250px;
-            max-height: 380px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-
-        .msg {
-            padding: 0.8rem 1.1rem;
-            border-radius: 12px;
-            max-width: 85%;
-            font-size: 0.95rem;
-        }
-
-        .msg.ai {
-            background: var(--accent-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            align-self: flex-start;
-        }
-
-        .msg.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-        }
-
-        .msg.grammar-alert {
-            background: #fff1f2;
-            border: 1px solid #fecdd3;
-            color: #9f1239;
-            align-self: flex-start;
-            font-size: 0.88rem;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .chat-input-wrapper {
-            display: flex;
-            gap: 8px;
-        }
-
-        .chat-input-wrapper input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: var(--bg-body);
-            color: var(--text-main);
-            outline: none;
-        }
-
-        .chat-input-wrapper button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.4rem;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* SLAYT VE MİNİ TESTLER */
-        .interactive-slide-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .level-selector-bar {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .level-tab {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .level-tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .slide-stage {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            min-height: 220px;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-box {
-            background: var(--card-bg);
-            border: 1px dashed var(--primary);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .quiz-btn {
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-            margin-right: 6px;
-        }
-
-        .lesson-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .lesson-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .lesson-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .content-box table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-
-        .content-box th,
-        .content-box td {
-            padding: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            text-align: left;
-        }
-
-        /* ÇALIŞMA SAYACI */
-        .timer-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .timer-preset-btns {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-
-        .preset-btn {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .custom-timer-input {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .custom-timer-input input {
-            width: 75px;
-            padding: 0.4rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            text-align: center;
-            font-weight: 700;
-            background: var(--bg-body);
-            color: var(--text-main);
-        }
-
-        .custom-timer-input button {
-            background: var(--accent-bg);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .timer-display {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            font-family: monospace;
-            margin: 0.5rem 0 1rem 0;
-        }
-
-        /* GELİŞMİŞ TEST MODÜLÜ */
-        .full-quiz-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .full-quiz-section h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: .5rem;
-        }
-
-        .full-quiz-controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin: 1.2rem 0;
-        }
-
-        .full-quiz-controls label {
-            display: block;
-            font-size: .85rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .full-quiz-controls select,
-        .full-quiz-controls input {
-            width: 100%;
-            padding: .75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 9px;
-            background: var(--bg-body);
-            color: var(--text-main);
-        }
-
-        .full-quiz-btn {
-            border: 0;
-            border-radius: 9px;
-            padding: .75rem 1rem;
-            background: var(--primary);
-            color: white;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .full-quiz-btn:disabled {
-            opacity: .5;
-            cursor: not-allowed;
-        }
-
-        .full-quiz-secondary {
-            border: 1px solid var(--border-color);
-            border-radius: 9px;
-            padding: .65rem .9rem;
-            background: var(--bg-body);
-            color: var(--text-main);
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        .full-quiz-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 10px;
-            margin: 1rem 0 .5rem;
-            font-size: .9rem;
-            color: var(--text-sub);
-        }
-
-        .full-quiz-progress {
-            height: 8px;
-            background: var(--border-color);
-            border-radius: 99px;
-            overflow: hidden;
-            margin-bottom: 1.3rem;
-        }
-
-        .full-quiz-progress > div {
-            height: 100%;
-            width: 0;
-            background: var(--primary);
-            transition: width .2s;
-        }
-
-        .full-quiz-question {
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin: 1rem 0;
-        }
-
-        .full-quiz-options {
-            display: grid;
-            gap: 10px;
-        }
-
-        .full-quiz-option {
-            width: 100%;
-            padding: .9rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background: var(--bg-body);
-            color: var(--text-main);
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .full-quiz-option:hover:not(:disabled) {
-            border-color: var(--primary);
-        }
-
-        .full-quiz-option.correct {
-            background: #dcfce7;
-            border-color: #16a34a;
-            color: #14532d;
-        }
-
-        .full-quiz-option.incorrect {
-            background: #ffe4e6;
-            border-color: #e11d48;
-            color: #9f1239;
-        }
-
-        .full-quiz-feedback {
-            background: var(--accent-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .full-quiz-result-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin: 1.3rem 0;
-        }
-
-        .full-quiz-result-card {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .full-quiz-result-card strong {
-            display: block;
-            font-size: 1.7rem;
-            color: var(--primary);
-        }
-
-        .full-quiz-history {
-            overflow-x: auto;
-            margin-top: 1rem;
-        }
-
-        .full-quiz-history table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: .85rem;
-        }
-
-        .full-quiz-history th,
-        .full-quiz-history td {
-            border-bottom: 1px solid var(--border-color);
-            padding: .65rem;
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .full-quiz-history th {
-            color: var(--text-sub);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-sub);
-            font-size: 0.85rem;
-        }
-
-        [hidden] {
-            display: none !important;
-        }
+        .window-title { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
+
+        .theme-toggle-btn { background: var(--accent-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+
+        header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem; }
+        .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
+        .logo-text span { color: var(--primary); }
+
+        .hero { max-width: 900px; margin: 2rem auto 1.5rem; text-align: center; padding: 0 1.5rem; }
+        .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1rem; color: var(--text-sub); }
+
+        .lang-segments { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 1.5rem auto; }
+        .lang-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .container { max-width: 1100px; margin: 0 auto 4rem; padding: 0 1.5rem; }
+
+        .api-key-box { background: var(--card-bg); border: 2px dashed var(--primary); border-radius: 16px; padding: 1.2rem; margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+        .api-key-box input { flex: 1; min-width: 250px; padding: 0.7rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-body); color: var(--text-main); font-family: monospace; }
+        .api-key-box button { background: var(--primary); color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+        /* SOHBET MODÜLÜ */
+        .daily-life-chat-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
+        .chat-box { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem; min-height: 280px; max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; margin-bottom: 1rem; }
+        .msg { padding: 0.8rem 1.1rem; border-radius: 12px; max-width: 85%; font-size: 0.95rem; }
+        .msg.ai { background: var(--accent-bg); color: var(--text-main); border: 1px solid var(--border-color); align-self: flex-start; }
+        .msg.user { background: var(--primary); color: white; align-self: flex-end; }
+        .msg.grammar-alert { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; align-self: flex-start; font-size: 0.88rem; width: 100%; max-width: 100%; }
+
+        .chat-input-wrapper { display: flex; gap: 8px; }
+        .chat-input-wrapper input { flex: 1; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-body); color: var(--text-main); outline: none; }
+        .chat-input-wrapper button { background: var(--primary); color: white; border: none; padding: 0.8rem 1.4rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+        /* GELİŞMİŞ SINAV MODÜLÜ */
+        .full-quiz-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
+        .full-quiz-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 1.2rem 0; }
+        .full-quiz-controls label { display: block; font-size: .85rem; font-weight: 700; margin-bottom: 6px; }
+        .full-quiz-controls select, .full-quiz-controls input { width: 100%; padding: .75rem; border: 1px solid var(--border-color); border-radius: 99px; background: var(--bg-body); color: var(--text-main); }
+        .full-quiz-btn { border: 0; border-radius: 9px; padding: .75rem 1rem; background: var(--primary); color: white; font-weight: 800; cursor: pointer; }
+        .full-quiz-meta { display: flex; justify-content: space-between; margin: 1rem 0 .5rem; font-size: .9rem; color: var(--text-sub); }
+        .full-quiz-progress { height: 8px; background: var(--border-color); border-radius: 99px; overflow: hidden; margin-bottom: 1.3rem; }
+        .full-quiz-progress > div { height: 100%; width: 0; background: var(--primary); transition: width .2s; }
+        .full-quiz-question { font-size: 1.25rem; font-weight: 800; margin: 1rem 0; }
+        .full-quiz-options { display: grid; gap: 10px; }
+        .full-quiz-option { width: 100%; padding: .9rem 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg-body); color: var(--text-main); text-align: left; cursor: pointer; }
+        .full-quiz-option.correct { background: #dcfce7; border-color: #16a34a; color: #14532d; }
+        .full-quiz-option.incorrect { background: #ffe4e6; border-color: #e11d48; color: #9f1239; }
+
+        /* SAYAÇ MODÜLÜ */
+        .timer-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; }
+        .custom-timer-input { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 1rem; }
+        .custom-timer-input input { width: 75px; padding: 0.4rem; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-weight: 700; background: var(--bg-body); color: var(--text-main); }
+        .timer-display { font-size: 3rem; font-weight: 800; color: var(--primary); font-family: monospace; margin: 0.5rem 0 1rem 0; }
+        .holo-btn { background: #2563eb; color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0 4px; }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem; }
+        [hidden] { display: none !important; }
     </style>
 </head>
 <body>
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Profesyonel Dil Portalı</div>
+        <div class="window-title">AI Language Academy — Gemini AI Entegreli Portalı</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -712,86 +114,65 @@
         <div class="nav-container">
             <a href="#" class="logo-wrapper">
                 <div class="logo-icon">AI</div>
-                <div class="logo-text">AI <span>Language Hub</span></div>
+                <div class="logo-text">AI <span>Language Academy</span></div>
             </a>
             <div style="font-size:0.8rem; font-weight:700; color:var(--primary)">Kürtçe • İspanyolca • İngilizce • Rusça</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Profesyonel AI Dil Akademisi & Sınav Merkezi</h1>
-        <p>Bağlamsal sohbet motoru, telaffuz koçu, özelleştirilebilir sayaç ve istediğiniz sayıda soru üreten gelişmiş test modülü.</p>
+        <h1>Gerçek AI Destekli Dil & Sınav Portalı</h1>
+        <p>Gemini API ile asla tekrarlamayan akıllı diyaloglar ve istediğiniz soru sayısında dinamik sınav üretimi.</p>
     </div>
 
     <div class="lang-segments">
-        <button class="lang-btn active" id="btn-ku" onclick="handleLanguageSwitch('ku')">☀️ Kürtçe (Kurmancî)</button>
-        <button class="lang-btn" id="btn-es" onclick="handleLanguageSwitch('es')">🇪🇸 İspanyolca (Español)</button>
-        <button class="lang-btn" id="btn-en" onclick="handleLanguageSwitch('en')">🇬🇧 İngilizce (English)</button>
-        <button class="lang-btn" id="btn-ru" onclick="handleLanguageSwitch('ru')">🇷🇺 Rusça (Русский)</button>
+        <button class="lang-btn active" id="btn-ku" onclick="switchLanguage('ku')">☀️ Kürtçe (Kurmancî)</button>
+        <button class="lang-btn" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca</button>
+        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce</button>
+        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça</button>
     </div>
 
     <div class="container">
 
-        <div class="lang-info-banner" id="langBanner"></div>
-
-        <!-- TELAFFUZ KOÇU -->
-        <div class="ai-hologram-section">
-            <h3 id="holoTitle" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Yapay Zeka Telaffuz & Konuşma Koçu</h3>
-            <p style="font-size: 0.85rem; color: #cbd5e1;">Cümleyi okuyun, 'Başka Cümle Getir' ile yeni pratik cümlelerine geçin.</p>
-
-            <div class="hologram-target-box" id="targetPhraseBox">
-                🎯 Hedef Cümle Yükleniyor...
-            </div>
-
-            <div class="hologram-user-speech" id="userSpeechBox">
-                🎙️ Konuşma Durumu: Mikrofona basıp okumaya başlayın...
-            </div>
-
+        <!-- GEMINI API KEY ALANI -->
+        <div class="api-key-box">
             <div>
-                <button class="holo-btn" onclick="startHologramVoice()">🎙️ Cümleyi Okuyorum</button>
-                <button class="holo-btn secondary" onclick="playNaturalVoice()">🔊 Doğal Sesle Dinle</button>
-                <button class="holo-btn change-phrase" onclick="changeTargetPhrase()">🎲 Başka Cümle Getir</button>
+                <strong>🔑 Gemini API Anahtarı:</strong>
+                <p style="font-size: 0.8rem; color: var(--text-sub);">Canlı ve sınırsız yapay zeka yanıtları için API key giriniz.</p>
             </div>
-            <div id="accentScore" style="margin-top:0.8rem; font-weight:700; font-size:0.85rem; color:#93c5fd;">Skor: %0</div>
+            <input type="password" id="apiKeyInput" placeholder="AIzaSy..." value="">
+            <button onclick="saveApiKey()">Kaydet & Etkinleştir</button>
         </div>
 
-        <!-- CANLI SOHBET VE GRAMER DENETÇİSİ -->
+        <!-- SOHBET MODÜLÜ -->
         <div class="daily-life-chat-section">
-            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Bağlamsal AI Sohbet & Otomatik Gramer Tarayıcısı</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Yazdığınız mesaja göre yapay zeka sıfır tekrarla doğal yanıtlar üretir ve hatalarınızı anında uyarır.</p>
-
-            <div class="chat-level-bar">
-                <button class="chat-lvl-btn active" onclick="setChatLevel('A1')">A1 Günlük Tanışma</button>
-                <button class="chat-lvl-btn" onclick="setChatLevel('A2')">A2 Sipariş & Alışveriş</button>
-                <button class="chat-lvl-btn" onclick="setChatLevel('B1')">B1 Yolculuk & Anılar</button>
-                <button class="chat-lvl-btn" onclick="setChatLevel('B2')">B2 Fikir Tartışması</button>
-                <button class="chat-lvl-btn" onclick="setChatLevel('C1')">C1 İleri Sohbet</button>
-            </div>
+            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Canlı Gemini AI Sohbet Koçu</h3>
+            <p style="font-size: 0.88rem; color: var(--text-sub); margin-bottom: 1rem;">Her mesajınıza özel benzersiz yanıtlar üretir, asla tekrara düşmez.</p>
 
             <div class="chat-box" id="chatBox">
-                <div class="msg ai" id="chatInitMsg">🤖 AI Koç: Sohbet başlatılıyor...</div>
+                <div class="msg ai">🤖 AI Koç: Silav! Ez amade me. Em dikarin bi Kurdî biaxivin. Tu çawa yî?</div>
             </div>
 
             <div class="chat-input-wrapper">
                 <input type="text" id="chatInput" placeholder="Cevabınızı buraya yazın..." onkeydown="if(event.key==='Enter') sendChatMessage()">
-                <button onclick="sendChatMessage()">Cevap Ver 💬</button>
+                <button onclick="sendChatMessage()">Gönder 💬</button>
             </div>
         </div>
 
-        <!-- GELİŞMİŞ TEST MODÜLÜ (DİNAMİK SORU SAYISI DÜZELTİLDİ) -->
+        <!-- GELİŞMİŞ SINAV MODÜLÜ -->
         <div class="full-quiz-section">
-            <h3>📝 Gelişmiş Bilgi ve Sınav Modülü</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">İstediğiniz soru sayısını girerek seviyenize ve dilinize göre kapsamlı sınav olun.</p>
+            <h3>📝 Yapay Zeka Tarafından Üretilen Dinamik Sınav</h3>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Soru sayısı kutusuna kaç yazarsanız yapay zeka anında o kadar özgün soru üretir.</p>
 
             <div id="quizSetupView">
                 <div class="full-quiz-controls">
                     <div>
-                        <label>Hedef Dil</label>
+                        <label>Sınav Dili</label>
                         <select id="quizLangSelect">
-                            <option value="ku">Kürtçe (Kurmancî)</option>
-                            <option value="es">İspanyolca</option>
-                            <option value="en">İngilizce</option>
-                            <option value="ru">Rusça</option>
+                            <option value="Kürtçe Kurmancî">Kürtçe (Kurmancî)</option>
+                            <option value="İspanyolca">İspanyolca</option>
+                            <option value="İngilizce">İngilizce</option>
+                            <option value="Rusça">Rusça</option>
                         </select>
                     </div>
                     <div>
@@ -800,116 +181,44 @@
                             <option value="A1">A1 Başlangıç</option>
                             <option value="A2">A2 Temel</option>
                             <option value="B1">B1 Orta</option>
+                            <option value="B2">B2 İleri</option>
                         </select>
                     </div>
                     <div>
                         <label>Soru Sayısı (Örn: 20)</label>
-                        <input type="number" id="quizCountInput" value="5" min="1" max="50">
+                        <input type="number" id="quizCountInput" value="20" min="1" max="50">
                     </div>
                 </div>
-                <button class="full-quiz-btn" onclick="startFullQuiz()">Sınavı Başlat 🚀</button>
+                <button class="full-quiz-btn" onclick="generateAIQuiz()">AI Sınavı Oluştur 🚀</button>
             </div>
 
             <div id="quizActiveView" hidden>
                 <div class="full-quiz-meta">
-                    <span id="quizProgressText">Soru 1 / 5</span>
+                    <span id="quizProgressText">Soru 1 / 20</span>
                     <span id="quizScoreBadge">Skor: 0</span>
                 </div>
                 <div class="full-quiz-progress"><div id="quizProgressBar"></div></div>
-                
-                <div class="full-quiz-question" id="quizQuestionText">Soru yükleniyor...</div>
+                <div class="full-quiz-question" id="quizQuestionText">Soru Yükleniyor...</div>
                 <div class="full-quiz-options" id="quizOptionsContainer"></div>
-                
-                <div class="full-quiz-feedback" id="quizFeedbackBox" hidden>
-                    <div id="quizExplanationText" style="font-weight: 600; margin-bottom: 0.8rem;"></div>
-                    <button class="full-quiz-btn" id="quizNextBtn" onclick="nextFullQuizQuestion()">Sonraki Soru ➔</button>
-                </div>
-            </div>
-
-            <div id="quizResultView" hidden>
-                <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">🎉 Sınav Tamamlandı!</h4>
-                <div class="full-quiz-result-grid">
-                    <div class="full-quiz-result-card"><strong id="resCorrectCount">0</strong> Doğru</div>
-                    <div class="full-quiz-result-card"><strong id="resIncorrectCount">0</strong> Yanlış</div>
-                    <div class="full-quiz-result-card"><strong id="resSuccessRate">%0</strong> Başarı</div>
-                </div>
-                <button class="full-quiz-btn" onclick="resetFullQuizSetup()">Yeni Sınav Başlat</button>
-
-                <div class="full-quiz-history" style="margin-top: 1.5rem;">
-                    <h5 style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-sub);">Önceki Sınav Geçmişi</h5>
-                    <table>
-                        <thead>
-                            <tr><th>Tarih</th><th>Dil</th><th>Seviye</th><th>Doğru/Yanlış</th><th>Oran</th></tr>
-                        </thead>
-                        <tbody id="quizHistoryBody">
-                            <tr><td colspan="5" style="text-align:center; color:var(--text-sub)">Henüz sınav kaydı yok.</td></tr>
-                        </tbody>
-                    </table>
+                <div id="quizFeedbackBox" style="margin-top: 1rem; font-weight: 700;" hidden>
+                    <p id="quizExplanationText"></p>
+                    <button class="full-quiz-btn" style="margin-top: 0.5rem;" onclick="nextQuizQuestion()">Sonraki Soru ➔</button>
                 </div>
             </div>
         </div>
 
-        <!-- SLAYT VE MİNİ TESTLER -->
-        <div class="interactive-slide-section">
-            <h3 style="margin-bottom: 1rem; color: var(--primary);">🎯 Seviye Slaytları (A1 - C2)</h3>
-            
-            <div class="level-selector-bar">
-                <button class="level-tab active" onclick="switchLevel('A1')">A1</button>
-                <button class="level-tab" onclick="switchLevel('A2')">A2</button>
-                <button class="level-tab" onclick="switchLevel('B1')">B1</button>
-                <button class="level-tab" onclick="switchLevel('B2')">B2</button>
-                <button class="level-tab" onclick="switchLevel('C1')">C1</button>
-                <button class="level-tab" onclick="switchLevel('C2')">C2</button>
-            </div>
-
-            <div class="slide-stage">
-                <div style="font-size:0.75rem; font-weight:800; color:var(--primary)" id="slideTag">SEVİYE A1</div>
-                <div style="font-size:1.2rem; font-weight:800; margin:0.4rem 0" id="slideTitle">Slayt Başlığı</div>
-                <p style="font-size:0.92rem; color:var(--text-sub)" id="slideDesc">Slayt içeriği...</p>
-
-                <div class="quiz-box">
-                    <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.5rem" id="quizQ">Soru yükleniyor...</div>
-                    <div>
-                        <button class="quiz-btn" style="background:#dcfce7; color:#166534" onclick="checkQuiz(true)">✓ Doğru</button>
-                        <button class="quiz-btn" style="background:#fee2e2; color:#991b1b" onclick="checkQuiz(false)">✗ Yanlış</button>
-                    </div>
-                    <div id="quizRes" style="margin-top:0.4rem; font-weight:700; font-size:0.85rem"></div>
-                </div>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center">
-                <button class="holo-btn" onclick="prevLevelSlide()">◄ Önceki Kart</button>
-                <span id="slideCounterInfo" style="font-weight:700; font-size:0.85rem; color:var(--text-sub)">1 / 2</span>
-                <button class="holo-btn" onclick="nextLevelSlide()">Sonraki Kart ►</button>
-            </div>
-        </div>
-
-        <div class="section-title" style="font-size:1.3rem; font-weight:800; margin-bottom:1rem">📖 Derinlemesine Öğretmen Gramer Modülleri</div>
-        <div class="lesson-grid" id="lessonGrid"></div>
-
-        <!-- ÇALIŞMA SAYACI -->
+        <!-- İSTEĞE BAĞLI SAYAÇ MODÜLÜ -->
         <div class="timer-box">
-            <h3>⏱️ Özelleştirilebilir Çalışma Sayacı</h3>
-            <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.8rem;">İstediğiniz süreyi seçebilir veya kendi dakikanızı yazıp ayarlayabilirsiniz.</p>
-            
-            <div class="timer-preset-btns">
-                <button class="preset-btn" onclick="setTimerPreset(15, 0)">15 Dk</button>
-                <button class="preset-btn" onclick="setTimerPreset(25, 0)">25 Dk (Pomodoro)</button>
-                <button class="preset-btn" onclick="setTimerPreset(45, 0)">45 Dk</button>
-            </div>
-
+            <h3>⏱️ İsteğe Bağlı Odaklanma Sayacı</h3>
             <div class="custom-timer-input">
-                <input type="number" id="customMin" value="25" min="0" max="180"><span>:</span>
+                <input type="number" id="customMin" value="25" min="0"><span>:</span>
                 <input type="number" id="customSec" value="00" min="0" max="59">
-                <button onclick="setCustomTimer()">Ayarla ⚙️</button>
+                <button class="holo-btn" onclick="setCustomTimer()">Ayarla ⚙️</button>
             </div>
-
             <div class="timer-display" id="timer">25:00</div>
-
             <div>
                 <button class="holo-btn" onclick="startTimer()">Başlat ▶</button>
-                <button class="holo-btn secondary" onclick="pauseTimer()">Durdur ⏸</button>
-                <button class="holo-btn secondary" style="background:#64748b; color:white;" onclick="resetTimer()">Sıfırla 🔄</button>
+                <button class="holo-btn" style="background:#64748b" onclick="pauseTimer()">Durdur ⏸</button>
             </div>
         </div>
 
@@ -918,292 +227,122 @@
     <footer>© 2026 AI Language Academy — Tüm Hakları Saklıdır.</footer>
 
     <script>
-        const academyData = {
-            ku: {
-                name: "Kürtçe (Kurmancî)",
-                banner: { title: "☀️ Kürtçe (Kurmancî) Künyesi", desc: "Hawar Latin alfabesi kullanılır.", stats: [{ title: "Konuşan", val: "30+ Milyon" }, { title: "Alfabe", val: "Hawar Latin" }] },
-                phrases: [
-                    "Silav! Ez amade me ku bi te re bipeyivim.",
-                    "Rojbaş! Tu îro çawa yî?",
-                    "Navê min Azad e, ez ji Amedê me.",
-                    "Kêfxweş bûm ku min te nas kir.",
-                    "Tu dikarî ji min re alîkar bî?",
-                    "Ez dixwazim zimanê Kurdî hîn bibim."
-                ],
-                chatInit: "🤖 AI Koç: Silav! Rojbaş. Navê te çi ye û tu çawa yî?",
-                contextResponses: {
-                    greeting: ["Silav! Gelek spas, ez baş im. Tu îro çi dikî?", "Rojbaş! Ez kêfxweş im ku bi te re biaxivim."],
-                    name: ["Navê te pir xweş e! Ez Koçê zimanî me. Tu ji kîjan bajarelî yî?", "Kêfxweş bûm! Ez alîkarê te me."],
-                    work: ["Karakter û karê te pir balkêş e. Tu çend sal in di vî karî de yî?"],
-                    default: ["Gelek baş e! Ez fêm dikim. Tu dikarî bêtir behsa vê yekê bikî?", "Ev mijarek pir balkêş e."]
-                },
-                quizPool: [
-                    { q: "'Rojbaş' kelimesinin Türkçe anlamı nedir?", options: ["Günaydın", "İyi geceler", "Nasılsın", "Güle güle"], answer: 0, expl: "Rojbaş, Kurmancî'de Günaydın demektir." },
-                    { q: "'Ez' şahıs zamiri ne anlama gelir?", options: ["Sen", "Ben", "O", "Biz"], answer: 1, expl: "Ez kelimesi 'Ben' demektir." },
-                    { q: "'Spas dikim' ne demek?", options: ["Merhaba", "Teşekkür ederim", "Hoşça kal", "Lütfen"], answer: 1, expl: "Spas dikim teşekkür ederim anlamına gelir." },
-                    { q: "'Tu çawa yî?' sorusunun karşılığı nedir?", options: ["Nasılsın?", "Adın ne?", "Nerelisin?", "Görüşürüz"], answer: 0, expl: "Tu çawa yî? 'Nasılsın?' demektir." },
-                    { q: "'B Spas' veya 'Spas' ne anlama gelir?", options: ["Teşekkürler", "Lütfen", "Üzgünüm", "Evet"], answer: 0, expl: "Spas teşekkürler demektir." },
-                    { q: "Kürtçede 'Evet' kelimesi nedir?", options: ["Na", "Erê", "Belê", "Gelek"], answer: 1, expl: "Erê 'evet' demektir." },
-                    { q: "Kürtçede 'Hayır' kelimesi nedir?", options: ["Na", "Erê", "Baş e", "Spas"], answer: 0, expl: "Na 'hayır' demektir." },
-                    { q: "'Heval' kelimesinin anlamı nedir?", options: ["Düşman", "Arkadaş", "Kardeş", "Yabancı"], answer: 1, expl: "Heval arkadaş demektir." },
-                    { q: "'Bajar' kelimesinin anlamı nedir?", options: ["Köy", "Şehir", "Ev", "Yol"], answer: 1, expl: "Bajar şehir demektir." },
-                    { q: "'Mal' kelimesinin anlamı nedir?", options: ["Okul", "Ev", "Araba", "Bahçe"], answer: 1, expl: "Mal ev demektir." }
-                ],
-                slides: {
-                    A1: [
-                        { title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" },
-                        { title: "A1: Şahıs Zamirleri", desc: "Ez (Ben), Tu (Sen), Ew (O).", q: "'Ez' kelimesi Sen demektir.", ans: false, expl: "Yanlış! Ez 'Ben' demektir." }
-                    ],
-                    A2: [{ title: "A2: Fiil Zamanları", desc: "Geçmiş ve Şimdiki Zaman.", q: "Fiil cümlede sonda yer alabilir.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: İsim Halleri", desc: "Eril ve Dişil ayrımı.", q: "Kürtçede dişil takılar vardır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Akıcı Sohbet", desc: "Deyimler.", q: "Mecazlar yaygındır.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Edebi Dil", desc: "Klasik metinler.", q: "Gramer derinliği yüksektir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Uzmanlık", desc: "Tam yetkinlik.", q: "Anadili seviyesidir.", ans: true, expl: "Doğru!" }]
-                },
-                lessons: [{ title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi</td></tr><tr><td>Ê ê</td><td>Uzatmalı E</td></tr></table>` }]
-            },
-            es: {
-                name: "İspanyolca",
-                banner: { title: "🇪🇸 İspanyolca Künyesi", desc: "580+ milyon konuşan.", stats: [{ title: "Konuşan", val: "580+ Milyon" }, { title: "Ülke", val: "21 Ülke" }] },
-                phrases: ["¡Hola! Estoy listo para hablar contigo.", "¿Cómo estás hoy?", "Me llamo Carlos y soy de España."],
-                chatInit: "🤖 AI Koç: ¡Hola! ¿Cómo te llamas y cómo estás hoy?",
-                contextResponses: {
-                    greeting: ["¡Hola! Estoy muy bien, gracias. ¿Qué tal tu día?"],
-                    name: ["¡Qué bonito nombre! Encantado de conocerte."],
-                    work: ["¡Eso suena muy interesante! ¿Cuánto tiempo llevas en ese trabajo?"],
-                    default: ["¡Excelente! Entiendo lo que dices. ¿Puedes contarme más?"]
-                },
-                quizPool: [
-                    { q: "¿Qué significa 'Hola'?", options: ["Adiós", "Hola", "Gracias", "Por favor"], answer: 1, expl: "Hola significa Merhaba." },
-                    { q: "¿Cómo se dice 'Günaydın' en español?", options: ["Buenas noches", "Buenas tardes", "Buenos días", "Hasta luego"], answer: 2, expl: "Buenos días, Günaydın demektir." },
-                    { q: "¿Qué pronombre significa 'Ben'?", options: ["Tú", "Yo", "Él", "Ellos"], answer: 1, expl: "Yo significa Ben." },
-                    { q: "¿Qué significa 'Gracias'?", options: ["Teşekkürler", "Lütfen", "Özür dilerim", "Hoşça kal"], answer: 0, expl: "Gracias teşekkürler demektir." },
-                    { q: "¿Cómo se dice 'Evet' en español?", options: ["No", "Sí", "Tal vez", "Por favor"], answer: 1, expl: "Sí 'evet' demektir." },
-                    { q: "¿Qué significa 'Agua'?", options: ["Ekmek", "Su", "Süt", "Et"], answer: 1, expl: "Agua su demektir." },
-                    { q: "¿Qué significa 'Libro'?", options: ["Kalem", "Kitap", "Masa", "Defter"], answer: 1, expl: "Libro kitap demektir." },
-                    { q: "¿Cómo se dice 'Güle güle'?", options: ["Hola", "Adiós", "Gracias", "Buenos días"], answer: 1, expl: "Adiós güle güle demektir." },
-                    { q: "¿Qué significa 'Amigo'?", options: ["Düşman", "Arkadaş", "Öğretmen", "Doktor"], answer: 1, expl: "Amigo arkadaş demektir." },
-                    { q: "¿Qué significa 'Casa'?", options: ["Okul", "Ev", "Park", "Cadde"], answer: 1, expl: "Casa ev demektir." }
-                ],
-                slides: {
-                    A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
-                    A2: [{ title: "A2: Ser/Estar", desc: "Kalıcı ve geçici.", q: "Evde olmak Estar ister.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Reflexivos", desc: "Dönüşlü fiiller.", q: "Me levanto.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Subjuntivo", desc: "Dilek kipi.", q: "Şüphede Subjuntivo.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Modismos", desc: "Deyimler.", q: "Akıcı konuşmadır.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Mastery", desc: "Uzmanlık.", q: "Anadili düzeyi.", ans: true, expl: "Doğru!" }]
-                },
-                lessons: [{ title: "1. Modül: Fonetik", desc: "Okunuş.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr></table>` }]
-            },
-            en: {
-                name: "İngilizce",
-                banner: { title: "🇬🇧 İngilizce Künyesi", desc: "1.5+ milyar konuşan.", stats: [{ title: "Konuşan", val: "1.5+ Milyar" }, { title: "Statü", val: "Global Language" }] },
-                phrases: ["Hello! I am ready to practice English.", "How are you doing today?", "My name is John."],
-                chatInit: "🤖 AI Koç: Hello! What is your name and how are you today?",
-                contextResponses: {
-                    greeting: ["Hello! I'm doing great, thank you. How is your day?"],
-                    name: ["That's a great name! Nice to meet you."],
-                    work: ["That sounds really interesting! How long have you been doing that?"],
-                    default: ["That makes sense! Could you tell me more about that?"]
-                },
-                quizPool: [
-                    { q: "What is the past tense of 'go'?", options: ["goed", "went", "gone", "going"], answer: 1, expl: "Go fiilinin geçmiş zamanı went olur." },
-                    { q: "Which pronoun is used for a female singular person?", options: ["He", "She", "It", "They"], answer: 1, expl: "Kız/kadın için She kullanılır." },
-                    { q: "What does 'Thank you' mean in Turkish?", options: ["Teşekkür ederim", "Lütfen", "Merhaba", "Güle güle"], answer: 0, expl: "Thank you teşekkür ederim demektir." },
-                    { q: "What is the plural of 'child'?", options: ["childs", "children", "childes", "kid"], answer: 1, expl: "Child kelimesinin çoğulu children'dır." },
-                    { q: "Which word is an adjective?", options: ["Run", "Quickly", "Beautiful", "Table"], answer: 2, expl: "Beautiful (Güzel) bir sıfattır." },
-                    { q: "What does 'Apple' mean?", options: ["Armut", "Elma", "Muz", "Üzüm"], answer: 1, expl: "Apple elma demektir." },
-                    { q: "What is the opposite of 'Hot'?", options: ["Warm", "Cold", "Cool", "Dry"], answer: 1, expl: "Hot kelimesinin zıttı cold (soğuk) tur." },
-                    { q: "Which auxiliary verb is used with 'I' in Present Continuous?", options: ["is", "are", "am", "be"], answer: 2, expl: "I zamiri am yardımcı fiilini alır." },
-                    { q: "What does 'Water' mean?", options: ["Süt", "Çay", "Su", "Kahve"], answer: 2, expl: "Water su demektir." },
-                    { q: "How do you say 'Güle güle' in English?", options: ["Hello", "Goodbye", "Please", "Thanks"], answer: 1, expl: "Goodbye güle güle demektir." }
-                ],
-                slides: {
-                    A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
-                    A2: [{ title: "A2: Past Simple", desc: "Geçmiş zaman.", q: "Go kelimesinin geçmişi went olur.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Present Perfect", desc: "Have V3.", q: "Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Passives", desc: "Edilgen çatı.", q: "to be + V3 kuralıdır.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Inversion", desc: "Devrik yapı.", q: "Vurgu içindir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Native", desc: "Kusursuz akıcılık.", q: "Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }]
-                },
-                lessons: [{ title: "1. Modül: Pronunciation", desc: "TH sesi.", tableHtml: `<table><tr><th>Ses</th><th>Örnek</th></tr><tr><td>TH</td><td>Think</td></tr></table>` }]
-            },
-            ru: {
-                name: "Rusça",
-                banner: { title: "🇷🇺 Rusça Künyesi", desc: "260+ milyon konuşan.", stats: [{ title: "Konuşan", val: "260+ Milyon" }, { title: "Alfabe", val: "Kiril" }] },
-                phrases: ["Привет! Я готов говорить по-русски.", "Как твои дела?", "Меня зовут Анна."],
-                chatInit: "🤖 AI Koç: Привет! Как тебя зовут и как дела?",
-                contextResponses: {
-                    greeting: ["Привет! У меня всё отлично, спасибо."],
-                    name: ["Какое хорошее имя! Очень приятно."],
-                    work: ["Это очень интересная работа!"],
-                    default: ["Понятно! Расскажи мне подробнее."]
-                },
-                quizPool: [
-                    { q: "В harfi hangi sesi verir?", options: ["V", "B", "P", "F"], answer: 0, expl: "Kiril alfabesindeki В harfi V sesini verir." },
-                    { q: "'Привет' kelimesinin anlamı nedir?", options: ["Hoşça kal", "Merhaba", "Teşekkürler", "Lütfen"], answer: 1, expl: "Привет, Merhaba demektir." },
-                    { q: "Hangisi zamirdir?", options: ["Я", "Стол", "Дом", "Книга"], answer: 0, expl: "Я (Ben) bir zamirdir." },
-                    { q: "Как дела? ne demek?", options: ["Nasılsın?", "Adın ne?", "Neredesin?", "Ne yapıyorsun?"], answer: 0, expl: "Как дела? Nasılsın/işler nasıl demektir." },
-                    { q: "'Спасибо' kelimesinin anlamı nedir?", options: ["Lütfen", "Teşekkür ederim", "Özür dilerim", "Evet"], answer: 1, expl: "Спасибо teşekkür ederim demektir." },
-                    { q: "'Да' kelimesinin anlamı nedir?", options: ["Hayır", "Evet", "Belki", "Asla"], answer: 1, expl: "Да evet demektir." },
-                    { q: "'Нет' kelimesinin anlamı nedir?", options: ["Evet", "Hayır", "Tamam", "Lütfen"], answer: 1, expl: "Нет hayır demektir." },
-                    { q: "'Книга' ne demektir?", options: ["Defter", "Kitap", "Kalem", "Masa"], answer: 1, expl: "Книга kitap demektir." },
-                    { q: "'Вода' kelimesinin anlamı nedir?", options: ["Ekmek", "Su", "Süt", "Çay"], answer: 1, expl: "Вода su demektir." },
-                    { q: "'До свидания' ne demek?", options: ["Merhaba", "Günaydın", "Hoşça kal / Görüşmek üzere", "Teşekkürler"], answer: 2, expl: "До свидания görüşmek üzere demektir." }
-                ],
-                slides: {
-                    A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
-                    A2: [{ title: "A2: İsim Halleri", desc: "Падежи yapısı.", q: "Canlı nesneler değişir.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Aspektler", desc: "Fiil türleri.", q: "Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Edatlar", desc: "Genitif.", q: "Без genitif ister.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Üslup", desc: "Edebi metinler.", q: "Akademik seviyedir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Uzmanlık", desc: "Felsefi dil.", q: "Uzmanlıktır.", ans: true, expl: "Doğru!" }]
-                },
-                lessons: [{ title: "1. Modül: Kiril", desc: "Harfler.", tableHtml: `<table><tr><th>Kiril</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr></table>` }]
-            }
-        };
-
         let currentLang = 'ku';
-        let currentLevel = 'A1';
-        let currentSlideIdx = 0;
-        let selectedChatLevel = 'A1';
-        let currentPhraseIdx = 0;
-        let userHasChatted = false;
-        let lastReplyIdx = -1;
+        let apiKey = localStorage.getItem('gemini_api_key') || '';
+        let quizQuestions = [];
+        let quizIndex = 0;
+        let quizScore = 0;
 
-        // GELİŞMİŞ TEST (FULL QUIZ) DURUMU
-        let quizState = { questions: [], currentIndex: 0, correctCount: 0, incorrectCount: 0 };
-        let quizHistory = [];
+        if (apiKey) document.getElementById('apiKeyInput').value = apiKey;
 
-        function handleLanguageSwitch(newLang) {
-            if (newLang === currentLang) return;
+        function saveApiKey() {
+            apiKey = document.getElementById('apiKeyInput').value.trim();
+            localStorage.setItem('gemini_api_key', apiKey);
+            alert("Gemini API Key kaydedildi!");
+        }
 
-            if (userHasChatted) {
-                if (confirm("Dil değiştiriyorsunuz. Sohbeti sıfırlamak ister misiniz?")) {
-                    document.getElementById('chatBox').innerHTML = "";
-                    userHasChatted = false;
-                }
-            }
-
-            currentLang = newLang;
-            currentPhraseIdx = 0;
-            currentSlideIdx = 0;
-
+        function switchLanguage(lang) {
+            currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn-' + newLang).classList.add('active');
-
-            const data = academyData[newLang];
-            document.getElementById('langBanner').innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${data.banner.stats.map(s=>`<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('')}</div>`;
-
-            updateTargetPhrase();
-            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Mikrofona basıp okumaya başlayın...";
+            document.getElementById('btn-' + lang).classList.add('active');
             
-            if (!userHasChatted) {
-                document.getElementById('chatBox').innerHTML = `<div class="msg ai" id="chatInitMsg">${data.chatInit}</div>`;
-            }
-
-            updateSlideContent();
-            document.getElementById('lessonGrid').innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
-            
-            document.getElementById('quizLangSelect').value = newLang;
+            const lName = lang === 'ku' ? 'Kürtçe Kurmancî' : (lang === 'es' ? 'İspanyolca' : (lang === 'en' ? 'İngilizce' : 'Rusça'));
+            document.getElementById('chatBox').innerHTML = `<div class="msg ai">🤖 AI Koç: Dil ${lName} olarak ayarlandı. Sohbet etmeye başlayabilirsiniz!</div>`;
         }
 
-        function updateTargetPhrase() {
-            const list = academyData[currentLang].phrases;
-            document.getElementById('targetPhraseBox').innerText = `🎯 Hedef Cümle (${(currentPhraseIdx % list.length) + 1}/${list.length}): "${list[currentPhraseIdx % list.length]}"`;
-        }
-
-        function changeTargetPhrase() {
-            currentPhraseIdx++;
-            updateTargetPhrase();
-            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Yeni cümle yüklendi.";
-            document.getElementById('accentScore').innerText = "Skor: %0";
-        }
-
-        function playNaturalVoice() {
-            const list = academyData[currentLang].phrases;
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(list[currentPhraseIdx % list.length]);
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        function startHologramVoice() {
-            const list = academyData[currentLang].phrases;
-            document.getElementById('userSpeechBox').innerText = `🎙️ Okunan Cümle: "${list[currentPhraseIdx % list.length]}"`;
-            document.getElementById('accentScore').innerText = "Skor: %94.5 (Başarılı)";
-        }
-
-        function setChatLevel(lvl) {
-            selectedChatLevel = lvl;
-            document.querySelectorAll('.chat-lvl-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Sohbet seviyesi <strong>${lvl}</strong> olarak güncellendi.</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function sendChatMessage() {
+        async function sendChatMessage() {
             const input = document.getElementById('chatInput');
-            const val = input.value.trim();
-            if (!val) return;
+            const msg = input.value.trim();
+            if (!msg) return;
 
-            userHasChatted = true;
             const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML += `<div class="msg user">👤 Siz: ${val}</div>`;
-            input.value = "";
+            chatBox.innerHTML += `<div class="msg user">👤 Siz: ${msg}</div>`;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
 
-            setTimeout(() => {
-                let grammarError = "";
-                const lower = val.toLowerCase();
-                if (lower.includes("i is") || lower.includes("you is")) {
-                    grammarError = "⚠️ Otomatik Gramer Taraması: İngilizcede Özne-Yüklem Uyumsuzluğu tespit edildi.";
-                }
-                if (grammarError) {
-                    chatBox.innerHTML += `<div class="msg grammar-alert">${grammarError}</div>`;
-                }
-
-                const ctx = academyData[currentLang].contextResponses;
-                const pool = ctx.default;
-                const aiReply = pool[Math.floor(Math.random() * pool.length)];
-                chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 700);
-        }
-
-        // GELİŞMİŞ TEST FONKSİYONLARI (DİNAMİK SAYI DESTEĞİ)
-        function startFullQuiz() {
-            const lang = document.getElementById('quizLangSelect').value;
-            let count = parseInt(document.getElementById('quizCountInput').value) || 5;
-            
-            const pool = academyData[lang].quizPool || academyData['ku'].quizPool;
-            
-            // Eğer havuzdaki soru sayısı istenenden azsa, havuzu çoğaltarak istenen sayıya tamamla
-            let selectedQuestions = [];
-            while (selectedQuestions.length < count) {
-                selectedQuestions = selectedQuestions.concat(pool);
+            if (!apiKey) {
+                setTimeout(() => {
+                    chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Gerçek AI sohbeti için lütfen yukarıdaki alana Gemini API Key giriniz.</div>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 500);
+                return;
             }
-            quizState.questions = selectedQuestions.slice(0, count);
 
-            quizState.currentIndex = 0;
-            quizState.correctCount = 0;
-            quizState.incorrectCount = 0;
+            try {
+                const prompt = `Sen profesyonel bir dil öğretmenisin. Kullanıcı ile ${currentLang} dilinde pratik yapıyorsun. 
+                Kullanıcının yazdığı cümle: "${msg}". 
+                1. Eğer cümlede gramer hatası varsa Türkçe olarak uyar.
+                2. Ardından ${currentLang} dilinde doğal, akıcı ve takip sorusu içeren benzersiz bir cevap ver. Asla tekrarlayan şablon kullanma.`;
 
-            document.getElementById('quizSetupView').hidden = true;
-            document.getElementById('quizResultView').hidden = true;
-            document.getElementById('quizActiveView').hidden = false;
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
 
-            renderFullQuizQuestion();
+                const data = await res.json();
+                const reply = data.candidates[0].content.parts[0].text;
+                chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç:\n${reply}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (err) {
+                chatBox.innerHTML += `<div class="msg ai">⚠️ Hata: API bağlantısı sağlanamadı. Lütfen API Key kontrol ediniz.</div>`;
+            }
         }
 
-        function renderFullQuizQuestion() {
-            const q = quizState.questions[quizState.currentIndex];
-            const total = quizState.questions.length;
-            
-            document.getElementById('quizProgressText').innerText = `Soru ${quizState.currentIndex + 1} / ${total}`;
-            document.getElementById('quizScoreBadge').innerText = `Skor: ${quizState.correctCount}`;
-            document.getElementById('quizProgressBar').style.width = `${((quizState.currentIndex + 1) / total) * 100}%`;
+        async function generateAIQuiz() {
+            const lang = document.getElementById('quizLangSelect').value;
+            const level = document.getElementById('quizLevelSelect').value;
+            const count = parseInt(document.getElementById('quizCountInput').value) || 20;
+
+            if (!apiKey) {
+                alert("Lütfen önce sayfanın üst tarafındaki alana Gemini API Key giriniz!");
+                return;
+            }
+
+            alert(`${count} soruluk ${lang} (${level}) sınavı yapay zeka tarafından hazırlanıyor...`);
+
+            try {
+                const prompt = `Bana tam ${count} adet ${lang} dili, ${level} seviyesinde çoktan seçmeli sınav sorusu oluştur. 
+                Çıktıyı SADECE geçerli bir JSON array formatında ver, başka hiçbir açıklama yazma.
+                JSON Formatı:
+                [
+                    {
+                        "q": "Soru metni",
+                        "options": ["A seçeneği", "B seçeneği", "C seçeneği", "D seçeneği"],
+                        "answer": 0,
+                        "expl": "Açıklama"
+                    }
+                ]`;
+
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+
+                const data = await res.json();
+                let text = data.candidates[0].content.parts[0].text;
+                text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+
+                quizQuestions = JSON.parse(text);
+                quizIndex = 0;
+                quizScore = 0;
+
+                document.getElementById('quizSetupView').hidden = true;
+                document.getElementById('quizActiveView').hidden = false;
+                renderQuizQuestion();
+            } catch (err) {
+                alert("Sınav oluşturulurken bir hata oluştu. Lütfen tekrar deneyiniz.");
+            }
+        }
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[quizIndex];
+            const total = quizQuestions.length;
+
+            document.getElementById('quizProgressText').innerText = `Soru ${quizIndex + 1} / ${total}`;
+            document.getElementById('quizScoreBadge').innerText = `Skor: ${quizScore}`;
+            document.getElementById('quizProgressBar').style.width = `${((quizIndex + 1) / total) * 100}%`;
             document.getElementById('quizQuestionText').innerText = q.q;
             document.getElementById('quizFeedbackBox').hidden = true;
 
@@ -1213,175 +352,66 @@
                 const btn = document.createElement('button');
                 btn.className = 'full-quiz-option';
                 btn.innerText = opt;
-                btn.onclick = () => selectFullQuizOption(idx, btn);
+                btn.onclick = () => selectQuizOption(idx, btn);
                 opts.appendChild(btn);
             });
         }
 
-        function selectFullQuizOption(selectedIdx, btnEl) {
-            const q = quizState.questions[quizState.currentIndex];
-            const allOpts = document.querySelectorAll('.full-quiz-option');
-            allOpts.forEach(o => o.disabled = true);
+        function selectQuizOption(selected, btnEl) {
+            const q = quizQuestions[quizIndex];
+            document.querySelectorAll('.full-quiz-option').forEach(b => b.disabled = true);
 
-            const isCorrect = (selectedIdx === q.answer);
-            if (isCorrect) {
+            if (selected === q.answer) {
                 btnEl.classList.add('correct');
-                quizState.correctCount++;
+                quizScore++;
             } else {
                 btnEl.classList.add('incorrect');
-                allOpts[q.answer].classList.add('correct');
-                quizState.incorrectCount++;
+                document.querySelectorAll('.full-quiz-option')[q.answer].classList.add('correct');
             }
 
-            document.getElementById('quizScoreBadge').innerText = `Skor: ${quizState.correctCount}`;
-            document.getElementById('quizExplanationText').innerText = (isCorrect ? "✓ Doğru! " : "✗ Yanlış! ") + q.expl;
+            document.getElementById('quizExplanationText').innerText = q.expl;
             document.getElementById('quizFeedbackBox').hidden = false;
         }
 
-        function nextFullQuizQuestion() {
-            quizState.currentIndex++;
-            if (quizState.currentIndex < quizState.questions.length) {
-                renderFullQuizQuestion();
+        function nextQuizQuestion() {
+            quizIndex++;
+            if (quizIndex < quizQuestions.length) {
+                renderQuizQuestion();
             } else {
-                finishFullQuiz();
+                alert(`🎉 Sınav Tamamlandı! Başarı Skorunuz: ${quizScore} / ${quizQuestions.length}`);
+                document.getElementById('quizActiveView').hidden = true;
+                document.getElementById('quizSetupView').hidden = false;
             }
         }
 
-        function finishFullQuiz() {
-            document.getElementById('quizActiveView').hidden = true;
-            document.getElementById('quizResultView').hidden = false;
-
-            const total = quizState.questions.length;
-            const successRate = Math.round((quizState.correctCount / total) * 100);
-
-            document.getElementById('resCorrectCount').innerText = quizState.correctCount;
-            document.getElementById('resIncorrectCount').innerText = quizState.incorrectCount;
-            document.getElementById('resSuccessRate').innerText = `%${successRate}`;
-
-            quizHistory.unshift({
-                date: new Date().toLocaleTimeString(),
-                lang: academyData[currentLang].name,
-                level: document.getElementById('quizLevelSelect').value,
-                score: `${quizState.correctCount}/${total}`,
-                rate: `%${successRate}`
-            });
-
-            const tbody = document.getElementById('quizHistoryBody');
-            tbody.innerHTML = quizHistory.map(h => `<tr><td>${h.date}</td><td>${h.lang}</td><td>${h.level}</td><td>${h.score}</td><td>${h.rate}</td></tr>`).join('');
-        }
-
-        function resetFullQuizSetup() {
-            document.getElementById('quizResultView').hidden = true;
-            document.getElementById('quizSetupView').hidden = false;
-        }
-
-        // SLAYT VE MINI TESTLER
-        function switchLevel(lvl) {
-            currentLevel = lvl;
-            currentSlideIdx = 0;
-            document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            updateSlideContent();
-        }
-
-        function updateSlideContent() {
-            const arr = academyData[currentLang].slides[currentLevel];
-            if (!arr || arr.length === 0) return;
-            if (currentSlideIdx >= arr.length) currentSlideIdx = 0;
-
-            const slide = arr[currentSlideIdx];
-            document.getElementById('slideTag').innerText = `SEVİYE ${currentLevel} • SLAYT ${currentSlideIdx + 1}`;
-            document.getElementById('slideTitle').innerText = slide.title;
-            document.getElementById('slideDesc').innerText = slide.desc;
-            document.getElementById('quizQ').innerText = "Soru: " + slide.q;
-            document.getElementById('quizRes').innerText = "";
-            document.getElementById('slideCounterInfo').innerText = `${currentSlideIdx + 1} / ${arr.length}`;
-            window.currentQuizCorrect = slide.ans;
-            window.currentQuizExpl = slide.expl;
-        }
-
-        function checkQuiz(ans) {
-            const res = document.getElementById('quizRes');
-            if (ans === window.currentQuizCorrect) res.innerHTML = `<span style="color:#166534">✓ Doğru! ${window.currentQuizExpl}</span>`;
-            else res.innerHTML = `<span style="color:#991b1b">✗ Yanlış! ${window.currentQuizExpl}</span>`;
-        }
-
-        function nextLevelSlide() {
-            const arr = academyData[currentLang].slides[currentLevel];
-            currentSlideIdx = (currentSlideIdx + 1) % arr.length;
-            updateSlideContent();
-        }
-
-        function prevLevelSlide() {
-            const arr = academyData[currentLang].slides[currentLevel];
-            currentSlideIdx = (currentSlideIdx - 1 + arr.length) % arr.length;
-            updateSlideContent();
-        }
-
-        // ÇALIŞMA SAYACI
-        let timerInterval = null, totalSeconds = 25 * 60, timeLeft = totalSeconds;
-
-        function updateTimerDisplay() {
-            let m = Math.floor(timeLeft / 60);
-            let s = timeLeft % 60;
+        /* SAYAÇ */
+        let timerInterval, timeLeft = 25 * 60;
+        function updateTimer() {
+            let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
             document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
-
-        function setTimerPreset(m, s) {
-            pauseTimer();
-            totalSeconds = (m * 60) + s;
-            timeLeft = totalSeconds;
-            document.getElementById('customMin').value = m;
-            document.getElementById('customSec').value = s < 10 ? '0' + s : s;
-            updateTimerDisplay();
-        }
-
         function setCustomTimer() {
             pauseTimer();
             let m = parseInt(document.getElementById('customMin').value) || 0;
             let s = parseInt(document.getElementById('customSec').value) || 0;
-            totalSeconds = (m * 60) + s;
-            timeLeft = totalSeconds;
-            updateTimerDisplay();
+            timeLeft = (m * 60) + s;
+            updateTimer();
         }
-
         function startTimer() {
             if (!timerInterval) {
-                if (timeLeft <= 0) timeLeft = totalSeconds;
                 timerInterval = setInterval(() => {
-                    if (timeLeft > 0) {
-                        timeLeft--;
-                        updateTimerDisplay();
-                    } else {
-                        pauseTimer();
-                        alert("⏰ Çalışma süreniz doldu!");
-                    }
+                    if (timeLeft > 0) { timeLeft--; updateTimer(); }
+                    else { pauseTimer(); alert("Süre doldu!"); }
                 }, 1000);
             }
         }
-
-        function pauseTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-        }
-
-        function resetTimer() {
-            pauseTimer();
-            timeLeft = totalSeconds;
-            updateTimerDisplay();
-        }
+        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
 
         function toggleTheme() {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
             document.getElementById('themeBtn').innerHTML = isDark ? '🌙 Koyu Mod' : '☀️ Aydınlık Mod';
         }
-
-        window.onload = () => {
-            handleLanguageSwitch('ku');
-        };
     </script>
 </body>
 </html>
