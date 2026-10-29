@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | İnteraktif Slayt ve Seviye Testi Portalı</title>
+    <title>AI Language Academy | Profesyonel Dil Öğrenme ve Slayt Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -54,26 +54,13 @@
             justify-content: space-between;
         }
 
-        .dots {
-            display: flex;
-            gap: 7px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
+        .dots { display: flex; gap: 7px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot-red { background-color: #ff5f56; }
         .dot-yellow { background-color: #ffbd2e; }
         .dot-green { background-color: #27c93f; }
 
-        .window-title {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            font-weight: 500;
-        }
+        .window-title { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
 
         .theme-toggle-btn {
             background: var(--accent-bg);
@@ -89,10 +76,7 @@
             gap: 5px;
         }
 
-        .theme-toggle-btn:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
+        .theme-toggle-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
 
         /* Header */
         header {
@@ -112,515 +96,136 @@
             align-items: center;
         }
 
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
+        .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
+            width: 36px; height: 36px; background: var(--primary); border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem;
             box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
         }
-
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            color: var(--primary);
-        }
+        .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+        .logo-text span { color: var(--primary); }
 
         .nav-badge {
-            background: var(--accent-bg);
-            color: var(--primary);
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
+            background: var(--accent-bg); color: var(--primary); font-size: 0.7rem;
+            padding: 2px 8px; border-radius: 20px; font-weight: 600; border: 1px solid var(--border-color);
         }
 
         /* Hero */
-        .hero {
-            max-width: 900px;
-            margin: 2.5rem auto 1.5rem auto;
-            text-align: center;
-            padding: 0 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.8rem;
-            letter-spacing: -1px;
-            line-height: 1.25;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-sub);
-            max-width: 720px;
-            margin: 0 auto;
-        }
+        .hero { max-width: 900px; margin: 2.5rem auto 1.5rem auto; text-align: center; padding: 0 1.5rem; }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.1rem; color: var(--text-sub); max-width: 720px; margin: 0 auto; }
 
         /* Language Tabs */
         .lang-segments {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 900px;
-            margin: 1.5rem auto 2rem auto;
-            padding: 0 1rem;
+            display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+            max-width: 900px; margin: 1.5rem auto 2rem auto; padding: 0 1rem;
         }
 
         .lang-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main);
+            padding: 0.6rem 1.2rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px;
         }
-
         .lang-btn.active, .lang-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px);
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto 4rem auto;
-            padding: 0 1.5rem;
-        }
+        .container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 1.5rem; }
 
-        /* Dil Künye / İstatistik Kutusu */
+        /* Künye Paneli */
         .lang-info-banner {
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.1);
+            background: var(--card-bg); border: 2px solid var(--primary); border-radius: 16px;
+            padding: 2rem; margin-bottom: 2.5rem; box-shadow: 0 8px 20px -5px rgba(37, 99, 235, 0.1);
         }
-
-        .lang-info-banner h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-
-        .lang-info-banner p {
-            font-size: 0.98rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
+        .lang-info-banner h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 800; }
+        .lang-info-banner p { font-size: 0.98rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.6; }
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 1rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;
         }
+        .stat-box h4 { font-size: 1.1rem; color: var(--text-main); font-weight: 700; }
+        .stat-box p { font-size: 0.85rem; color: var(--text-sub); margin: 0; }
 
-        .stat-box h4 {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .stat-box p {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin: 0;
-        }
-
-        /* PROFESYONEL SEVİYE SEÇİCİ VE SLAYT TEST SİSTEMİ */
+        /* Slayt & Test Alanı */
         .interactive-slide-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 2.5rem; margin-bottom: 3.5rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
         }
-
         .level-selector-bar {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 1.5rem;
+            display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+            margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;
         }
-
         .level-tab {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.5rem 1.1rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main);
+            padding: 0.5rem 1.1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
         }
-
-        .level-tab.active, .level-tab:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
+        .level-tab.active, .level-tab:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
         .slide-stage {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 2rem;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
+            background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 14px;
+            padding: 2rem; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 1.5rem;
         }
+        .slide-header-tag { font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .slide-title-main { font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem; }
+        .slide-desc-text { font-size: 0.98rem; color: var(--text-sub); margin-bottom: 1.2rem; line-height: 1.6; }
 
-        .slide-header-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
+        .quiz-box { background: var(--card-bg); border: 1px dashed var(--primary); border-radius: 10px; padding: 1.2rem; margin-top: 1rem; }
+        .quiz-question { font-weight: 700; font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.8rem; }
+        .quiz-buttons { display: flex; gap: 10px; margin-bottom: 0.8rem; }
+        .quiz-btn { padding: 0.4rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; border: 1px solid var(--border-color); }
+        .btn-true { background: #dcfce7; color: #166534; }
+        .btn-false { background: #fee2e2; color: #991b1b; }
+        .quiz-result { font-size: 0.9rem; font-weight: 700; margin-top: 0.5rem; }
 
-        .slide-title-main {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.8rem;
-        }
+        .slide-nav-row { display: flex; justify-content: space-between; align-items: center; }
+        .slide-action-btn { background: var(--primary); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        .slide-desc-text {
-            font-size: 0.98rem;
-            color: var(--text-sub);
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
-        }
+        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
 
-        /* Test Alanı (Doğru / Yanlış) */
-        .quiz-box {
-            background: var(--card-bg);
-            border: 1px dashed var(--primary);
-            border-radius: 10px;
-            padding: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .quiz-question {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            margin-bottom: 0.8rem;
-        }
-
-        .quiz-buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 0.8rem;
-        }
-
-        .quiz-btn {
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-true { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
-        .btn-false { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
-        .quiz-btn:hover { opacity: 0.85; transform: scale(1.02); }
-
-        .quiz-result {
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-top: 0.5rem;
-        }
-
-        .slide-nav-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .slide-action-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.4rem;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .slide-action-btn:hover { background: var(--primary-hover); }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        /* Ders Modülleri Grid */
-        .lesson-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .lesson-grid { grid-template-columns: 1fr; }
-        }
-
-        .lesson-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 1.75rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .lesson-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.6rem;
-        }
-
-        .lesson-card p {
-            font-size: 0.92rem;
-            color: var(--text-sub);
-            margin-bottom: 1rem;
-        }
-
-        .content-box {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .content-box table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.86rem;
-        }
-
-        .content-box th, .content-box td {
-            padding: 0.5rem 0.7rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
+        /* Detaylı Ders Modülleri (Tablolar) */
+        .lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem; }
+        @media (max-width: 600px) { .lesson-grid { grid-template-columns: 1fr; } }
+        .lesson-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.75rem; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .lesson-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.6rem; }
+        .lesson-card p { font-size: 0.92rem; color: var(--text-sub); margin-bottom: 1rem; }
+        .content-box { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; }
+        .content-box table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+        .content-box th, .content-box td { padding: 0.5rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border-color); }
         .content-box th { color: var(--text-main); font-weight: 700; }
         .content-box td { color: var(--text-sub); }
         .pronunciation { color: var(--primary); font-style: italic; font-size: 0.8rem; }
 
-        /* Prompt Kütüphanesi */
-        .prompt-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-        }
+        /* Prompt Bölümü */
+        .prompt-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; margin-bottom: 3.5rem; }
+        .prompt-card { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.25rem; margin-top: 1rem; }
+        .prompt-text { font-size: 0.9rem; color: var(--text-main); font-family: monospace; background: var(--card-bg); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); margin-top: 0.5rem; white-space: pre-wrap; }
+        .copy-btn { background: var(--accent-bg); color: var(--primary); border: 1px solid var(--primary); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem; }
 
-        .prompt-card {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .prompt-text {
-            font-size: 0.9rem;
-            color: var(--text-main);
-            font-family: monospace;
-            background: var(--card-bg);
-            padding: 0.8rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            margin-top: 0.5rem;
-            white-space: pre-wrap;
-        }
-
-        .copy-btn {
-            background: var(--accent-bg);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 0.5rem;
-        }
-
-        /* Sayaç Kutusu */
-        .timer-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3.5rem;
-            text-align: center;
-        }
-
-        .timer-preset-btns {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-
-        .preset-btn {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .preset-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-        .custom-timer-input {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .custom-timer-input input {
-            width: 75px;
-            padding: 0.4rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            text-align: center;
-            font-weight: 700;
-            background: var(--bg-body);
-            color: var(--text-main);
-        }
-
-        .custom-timer-input button {
-            background: var(--accent-bg);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .timer-display {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 0.5rem 0 1rem 0;
-            font-family: monospace;
-        }
-
-        .timer-controls button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.4rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 0 4px;
-        }
-
+        /* Sayaç */
+        .timer-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-bottom: 3.5rem; text-align: center; }
+        .timer-preset-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
+        .preset-btn { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .custom-timer-input { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 1rem; }
+        .custom-timer-input input { width: 75px; padding: 0.4rem; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-weight: 700; background: var(--bg-body); color: var(--text-main); }
+        .custom-timer-input button { background: var(--accent-bg); border: 1px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; cursor: pointer; }
+        .timer-display { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0.5rem 0 1rem 0; font-family: monospace; }
+        .timer-controls button { background: var(--primary); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0 4px; }
         .timer-controls button.reset { background: #64748b; }
 
         .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25d366;
-            color: white;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
+            position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white;
+            padding: 0.8rem 1.2rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000;
         }
 
-        footer {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            background: var(--card-bg);
-        }
+        footer { text-align: center; padding: 2.5rem 1.5rem; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem; background: var(--card-bg); }
     </style>
 </head>
 <body>
 
-    <!-- Top Window Bar -->
     <div class="window-bar">
-        <div class="dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-        </div>
-        <div class="window-title">AI Language Academy — Akıllı Slayt & Seviye Test Modülü</div>
+        <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+        <div class="window-title">AI Language Academy — Kapsamlı Öğretmen ve Seviye Modülü</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -630,13 +235,13 @@
                 <div class="logo-icon">AI</div>
                 <div class="logo-text">AI <span>Language Hub</span></div>
             </a>
-            <div class="nav-badge">A1-C2 Seviyeli İnteraktif Slaytlar</div>
+            <div class="nav-badge">A1-C2 Slaytları & Detaylı Dersler</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Seviyeye Özel İnteraktif Slaytlar ve Mini Testler</h1>
-        <p>A1'den C2'ye kadar her seviyeye özel hazırlanmış slayt kartlarını inceleyin, doğru/yanlış testleriyle bilginizi anında test edin.</p>
+        <h1>Kapsamlı Dil Akademisi & Seviye Bazlı Eğitim Portalı</h1>
+        <p>Her dilin dünya istatistiklerini, okunuş kurallarını, derinlemesine gramer tablolarını ve interaktif seviye testli slaytlarını inceleyin.</p>
     </div>
 
     <!-- Dil Seçim Sekmeleri -->
@@ -651,21 +256,19 @@
         <!-- Dil Künye Paneli -->
         <div class="lang-info-banner" id="langBanner"></div>
 
-        <!-- İNTERAKTİF SEVİYE SLAYT VE TEST MODÜLÜ -->
+        <!-- İnteraktif Seviye Slayt ve Test Modülü -->
         <div class="interactive-slide-section">
-            <h3 style="margin-bottom: 1rem; font-size: 1.2rem; color: var(--primary);">🎯 Seviye Bazlı İnteraktif Slayt & Mini Test</h3>
+            <h3 style="margin-bottom: 1rem; font-size: 1.2rem; color: var(--primary);">🎯 Seviye Bazlı İnteraktif Slayt & Mini Test (A1 - C2)</h3>
             
-            <!-- Seviye Sekmeleri -->
             <div class="level-selector-bar">
-                <button class="level-tab active" onclick="switchLevel('A1')">A1 (Başlangıç)</button>
-                <button class="level-tab" onclick="switchLevel('A2')">A2 (Temel)</button>
-                <button class="level-tab" onclick="switchLevel('B1')">B1 (Orta)</button>
-                <button class="level-tab" onclick="switchLevel('B2')">B2 (İleri-Orta)</button>
-                <button class="level-tab" onclick="switchLevel('C1')">C1 (İleri)</button>
-                <button class="level-tab" onclick="switchLevel('C2')">C2 (Uzman)</button>
+                <button class="level-tab active" onclick="switchLevel('A1')">A1</button>
+                <button class="level-tab" onclick="switchLevel('A2')">A2</button>
+                <button class="level-tab" onclick="switchLevel('B1')">B1</button>
+                <button class="level-tab" onclick="switchLevel('B2')">B2</button>
+                <button class="level-tab" onclick="switchLevel('C1')">C1</button>
+                <button class="level-tab" onclick="switchLevel('C2')">C2</button>
             </div>
 
-            <!-- Slayt Sahnesi -->
             <div class="slide-stage">
                 <div>
                     <div class="slide-header-tag" id="slideTag">SEVİYE A1 SLAYT 1</div>
@@ -673,12 +276,11 @@
                     <p class="slide-desc-text" id="slideDesc">Açıklama yükleniyor...</p>
                 </div>
 
-                <!-- Test / Quiz Kutusu -->
                 <div class="quiz-box">
                     <div class="quiz-question" id="quizQ">Soru yükleniyor...</div>
                     <div class="quiz-buttons">
-                        <button class="quiz-btn btn-true" onclick="checkQuiz(true)">✓ Doğru (Verdad)</button>
-                        <button class="quiz-btn btn-false" onclick="checkQuiz(false)">✗ Yanlış (Falso)</button>
+                        <button class="quiz-btn btn-true" onclick="checkQuiz(true)">✓ Doğru</button>
+                        <button class="quiz-btn btn-false" onclick="checkQuiz(false)">✗ Yanlış</button>
                     </div>
                     <div class="quiz-result" id="quizRes"></div>
                 </div>
@@ -691,22 +293,24 @@
             </div>
         </div>
 
-        <div class="section-title">📖 Detaylı Öğretmen Modülleri</div>
+        <div class="section-title">📖 Derinlemesine Öğretmen Modülleri & Gramer Tabloları</div>
+        
+        <!-- Detaylı Ders Modülleri (Grid) -->
         <div class="lesson-grid" id="lessonGrid"></div>
 
         <!-- ChatGPT Pratik Komutları -->
         <div class="prompt-section">
             <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">💡 Öğretmen Destekli ChatGPT Pratik Komutları</h2>
             <div class="prompt-card">
-                <strong>Özel Sohbet Komutu:</strong>
-                <div class="prompt-text" id="promptText">"Sen profesyonel bir [Dil Adı] öğretmenisin..."</div>
+                <strong>Özel Sohbet ve Hata Düzeltme Komutu:</strong>
+                <div class="prompt-text" id="promptText">"Sen profesyonel bir öğretmenisin..."</div>
                 <button class="copy-btn" onclick="copyPrompt()">Komutu Kopyala 📋</button>
             </div>
         </div>
 
         <!-- Sayaç -->
         <div class="timer-box">
-            <h3>⏱️ Özelleştirilebilir Çalışma Sayacı</h3>
+            <h3>⏱️ Özelleştirilebilir Odaklanmış Çalışma Sayacı</h3>
             <div class="timer-preset-btns">
                 <button class="preset-btn" onclick="setTimerPreset(15, 0)">15 Dk</button>
                 <button class="preset-btn" onclick="setTimerPreset(25, 0)">25 Dk (Pomodoro)</button>
@@ -728,7 +332,7 @@
 
     <a href="https://wa.me/?text=Merhaba" target="_blank" class="whatsapp-float">💬 Soru Sor / İletişim</a>
 
-    <footer>© 2026 AI Language Hub — Akıllı Slayt ve Test Portalı.</footer>
+    <footer>© 2026 AI Language Hub — Tüm Hakları Saklıdır.</footer>
 
     <script>
         const academyData = {
@@ -736,123 +340,179 @@
                 name: "İspanyolca",
                 flag: "🇪🇸",
                 banner: {
-                    title: "🇪🇸 İspanyolca Dil Künyesi",
-                    desc: "Dünya genelinde 580+ milyon kişi tarafından konuşulmaktadır. 21 ülkede resmi dildir.",
+                    title: "🇪🇸 İspanyolca Hakkında Genel Bilgiler & Künye",
+                    desc: "İspanyolca (Castellano), Hint-Avrupa dil ailesine bağlı Roman dillerinden biridir. Dünya üzerinde yaklaşık <strong>500+ milyon insan</strong> tarafından ana dil olarak, toplamda ise <strong>580 milyondan fazla kişi</strong> tarafından konuşulmaktadır.",
                     stats: [
-                        { title: "Konuşan", val: "580+ Milyon" },
-                        { title: "Resmi Ülke", val: "21 Ülke" },
-                        { title: "Aile", val: "Roman Dilleri" }
+                        { title: "Konuşan Kişi Sayısı", val: "580+ Milyon (Küresel)" },
+                        { title: "Resmi Olduğu Ülkeler", val: "21 Ülke (İspanya, Meksika, Arjantin vb.)" },
+                        { title: "Kültürel Statü", val: "BM, AB ve Latin Amerika Ticaret Dili" }
                     ]
                 },
                 slides: {
                     A1: [
-                        { title: "A1: Temel Tanışma ve Alfabe", desc: "İspanyolcada alfabe yazıldığı gibi okunur. 'Hola' (Merhaba) kelimesindeki 'H' okunmaz.", q: "Örnek Cümle: 'Hola' kelimesinde H harfi seslendirilir.", ans: false, expl: "Yanlış! İspanyolcada H harfi her zaman sessizdir, okunmaz." },
-                        { title: "A1: Şahıs Zamirleri", desc: "Yo (Ben), Tú (Sen), Él (O). İspanyolcada kibar hitap için 'Usted' kullanılır.", q: "Örnek Cümle: 'Usted' sözcüğü sen anlamına gelen samimi bir zamirdir.", ans: false, expl: "Yanlış! Usted resmi ve kibar 'siz' anlamına gelir." }
+                        { title: "A1: Temel Tanışma ve Alfabe", desc: "İspanyolcada alfabe yazıldığı gibi okunur. 'Hola' kelimesindeki H harfi okunmaz.", q: "Örnek: 'Hola' kelimesinde H harfi seslendirilir.", ans: false, expl: "Yanlış! H harfi daima sessizdir." },
+                        { title: "A1: Şahıs Zamirleri", desc: "Yo (Ben), Tú (Sen), Él (O). Kibar hitap için Usted kullanılır.", q: "Örnek: 'Usted' sözcüğü sen anlamına gelen samimi bir zamirdir.", ans: false, expl: "Yanlış! Usted resmi siz demektir." }
                     ],
                     A2: [
-                        { title: "A2: Ser ve Estar Fiilleri", desc: "Kalıcı özellikler için 'Ser', geçici durumlar ve konum için 'Estar' kullanılır.", q: "Örnek Cümle: 'Estoy en casa' cümlesinde kalıcı kimlik bildirildiği için Ser fiili kullanılmalıdır.", ans: false, expl: "Yanlış! Evde olmak geçici bir konumdur, bu yüzden Estar kullanılır." },
-                        { title: "A2: Geçmiş Zaman (Pretérito Indefinido)", desc: "Geçmişte kesin olarak bitmiş eylemleri anlatmak için kullanılır.", q: "Örnek Cümle: Dün yaptığınız kesin bir eylem için bu geçmiş zaman kalıbı doğrudur.", ans: true, expl: "Doğru! Tamamlanmış eylemlerde bu zaman seçilir." }
+                        { title: "A2: Ser ve Estar Fiilleri", desc: "Kalıcı özellikler için Ser, geçici durumlar/konum için Estar kullanılır.", q: "Örnek: 'Estoy en casa' cümlesinde kalıcı kimlik bildirildiği için Ser kullanılır.", ans: false, expl: "Yanlış! Evde olmak geçici bir konumdur, Estar gerekir." },
+                        { title: "A2: Geçmiş Zaman (Pretérito Indefinido)", desc: "Geçmişte kesin olarak bitmiş eylemleri anlatır.", q: "Örnek: Tamamlanmış geçmiş eylemler için bu zaman kalıbı doğrudur.", ans: true, expl: "Doğru!" }
                     ],
                     B1: [
-                        { title: "B1: Dönüşlü Fiiller (Verbos Reflexivos)", desc: "Eylemin kişinin kendi üzerinde yapıldığını gösterir (örneğin uyanmak: despertarse).", q: "Örnek Cümle: 'Me levanto' cümlesi 'Ben kalkıyorum (kendimi kaldırıyorum)' anlamına gelir.", ans: true, expl: "Doğru! Levantarse dönüşlü bir fiildir." },
-                        { title: "B1: Gelecek Zaman (Futuro Simple)", desc: "Gelecekte yapılacak planlar fiilin sonuna ek getirilerek yapılır.", q: "Örnek Cümle: İspanyolcada gelecek zaman için fiili değiştirmeden önüne sadece 'mañana' koymak yeterlidir.", ans: false, expl: "Yanlış! Fiilin kökü çekimlenmek zorundadır." }
+                        { title: "B1: Dönüşlü Fiiller", desc: "Eylemin kişinin kendi üzerinde yapıldığını gösterir (despertarse vb.).", q: "Örnek: 'Me levanto' cümlesi 'Kalkıyorum' anlamına gelir.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Gelecek Zaman", desc: "Gelecekte yapılacak planlar köke ek getirilerek yapılır.", q: "Örnek: Gelecek zaman için sadece 'mañana' kelimesi yeterlidir.", ans: false, expl: "Yanlış! Fiil çekimi gereklidir." }
                     ],
                     B2: [
-                        { title: "B2: Dilek Kipi (Subjuntivo - Giriş)", desc: "İstek, şüphe, duygu ve ihtimal belirten durumlarda Subjuntivo kipi zorunludur.", q: "Örnek Cümle: 'Creo que es verdad' cümlesi Subjuntivo gerektirir.", ans: false, expl: "Yanlış! 'Creo que' (inanıyorum ki) kesinlik bildirdiği için normal haber kipi (indicativo) alır." },
-                        { title: "B2: Edatlar (Por ve Para Ayrımı)", desc: "Sebep için 'por', hedef/amaç için 'para' kelimesi tercih edilir.", q: "Örnek Cümle: 'Este regalo es para ti' cümlesinde 'para' hedef/hediye alıcısını gösterir.", ans: true, expl: "Doğru! Para yönelimsellik ve hedef bildirir." }
+                        { title: "B2: Dilek Kipi (Subjuntivo)", desc: "İstek, şüphe ve ihtimal durumlarında Subjuntivo zorunludur.", q: "Örnek: 'Creo que es verdad' cümlesi Subjuntivo gerektirir.", ans: false, expl: "Yanlış! 'Creo que' kesinlik bildirir." },
+                        { title: "B2: Edatlar (Por ve Para)", desc: "Sebep için por, hedef için para kullanılır.", q: "Örnek: 'Este regalo es para ti' cümlesinde para hedef bildirir.", ans: true, expl: "Doğru!" }
                     ],
                     C1: [
-                        { title: "C1: İleri Düzey Subjuntivo (Pasado)", desc: "Geçmiş zamana bağlı ihtimal ve hipotez cümlelerinde kullanılır.", q: "Örnek Cümle: Varsayım ve hayali durumlarda geçmiş subjunctive kullanımı cüretkar ve akıcı bir ifade sağlar.", ans: true, expl: "Doğru! C1 seviyesinde hipotetik cümlelerin temelidir." },
-                        { title: "C1: Deyimsel Atasözleri (Modismos)", desc: "Günlük akıcı dilde mecazi deyimlerin kullanımı.", q: "Örnek Cümle: İspanyolcada 'hablar por los codos' çok fazla konuşmak anlamına gelen mecazi bir deyimdir.", ans: true, expl: "Doğru! Dirseklerden konuşmak (çok konuşmak) anlamında deyimdir." }
+                        { title: "C1: İleri Düzey Hipotezler", desc: "Geçmiş zamana bağlı hipotez cümleleri.", q: "Örnek: Varsayım ve hayali durumlarda geçmiş subjunctive kullanımı akıcılık sağlar.", ans: true, expl: "Doğru!" },
+                        { title: "C1: Deyimler (Modismos)", desc: "Günlük akıcı dilde mecazi deyimler.", q: "Örnek: 'Hablar por los codos' çok konuşmak demektir.", ans: true, expl: "Doğru!" }
                     ],
                     C2: [
-                        { title: "C2: Edebi ve Akademik Yetkinlik", desc: "Anadili seviyesinde edebi metin analizi, felsefi argümanlar ve kökleşmiş argo hakimiyeti.", q: "Örnek Cümle: C2 seviyesinde bölgesel ağızlar (Arjantin Rioplatense vb.) tamamen anlaşılır hale gelir.", ans: true, expl: "Doğru! Uzmanlık seviyesidir." }
+                        { title: "C2: Edebi ve Akademik Yetkinlık", desc: "Anadili seviyesinde felsefi argümanlar ve argo hakimiyeti.", q: "Örnek: Bölgesel ağızlar tamamen anlaşılır hale gelir.", ans: true, expl: "Doğru!" }
                     ]
                 },
                 lessons: [
-                    { title: "1. Modül: Fonetik Okunuş", desc: "Yazıldığı gibi okunan kusursuz yapı.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>J</td><td>Sert H</td></tr><tr><td>Ñ</td><td>NY</td></tr></table>` },
-                    { title: "2. Modül: Temel Fiiller", desc: "Ser ve Estar farkları.", tableHtml: `<table><tr><th>Fiil</th><th>Kullanım</th></tr><tr><td>Ser</td><td>Kalıcı</td></tr><tr><td>Estar</td><td>Geçici</td></tr></table>` }
+                    {
+                        title: "1. Modül: Yazılış ve Okunuş Sistemi (Fonetik)",
+                        desc: "Öğretmen Notu: İspanyolca kurallı bir dildir; kelimeler büyük oranda yazıldığı gibi okunur.",
+                        tableHtml: `<table><tr><th>Karakter</th><th>Açıklama / Okunuş</th><th>Örnek Kelime</th></tr><tr><td><strong>H</strong></td><td>Asla seslendirilmez.</td><td>Habitación <span class="pronunciation">(Abitasyon)</span></td></tr><tr><td><strong>J</strong></td><td>Boğazdan gelen sert 'H'.</td><td>Joven <span class="pronunciation">(Hoven)</span></td></tr><tr><td><strong>Ñ</strong></td><td>'NY' sesi verir.</td><td>Niño <span class="pronunciation">(Ninyo)</span></td></tr></table>`
+                    },
+                    {
+                        title: "2. Modül: Temel Fiil Çekimleri (Ser / Estar)",
+                        desc: "İspanyolcada 'olmak' fiiri ikiye ayrılır.",
+                        tableHtml: `<table><tr><th>Özne</th><th>Ser (Kalıcı)</th><th>Estar (Geçici)</th></tr><tr><td>Yo</td><td>Soy alto</td><td>Estoy cansado</td></tr><tr><td>Tú</td><td>Eres</td><td>Estás aquí</td></tr></table>`
+                    },
+                    {
+                        title: "3. Modül: Günlük İhtiyaç Kalıpları",
+                        desc: "Seyahatlerinizde en sık duyacağınız cümleler:",
+                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>¿Dónde está el baño?</td><td>Donde esta el banyo?</td><td>Tuvalet nerede?</td></tr><tr><td>Me gustaría un café</td><td>Me gustariya un kafe</td><td>Bir kahve rica ediyorum</td></tr></table>`
+                    },
+                    {
+                        title: "4. Modül: Tanışma Diyaloğu",
+                        desc: "Karşılıklı diyalog simülasyonu:",
+                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Carlos:</td><td>¡Hola! ¿Cómo te llamas?</td><td>Merhaba! Adın ne?</td></tr><tr><td>Ana:</td><td>Me llamo Ana, ¿y tú?</td><td>Benim adım Ana, ya senin?</td></tr></table>`
+                    }
                 ]
             },
             en: {
                 name: "İngilizce",
                 flag: "🇬🇧",
                 banner: {
-                    title: "🇬🇧 İngilizce Dil Künyesi",
-                    desc: "Dünya çapında 1.5+ milyar insan tarafından konuşulan küresel iletişim dili.",
+                    title: "🇬🇧 İngilizce Hakkında Genel Bilgiler & Künye",
+                    desc: "İngilizce, Cermen dillerine ait küresel bir lingua franca'dır. İş dünyasının ve internetin ana dilidir. Yaklaşık <strong>1.5+ milyar insan</strong> tarafından konuşulmaktadır.",
                     stats: [
-                        { title: "Konuşan", val: "1.5+ Milyar" },
-                        { title: "Statü", val: "Lingua Franca" },
-                        { title: "Alfabe", val: "26 Harfli Latin" }
+                        { title: "Konuşan Kişi Sayısı", val: "1.5+ Milyar" },
+                        { title: "Coğrafya", val: "ABD, İngiltere, Kanada vb." },
+                        { title: "Küresel Statü", val: "Ortak İletişim Dili" }
                     ]
                 },
                 slides: {
                     A1: [
-                        { title: "A1: To Be Fiili ve Selamlaşma", desc: "I am, You are, He/She is yapıları.", q: "Örnek Cümle: 'He are a student' cümlesi dilbilgisel olarak doğrudur.", ans: false, expl: "Yanlış! He öznesi 'is' alır." },
-                        { title: "A1: İşaret Zamirleri", desc: "This (bu), That (şu), These (bunlar), Those (şunlar).", q: "Örnek Cümle: Yakındaki tekil bir nesne için 'This' kullanılır.", ans: true, expl: "Doğru! This tekil ve yakın nesneler içindir." }
+                        { title: "A1: To Be Fiili", desc: "I am, You are yapıları.", q: "Örnek: 'He are a student' doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." },
+                        { title: "A1: İşaret Zamirleri", desc: "This, That, These, Those.", q: "Örnek: Yakındaki nesne için 'This' kullanılır.", ans: true, expl: "Doğru!" }
                     ],
                     A2: [
-                        { title: "A2: Past Simple (Geçmiş Zaman)", desc: "Düzenli fiillere -ed takısı gelir.", q: "Örnek Cümle: 'Go' fiilinin geçmiş zamanı 'goed' şeklindedir.", ans: false, expl: "Yanlış! Go düzensiz bir fiildir, geçmiş hali 'went' olur." },
-                        { title: "A2: Karşılaştırma Sıfatları (Comparatives)", desc: "Kısa sıfatlara -er takısı eklenir (bigger, taller).", q: "Örnek Cümle: 'Good' sıfatının karşılaştırma hali 'gooder'dır.", ans: false, expl: "Yanlış! Good düzensizdir, 'better' olur." }
+                        { title: "A2: Past Simple", desc: "Düzenli fiillere -ed gelir.", q: "Örnek: Go fiilinin geçmişi 'goed' olur.", ans: false, expl: "Yanlış! 'went' olur." },
+                        { title: "A2: Comparatives", desc: "Sıfat karşılaştırmaları.", q: "Örnek: Good sıfatı 'gooder' olur.", ans: false, expl: "Yanlış! 'better' olur." }
                     ],
                     B1: [
-                        { title: "B1: Present Perfect Tense", desc: "Geçmişte başlayıp etkisiz süren veya yeni bitmiş olaylar (Have/Has V3).", q: "Örnek Cümle: 'I have seen this movie' cümlesinde deneyim vurgulanır.", ans: true, expl: "Doğru! Hayat deneyimlerinde Present Perfect kullanılır." },
-                        { title: "B1: Edatlar (In, On, At)", desc: "Zaman ve yer zarflarında doğru edat seçimi.", q: "Örnek Cümle: Saatler için 'in' edatı kullanılır (in 5 o'clock).", ans: false, expl: "Yanlış! Saatler için 'at' kullanılır." }
+                        { title: "B1: Present Perfect", desc: "Have/Has V3 yapısı.", q: "Örnek: Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Edatlar", desc: "In, On, At kullanımı.", q: "Örnek: Saatler için 'in' kullanılır.", ans: false, expl: "Yanlış! 'at' kullanılır." }
                     ],
                     B2: [
-                        { title: "B2: Relative Clauses (İlgi Cümlecikleri)", desc: "Who, which, that ile cümleleri birbirine bağlama.", q: "Örnek Cümle: İnsanlar için 'which' ilgi zamiri kullanılır.", ans: false, expl: "Yanlış! İnsanlar için 'who' kullanılır." },
-                        { title: "B2: Passives (Edilgen Çatılar)", desc: "İşin kim tarafından yapıldığından ziyadeime odaklanma (is done).", q: "Örnek Cümle: Edilgen yapılarda her zaman 'to be + V3' kuralı geçerlidir.", ans: true, expl: "Doğru! Passive yapının temel formülüdür." }
+                        { title: "B2: Relative Clauses", desc: "Who, which, that bağlaçları.", q: "Örnek: İnsanlar için 'which' kullanılır.", ans: false, expl: "Yanlış! 'who' kullanılır." },
+                        { title: "B2: Passives", desc: "Edilgen çatı.", q: "Örnek: 'to be + V3' kuralı geçerlidir.", ans: true, expl: "Doğru!" }
                     ],
                     C1: [
-                        { title: "C1: Inversion (Devrik Cümleler)", desc: "Vurgu yapmak için yardımcı fiilin öznenin önüne gelmesi.", q: "Örnek Cümle: 'Never have I seen...' yapısı devrik bir vurgu cümlesidir.", ans: true, expl: "Doğru! C1 seviyesi ileri düzey vurgu kuralıdır." },
-                        { title: "C1: Advanced Idioms", desc: "Akademik ve profesyonel deyimler.", q: "Örnek Cümle: 'Hit the nail on the head' tam isabet kaydetmek demektir.", ans: true, expl: "Doğru! Deyim tam olarak bu anlamdadır." }
+                        { title: "C1: Inversion", desc: "Devrik cümle yapısı.", q: "Örnek: Vurgu için yardımcı fiil öne gelir.", ans: true, expl: "Doğru!" },
+                        { title: "C1: Advanced Idioms", desc: "İleri düzey deyimler.", q: "Örnek: 'Hit the nail' tam isabet demektir.", ans: true, expl: "Doğru!" }
                     ],
                     C2: [
-                        { title: "C2: Native Nuances & Rhetoric", desc: "Edebi sanatlar, hiciv ve kusursuz anadili hakimiyeti.", q: "Örnek Cümle: C2 seviyesinde nüanslar ve mecazlar tamamen sezgiseldir.", ans: true, expl: "Doğru! Uzmanlık düzeyidir." }
+                        { title: "C2: Native Nuances", desc: "Kusursuz anadili hakimiyeti.", q: "Örnek: Nüanslar sezgiseldir.", ans: true, expl: "Doğru!" }
                     ]
                 },
                 lessons: [
-                    { title: "1. Modül: Telaffuz", desc: "Peltek TH sesleri.", tableHtml: `<table><tr><th>Kombinasyon</th><th>Ses</th></tr><tr><td>TH</td><td>Peltek</td></tr></table>` }
+                    {
+                        title: "1. Modül: Telaffuz ve İstisnalar",
+                        desc: "Öğretmen Notu: Yazılış ile okunuş birebir aynı değildir.",
+                        tableHtml: `<table><tr><th>Kombinasyon</th><th>Ses Karşılığı</th><th>Örnek</th></tr><tr><td><strong>TH</strong></td><td>Peltek T/S</td><td>Think</td></tr><tr><td><strong>ED</strong></td><td>t / d / id</td><td>Worked</td></tr></table>`
+                    },
+                    {
+                        title: "2. Modül: Zamanlar (Tenses)",
+                        desc: "Temel zaman yapısı matrisi:",
+                        tableHtml: `<table><tr><th>Zaman</th><th>Kullanım</th><th>Örnek</th></tr><tr><td>Present Simple</td><td>Rutinler</td><td>I work</td></tr><tr><td>Present Continuous</td><td>Şu an</td><td>I am working</td></tr></table>`
+                    },
+                    {
+                        title: "3. Modül: İş & Seyahat Kalıpları",
+                        desc: "Sürekli kullanılan profesyonel ifadeler:",
+                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Could you clarify?</td><td>Kud yu klerifay?</td><td>Açabilir misiniz?</td></tr><tr><td>Keep in touch</td><td>Kiip in taç</td><td>İletişimde kalalım</td></tr></table>`
+                    },
+                    {
+                        title: "4. Modül: İş Diyaloğu",
+                        desc: "Ofis içi tanışma:",
+                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Manager:</td><td>Welcome to our team!</td><td>Ekibimize hoş geldin!</td></tr><tr><td>Employee:</td><td>Thank you!</td><td>Teşekkür ederim!</td></tr></table>`
+                    }
                 ]
             },
             ru: {
                 name: "Rusça",
                 flag: "🇷🇺",
                 banner: {
-                    title: "🇷🇺 Rusça Dil Künyesi",
-                    desc: "Avrasya'nın en yaygın dili, BM'nin resmi 6 dilinden biri. 260+ milyon konuşur.",
+                    title: "🇷🇺 Rusça Hakkında Genel Bilgiler & Künye",
+                    desc: "Rusça, Slav dillerine aittir. Avrasya coğrafyasının en yaygın dili ve BM'nin resmi 6 dilinden biridir. Yaklaşık <strong>260 milyon insan</strong> tarafından konuşulmaktadır.",
                     stats: [
-                        { title: "Konuşan", val: "260+ Milyon" },
-                        { title: "Alfabe", val: "Kiril (33 Harf)" },
-                        { title: "Statü", val: "BM Resmi Dili" }
+                        { title: "Konuşan Kişi Sayısı", val: "260+ Milyon" },
+                        { title: "Resmi Olduğu Ülkeler", val: "Rusya, Belarus, Kazakistan vb." },
+                        { title: "Alfabe Yapısı", val: "Kiril Alfabesi (33 Harf)" }
                     ]
                 },
                 slides: {
                     A1: [
-                        { title: "A1: Kiril Alfabesi ve Selam", desc: "Здравствуйте (Merhaba) kelimesi resmi tanışmada kullanılır.", q: "Örnek Cümle: Kiril alfabesindeki 'В' harfi Türkçe'deki 'B' sesini verir.", ans: false, expl: "Yanlış! 'В' harfi 'V' sesi çıkarır." },
-                        { title: "A1: Cinsiyet Mantığı", desc: "Rusçada isimler Eril, Dişil ve Nötr olarak üçe ayrılır.", q: "Örnek Cümle: Sessiz harfle biten Rusça isimler genellikle dişil olur.", ans: false, expl: "Yanlış! Sessiz harfle bitenler genellikle eril olur." }
+                        { title: "A1: Kiril Alfabesi", desc: "Здравствуйте kelimesi resmi selamlamadır.", q: "Örnek: 'В' harfi B sesini verir.", ans: false, expl: "Yanlış! 'V' sesi çıkarır." },
+                        { title: "A1: Cinsiyet Mantığı", desc: "İsimler Eril, Dişil ve Nötr'dür.", q: "Örnek: Sessiz harfle bitenler dişil olur.", ans: false, expl: "Yanlış! Genellikle eril olur." }
                     ],
                     A2: [
-                        { title: "A2: İsim Halleri (Giriş - Nominatif/Akkusatif)", desc: "Cümle içindeki nesne durumuna göre kelime sonlarının değişmesi.", q: "Örnek Cümle: Canlı erkek nesneler akkusatif durumda değişim gösterir.", ans: true, expl: "Doğru! Canlılık kuralı Rusçada esastır." },
-                        { title: "A2: Geçmiş Zaman", desc: "Fiillere -л (-l) eki getirilerek yapılır.", q: "Örnek Cümle: Geçmiş zamanda cinsiyete göre ekler değişmez.", ans: false, expl: "Yanlış! Eril (-л), Dişil (-ла), Nötr (-ло) olarak değişir." }
+                        { title: "A2: İsim Halleri", desc: "Cümle içindeki konum değişimi.", q: "Örnek: Canlı erkek nesneler akkusatifte değişir.", ans: true, expl: "Doğru!" },
+                        { title: "A2: Geçmiş Zaman", desc: "-л eki ile yapılır.", q: "Örnek: Cinsiyete göre ekler değişmez.", ans: false, expl: "Yanlış! Eril/dişil olarak değişir." }
                     ],
                     B1: [
-                        { title: "B1: Fiil Aspektleri (Genişletilmiş)", desc: "Tamamlanmış (СВ) ve Tamamlanmamış (НСВ) fiil çiftleri.", q: "Örnek Cümle: Süreklilik bildiren eylemlerde tamamlanmamış aspekt kullanılır.", ans: true, expl: "Doğru! Süreç bildiren durumlarda bu şarttır." },
-                        { title: "B1: Hareket Fiilleri (İstihbarat)", desc: "Yürüyerek mi yoksa araçla mı gidildiğini belirten özel fiiller.", q: "Örnek Cümle: İki yönlü gidiş-gelişlerde 'идти' fiili kullanılır.", ans: false, expl: "Yanlıшь! Düzenli gidiş-gelişler için 'ходить' kullanılır." }
+                        { title: "B1: Fiil Aspektleri", desc: "Tamamlanmış ve tamamlanmamış fiiller.", q: "Örnek: Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B1: Hareket Fiilleri", desc: "Yürüyüş ve araç fiilleri.", q: "Örnek: İki yönlü gidiş için идти kullanılır.", ans: false, expl: "Yanlış! ходить kullanılır." }
                     ],
                     B2: [
-                        { title: "B2: Ortaçlar ve Ulaçlar (Причастие / Деепричастие)", desc: "Fiilimsi yapılarıyla cümleleri zenginleştirme.", q: "Örnek Cümle: Ulaç yapıları Rusça edebi dilde sıklıkla kullanılır.", ans: true, expl: "Doğru! İleri düzey ifade biçimidir." },
-                        { title: "B2: Edatif Yapılar ve İsim Halleri", desc: "Genitif ve enstrümantal hallerin karmaşık kullanımı.", q: "Örnek Cümle: 'Без' (sız/siz) edatı her zaman Genitif (Iyelik) hal gerektirir.", ans: true, expl: "Doğru! Bez edatı genitif ister." }
+                        { title: "B2: Ortaçlar ve Ulaçlar", desc: "Fiilimsi yapıları.", q: "Örnek: Edebi dilde sık kullanılır.", ans: true, expl: "Doğru!" },
+                        { title: "B2: Edatif Yapılar", desc: "Genitif hal gereksinimleri.", q: "Örnek: 'Без' edatı genitif ister.", ans: true, expl: "Doğru!" }
                     ],
                     C1: [
-                        { title: "C1: Edebi Sözdizimi ve Üslup", desc: "Klasik Rus edebiyatı dil yapısı ve devrik vurgular.", q: "Örnek Cümle: C1 düzeyinde yazar üslupları ve tonlamalar tam olarak kavranır.", ans: true, expl: "Doğru! Akademik seviyedir." }
+                        { title: "C1: Edebi Sözdizimi", desc: "Klasik Rus edebiyatı yapısı.", q: "Örnek: Üsluplar tam kavranır.", ans: true, expl: "Doğru!" }
                     ],
                     C2: [
-                        { title: "C2: Rusça Uzmanlığı", desc: "Felsefi, politik ve üst düzey edebi metin hakimiyeti.", q: "Örnek Cümle: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
+                        { title: "C2: Rusça Uzmanlığı", desc: "Felsefi ve politik metinler.", q: "Örnek: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
                     ]
                 },
                 lessons: [
-                    { title: "1. Modül: Kiril", desc: "Temel sesler.", tableHtml: `<table><tr><th>Harf</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr><tr><td>Р</td><td>R</td></tr></table>` }
+                    {
+                        title: "1. Modül: Kiril Alfabesi",
+                        desc: "Öğretmen Notu: Bazı harfler Latinceye benzer ama farklı ses çıkarır.",
+                        tableHtml: `<table><tr><th>Kiril</th><th>Okunuş</th><th>Örnek</th></tr><tr><td><strong>В в</strong></td><td>V sesi</td><td>Москва <span class="pronunciation">(Moskva)</span></td></tr><tr><td><strong>Р р</strong></td><td>Titrek R</td><td>Россия <span class="pronunciation">(Rassiya)</span></td></tr></table>`
+                    },
+                    {
+                        title: "2. Modül: Temel Zamirler",
+                        desc: "Rusça şahıs zamirleri tablosu:",
+                        tableHtml: `<table><tr><th>Zamir</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Я</td><td>Ya</td><td>Ben</td></tr><tr><td>Ты</td><td>Ty</td><td>Sen</td></tr></table>`
+                    },
+                    {
+                        title: "3. Modül: Turistik İfadeler",
+                        desc: "Seyahat kalıpları:",
+                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Где метро?</td><td>Gde metro?</td><td>Metro nerede?</td></tr><tr><td>Спасибо</td><td>Spasibo</td><td>Teşekkürler</td></tr></table>`
+                    },
+                    {
+                        title: "4. Modül: Tanışma Diyaloğu",
+                        desc: "Samimi konuşma:",
+                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Иван:</td><td>Привет! Как зовут?</td><td>Selam! Adın ne?</td></tr><tr><td>Ольга:</td><td>Я Ольга.</td><td>Ben Olga.</td></tr></table>`
+                    }
                 ]
             }
         };
@@ -869,14 +529,12 @@
 
             const data = academyData[langKey];
             
-            // Künye
             const banner = document.getElementById('langBanner');
             let statsHtml = data.banner.stats.map(s => `<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('');
             banner.innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${statsHtml}</div>`;
 
             updateSlideContent();
 
-            // Dersler
             const grid = document.getElementById('lessonGrid');
             grid.innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
 
