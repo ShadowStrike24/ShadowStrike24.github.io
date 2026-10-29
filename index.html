@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Profesyonel Dil Öğrenme ve Slayt Portalı</title>
+    <title>AI Language Academy | Profesyonel Dil Öğrenme, Slayt ve Video Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -146,6 +146,27 @@
         .stat-box h4 { font-size: 1.1rem; color: var(--text-main); font-weight: 700; }
         .stat-box p { font-size: 0.85rem; color: var(--text-sub); margin: 0; }
 
+        /* YENİ: YAPAY ZEKA VİDEO DERS SIMÜLASYON ALANI */
+        .ai-video-section {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 2rem; margin-bottom: 3.5rem; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+        }
+        .video-player-mockup {
+            background: #0f172a; border-radius: 12px; height: 320px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; position: relative; color: white; text-align: center; padding: 2rem;
+            overflow: hidden; box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+        }
+        .video-play-btn {
+            width: 64px; height: 64px; background: var(--primary); border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 1.5rem; color: white; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5); transition: transform 0.2s ease; margin-bottom: 1rem;
+        }
+        .video-play-btn:hover { transform: scale(1.1); }
+        .video-subtitle {
+            font-size: 1.1rem; font-weight: 600; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem;
+            border-radius: 8px; margin-top: 1rem; max-width: 600px;
+        }
+
         /* Slayt & Test Alanı */
         .interactive-slide-section {
             background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
@@ -225,7 +246,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Kapsamlı Öğretmen ve Seviye Modülü</div>
+        <div class="window-title">AI Language Academy — Kapsamlı Öğretmen, Video & Seviye Modülü</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -235,13 +256,13 @@
                 <div class="logo-icon">AI</div>
                 <div class="logo-text">AI <span>Language Hub</span></div>
             </a>
-            <div class="nav-badge">A1-C2 Slaytları & Detaylı Dersler</div>
+            <div class="nav-badge">AI Video Dersler & A1-C2 Slaytlar</div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Kapsamlı Dil Akademisi & Seviye Bazlı Eğitim Portalı</h1>
-        <p>Her dilin dünya istatistiklerini, okunuş kurallarını, derinlemesine gramer tablolarını ve interaktif seviye testli slaytlarını inceleyin.</p>
+        <h1>Kapsamlı Dil Akademisi & Yapay Zeka Video Ders Portalı</h1>
+        <p>Dünya istatistikleri, öğretmen video simülasyonları, interaktif seviye testleri ve derinlemesine gramer tablolarıyla eksiksiz dil öğrenme deneyimi.</p>
     </div>
 
     <!-- Dil Seçim Sekmeleri -->
@@ -255,6 +276,17 @@
 
         <!-- Dil Künye Paneli -->
         <div class="lang-info-banner" id="langBanner"></div>
+
+        <!-- YENİ: YAPAY ZEKA VİDEO DERS SIMÜLASYONU -->
+        <div class="ai-video-section">
+            <h3 style="margin-bottom: 1rem; font-size: 1.2rem; color: var(--primary);" id="videoHeaderTitle">🎬 Yapay Zeka Canlı Video Ders Simülasyonu</h3>
+            <div class="video-player-mockup">
+                <div class="video-play-btn" onclick="playVideoSim()">▶</div>
+                <h4 id="videoSimTitle" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Seviye Bazlı Sesli & Görsel Anlatım</h4>
+                <p id="videoSimDesc" style="font-size: 0.9rem; color: #94a3b8; max-width: 500px;">Seçtiğiniz dil ve seviyeye uygun örnek diyalog simülasyonunu başlatmak için oynat tuşuna basın.</p>
+                <div class="video-subtitle" id="videoSubtitle">"Hazır olduğunuzda videoyu başlatın..."</div>
+            </div>
+        </div>
 
         <!-- İnteraktif Seviye Slayt ve Test Modülü -->
         <div class="interactive-slide-section">
@@ -348,6 +380,14 @@
                         { title: "Kültürel Statü", val: "BM, AB ve Latin Amerika Ticaret Dili" }
                     ]
                 },
+                videoSims: {
+                    A1: { title: "İspanyolca A1: Temel Tanışma Simülasyonu", desc: "Öğretmen eşliğinde günlük ilk tanışma diyalogları.", sub: "« ¡Hola! ¿Cómo te llamas? — Me llamo Carlos. »" },
+                    A2: { title: "İspanyolca A2: Yol Tarifi ve Alışveriş", desc: "Şehir içinde yön bulma ve market diyalogları.", sub: "« ¿Dónde está la estación, por favor? »" },
+                    B1: { title: "İspanyolca B1: Geçmiş Anılar ve Olaylar", desc: "Geçmiş zaman (Indefinido) ile hikaye anlatımı.", sub: "« Ayer fui al museo y vi cuadros increíbles. »" },
+                    B2: { title: "İspanyolca B2: Fikir Beyan Etme & Tartışma", desc: "Subjuntivo kipi ile duygu ve ihtimal belirtme.", sub: "« Dudo que sea posible terminar hoy. »" },
+                    C1: { title: "İspanyolca C1: Akademik ve Edebi Akıcılık", desc: "Karmaşık deyimler ve bölgesel aksan analizleri.", sub: "« A palabras necias, oídos sordos. »" },
+                    C2: { title: "İspanyolca C2: Anadili Seviyesinde Uzmanlık", desc: "Felsefi argümanlar ve üst düzey retorik.", sub: "« La elocuencia es el arte de decir mucho... »" }
+                },
                 slides: {
                     A1: [
                         { title: "A1: Temel Tanışma ve Alfabe", desc: "İspanyolcada alfabe yazıldığı gibi okunur. 'Hola' kelimesindeki H harfi okunmaz.", q: "Örnek: 'Hola' kelimesinde H harfi seslendirilir.", ans: false, expl: "Yanlış! H harfi daima sessizdir." },
@@ -370,7 +410,7 @@
                         { title: "C1: Deyimler (Modismos)", desc: "Günlük akıcı dilde mecazi deyimler.", q: "Örnek: 'Hablar por los codos' çok konuşmak demektir.", ans: true, expl: "Doğru!" }
                     ],
                     C2: [
-                        { title: "C2: Edebi ve Akademik Yetkinlık", desc: "Anadili seviyesinde felsefi argümanlar ve argo hakimiyeti.", q: "Örnek: Bölgesel ağızlar tamamen anlaşılır hale gelir.", ans: true, expl: "Doğru!" }
+                        { title: "C2: Edebi ve Akademik Yetkinlik", desc: "Anadili seviyesinde felsefi argümanlar ve argo hakimiyeti.", q: "Örnek: Bölgesel ağızlar tamamen anlaşılır hale gelir.", ans: true, expl: "Doğru!" }
                     ]
                 },
                 lessons: [
@@ -408,222 +448,4 @@
                         { title: "Küresel Statü", val: "Ortak İletişim Dili" }
                     ]
                 },
-                slides: {
-                    A1: [
-                        { title: "A1: To Be Fiili", desc: "I am, You are yapıları.", q: "Örnek: 'He are a student' doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." },
-                        { title: "A1: İşaret Zamirleri", desc: "This, That, These, Those.", q: "Örnek: Yakındaki nesne için 'This' kullanılır.", ans: true, expl: "Doğru!" }
-                    ],
-                    A2: [
-                        { title: "A2: Past Simple", desc: "Düzenli fiillere -ed gelir.", q: "Örnek: Go fiilinin geçmişi 'goed' olur.", ans: false, expl: "Yanlış! 'went' olur." },
-                        { title: "A2: Comparatives", desc: "Sıfat karşılaştırmaları.", q: "Örnek: Good sıfatı 'gooder' olur.", ans: false, expl: "Yanlış! 'better' olur." }
-                    ],
-                    B1: [
-                        { title: "B1: Present Perfect", desc: "Have/Has V3 yapısı.", q: "Örnek: Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" },
-                        { title: "B1: Edatlar", desc: "In, On, At kullanımı.", q: "Örnek: Saatler için 'in' kullanılır.", ans: false, expl: "Yanlış! 'at' kullanılır." }
-                    ],
-                    B2: [
-                        { title: "B2: Relative Clauses", desc: "Who, which, that bağlaçları.", q: "Örnek: İnsanlar için 'which' kullanılır.", ans: false, expl: "Yanlış! 'who' kullanılır." },
-                        { title: "B2: Passives", desc: "Edilgen çatı.", q: "Örnek: 'to be + V3' kuralı geçerlidir.", ans: true, expl: "Doğru!" }
-                    ],
-                    C1: [
-                        { title: "C1: Inversion", desc: "Devrik cümle yapısı.", q: "Örnek: Vurgu için yardımcı fiil öne gelir.", ans: true, expl: "Doğru!" },
-                        { title: "C1: Advanced Idioms", desc: "İleri düzey deyimler.", q: "Örnek: 'Hit the nail' tam isabet demektir.", ans: true, expl: "Doğru!" }
-                    ],
-                    C2: [
-                        { title: "C2: Native Nuances", desc: "Kusursuz anadili hakimiyeti.", q: "Örnek: Nüanslar sezgiseldir.", ans: true, expl: "Doğru!" }
-                    ]
-                },
-                lessons: [
-                    {
-                        title: "1. Modül: Telaffuz ve İstisnalar",
-                        desc: "Öğretmen Notu: Yazılış ile okunuş birebir aynı değildir.",
-                        tableHtml: `<table><tr><th>Kombinasyon</th><th>Ses Karşılığı</th><th>Örnek</th></tr><tr><td><strong>TH</strong></td><td>Peltek T/S</td><td>Think</td></tr><tr><td><strong>ED</strong></td><td>t / d / id</td><td>Worked</td></tr></table>`
-                    },
-                    {
-                        title: "2. Modül: Zamanlar (Tenses)",
-                        desc: "Temel zaman yapısı matrisi:",
-                        tableHtml: `<table><tr><th>Zaman</th><th>Kullanım</th><th>Örnek</th></tr><tr><td>Present Simple</td><td>Rutinler</td><td>I work</td></tr><tr><td>Present Continuous</td><td>Şu an</td><td>I am working</td></tr></table>`
-                    },
-                    {
-                        title: "3. Modül: İş & Seyahat Kalıpları",
-                        desc: "Sürekli kullanılan profesyonel ifadeler:",
-                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Could you clarify?</td><td>Kud yu klerifay?</td><td>Açabilir misiniz?</td></tr><tr><td>Keep in touch</td><td>Kiip in taç</td><td>İletişimde kalalım</td></tr></table>`
-                    },
-                    {
-                        title: "4. Modül: İş Diyaloğu",
-                        desc: "Ofis içi tanışma:",
-                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Manager:</td><td>Welcome to our team!</td><td>Ekibimize hoş geldin!</td></tr><tr><td>Employee:</td><td>Thank you!</td><td>Teşekkür ederim!</td></tr></table>`
-                    }
-                ]
-            },
-            ru: {
-                name: "Rusça",
-                flag: "🇷🇺",
-                banner: {
-                    title: "🇷🇺 Rusça Hakkında Genel Bilgiler & Künye",
-                    desc: "Rusça, Slav dillerine aittir. Avrasya coğrafyasının en yaygın dili ve BM'nin resmi 6 dilinden biridir. Yaklaşık <strong>260 milyon insan</strong> tarafından konuşulmaktadır.",
-                    stats: [
-                        { title: "Konuşan Kişi Sayısı", val: "260+ Milyon" },
-                        { title: "Resmi Olduğu Ülkeler", val: "Rusya, Belarus, Kazakistan vb." },
-                        { title: "Alfabe Yapısı", val: "Kiril Alfabesi (33 Harf)" }
-                    ]
-                },
-                slides: {
-                    A1: [
-                        { title: "A1: Kiril Alfabesi", desc: "Здравствуйте kelimesi resmi selamlamadır.", q: "Örnek: 'В' harfi B sesini verir.", ans: false, expl: "Yanlış! 'V' sesi çıkarır." },
-                        { title: "A1: Cinsiyet Mantığı", desc: "İsimler Eril, Dişil ve Nötr'dür.", q: "Örnek: Sessiz harfle bitenler dişil olur.", ans: false, expl: "Yanlış! Genellikle eril olur." }
-                    ],
-                    A2: [
-                        { title: "A2: İsim Halleri", desc: "Cümle içindeki konum değişimi.", q: "Örnek: Canlı erkek nesneler akkusatifte değişir.", ans: true, expl: "Doğru!" },
-                        { title: "A2: Geçmiş Zaman", desc: "-л eki ile yapılır.", q: "Örnek: Cinsiyete göre ekler değişmez.", ans: false, expl: "Yanlış! Eril/dişil olarak değişir." }
-                    ],
-                    B1: [
-                        { title: "B1: Fiil Aspektleri", desc: "Tamamlanmış ve tamamlanmamış fiiller.", q: "Örnek: Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" },
-                        { title: "B1: Hareket Fiilleri", desc: "Yürüyüş ve araç fiilleri.", q: "Örnek: İki yönlü gidiş için идти kullanılır.", ans: false, expl: "Yanlış! ходить kullanılır." }
-                    ],
-                    B2: [
-                        { title: "B2: Ortaçlar ve Ulaçlar", desc: "Fiilimsi yapıları.", q: "Örnek: Edebi dilde sık kullanılır.", ans: true, expl: "Doğru!" },
-                        { title: "B2: Edatif Yapılar", desc: "Genitif hal gereksinimleri.", q: "Örnek: 'Без' edatı genitif ister.", ans: true, expl: "Doğru!" }
-                    ],
-                    C1: [
-                        { title: "C1: Edebi Sözdizimi", desc: "Klasik Rus edebiyatı yapısı.", q: "Örnek: Üsluplar tam kavranır.", ans: true, expl: "Doğru!" }
-                    ],
-                    C2: [
-                        { title: "C2: Rusça Uzmanlığı", desc: "Felsefi ve politik metinler.", q: "Örnek: Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }
-                    ]
-                },
-                lessons: [
-                    {
-                        title: "1. Modül: Kiril Alfabesi",
-                        desc: "Öğretmen Notu: Bazı harfler Latinceye benzer ama farklı ses çıkarır.",
-                        tableHtml: `<table><tr><th>Kiril</th><th>Okunuş</th><th>Örnek</th></tr><tr><td><strong>В в</strong></td><td>V sesi</td><td>Москва <span class="pronunciation">(Moskva)</span></td></tr><tr><td><strong>Р р</strong></td><td>Titrek R</td><td>Россия <span class="pronunciation">(Rassiya)</span></td></tr></table>`
-                    },
-                    {
-                        title: "2. Modül: Temel Zamirler",
-                        desc: "Rusça şahıs zamirleri tablosu:",
-                        tableHtml: `<table><tr><th>Zamir</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Я</td><td>Ya</td><td>Ben</td></tr><tr><td>Ты</td><td>Ty</td><td>Sen</td></tr></table>`
-                    },
-                    {
-                        title: "3. Modül: Turistik İfadeler",
-                        desc: "Seyahat kalıpları:",
-                        tableHtml: `<table><tr><th>İfade</th><th>Okunuş</th><th>Anlamı</th></tr><tr><td>Где метро?</td><td>Gde metro?</td><td>Metro nerede?</td></tr><tr><td>Спасибо</td><td>Spasibo</td><td>Teşekkürler</td></tr></table>`
-                    },
-                    {
-                        title: "4. Modül: Tanışma Diyaloğu",
-                        desc: "Samimi konuşma:",
-                        tableHtml: `<table><tr><th>Kişi</th><th>Metin</th><th>Anlamı</th></tr><tr><td>Иван:</td><td>Привет! Как зовут?</td><td>Selam! Adın ne?</td></tr><tr><td>Ольга:</td><td>Я Ольга.</td><td>Ben Olga.</td></tr></table>`
-                    }
-                ]
-            }
-        };
-
-        let currentLang = 'es';
-        let currentLevel = 'A1';
-        let currentSlideIdx = 0;
-
-        function switchLanguage(langKey) {
-            currentLang = langKey;
-            currentSlideIdx = 0;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn-' + langKey).classList.add('active');
-
-            const data = academyData[langKey];
-            
-            const banner = document.getElementById('langBanner');
-            let statsHtml = data.banner.stats.map(s => `<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('');
-            banner.innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${statsHtml}</div>`;
-
-            updateSlideContent();
-
-            const grid = document.getElementById('lessonGrid');
-            grid.innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
-
-            document.getElementById('promptText').innerText = `"Sen profesyonel bir ${data.name} öğretmenisin. Benimle A2 seviyesinde sohbet et. Hatalarımı düzelt."`;
-        }
-
-        function switchLevel(lvl) {
-            currentLevel = lvl;
-            currentSlideIdx = 0;
-            document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            updateSlideContent();
-        }
-
-        function updateSlideContent() {
-            const slidesArr = academyData[currentLang].slides[currentLevel];
-            if (!slidesArr || slidesArr.length === 0) return;
-            if (currentSlideIdx >= slidesArr.length) currentSlideIdx = 0;
-
-            const slide = slidesArr[currentSlideIdx];
-            document.getElementById('slideTag').innerText = `SEVİYE ${currentLevel} • SLAYT ${currentSlideIdx + 1}`;
-            document.getElementById('slideTitle').innerText = slide.title;
-            document.getElementById('slideDesc').innerText = slide.desc;
-            document.getElementById('quizQ').innerText = "Soru: " + slide.q;
-            document.getElementById('quizRes').innerText = "";
-            document.getElementById('slideCounterInfo').innerText = `${currentSlideIdx + 1} / ${slidesArr.length}`;
-            window.currentQuizCorrect = slide.ans;
-            window.currentQuizExpl = slide.expl;
-        }
-
-        function checkQuiz(userAns) {
-            const resDiv = document.getElementById('quizRes');
-            if (userAns === window.currentQuizCorrect) {
-                resDiv.innerHTML = `<span style="color:#166534;">✓ Doğru! ${window.currentQuizExpl}</span>`;
-            } else {
-                resDiv.innerHTML = `<span style="color:#991b1b;">✗ Yanlış! ${window.currentQuizExpl}</span>`;
-            }
-        }
-
-        function nextLevelSlide() {
-            const slidesArr = academyData[currentLang].slides[currentLevel];
-            currentSlideIdx = (currentSlideIdx + 1) % slidesArr.length;
-            updateSlideContent();
-        }
-
-        function prevLevelSlide() {
-            const slidesArr = academyData[currentLang].slides[currentLevel];
-            currentSlideIdx = (currentSlideIdx - 1 + slidesArr.length) % slidesArr.length;
-            updateSlideContent();
-        }
-
-        window.onload = () => switchLanguage('es');
-
-        function copyPrompt() {
-            navigator.clipboard.writeText(document.getElementById('promptText').innerText);
-            alert("Komut kopyalandı!");
-        }
-
-        function toggleTheme() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            document.getElementById('themeBtn').innerHTML = isDark ? '🌙 Koyu Mod' : '☀️ Aydınlık Mod';
-        }
-
-        let timerInterval = null, totalSeconds = 25 * 60, timeLeft = totalSeconds;
-        function updateDisplay() {
-            let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
-            document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-        }
-        function setTimerPreset(m, s) {
-            clearInterval(timerInterval); timerInterval = null;
-            totalSeconds = (m * 60) + s; timeLeft = totalSeconds;
-            document.getElementById('customMin').value = m;
-            document.getElementById('customSec').value = s < 10 ? '0' + s : s;
-            updateDisplay();
-        }
-        function setCustomTimer() {
-            setTimerPreset(parseInt(document.getElementById('customMin').value) || 0, parseInt(document.getElementById('customSec').value) || 0);
-        }
-        function startTimer() {
-            if (!timerInterval) {
-                timerInterval = setInterval(() => {
-                    if (timeLeft > 0) { timeLeft--; updateDisplay(); }
-                    else { clearInterval(timerInterval); timerInterval = null; alert("Süre doldu!"); }
-                }, 1000);
-            }
-        }
-        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
-        function resetTimer() { pauseTimer(); timeLeft = totalSeconds; updateDisplay(); }
-    </script>
-</body>
-</html>
+                video
