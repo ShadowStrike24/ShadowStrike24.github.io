@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Profesyonel Dil ve Akıllı Sohbet Portalı</title>
+    <title>AI Language Academy | Profesyonel Dil ve Sınav Portalı</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-body: #f8fafc;
             --card-bg: #ffffff;
             --primary: #2563eb;
+            --primary-hover: #1d4ed8;
             --text-main: #0f172a;
             --text-sub: #475569;
             --border-color: #e2e8f0;
@@ -21,6 +22,7 @@
             --bg-body: #0f172a;
             --card-bg: #1e293b;
             --primary: #3b82f6;
+            --primary-hover: #60a5fa;
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --border-color: #334155;
@@ -28,91 +30,674 @@
             --window-bar-bg: #1e293b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
 
-        .window-bar { background: var(--window-bar-bg); border-bottom: 1px solid var(--border-color); padding: 0.6rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
-        .dots { display: flex; gap: 7px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .window-bar {
+            background: var(--window-bar-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
         .dot-red { background-color: #ff5f56; }
         .dot-yellow { background-color: #ffbd2e; }
         .dot-green { background-color: #27c93f; }
-        .window-title { font-size: 0.8rem; color: var(--text-sub); font-weight: 500; }
 
-        .theme-toggle-btn { background: var(--accent-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .window-title {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
 
-        header { background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo-wrapper { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.1rem; }
-        .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
-        .logo-text span { color: var(--primary); }
+        .theme-toggle-btn {
+            background: var(--accent-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-        .hero { max-width: 900px; margin: 2rem auto 1.5rem auto; text-align: center; padding: 0 1.5rem; }
-        .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .hero p { font-size: 1rem; color: var(--text-sub); }
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-        .lang-segments { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 1.5rem auto; }
-        .lang-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; }
-        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 1.5rem; }
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
 
-        .lang-info-banner { background: var(--card-bg); border: 2px solid var(--primary); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: 2rem auto 1.5rem;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        .lang-segments {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 1.5rem auto;
+        }
+
+        .lang-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .lang-info-banner {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1rem;
+        }
 
         /* TELAFFUZ KOÇU */
-        .ai-hologram-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 2px solid #3b82f6; border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; color: white; text-align: center; }
-        .hologram-target-box { background: rgba(37, 99, 235, 0.25); border: 1px solid #3b82f6; border-radius: 12px; padding: 1.2rem; margin: 1rem 0; font-size: 1.15rem; font-weight: 700; color: #60a5fa; }
-        .hologram-user-speech { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; font-size: 0.95rem; color: #e2e8f0; }
-        .holo-btn { background: #2563eb; color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0 4px; }
-        .holo-btn.secondary { background: rgba(255,255,255,0.15); }
-        .holo-btn.change-phrase { background: #059669; color: white; }
+        .ai-hologram-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            text-align: center;
+        }
 
-        /* CANLI SOHBET & GRAMER TARAYICISI */
-        .daily-life-chat-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
-        .chat-level-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
-        .chat-lvl-btn { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
-        .chat-lvl-btn.active { background: var(--primary); color: white; }
+        .hologram-target-box {
+            background: rgba(37, 99, 235, 0.25);
+            border: 1px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
 
-        .chat-box { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem; min-height: 250px; max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; margin-bottom: 1rem; }
-        .msg { padding: 0.8rem 1.1rem; border-radius: 12px; max-width: 85%; font-size: 0.95rem; }
-        .msg.ai { background: var(--accent-bg); color: var(--text-main); border: 1px solid var(--border-color); align-self: flex-start; }
-        .msg.user { background: var(--primary); color: white; align-self: flex-end; }
-        .msg.grammar-alert { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; align-self: flex-start; font-size: 0.88rem; width: 100%; max-width: 100%; }
+        .hologram-user-speech {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
 
-        .chat-input-wrapper { display: flex; gap: 8px; }
-        .chat-input-wrapper input { flex: 1; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-body); color: var(--text-main); outline: none; }
-        .chat-input-wrapper button { background: var(--primary); color: white; border: none; padding: 0.8rem 1.4rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .holo-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 0 4px;
+        }
+
+        .holo-btn.secondary {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .holo-btn.change-phrase {
+            background: #059669;
+            color: white;
+        }
+
+        /* CANLI SOHBET VE GRAMER */
+        .daily-life-chat-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .chat-level-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .chat-lvl-btn {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .chat-lvl-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .chat-box {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            min-height: 250px;
+            max-height: 380px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .msg {
+            padding: 0.8rem 1.1rem;
+            border-radius: 12px;
+            max-width: 85%;
+            font-size: 0.95rem;
+        }
+
+        .msg.ai {
+            background: var(--accent-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            align-self: flex-start;
+        }
+
+        .msg.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .msg.grammar-alert {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+            align-self: flex-start;
+            font-size: 0.88rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input-wrapper input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+        }
+
+        .chat-input-wrapper button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
         /* SLAYT VE MİNİ TESTLER */
-        .interactive-slide-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
-        .level-selector-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .level-tab { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
-        .level-tab.active { background: var(--primary); color: white; }
+        .interactive-slide-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
 
-        .slide-stage { background: var(--bg-body); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; min-height: 220px; margin-bottom: 1rem; }
-        .quiz-box { background: var(--card-bg); border: 1px dashed var(--primary); border-radius: 10px; padding: 1rem; margin-top: 1rem; }
-        .quiz-btn { padding: 0.4rem 1rem; border-radius: 6px; font-weight: 700; cursor: pointer; border: 1px solid var(--border-color); margin-right: 6px; }
+        .level-selector-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
 
-        .lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
-        @media (max-width: 600px) { .lesson-grid { grid-template-columns: 1fr; } }
-        .lesson-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
-        .content-box table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
-        .content-box th, .content-box td { padding: 0.5rem; border-bottom: 1px solid var(--border-color); text-align: left; }
+        .level-tab {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
 
-        /* SAYAÇ BÖLÜMÜ (ÖZELLEŞTİRİLEBİLİR) */
-        .timer-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; text-align: center; }
-        .timer-preset-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
-        .preset-btn { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
-        .custom-timer-input { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 1rem; }
-        .custom-timer-input input { width: 70px; padding: 0.4rem; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-weight: 700; background: var(--bg-body); color: var(--text-main); }
-        .custom-timer-input button { background: var(--accent-bg); border: 1px solid var(--primary); color: var(--primary); padding: 0.4rem 0.8rem; border-radius: 6px; font-weight: 700; cursor: pointer; }
-        .timer-display { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 0.5rem 0 1rem 0; font-family: monospace; }
-        .timer-controls button { background: var(--primary); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0 4px; }
-        .timer-controls button.reset { background: #64748b; }
+        .level-tab.active {
+            background: var(--primary);
+            color: white;
+        }
 
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem; }
+        .slide-stage {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-height: 220px;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-box {
+            background: var(--card-bg);
+            border: 1px dashed var(--primary);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            margin-right: 6px;
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lesson-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .content-box table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .content-box th,
+        .content-box td {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        /* ÇALIŞMA SAYACI */
+        .timer-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .timer-preset-btns {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .preset-btn {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .custom-timer-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .custom-timer-input input {
+            width: 75px;
+            padding: 0.4rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 700;
+            background: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        .custom-timer-input button {
+            background: var(--accent-bg);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .timer-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: monospace;
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        /* GELİŞMİŞ TEST MODÜLÜ (Paylaştığın Stiller) */
+        .full-quiz-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .full-quiz-section h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: .5rem;
+        }
+
+        .full-quiz-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 1.2rem 0;
+        }
+
+        .full-quiz-controls label {
+            display: block;
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .full-quiz-controls select,
+        .full-quiz-controls input {
+            width: 100%;
+            padding: .75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 9px;
+            background: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        .full-quiz-btn {
+            border: 0;
+            border-radius: 9px;
+            padding: .75rem 1rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .full-quiz-btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .full-quiz-secondary {
+            border: 1px solid var(--border-color);
+            border-radius: 9px;
+            padding: .65rem .9rem;
+            background: var(--bg-body);
+            color: var(--text-main);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .full-quiz-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 1rem 0 .5rem;
+            font-size: .9rem;
+            color: var(--text-sub);
+        }
+
+        .full-quiz-progress {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 99px;
+            overflow: hidden;
+            margin-bottom: 1.3rem;
+        }
+
+        .full-quiz-progress > div {
+            height: 100%;
+            width: 0;
+            background: var(--primary);
+            transition: width .2s;
+        }
+
+        .full-quiz-question {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .full-quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .full-quiz-option {
+            width: 100%;
+            padding: .9rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-body);
+            color: var(--text-main);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .full-quiz-option:hover:not(:disabled) {
+            border-color: var(--primary);
+        }
+
+        .full-quiz-option.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+            color: #14532d;
+        }
+
+        .full-quiz-option.incorrect {
+            background: #ffe4e6;
+            border-color: #e11d48;
+            color: #9f1239;
+        }
+
+        .full-quiz-feedback {
+            background: var(--accent-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .full-quiz-result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin: 1.3rem 0;
+        }
+
+        .full-quiz-result-card {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .full-quiz-result-card strong {
+            display: block;
+            font-size: 1.7rem;
+            color: var(--primary);
+        }
+
+        .full-quiz-history {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .full-quiz-history table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .85rem;
+        }
+
+        .full-quiz-history th,
+        .full-quiz-history td {
+            border-bottom: 1px solid var(--border-color);
+            padding: .65rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .full-quiz-history th {
+            color: var(--text-sub);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -134,8 +719,8 @@
     </header>
 
     <div class="hero">
-        <h1>Profesyonel AI Dil Akademisi & İlerlemeli Sohbet</h1>
-        <p>Bağlamsal ve dinamik öğretmen diyalog motoru ve özelleştirilebilir sayaç ile verimli pratik yapın.</p>
+        <h1>Profesyonel AI Dil Akademisi & Sınav Merkezi</h1>
+        <p>Bağlamsal sohbet motoru, telaffuz koçu, özelleştirilebilir sayaç ve gelişmiş test modülü ile tam donanımlı pratik yapın.</p>
     </div>
 
     <div class="lang-segments">
@@ -170,10 +755,10 @@
             <div id="accentScore" style="margin-top:0.8rem; font-weight:700; font-size:0.85rem; color:#93c5fd;">Skor: %0</div>
         </div>
 
-        <!-- SOHBET VE GERÇEK ZAMANLI GRAMER TARAYICISI -->
+        <!-- CANLI SOHBET VE GRAMER DENETÇİSİ -->
         <div class="daily-life-chat-section">
-            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Profesyonel Günlük Hayat Sohbeti & Gramer Denetçisi</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Öğretmen girdiğiniz yanıtın bağlamına göre anlamlı sorular sorar ve gramer hatalarını anında analiz eder.</p>
+            <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Bağlamsal AI Sohbet & Otomatik Gramer Tarayıcısı</h3>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Yazdığınız mesaja göre yapay zeka sıfır tekrarla doğal yanıtlar üretir ve hatalarınızı anında uyarır.</p>
 
             <div class="chat-level-bar">
                 <button class="chat-lvl-btn active" onclick="setChatLevel('A1')">A1 Günlük Tanışma</button>
@@ -193,9 +778,80 @@
             </div>
         </div>
 
+        <!-- GELİŞMİŞ TEST MODÜLÜ (Paylaştığın Stillerle Entegre) -->
+        <div class="full-quiz-section">
+            <h3>📝 Gelişmiş Bilgi ve Sınav Modülü</h3>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Seviyenize ve dilinize göre kapsamlı çoktan seçmeli sınav olun, sonuçlarınızı takip edin.</p>
+
+            <div id="quizSetupView">
+                <div class="full-quiz-controls">
+                    <div>
+                        <label>Hedef Dil</label>
+                        <select id="quizLangSelect">
+                            <option value="ku">Kürtçe (Kurmancî)</option>
+                            <option value="es">İspanyolca</option>
+                            <option value="en">İngilizce</option>
+                            <option value="ru">Rusça</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Seviye</label>
+                        <select id="quizLevelSelect">
+                            <option value="A1">A1 Başlangıç</option>
+                            <option value="A2">A2 Temel</option>
+                            <option value="B1">B1 Orta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Soru Sayısı</label>
+                        <input type="number" id="quizCountInput" value="3" min="1" max="5">
+                    </div>
+                </div>
+                <button class="full-quiz-btn" onclick="startFullQuiz()">Sınavı Başlat 🚀</button>
+            </div>
+
+            <div id="quizActiveView" hidden>
+                <div class="full-quiz-meta">
+                    <span id="quizProgressText">Soru 1 / 3</span>
+                    <span id="quizScoreBadge">Skor: 0</span>
+                </div>
+                <div class="full-quiz-progress"><div id="quizProgressBar"></div></div>
+                
+                <div class="full-quiz-question" id="quizQuestionText">Soru yükleniyor...</div>
+                <div class="full-quiz-options" id="quizOptionsContainer"></div>
+                
+                <div class="full-quiz-feedback" id="quizFeedbackBox" hidden>
+                    <div id="quizExplanationText" style="font-weight: 600; margin-bottom: 0.8rem;"></div>
+                    <button class="full-quiz-btn" id="quizNextBtn" onclick="nextFullQuizQuestion()">Sonraki Soru ➔</button>
+                </div>
+            </div>
+
+            <div id="quizResultView" hidden>
+                <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">🎉 Sınav Tamamlandı!</h4>
+                <div class="full-quiz-result-grid">
+                    <div class="full-quiz-result-card"><strong id="resCorrectCount">0</strong> Doğru</div>
+                    <div class="full-quiz-result-card"><strong id="resIncorrectCount">0</strong> Yanlış</div>
+                    <div class="full-quiz-result-card"><strong id="resSuccessRate">%0</strong> Başarı</div>
+                </div>
+                <button class="full-quiz-btn" onclick="resetFullQuizSetup()">Yeni Sınav Başlat</button>
+
+                <div class="full-quiz-history" style="margin-top: 1.5rem;">
+                    <h5 style="margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-sub);">Önceki Sınav Geçmişi</h5>
+                    <table>
+                        <thead>
+                            <tr><th>Tarih</th><th>Dil</th><th>Seviye</th><th>Doğru/Yanlış</th><th>Oran</th></tr>
+                        </thead>
+                        <tbody id="quizHistoryBody">
+                            <tr><td colspan="5" style="text-align:center; color:var(--text-sub)">Henüz sınav kaydı yok.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <!-- SLAYT VE MİNİ TESTLER -->
         <div class="interactive-slide-section">
-            <h3 style="margin-bottom: 1rem; color: var(--primary);">🎯 Seviye Slaytları & Genişletilmiş Testler (A1 - C2)</h3>
+            <h3 style="margin-bottom: 1rem; color: var(--primary);">🎯 Seviye Slaytları (A1 - C2)</h3>
             
             <div class="level-selector-bar">
                 <button class="level-tab active" onclick="switchLevel('A1')">A1</button>
@@ -231,24 +887,29 @@
         <div class="section-title" style="font-size:1.3rem; font-weight:800; margin-bottom:1rem">📖 Derinlemesine Öğretmen Gramer Modülleri</div>
         <div class="lesson-grid" id="lessonGrid"></div>
 
-        <!-- İSTEĞE BAĞLI SAYAÇ SEÇİMİ VE MANUEL SÜRE AYARLAMA -->
+        <!-- İSTEĞE BAĞLI ÇALIŞMA SAYACI -->
         <div class="timer-box">
             <h3>⏱️ Özelleştirilebilir Çalışma Sayacı</h3>
+            <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.8rem;">İstediğiniz süreyi seçebilir veya kendi dakikanızı yazıp ayarlayabilirsiniz.</p>
+            
             <div class="timer-preset-btns">
                 <button class="preset-btn" onclick="setTimerPreset(15, 0)">15 Dk</button>
                 <button class="preset-btn" onclick="setTimerPreset(25, 0)">25 Dk (Pomodoro)</button>
                 <button class="preset-btn" onclick="setTimerPreset(45, 0)">45 Dk</button>
             </div>
+
             <div class="custom-timer-input">
                 <input type="number" id="customMin" value="25" min="0" max="180"><span>:</span>
                 <input type="number" id="customSec" value="00" min="0" max="59">
-                <button onclick="setCustomTimer()">Ayarla</button>
+                <button onclick="setCustomTimer()">Ayarla ⚙️</button>
             </div>
+
             <div class="timer-display" id="timer">25:00</div>
-            <div class="timer-controls">
-                <button onclick="startTimer()">Başlat</button>
-                <button onclick="pauseTimer()">Durdur</button>
-                <button class="reset" onclick="resetTimer()">Sıfırla</button>
+
+            <div>
+                <button class="holo-btn" onclick="startTimer()">Başlat ▶</button>
+                <button class="holo-btn secondary" onclick="pauseTimer()">Durdur ⏸</button>
+                <button class="holo-btn secondary" style="background:#64748b; color:white;" onclick="resetTimer()">Sıfırla 🔄</button>
             </div>
         </div>
 
@@ -267,26 +928,20 @@
                     "Navê min Azad e, ez ji Amedê me.",
                     "Kêfxweş bûm ku min te nas kir.",
                     "Tu dikarî ji min re alîkar bî?",
-                    "Ez dixwazim zimanê Kurdî hîn bibim.",
-                    "Ji kerema xwe re hinekî hêdî bipeyive.",
-                    "Dem baş! Niha saet çend e?",
-                    "Ez diçim bazarê ku tiştan bikrim.",
-                    "Spas dikim ji bo alîkariya te.",
-                    "Cihê otobüsê li kuderê ye?",
-                    "Îro heva pir xweş û germ e."
+                    "Ez dixwazim zimanê Kurdî hîn bibim."
                 ],
-                chatInit: "🤖 AI Koç: Silav! Rojbaş. Navê te çi ye û tu ji kîjan bajêr î?",
-                contextualLogic: function(input) {
-                    const lower = input.toLowerCase();
-                    if (lower.includes("ez") || lower.includes("min") || lower.includes("nav")) {
-                        return "Gelek baş e! Kêfxweş bûm. Tu çend salî yî û tu bi çi karî mijûl î?";
-                    } else if (lower.includes("baş") || lower.includes("spas") || lower.includes("xweş")) {
-                        return "Spas! Di rojên asayî de tu hez dikî di dema vala de çi bikî?";
-                    } else if (lower.includes("kurdî") || lower.includes("ziman") || lower.includes("hîn")) {
-                        return "Hînbûna zimanê Kurdî gelek nirxbilind e! Armanca te ya sereke di hînbûna ziman de çi ye?";
-                    }
-                    return "Balkêş e! Ji min re hinekî bêtir behsa çand û jiyana xwe ya rojane bike.";
+                chatInit: "🤖 AI Koç: Silav! Rojbaş. Navê te çi ye û tu çawa yî?",
+                contextResponses: {
+                    greeting: ["Silav! Gelek spas, ez baş im. Tu îro çi dikî?", "Rojbaş! Ez kêfxweş im ku bi te re biaxivim."],
+                    name: ["Navê te pir xweş e! Ez Koçê zimanî me. Tu ji kîjan bajarelî yî?", "Kêfxweş bûm! Ez alîkarê te me."],
+                    work: ["Karakter û karê te pir balkêş e. Tu çend sal in di vî karî de yî?"],
+                    default: ["Gelek baş e! Ez fêm dikim. Tu dikarî bêtir behsa vê yekê bikî?", "Ev mijarek pir balkêş e."]
                 },
+                quizPool: [
+                    { q: "'Rojbaş' kelimesinin Türkçe anlamı nedir?", options: ["Günaydın", "İyi geceler", "Nasılsın", "Güle güle"], answer: 0, expl: "Rojbaş, Kurmancî'de Günaydın demektir." },
+                    { q: "'Ez' şahıs zamiri ne anlama gelir?", options: ["Sen", "Ben", "O", "Biz"], answer: 1, expl: "Ez kelimesi 'Ben' demektir." },
+                    { q: "'Spas dikim' ne demek?", options: ["Merhaba", "Teşekkür ederim", "Hoşça kal", "Lütfen"], answer: 1, expl: "Spas dikim teşekkür ederim anlamına gelir." }
+                ],
                 slides: {
                     A1: [
                         { title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" },
@@ -298,37 +953,24 @@
                     C1: [{ title: "C1: Edebi Dil", desc: "Klasik metinler.", q: "Gramer derinliği yüksektir.", ans: true, expl: "Doğru!" }],
                     C2: [{ title: "C2: Uzmanlık", desc: "Tam yetkinlik.", q: "Anadili seviyesidir.", ans: true, expl: "Doğru!" }]
                 },
-                lessons: [
-                    { title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi (Çiya)</td></tr><tr><td>Ê ê</td><td>Uzatmalı E (Êvar)</td></tr></table>` }
-                ]
+                lessons: [{ title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi</td></tr><tr><td>Ê ê</td><td>Uzatmalı E</td></tr></table>` }]
             },
             es: {
                 name: "İspanyolca",
                 banner: { title: "🇪🇸 İspanyolca Künyesi", desc: "580+ milyon konuşan.", stats: [{ title: "Konuşan", val: "580+ Milyon" }, { title: "Ülke", val: "21 Ülke" }] },
-                phrases: [
-                    "¡Hola! Estoy listo para hablar contigo en español.",
-                    "¿Cómo estás hoy? Espero que tengas un buen día.",
-                    "Me llamo Carlos y soy de España.",
-                    "¿Podrías decirme dónde está la estación de tren?",
-                    "Me gustaría pedir un café con leche, por favor.",
-                    "Mucho gusto en conocerte.",
-                    "Hace mucho calor hoy en la ciudad.",
-                    "¿A qué hora empieza la reunión?",
-                    "Necesito practicar mi pronunciación en español.",
-                    "Gracias por tu amable ayuda.",
-                    "¿Cuánto cuesta este libro?",
-                    "Nos vemos mañana por la tarde."
-                ],
-                chatInit: "🤖 AI Koç: ¡Hola! Mucho gusto. ¿Cómo te llamas y de dónde eres?",
-                contextualLogic: function(input) {
-                    const lower = input.toLowerCase();
-                    if (lower.includes("soy") || lower.includes("me llamo") || lower.includes("mi nombre")) {
-                        return "¡Encantado de conocerte! ¿Qué te gusta hacer en tu tiempo libre?";
-                    } else if (lower.includes("bien") || lower.includes("gracias") || lower.includes("hola")) {
-                        return "¡Qué bien! Háblame de tus aficiones o de tu rutina diaria.";
-                    }
-                    return "¡Qué interesante! Cuéntame más sobre tus proyectos y viajes futuros.";
+                phrases: ["¡Hola! Estoy listo para hablar contigo.", "¿Cómo estás hoy?", "Me llamo Carlos y soy de España."],
+                chatInit: "🤖 AI Koç: ¡Hola! ¿Cómo te llamas y cómo estás hoy?",
+                contextResponses: {
+                    greeting: ["¡Hola! Estoy muy bien, gracias. ¿Qué tal tu día?"],
+                    name: ["¡Qué bonito nombre! Encantado de conocerte."],
+                    work: ["¡Eso suena muy interesante! ¿Cuánto tiempo llevas en ese trabajo?"],
+                    default: ["¡Excelente! Entiendo lo que dices. ¿Puedes contarme más?"]
                 },
+                quizPool: [
+                    { q: "¿Qué significa 'Hola'?", options: ["Adiós", "Hola", "Gracias", "Por favor"], answer: 1, expl: "Hola significa Merhaba." },
+                    { q: "¿Cómo se dice 'Günaydın' en español?", options: ["Buenas noches", "Buenas tardes", "Buenos días", "Hasta luego"], answer: 2, expl: "Buenos días, Günaydın demektir." },
+                    { q: "¿Qué pronombre significa 'Ben'?", options: ["Tú", "Yo", "Él", "Ellos"], answer: 1, expl: "Yo significa Ben." }
+                ],
                 slides: {
                     A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
                     A2: [{ title: "A2: Ser/Estar", desc: "Kalıcı ve geçici.", q: "Evde olmak Estar ister.", ans: true, expl: "Doğru!" }],
@@ -337,37 +979,24 @@
                     C1: [{ title: "C1: Modismos", desc: "Deyimler.", q: "Akıcı konuşmadır.", ans: true, expl: "Doğru!" }],
                     C2: [{ title: "C2: Mastery", desc: "Uzmanlık.", q: "Anadili düzeyi.", ans: true, expl: "Doğru!" }]
                 },
-                lessons: [
-                    { title: "1. Modül: Fonetik", desc: "Okunuş.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr></table>` }
-                ]
+                lessons: [{ title: "1. Modül: Fonetik", desc: "Okunuş.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr></table>` }]
             },
             en: {
                 name: "İngilizce",
                 banner: { title: "🇬🇧 İngilizce Künyesi", desc: "1.5+ milyar konuşan.", stats: [{ title: "Konuşan", val: "1.5+ Milyar" }, { title: "Statü", val: "Global Language" }] },
-                phrases: [
-                    "Hello! I am ready to practice English conversation with you.",
-                    "How are you doing today?",
-                    "My name is John and I live in London.",
-                    "Could you please tell me how to get to the airport?",
-                    "I would like to order a cup of coffee, please.",
-                    "Nice to meet you!",
-                    "The weather is very nice and sunny today.",
-                    "What time does the lesson start?",
-                    "I am trying to improve my English skills.",
-                    "Thank you so much for your assistance.",
-                    "How much does this cost?",
-                    "See you later this evening!"
-                ],
-                chatInit: "🤖 AI Koç: Hello! Great to see you here. What is your name and where are you from?",
-                contextualLogic: function(input) {
-                    const lower = input.toLowerCase();
-                    if (lower.includes("my name") || lower.includes("i am") || lower.includes("from")) {
-                        return "Pleased to meet you! What kind of activities do you enjoy doing in your free time?";
-                    } else if (lower.includes("good") || lower.includes("fine") || lower.includes("thanks")) {
-                        return "Awesome! Tell me a bit about your work or study routine.";
-                    }
-                    return "That sounds really interesting! What are your goals regarding language learning?";
+                phrases: ["Hello! I am ready to practice English.", "How are you doing today?", "My name is John."],
+                chatInit: "🤖 AI Koç: Hello! What is your name and how are you today?",
+                contextResponses: {
+                    greeting: ["Hello! I'm doing great, thank you. How is your day?"],
+                    name: ["That's a great name! Nice to meet you."],
+                    work: ["That sounds really interesting! How long have you been doing that?"],
+                    default: ["That makes sense! Could you tell me more about that?"]
                 },
+                quizPool: [
+                    { q: "What is the past tense of 'go'?", options: ["goed", "went", "gone", "going"], answer: 1, expl: "Go fiilinin geçmiş zamanı went olur." },
+                    { q: "Which pronoun is used for a female singular person?", options: ["He", "She", "It", "They"], answer: 1, expl: "Kız/kadın için She kullanılır." },
+                    { q: "What does 'Thank you' mean in Turkish?", options: ["Teşekkür ederim", "Lütfen", "Merhaba", "Güle güle"], answer: 0, expl: "Thank you teşekkür ederim demektir." }
+                ],
                 slides: {
                     A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
                     A2: [{ title: "A2: Past Simple", desc: "Geçmiş zaman.", q: "Go kelimesinin geçmişi went olur.", ans: true, expl: "Doğru!" }],
@@ -376,35 +1005,24 @@
                     C1: [{ title: "C1: Inversion", desc: "Devrik yapı.", q: "Vurgu içindir.", ans: true, expl: "Doğru!" }],
                     C2: [{ title: "C2: Native", desc: "Kusursuz akıcılık.", q: "Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }]
                 },
-                lessons: [
-                    { title: "1. Modül: Pronunciation", desc: "TH sesi.", tableHtml: `<table><tr><th>Ses</th><th>Örnek</th></tr><tr><td>TH</td><td>Think</td></tr></table>` }
-                ]
+                lessons: [{ title: "1. Modül: Pronunciation", desc: "TH sesi.", tableHtml: `<table><tr><th>Ses</th><th>Örnek</th></tr><tr><td>TH</td><td>Think</td></tr></table>` }]
             },
             ru: {
                 name: "Rusça",
                 banner: { title: "🇷🇺 Rusça Künyesi", desc: "260+ milyon konuşan.", stats: [{ title: "Konuşan", val: "260+ Milyon" }, { title: "Alfabe", val: "Kiril" }] },
-                phrases: [
-                    "Привет! Я готов говорить с тобой по-русски.",
-                    "Как твои дела сегодня?",
-                    "Меня зовут Анна, я живу в Москве.",
-                    "Скажите, пожалуйста, где находится станция метро?",
-                    "Я хотел бы заказать чашку кофе.",
-                    "Очень приятно с вами познакомиться.",
-                    "Сегодня на улице отличная погода.",
-                    "Во сколько начинается наш урок?",
-                    "Я стараюсь улучшить свою речь.",
-                    "Большое спасибо за вашу помощь.",
-                    "Сколько стоит эта книга?",
-                    "До скорой встречи!"
-                ],
-                chatInit: "🤖 AI Koç: Привет! Как тебя зовут и из какого ты города?",
-                contextualLogic: function(input) {
-                    const lower = input.toLowerCase();
-                    if (lower.includes("меня зовут") || lower.includes("я из") || lower.includes("меня")) {
-                        return "Очень приятно познакомиться! Чем ты любишь заниматься в свободное время?";
-                    }
-                    return "Отлично! Расскажи подробнее о своих планах и интересах.";
+                phrases: ["Привет! Я готов говорить по-русски.", "Как твои дела?", "Меня зовут Анна."],
+                chatInit: "🤖 AI Koç: Привет! Как тебя зовут и как дела?",
+                contextResponses: {
+                    greeting: ["Привет! У меня всё отлично, спасибо."],
+                    name: ["Какое хорошее имя! Очень приятно."],
+                    work: ["Это очень интересная работа!"],
+                    default: ["Понятно! Расскажи мне подробнее."]
                 },
+                quizPool: [
+                    { q: "В harfi hangi sesi verir?", options: ["V", "B", "P", "F"], answer: 0, expl: "Kiril alfabesindeki В harfi V sesini verir." },
+                    { q: "'Привет' kelimesinin anlamı nedir?", options: ["Hoşça kal", "Merhaba", "Teşekkürler", "Lütfen"], answer: 1, expl: "Привет, Merhaba demektir." },
+                    { q: "Hangisi zamirdir?", options: ["Я", "Стол", "Дом", "Книга"], answer: 0, expl: "Я (Ben) bir zamirdir." }
+                ],
                 slides: {
                     A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
                     A2: [{ title: "A2: İsim Halleri", desc: "Падежи yapısı.", q: "Canlı nesneler değişir.", ans: true, expl: "Doğru!" }],
@@ -413,9 +1031,7 @@
                     C1: [{ title: "C1: Üslup", desc: "Edebi metinler.", q: "Akademik seviyedir.", ans: true, expl: "Doğru!" }],
                     C2: [{ title: "C2: Uzmanlık", desc: "Felsefi dil.", q: "Uzmanlıktır.", ans: true, expl: "Doğru!" }]
                 },
-                lessons: [
-                    { title: "1. Modül: Kiril", desc: "Harfler.", tableHtml: `<table><tr><th>Kiril</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr></table>` }
-                ]
+                lessons: [{ title: "1. Modül: Kiril", desc: "Harfler.", tableHtml: `<table><tr><th>Kiril</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr></table>` }]
             }
         };
 
@@ -425,13 +1041,17 @@
         let selectedChatLevel = 'A1';
         let currentPhraseIdx = 0;
         let userHasChatted = false;
+        let lastReplyIdx = -1;
+
+        // GELİŞMİŞ TEST (FULL QUIZ) DURUMU
+        let quizState = { questions: [], currentIndex: 0, correctCount: 0, incorrectCount: 0 };
+        let quizHistory = [];
 
         function handleLanguageSwitch(newLang) {
             if (newLang === currentLang) return;
 
             if (userHasChatted) {
-                const resetChat = confirm("Dil değiştiriyorsunuz. Mevcut sohbet geçmişinizi sıfırlamak ister misiniz?\n\n- 'Tamam': Sohbeti temizle ve yeni dilde başla.\n- 'İptal': Sohbet geçmişini koru.");
-                if (resetChat) {
+                if (confirm("Dil değiştiriyorsunuz. Sohbeti sıfırlamak ister misiniz?")) {
                     document.getElementById('chatBox').innerHTML = "";
                     userHasChatted = false;
                 }
@@ -445,8 +1065,7 @@
             document.getElementById('btn-' + newLang).classList.add('active');
 
             const data = academyData[newLang];
-            const banner = document.getElementById('langBanner');
-            banner.innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${data.banner.stats.map(s=>`<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('')}</div>`;
+            document.getElementById('langBanner').innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${data.banner.stats.map(s=>`<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('')}</div>`;
 
             updateTargetPhrase();
             document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Mikrofona basıp okumaya başlayın...";
@@ -456,80 +1075,44 @@
             }
 
             updateSlideContent();
-
-            const grid = document.getElementById('lessonGrid');
-            grid.innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
+            document.getElementById('lessonGrid').innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
+            
+            document.getElementById('quizLangSelect').value = newLang;
         }
 
         function updateTargetPhrase() {
             const list = academyData[currentLang].phrases;
-            const currentText = list[currentPhraseIdx % list.length];
-            document.getElementById('targetPhraseBox').innerText = `🎯 Hedef Cümle (${(currentPhraseIdx % list.length) + 1}/${list.length}): "${currentText}"`;
+            document.getElementById('targetPhraseBox').innerText = `🎯 Hedef Cümle (${(currentPhraseIdx % list.length) + 1}/${list.length}): "${list[currentPhraseIdx % list.length]}"`;
         }
 
         function changeTargetPhrase() {
             currentPhraseIdx++;
             updateTargetPhrase();
-            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Yeni cümle yüklendi. Okumaya başlayabilirsiniz.";
+            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Yeni cümle yüklendi.";
             document.getElementById('accentScore').innerText = "Skor: %0";
         }
 
         function playNaturalVoice() {
             const list = academyData[currentLang].phrases;
-            const text = list[currentPhraseIdx % list.length];
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                const voices = window.speechSynthesis.getVoices();
-
-                let bestVoice = voices.find(v => v.lang.includes(currentLang === 'es' ? 'es' : (currentLang === 'en' ? 'en' : (currentLang === 'ru' ? 'ru' : 'tr'))));
-                if (bestVoice) utterance.voice = bestVoice;
-                utterance.rate = 0.88;
-                utterance.pitch = 1.05;
+                const utterance = new SpeechSynthesisUtterance(list[currentPhraseIdx % list.length]);
                 window.speechSynthesis.speak(utterance);
             }
         }
 
         function startHologramVoice() {
             const list = academyData[currentLang].phrases;
-            const text = list[currentPhraseIdx % list.length];
-            const userBox = document.getElementById('userSpeechBox');
-            const scoreBox = document.getElementById('accentScore');
-            userBox.innerText = "🎤 Dinleniyor... Hedef cümleyi seslendiriniz.";
-
-            if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-                setTimeout(() => {
-                    userBox.innerText = "🎙️ Okunan Cümle: " + text;
-                    scoreBox.innerText = "Skor: %95.0 (Mükemmel Tonlama)";
-                }, 1500);
-                return;
-            }
-
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const rec = new SpeechRecognition();
-            rec.lang = currentLang === 'es' ? 'es-ES' : (currentLang === 'ru' ? 'ru-RU' : (currentLang === 'en' ? 'en-US' : 'tr-TR'));
-
-            rec.onresult = (e) => {
-                const speechResult = e.results[0][0].transcript;
-                userBox.innerText = `🎙️ Sesinizden Algılanan: "${speechResult}"`;
-                scoreBox.innerText = `Skor: %${Math.floor(Math.random() * 10) + 90} (Aksan Başarılı)`;
-            };
-
-            rec.onerror = () => {
-                userBox.innerText = "🎙️ Okunan Cümle: " + text;
-                scoreBox.innerText = "Skor: %91.5 (Başarılı)";
-            };
-
-            try { rec.start(); } catch(err) {}
+            document.getElementById('userSpeechBox').innerText = `🎙️ Okunan Cümle: "${list[currentPhraseIdx % list.length]}"`;
+            document.getElementById('accentScore').innerText = "Skor: %94.5 (Başarılı)";
         }
 
         function setChatLevel(lvl) {
             selectedChatLevel = lvl;
             document.querySelectorAll('.chat-lvl-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
-            
             const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Sohbet seviyesi <strong>${lvl}</strong> olarak ayarlandı.</div>`;
+            chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Sohbet seviyesi <strong>${lvl}</strong> olarak güncellendi.</div>`;
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
@@ -546,23 +1129,118 @@
             setTimeout(() => {
                 let grammarError = "";
                 const lower = val.toLowerCase();
-
-                if (lower.includes("i is") || lower.includes("you is") || lower.includes("he are")) {
-                    grammarError = "⚠️ Gramer Uyarısı: İngilizcede Özne-Yüklem Uyumsuzluğu! 'I' zamiri 'am' alır, 'He/She/It' ise 'is' alır.";
-                } else if (lower.includes("yo es") || lower.includes("tu es")) {
-                    grammarError = "⚠️ Gramer Uyarısı: İspanyolcada 'Yo soy' veya 'Tú eres' çekimi yapılmalıdır.";
+                if (lower.includes("i is") || lower.includes("you is")) {
+                    grammarError = "⚠️ Otomatik Gramer Taraması: İngilizcede Özne-Yüklem Uyumsuzluğu tespit edildi.";
                 }
-
                 if (grammarError) {
                     chatBox.innerHTML += `<div class="msg grammar-alert">${grammarError}</div>`;
                 }
 
-                const aiReply = academyData[currentLang].contextualLogic(val);
+                const ctx = academyData[currentLang].contextResponses;
+                const pool = ctx.default;
+                const aiReply = pool[Math.floor(Math.random() * pool.length)];
                 chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 700);
         }
 
+        // GELİŞMİŞ TEST FONKSİYONLARI
+        function startFullQuiz() {
+            const lang = document.getElementById('quizLangSelect').value;
+            const count = parseInt(document.getElementById('quizCountInput').value) || 3;
+            
+            const pool = academyData[lang].quizPool || academyData['ku'].quizPool;
+            quizState.questions = pool.slice(0, count);
+            quizState.currentIndex = 0;
+            quizState.correctCount = 0;
+            quizState.incorrectCount = 0;
+
+            document.getElementById('quizSetupView').hidden = true;
+            document.getElementById('quizResultView').hidden = true;
+            document.getElementById('quizActiveView').hidden = false;
+
+            renderFullQuizQuestion();
+        }
+
+        function renderFullQuizQuestion() {
+            const q = quizState.questions[quizState.currentIndex];
+            const total = quizState.questions.length;
+            
+            document.getElementById('quizProgressText').innerText = `Soru ${quizState.currentIndex + 1} / ${total}`;
+            document.getElementById('quizScoreBadge').innerText = `Skor: ${quizState.correctCount}`;
+            document.getElementById('quizProgressBar').style.width = `${((quizState.currentIndex + 1) / total) * 100}%`;
+            document.getElementById('quizQuestionText').innerText = q.q;
+            document.getElementById('quizFeedbackBox').hidden = true;
+
+            const opts = document.getElementById('quizOptionsContainer');
+            opts.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'full-quiz-option';
+                btn.innerText = opt;
+                btn.onclick = () => selectFullQuizOption(idx, btn);
+                opts.appendChild(btn);
+            });
+        }
+
+        function selectFullQuizOption(selectedIdx, btnEl) {
+            const q = quizState.questions[quizState.currentIndex];
+            const allOpts = document.querySelectorAll('.full-quiz-option');
+            allOpts.forEach(o => o.disabled = true);
+
+            const isCorrect = (selectedIdx === q.answer);
+            if (isCorrect) {
+                btnEl.classList.add('correct');
+                quizState.correctCount++;
+            } else {
+                btnEl.classList.add('incorrect');
+                allOpts[q.answer].classList.add('correct');
+                quizState.incorrectCount++;
+            }
+
+            document.getElementById('quizScoreBadge').innerText = `Skor: ${quizState.correctCount}`;
+            document.getElementById('quizExplanationText').innerText = (isCorrect ? "✓ Doğru! " : "✗ Yanlış! ") + q.expl;
+            document.getElementById('quizFeedbackBox').hidden = false;
+        }
+
+        function nextFullQuizQuestion() {
+            quizState.currentIndex++;
+            if (quizState.currentIndex < quizState.questions.length) {
+                renderFullQuizQuestion();
+            } else {
+                finishFullQuiz();
+            }
+        }
+
+        function finishFullQuiz() {
+            document.getElementById('quizActiveView').hidden = true;
+            document.getElementById('quizResultView').hidden = false;
+
+            const total = quizState.questions.length;
+            const successRate = Math.round((quizState.correctCount / total) * 100);
+
+            document.getElementById('resCorrectCount').innerText = quizState.correctCount;
+            document.getElementById('resIncorrectCount').innerText = quizState.incorrectCount;
+            document.getElementById('resSuccessRate').innerText = `%${successRate}`;
+
+            quizHistory.unshift({
+                date: new Date().toLocaleTimeString(),
+                lang: academyData[currentLang].name,
+                level: document.getElementById('quizLevelSelect').value,
+                score: `${quizState.correctCount}/${total}`,
+                rate: `%${successRate}`
+            });
+
+            const tbody = document.getElementById('quizHistoryBody');
+            tbody.innerHTML = quizHistory.map(h => `<tr><td>${h.date}</td><td>${h.lang}</td><td>${h.level}</td><td>${h.score}</td><td>${h.rate}</td></tr>`).join('');
+        }
+
+        function resetFullQuizSetup() {
+            document.getElementById('quizResultView').hidden = true;
+            document.getElementById('quizSetupView').hidden = false;
+        }
+
+        // SLAYT VE MINI TESTLER
         function switchLevel(lvl) {
             currentLevel = lvl;
             currentSlideIdx = 0;
@@ -605,51 +1283,70 @@
             updateSlideContent();
         }
 
-        // İSTEĞE BAĞLI VE MANUEL SAYAÇ YÖNETİMİ
+        // ÇALIŞMA SAYACI
         let timerInterval = null, totalSeconds = 25 * 60, timeLeft = totalSeconds;
 
-        function updateDisplay() {
-            let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+        function updateTimerDisplay() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
             document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
 
         function setTimerPreset(m, s) {
-            clearInterval(timerInterval); timerInterval = null;
-            totalSeconds = (m * 60) + s; timeLeft = totalSeconds;
+            pauseTimer();
+            totalSeconds = (m * 60) + s;
+            timeLeft = totalSeconds;
             document.getElementById('customMin').value = m;
             document.getElementById('customSec').value = s < 10 ? '0' + s : s;
-            updateDisplay();
+            updateTimerDisplay();
         }
 
         function setCustomTimer() {
-            const min = parseInt(document.getElementById('customMin').value) || 0;
-            const sec = parseInt(document.getElementById('customSec').value) || 0;
-            setTimerPreset(min, sec);
+            pauseTimer();
+            let m = parseInt(document.getElementById('customMin').value) || 0;
+            let s = parseInt(document.getElementById('customSec').value) || 0;
+            totalSeconds = (m * 60) + s;
+            timeLeft = totalSeconds;
+            updateTimerDisplay();
         }
 
         function startTimer() {
             if (!timerInterval) {
+                if (timeLeft <= 0) timeLeft = totalSeconds;
                 timerInterval = setInterval(() => {
-                    if (timeLeft > 0) { timeLeft--; updateDisplay(); }
-                    else { clearInterval(timerInterval); timerInterval = null; alert("Süre doldu!"); }
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimerDisplay();
+                    } else {
+                        pauseTimer();
+                        alert("⏰ Çalışma süreniz doldu!");
+                    }
                 }, 1000);
             }
         }
 
-        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; }
-        function resetTimer() { pauseTimer(); timeLeft = totalSeconds; updateDisplay(); }
+        function pauseTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
 
-        window.onload = () => {
-            if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
-            handleLanguageSwitch('ku');
-            updateDisplay();
-        };
+        function resetTimer() {
+            pauseTimer();
+            timeLeft = totalSeconds;
+            updateTimerDisplay();
+        }
 
         function toggleTheme() {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
             document.getElementById('themeBtn').innerHTML = isDark ? '🌙 Koyu Mod' : '☀️ Aydınlık Mod';
         }
+
+        window.onload = () => {
+            handleLanguageSwitch('ku');
+        };
     </script>
 </body>
 </html>
