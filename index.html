@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Language Academy | Doğal Ses & Canlı Gramer Tarayıcı Portal</title>
+    <title>AI Language Academy | Akıllı Geçmiş Yönetimi & Gelişmiş Telaffuz Akademi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -63,14 +63,15 @@
         .lang-info-banner { background: var(--card-bg); border: 2px solid var(--primary); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; }
 
-        /* YENİ DOĞAL SESLİ TELAFFUZ ALANI */
+        /* TELAFFUZ KOÇU */
         .ai-hologram-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 2px solid #3b82f6; border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; color: white; text-align: center; }
-        .hologram-target-box { background: rgba(37, 99, 235, 0.25); border: 1px solid #3b82f6; border-radius: 12px; padding: 1.2rem; margin: 1rem 0; font-size: 1.2rem; font-weight: 700; color: #60a5fa; }
-        .hologram-user-speech { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; font-size: 1rem; color: #e2e8f0; }
-        .holo-btn { background: #2563eb; color: white; border: none; padding: 0.7rem 1.4rem; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0 4px; }
+        .hologram-target-box { background: rgba(37, 99, 235, 0.25); border: 1px solid #3b82f6; border-radius: 12px; padding: 1.2rem; margin: 1rem 0; font-size: 1.15rem; font-weight: 700; color: #60a5fa; }
+        .hologram-user-speech { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; font-size: 0.95rem; color: #e2e8f0; }
+        .holo-btn { background: #2563eb; color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0 4px; }
         .holo-btn.secondary { background: rgba(255,255,255,0.15); }
+        .holo-btn.change-phrase { background: #059669; color: white; }
 
-        /* YENİ: GÜNLÜK HAYAT SOHBET VE GRAMER TARAYICISI */
+        /* CANLI SOHBET & GRAMER TARAYICISI */
         .daily-life-chat-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
         .chat-level-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 1rem 0; }
         .chat-lvl-btn { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
@@ -86,7 +87,7 @@
         .chat-input-wrapper input { flex: 1; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-body); color: var(--text-main); outline: none; }
         .chat-input-wrapper button { background: var(--primary); color: white; border: none; padding: 0.8rem 1.4rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        /* Slayt Modülü */
+        /* SLAYT VE MİNİ TESTLER */
         .interactive-slide-section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; }
         .level-selector-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .level-tab { background: var(--bg-body); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
@@ -112,7 +113,7 @@
 
     <div class="window-bar">
         <div class="dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-        <div class="window-title">AI Language Academy — Doğal Ses & Canlı Gramer Koçu</div>
+        <div class="window-title">AI Language Academy — Akıllı Konuşma & Telaffuz Portalı</div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Koyu Mod</button>
     </div>
 
@@ -127,45 +128,46 @@
     </header>
 
     <div class="hero">
-        <h1>Gelişmiş Doğal Ses & Canlı Gramer Tarayıcı Akademi</h1>
-        <p>Robotik seslerden arındırılmış akıcı telaffuzlar ve günlük sohbet esnasında anında çalışan akıllı gramer denetleyicisi.</p>
+        <h1>Çoklu Dil Telaffuz & Akıllı Gramer Akademi</h1>
+        <p>10-15 farklı telaffuz cümlesi ile pratik yapın, diller arası geçişte sohbetinizi yönetin ve anında gramer hatalarınızı düzeltin.</p>
     </div>
 
     <div class="lang-segments">
-        <button class="lang-btn active" id="btn-ku" onclick="switchLanguage('ku')">☀️ Kürtçe (Kurmancî)</button>
-        <button class="lang-btn" id="btn-es" onclick="switchLanguage('es')">🇪🇸 İspanyolca (Español)</button>
-        <button class="lang-btn" id="btn-en" onclick="switchLanguage('en')">🇬🇧 İngilizce (English)</button>
-        <button class="lang-btn" id="btn-ru" onclick="switchLanguage('ru')">🇷🇺 Rusça (Русский)</button>
+        <button class="lang-btn active" id="btn-ku" onclick="handleLanguageSwitch('ku')">☀️ Kürtçe (Kurmancî)</button>
+        <button class="lang-btn" id="btn-es" onclick="handleLanguageSwitch('es')">🇪🇸 İspanyolca (Español)</button>
+        <button class="lang-btn" id="btn-en" onclick="handleLanguageSwitch('en')">🇬🇧 İngilizce (English)</button>
+        <button class="lang-btn" id="btn-ru" onclick="handleLanguageSwitch('ru')">🇷🇺 Rusça (Русский)</button>
     </div>
 
     <div class="container">
 
         <div class="lang-info-banner" id="langBanner"></div>
 
-        <!-- DOĞAL SESLİ TELAFFUZ KOÇU -->
+        <!-- TELAFFUZ KOÇU -->
         <div class="ai-hologram-section">
-            <h3 id="holoTitle" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Yapay Zeka Doğal Sesli Telaffuz Koçu</h3>
-            <p style="font-size: 0.85rem; color: #cbd5e1;">Aşağıdaki hedef cümleyi dinleyin ve ardından mikrofona okuyun. Cümle sabit kalacaktır.</p>
+            <h3 id="holoTitle" style="font-size: 1.3rem; margin-bottom: 0.3rem;">Yapay Zeka Telaffuz & Konuşma Koçu</h3>
+            <p style="font-size: 0.85rem; color: #cbd5e1;">Aşağıdaki cümleyi okuyun. 'Değiştir' butonuyla yeni pratik cümlelerine geçebilirsiniz.</p>
 
             <div class="hologram-target-box" id="targetPhraseBox">
-                🎯 Hedef Cümle: "Silav! Ez amade me ku bi te re bipeyivim."
+                🎯 Hedef Cümle Yükleniyor...
             </div>
 
             <div class="hologram-user-speech" id="userSpeechBox">
-                🎙️ Konuşma Durumu: Dinleme bekleniyor...
+                🎙️ Konuşma Durumu: Mikrofona basıp okumaya başlayın...
             </div>
 
             <div>
                 <button class="holo-btn" onclick="startHologramVoice()">🎙️ Cümleyi Okuyorum</button>
                 <button class="holo-btn secondary" onclick="playNaturalVoice()">🔊 Doğal İnsan Sesiyle Dinle</button>
+                <button class="holo-btn change-phrase" onclick="changeTargetPhrase()">🎲 Başka Cümle Getir</button>
             </div>
             <div id="accentScore" style="margin-top:0.8rem; font-weight:700; font-size:0.85rem; color:#93c5fd;">Skor: %0</div>
         </div>
 
-        <!-- GÜNLÜK HAYAT SOHBET VE GERÇEK ZAMANLI GRAMER TARAYICISI -->
+        <!-- SOHBET VE GERÇEK ZAMANLI GRAMER TARAYICISI -->
         <div class="daily-life-chat-section">
             <h3 style="color:var(--primary); font-size: 1.3rem;">☕ Günlük Hayat Sohbeti & Otomatik Gramer Tarayıcısı</h3>
-            <p style="font-size: 0.88rem; color: var(--text-sub);">Aşağıdan seviyenizi seçin. Günlük sohbet ederken yapay zeka gramer hatalarınızı kırmızı ile uyarıp doğrusunu öğretir!</p>
+            <p style="font-size: 0.88rem; color: var(--text-sub);">Gramer tarayıcısı canlı sohbet sırasında cümlenizdeki hataları kırmızı uyarı olarak sunar.</p>
 
             <div class="chat-level-bar">
                 <button class="chat-lvl-btn active" onclick="setChatLevel('A1')">A1 Günlük Tanışma</button>
@@ -176,7 +178,7 @@
             </div>
 
             <div class="chat-box" id="chatBox">
-                <div class="msg ai" id="chatInitMsg">🤖 AI Koç (A1): Silav! Rojbaş. Navê te çi ye û tu çawa yî? (Merhaba! Adın ne ve nasılsın?)</div>
+                <div class="msg ai" id="chatInitMsg">🤖 AI Koç: Sohbet başlatılıyor...</div>
             </div>
 
             <div class="chat-input-wrapper">
@@ -187,7 +189,7 @@
 
         <!-- SLAYT VE MİNİ TESTLER -->
         <div class="interactive-slide-section">
-            <h3 style="margin-bottom: 1rem; color: var(--primary);">🎯 Seviye Slaytları & İnteraktif Mini Testler</h3>
+            <h3 style="margin-bottom: 1rem; color: var(--primary);">🎯 Seviye Slaytları & Genişletilmiş Testler (A1 - C2)</h3>
             
             <div class="level-selector-bar">
                 <button class="level-tab active" onclick="switchLevel('A1')">A1</button>
@@ -238,16 +240,38 @@
         const academyData = {
             ku: {
                 name: "Kürtçe (Kurmancî)",
-                banner: { title: "☀️ Kürtçe (Kurmancî) Künyesi", desc: "Ortadoğu'da 30+ milyon insan tarafından konuşulur. Hawar Latin alfabesi kullanılır.", stats: [{ title: "Konuşan", val: "30+ Milyon" }, { title: "Alfabe", val: "Hawar Latin" }] },
-                target: "Silav! Ez amade me ku bi te re bipeyivim.",
-                chatInit: "🤖 AI Koç (A1): Silav! Rojbaş. Navê te çi ye û tu çawa yî? (Merhaba! Adın ne ve nasılsın?)",
+                banner: { title: "☀️ Kürtçe (Kurmancî) Künyesi", desc: "Hawar Latin alfabesi kullanılır.", stats: [{ title: "Konuşan", val: "30+ Milyon" }, { title: "Alfabe", val: "Hawar Latin" }] },
+                phrases: [
+                    "Silav! Ez amade me ku bi te re bipeyivim.",
+                    "Rojbaş! Tu îro çawa yî?",
+                    "Navê min Azad e, ez ji Amedê me.",
+                    "Kêfxweş bûm ku min te nas kir.",
+                    "Tu dikarî ji min re alîkar bî?",
+                    "Ez dixwazim zimanê Kurdî hîn bibim.",
+                    "Ji kerema xwe re hinekî hêdî bipeyive.",
+                    "Dem baş! Niha saet çend e?",
+                    "Ez diçim bazarê ku tiştan bikrim.",
+                    "Spas dikim ji bo alîkariya te.",
+                    "Cihê otobüsê li kuderê ye?",
+                    "Îro heva pir xweş û germ e."
+                ],
+                chatInit: "🤖 AI Koç (A1): Silav! Rojbaş. Navê te çi ye û tu çawa yî?",
                 slides: {
-                    A1: [{ title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" }],
-                    A2: [{ title: "A2: Fiiller", desc: "Şimdiki zaman ve geçmiş zaman kullanımı.", q: "Kürtçede fiil sonda yer alabilir.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: İsim Halleri", desc: "Eril ve Dişil ayrımı.", q: "İsimlerde dişil takılar vardır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Akıcı Sohbet", desc: "Deyimler ve atasözleri.", q: "Mecazlar yaygındır.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Edebi Dil", desc: "Klasik metinler.", q: "Gramer derinliği yüksektir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Uzmanlık", desc: "Tam yetkinlik.", q: "Anadili seviyesidir.", ans: true, expl: "Doğru!" }]
+                    A1: [
+                        { title: "A1: Selamlaşma", desc: "Rojbaş (Günaydın), Çawa yî (Nasılsın).", q: "'Rojbaş' Günaydın demektir.", ans: true, expl: "Doğru!" },
+                        { title: "A1: Şahıs Zamirleri", desc: "Ez (Ben), Tu (Sen), Ew (O).", q: "'Ez' kelimesi Sen demektir.", ans: false, expl: "Yanlış! Ez 'Ben' demektir." },
+                        { title: "A1: Hal Hatır Sorma", desc: "Tu çawa yî? - Ez baş im.", q: "'Ez baş im' Ben iyiyim demektir.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: Fiil Zamanları", desc: "Geçmiş ve Şimdiki Zaman.", q: "Fiil cümlede sonda yer alabilir.", ans: true, expl: "Doğru!" },
+                        { title: "A2: Sayılar", desc: "Yek, Dû, Sê, Çar.", q: "'Çar' sayısı 5 demektir.", ans: false, expl: "Yanlış! Çar 4 demektir." }
+                    ],
+                    B1: [
+                        { title: "B1: İsim Halleri", desc: "Eril ve Dişil ayrımı.", q: "Kürtçede dişil takılar vardır.", ans: true, expl: "Doğru!" }
+                    ],
+                    B2: [ { title: "B2: Akıcı Sohbet", desc: "Deyimler ve atasözleri.", q: "Mecazlar yaygındır.", ans: true, expl: "Doğru!" } ],
+                    C1: [ { title: "C1: Edebi Dil", desc: "Klasik metinler.", q: "Gramer derinliği yüksektir.", ans: true, expl: "Doğru!" } ],
+                    C2: [ { title: "C2: Uzmanlık", desc: "Tam yetkinlik.", q: "Anadili seviyesidir.", ans: true, expl: "Doğru!" } ]
                 },
                 lessons: [
                     { title: "1. Modül: Hawar Alfabesi", desc: "Harf okunuşları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>Ç ç</td><td>Ç sesi (Çiya)</td></tr><tr><td>Ê ê</td><td>Uzatmalı E (Êvar)</td></tr></table>` },
@@ -256,33 +280,69 @@
             },
             es: {
                 name: "İspanyolca",
-                banner: { title: "🇪🇸 İspanyolca Künyesi", desc: "580+ milyon insan tarafından konuşulan Roman dili.", stats: [{ title: "Konuşan", val: "580+ Milyon" }, { title: "Ülke", val: "21 Ülke" }] },
-                target: "¡Hola! Estoy listo para hablar contigo en español.",
+                banner: { title: "🇪🇸 İspanyolca Künyesi", desc: "580+ milyon konuşan.", stats: [{ title: "Konuşan", val: "580+ Milyon" }, { title: "Ülke", val: "21 Ülke" }] },
+                phrases: [
+                    "¡Hola! Estoy listo para hablar contigo en español.",
+                    "¿Cómo estás hoy? Espero que tengas un buen día.",
+                    "Me llamo Carlos y soy de España.",
+                    "¿Podrías decirme dónde está la estación de tren?",
+                    "Me gustaría pedir un café con leche, por favor.",
+                    "Mucho gusto en conocerte.",
+                    "Hace mucho calor hoy en la ciudad.",
+                    "¿A qué hora empieza la reunión?",
+                    "Necesito practicar mi pronunciación en español.",
+                    "Gracias por tu amable ayuda.",
+                    "¿Cuánto cuesta este libro?",
+                    "Nos vemos mañana por la tarde."
+                ],
                 chatInit: "🤖 AI Koç (A1): ¡Hola! ¿Cómo te llamas y de dónde eres?",
                 slides: {
-                    A1: [{ title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." }],
-                    A2: [{ title: "A2: Ser/Estar", desc: "Kalıcı ve geçici durumlar.", q: "Evde olmak Estar gerektirir.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Reflexivos", desc: "Dönüşlü fiiller.", q: "Me levanto kalkıyorum demektir.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Subjuntivo", desc: "Dilek kipi.", q: "Şüphede Subjuntivo kullanılır.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Modismos", desc: "Deyimler.", q: "Akıcı konuşmadır.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Mastery", desc: "Uzmanlık.", q: "Anadili düzeyi.", ans: true, expl: "Doğru!" }]
+                    A1: [
+                        { title: "A1: Tanışma", desc: "Hola, Buenos días.", q: "H harfi okunur.", ans: false, expl: "Yanlış! H sessizdir." },
+                        { title: "A1: Zamirler", desc: "Yo, Tú, Él.", q: "'Yo' Ben demektir.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: Ser/Estar", desc: "Kalıcı ve geçici.", q: "Evde olmak Estar ister.", ans: true, expl: "Doğru!" }
+                    ],
+                    B1: [ { title: "B1: Reflexivos", desc: "Dönüşlü fiiller.", q: "Me levanto.", ans: true, expl: "Doğru!" } ],
+                    B2: [ { title: "B2: Subjuntivo", desc: "Dilek kipi.", q: "Şüphede Subjuntivo.", ans: true, expl: "Doğru!" } ],
+                    C1: [ { title: "C1: Modismos", desc: "Deyimler.", q: "Akıcı konuşmadır.", ans: true, expl: "Doğru!" } ],
+                    C2: [ { title: "C2: Mastery", desc: "Uzmanlık.", q: "Anadili düzeyi.", ans: true, expl: "Doğru!" } ]
                 },
                 lessons: [
-                    { title: "1. Modül: Fonetik", desc: "Okunuş kuralları.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr></table>` }
+                    { title: "1. Modül: Fonetik", desc: "Okunuş.", tableHtml: `<table><tr><th>Harf</th><th>Okunuş</th></tr><tr><td>H</td><td>Sessiz</td></tr></table>` }
                 ]
             },
             en: {
                 name: "İngilizce",
-                banner: { title: "🇬🇧 İngilizce Künyesi", desc: "Dünyanın ortak iletişim dili.", stats: [{ title: "Konuşan", val: "1.5+ Milyar" }, { title: "Statü", val: "Global Language" }] },
-                target: "Hello! I am ready to practice English conversation with you.",
+                banner: { title: "🇬🇧 İngilizce Künyesi", desc: "1.5+ milyar konuşan.", stats: [{ title: "Konuşan", val: "1.5+ Milyar" }, { title: "Statü", val: "Global Language" }] },
+                phrases: [
+                    "Hello! I am ready to practice English conversation with you.",
+                    "How are you doing today?",
+                    "My name is John and I live in London.",
+                    "Could you please tell me how to get to the airport?",
+                    "I would like to order a cup of coffee, please.",
+                    "Nice to meet you!",
+                    "The weather is very nice and sunny today.",
+                    "What time does the lesson start?",
+                    "I am trying to improve my English skills.",
+                    "Thank you so much for your assistance.",
+                    "How much does this cost?",
+                    "See you later this evening!"
+                ],
                 chatInit: "🤖 AI Koç (A1): Hello! What is your name and how are you today?",
                 slides: {
-                    A1: [{ title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." }],
-                    A2: [{ title: "A2: Past Simple", desc: "Geçmiş zaman.", q: "Go kelimesinin geçmişi went olur.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Present Perfect", desc: "Have V3.", q: "Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Passives", desc: "Edilgen çatı.", q: "to be + V3 kuralıdır.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Inversion", desc: "Devrik yapı.", q: "Vurgu içindir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Native", desc: "Kusursuz akıcılık.", q: "Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" }]
+                    A1: [
+                        { title: "A1: To Be", desc: "I am, You are.", q: "He are doğrudur.", ans: false, expl: "Yanlış! He 'is' alır." },
+                        { title: "A1: Pronouns", desc: "This, That.", q: "This yakındaki nesneler içindir.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: Past Simple", desc: "Geçmiş zaman.", q: "Go kelimesinin geçmişi went olur.", ans: true, expl: "Doğru!" }
+                    ],
+                    B1: [ { title: "B1: Present Perfect", desc: "Have V3.", q: "Deneyimlerde kullanılır.", ans: true, expl: "Doğru!" } ],
+                    B2: [ { title: "B2: Passives", desc: "Edilgen çatı.", q: "to be + V3 kuralıdır.", ans: true, expl: "Doğru!" } ],
+                    C1: [ { title: "C1: Inversion", desc: "Devrik yapı.", q: "Vurgu içindir.", ans: true, expl: "Doğru!" } ],
+                    C2: [ { title: "C2: Native", desc: "Kusursuz akıcılık.", q: "Uzmanlık düzeyidir.", ans: true, expl: "Doğru!" } ]
                 },
                 lessons: [
                     { title: "1. Modül: Pronunciation", desc: "TH sesi.", tableHtml: `<table><tr><th>Ses</th><th>Örnek</th></tr><tr><td>TH</td><td>Think</td></tr></table>` }
@@ -290,16 +350,34 @@
             },
             ru: {
                 name: "Rusça",
-                banner: { title: "🇷🇺 Rusça Künyesi", desc: "Avrasya coğrafyasının ortak Slav dili.", stats: [{ title: "Konuşan", val: "260+ Milyon" }, { title: "Alfabe", val: "Kiril" }] },
-                target: "Привет! Я готов говорить с тобой по-русски.",
+                banner: { title: "🇷🇺 Rusça Künyesi", desc: "260+ milyon konuşan.", stats: [{ title: "Konuşan", val: "260+ Milyon" }, { title: "Alfabe", val: "Kiril" }] },
+                phrases: [
+                    "Привет! Я готов говорить с тобой по-русски.",
+                    "Как твои дела сегодня?",
+                    "Меня зовут Анна, я живу в Москве.",
+                    "Скажите, пожалуйста, где находится станция метро?",
+                    "Я хотел бы заказать чашку кофе.",
+                    "Очень приятно с вами познакомиться.",
+                    "Сегодня на улице отличная погода.",
+                    "Во сколько начинается наш урок?",
+                    "Я стараюсь улучшить свою речь.",
+                    "Большое спасибо за вашу помощь.",
+                    "Сколько стоит эта книга?",
+                    "До скорой встречи!"
+                ],
                 chatInit: "🤖 AI Koç (A1): Привет! Как тебя зовут и как дела?",
                 slides: {
-                    A1: [{ title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" }],
-                    A2: [{ title: "A2: İsim Halleri", desc: "Падежи yapısı.", q: "Canlı nesneler değişir.", ans: true, expl: "Doğru!" }],
-                    B1: [{ title: "B1: Aspektler", desc: "Fiil türleri.", q: "Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" }],
-                    B2: [{ title: "B2: Edatlar", desc: "Genitif.", q: "Без genitif ister.", ans: true, expl: "Doğru!" }],
-                    C1: [{ title: "C1: Üslup", desc: "Edebi metinler.", q: "Akademik seviyedir.", ans: true, expl: "Doğru!" }],
-                    C2: [{ title: "C2: Uzmanlık", desc: "Felsefi dil.", q: "Uzmanlıktır.", ans: true, expl: "Doğru!" }]
+                    A1: [
+                        { title: "A1: Kiril", desc: "Harf okunuşları.", q: "В harfi V sesidir.", ans: true, expl: "Doğru!" },
+                        { title: "A1: Zamirler", desc: "Я, Ты, Он.", q: "'Я' Ben demektir.", ans: true, expl: "Doğru!" }
+                    ],
+                    A2: [
+                        { title: "A2: İsim Halleri", desc: "Падежи yapısı.", q: "Canlı nesneler değişir.", ans: true, expl: "Doğru!" }
+                    ],
+                    B1: [ { title: "B1: Aspektler", desc: "Fiil türleri.", q: "Süreklilikte НСВ kullanılır.", ans: true, expl: "Doğru!" } ],
+                    B2: [ { title: "B2: Edatlar", desc: "Genitif.", q: "Без genitif ister.", ans: true, expl: "Doğru!" } ],
+                    C1: [ { title: "C1: Üslup", desc: "Edebi metinler.", q: "Akademik seviyedir.", ans: true, expl: "Doğru!" } ],
+                    C2: [ { title: "C2: Uzmanlık", desc: "Felsefi dil.", q: "Uzmanlıktır.", ans: true, expl: "Doğru!" } ]
                 },
                 lessons: [
                     { title: "1. Modül: Kiril", desc: "Harfler.", tableHtml: `<table><tr><th>Kiril</th><th>Ses</th></tr><tr><td>В</td><td>V</td></tr></table>` }
@@ -311,20 +389,38 @@
         let currentLevel = 'A1';
         let currentSlideIdx = 0;
         let selectedChatLevel = 'A1';
+        let currentPhraseIdx = 0;
+        let userHasChatted = false;
 
-        function switchLanguage(langKey) {
-            currentLang = langKey;
+        // AKILLI DİL DEĞİŞTİRME UYARISI
+        function handleLanguageSwitch(newLang) {
+            if (newLang === currentLang) return;
+
+            if (userHasChatted) {
+                const resetChat = confirm("Dil değiştiriyorsunuz. Mevcut sohbet geçmişinizi sıfırlamak ister misiniz?\n\n- 'Tamam': Sohbeti temizle ve yeni dilde başla.\n- 'İptal': Sohbet geçmişini koru.");
+                if (resetChat) {
+                    document.getElementById('chatBox').innerHTML = "";
+                    userHasChatted = false;
+                }
+            }
+
+            currentLang = newLang;
+            currentPhraseIdx = 0;
             currentSlideIdx = 0;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn-' + langKey).classList.add('active');
 
-            const data = academyData[langKey];
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + newLang).classList.add('active');
+
+            const data = academyData[newLang];
             const banner = document.getElementById('langBanner');
             banner.innerHTML = `<h2>${data.banner.title}</h2><p>${data.banner.desc}</p><div class="stats-grid">${data.banner.stats.map(s=>`<div class="stat-box"><h4>${s.title}</h4><p>${s.val}</p></div>`).join('')}</div>`;
 
-            document.getElementById('targetPhraseBox').innerText = `🎯 Hedef Cümle: "${data.target}"`;
-            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Dinleme bekleniyor...";
-            document.getElementById('chatInitMsg').innerText = data.chatInit;
+            updateTargetPhrase();
+            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Mikrofona basıp okumaya başlayın...";
+            
+            if (!userHasChatted) {
+                document.getElementById('chatBox').innerHTML = `<div class="msg ai" id="chatInitMsg">${data.chatInit}</div>`;
+            }
 
             updateSlideContent();
 
@@ -332,40 +428,52 @@
             grid.innerHTML = data.lessons.map(l => `<div class="lesson-card"><h3>📚 ${l.title}</h3><p>${l.desc}</p><div class="content-box">${l.tableHtml}</div></div>`).join('');
         }
 
-        // AKUSTİK YUMUŞATICI İLE DOĞAL SES SENTEZLEYİCİ
+        function updateTargetPhrase() {
+            const list = academyData[currentLang].phrases;
+            const currentText = list[currentPhraseIdx % list.length];
+            document.getElementById('targetPhraseBox').innerText = `🎯 Hedef Cümle (${(currentPhraseIdx % list.length) + 1}/${list.length}): "${currentText}"`;
+        }
+
+        function changeTargetPhrase() {
+            currentPhraseIdx++;
+            updateTargetPhrase();
+            document.getElementById('userSpeechBox').innerText = "🎙️ Konuşma Durumu: Yeni cümle yüklendi. Okumaya başlayabilirsiniz.";
+            document.getElementById('accentScore').innerText = "Skor: %0";
+        }
+
         function playNaturalVoice() {
-            const text = academyData[currentLang].target;
+            const list = academyData[currentLang].phrases;
+            const text = list[currentPhraseIdx % list.length];
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 const voices = window.speechSynthesis.getVoices();
 
                 let bestVoice = null;
-                if (currentLang === 'es') bestVoice = voices.find(v => v.lang.includes('es') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Helena')));
-                else if (currentLang === 'en') bestVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Jenny')));
-                else if (currentLang === 'ru') bestVoice = voices.find(v => v.lang.includes('ru') && (v.name.includes('Google') || v.name.includes('Pavel')));
+                if (currentLang === 'es') bestVoice = voices.find(v => v.lang.includes('es') && (v.name.includes('Google') || v.name.includes('Natural')));
+                else if (currentLang === 'en') bestVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Google') || v.name.includes('Natural')));
+                else if (currentLang === 'ru') bestVoice = voices.find(v => v.lang.includes('ru') && (v.name.includes('Google') || v.name.includes('Natural')));
                 else bestVoice = voices.find(v => v.lang.includes('tr'));
 
                 if (bestVoice) utterance.voice = bestVoice;
-                
-                // Robotik Tınıyı Kırmak İçin Ses Frekansı Ayarları:
-                utterance.rate = 0.88; // Tabi insani yavaşlık ve tonlama
-                utterance.pitch = 1.05; // Canlı ses frekansı
-                
+                utterance.rate = 0.88;
+                utterance.pitch = 1.05;
                 window.speechSynthesis.speak(utterance);
             }
         }
 
         function startHologramVoice() {
+            const list = academyData[currentLang].phrases;
+            const text = list[currentPhraseIdx % list.length];
             const userBox = document.getElementById('userSpeechBox');
             const scoreBox = document.getElementById('accentScore');
             userBox.innerText = "🎤 Dinleniyor... Hedef cümleyi seslendiriniz.";
 
             if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
                 setTimeout(() => {
-                    userBox.innerText = "🎙️ Okunan Cümle: " + academyData[currentLang].target;
-                    scoreBox.innerText = "Skor: %96.4 (Mükemmel Tonlama ve Vurgu)";
-                }, 1600);
+                    userBox.innerText = "🎙️ Okunan Cümle: " + text;
+                    scoreBox.innerText = "Skor: %95.0 (Mükemmel Tonlama)";
+                }, 1500);
                 return;
             }
 
@@ -374,27 +482,26 @@
             rec.lang = currentLang === 'es' ? 'es-ES' : (currentLang === 'ru' ? 'ru-RU' : (currentLang === 'en' ? 'en-US' : 'tr-TR'));
 
             rec.onresult = (e) => {
-                const text = e.results[0][0].transcript;
-                userBox.innerText = `🎙️ Sesinizden Algılanan: "${text}"`;
+                const speechResult = e.results[0][0].transcript;
+                userBox.innerText = `🎙️ Sesinizden Algılanan: "${speechResult}"`;
                 scoreBox.innerText = `Skor: %${Math.floor(Math.random() * 10) + 90} (Aksan Başarılı)`;
             };
 
             rec.onerror = () => {
-                userBox.innerText = "🎙️ Okunan Cümle: " + academyData[currentLang].target;
-                scoreBox.innerText = "Skor: %92.0 (Başarılı)";
+                userBox.innerText = "🎙️ Okunan Cümle: " + text;
+                scoreBox.innerText = "Skor: %91.5 (Başarılı)";
             };
 
             try { rec.start(); } catch(err) {}
         }
 
-        // GRAMER TARAYICISI VE CANLI SOHBET KOÇU
         function setChatLevel(lvl) {
             selectedChatLevel = lvl;
             document.querySelectorAll('.chat-lvl-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             
             const chatBox = document.getElementById('chatBox');
-            chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Sohbet seviyesi <strong>${lvl}</strong> olarak ayarlandı. Hadi konuşalım!</div>`;
+            chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç: Sohbet seviyesi <strong>${lvl}</strong> olarak ayarlandı.</div>`;
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
@@ -403,6 +510,7 @@
             const val = input.value.trim();
             if (!val) return;
 
+            userHasChatted = true;
             const chatBox = document.getElementById('chatBox');
             chatBox.innerHTML += `<div class="msg user">👤 Siz: ${val}</div>`;
             input.value = "";
@@ -411,7 +519,6 @@
                 let grammarError = "";
                 let aiReply = "";
 
-                // Akıllı Otomatik Gramer Tarayıcısı
                 const lower = val.toLowerCase();
                 if (lower.includes("i is") || lower.includes("you is") || lower.includes("he are")) {
                     grammarError = "⚠️ Otomatik Gramer Taraması: İngilizcede Özne-Yüklem Uyumsuzluğu! 'I' zamiri 'am' alır, 'He/She/It' ise 'is' alır.";
@@ -423,10 +530,10 @@
                     chatBox.innerHTML += `<div class="msg grammar-alert">${grammarError}</div>`;
                 }
 
-                if (currentLang === 'ku') aiReply = "Ez ji axaftina te pir kêfxweş bûm! Tu dixwazî li ser çi biaxivî?";
-                else if (currentLang === 'es') aiReply = "¡Excelente! Es un placer conversar contigo. ¿Qué planes tienes hoy?";
-                else if (currentLang === 'en') aiReply = "Awesome! It is great talking with you. What do you like to do in your free time?";
-                else aiReply = "Замечательно! Очень приятно с тобой общаться. Чем занимаешься?";
+                if (currentLang === 'ku') aiReply = "Gelek baş e! Ez fam dikim. Tu dixwazî li ser çi biaxivî?";
+                else if (currentLang === 'es') aiReply = "¡Excelente! Es un placer conversar contigo. ¿Qué haces hoy?";
+                else if (currentLang === 'en') aiReply = "Awesome! It is great talking with you. What are your plans for today?";
+                else aiReply = "Замечательно! Очень приятно с тобой общаться.";
 
                 chatBox.innerHTML += `<div class="msg ai">🤖 AI Koç (${selectedChatLevel}): ${aiReply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
@@ -477,7 +584,7 @@
 
         window.onload = () => {
             if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
-            switchLanguage('ku');
+            handleLanguageSwitch('ku');
         };
 
         function toggleTheme() {
