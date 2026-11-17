@@ -1,311 +1,566 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINGUAFLOW | İnteraktif Dil Öğrenme Platformu</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google SEO Meta Etiketleri -->
+    <title>AI Campus | Yapay Zeka Destekli Birebir Eğitim Koçluğu Portalı</title>
+    <meta name="description" content="Lise ve üniversite öğrencileri için yapay zeka araçları destekli akademik başarı, sınav hazırlığı ve kişiselleştirilmiş eğitim koçluğu programı.">
+    <meta name="keywords" content="eğitim koçluğu, yapay zeka ders çalışma, LGS YKS koçluk, akademik başarı, gamma app, chatgpt ders çalışma">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f8fafc; }
-        .perspective { perspective: 1000px; }
-        .preserve-3d { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
-        .rotate-y-180 { transform: rotateY(180deg); }
-        .backface-hidden { backface-visibility: hidden; }
-        .glass { background: rgba(30, 41, 59, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        :root {
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border-color: #e2e8f0;
+            --accent-bg: #eff6ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Window Bar (3 Dots Style) */
+        .window-bar {
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+
+        .window-title {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        /* Navbar */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-badge {
+            background: var(--accent-bg);
+            color: var(--primary);
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 900px;
+            margin: 3.5rem auto 2.5rem auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.25;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            max-width: 720px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        /* Tool Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.75rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: var(--accent-bg);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 1.2rem;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-bottom: 1.2rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .detail-list li {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .detail-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Neden Biz Bölümü - Detaylandırılmış */
+        .why-us-section {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .why-us-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .why-us-subtitle {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .why-card {
+            background: var(--bg-body);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .why-card h3 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .why-card p {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        /* Program Adımları */
+        .steps-box {
+            background: var(--accent-bg);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            border: 1px solid #dbeafe;
+        }
+
+        .steps-box h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .steps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .step-item {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .step-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Coaching & Lead Section */
+        .coaching-section {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .coaching-section {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .coaching-info h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .coaching-info p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+        }
+
+        .coaching-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: var(--bg-body);
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
+            background: #ffffff;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.95rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            background: #ffffff;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <!-- Üst Menü (Header) -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-language text-white text-xl"></i>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-xl tracking-tight text-white">LINGUA<span class="text-indigo-400">FLOW</span></h1>
-                    <p class="text-[11px] text-slate-400 font-medium">Akıllı Kelime & Telaffuz Stüdyosu</p>
-                </div>
+    <!-- 3 Dots Top Bar -->
+    <div class="window-bar">
+        <div class="dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">AI Campus v3.0 — Premier Student Workstation</div>
+        <div></div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                AI Campus 
+                <span class="nav-badge">Öğrenci & Koçluk Portalı</span>
             </div>
-
-            <!-- İstatistikler ve Dil Seçimi -->
-            <div class="flex items-center gap-4">
-                <select id="langSelect" onchange="changeLanguage()" class="bg-slate-800 border border-slate-700 text-sm font-semibold rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 cursor-pointer">
-                    <option value="en-US">🇬🇧 İngilizce</option>
-                    <option value="de-DE">🇩🇪 Almanca</option>
-                    <option value="es-ES">🇪🇸 İspanyolca</option>
-                    <option value="fr-FR">🇫🇷 Fransızca</option>
-                </select>
-
-                <div class="hidden sm:flex items-center gap-3 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700/80">
-                    <span class="text-amber-400 font-bold text-sm"><i class="fa-solid fa-fire mr-1"></i> <span id="streakCount">1</span> Gün</span>
-                    <span class="text-slate-600">|</span>
-                    <span class="text-emerald-400 font-bold text-sm"><i class="fa-solid fa-star mr-1"></i> <span id="xpCount">0</span> XP</span>
-                </div>
-            </div>
+            <div style="font-size: 0.85rem; color: var(--text-sub); font-weight: 500;">Geleceğin Eğitim Metodolojisi</div>
         </div>
     </header>
 
-    <!-- Ana İçerik -->
-    <main class="max-w-4xl mx-auto px-6 py-10 w-full flex-grow flex flex-col justify-center">
+    <div class="hero">
+        <h1>Ders Başarını Yapay Zeka Gücü ve Uzman Eğitim Koçluğu İle İkiye Katla</h1>
+        <p>Geleneksel ve verimsiz ders çalışma yöntemlerini geride bırakın. En modern yapay zeka araçlarını ve birebir kişiselleştirilmiş koçluk sistemini kullanarak zamanınızı %50 daha verimli yönetin.</p>
+    </div>
+
+    <div class="container">
         
-        <!-- Mod Değiştirme Sekmeleri -->
-        <div class="flex justify-center gap-3 mb-8">
-            <button onclick="switchMode('flashcard')" id="btn-flashcard" class="px-6 py-2.5 rounded-full font-bold text-sm bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition">
-                <i class="fa-solid fa-layer-group mr-2"></i>Kelime Kartları
-            </button>
-            <button onclick="switchMode('quiz')" id="btn-quiz" class="px-6 py-2.5 rounded-full font-bold text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition">
-                <i class="fa-solid fa-bolt mr-2"></i>Hızlı Test (Quiz)
-            </button>
+        <div class="section-title">
+            <span>⚡ Öğrenciler İçin Seçkin AI Araç Rehberi</span>
         </div>
-
-        <!-- MOD 1: KELİME KARTLARI (FLASHCARDS) -->
-        <div id="flashcard-section" class="space-y-8">
-            <!-- İlerleme Çubuğu -->
-            <div class="space-y-2">
-                <div class="flex justify-between text-xs font-bold text-slate-400">
-                    <span>İLERLEME</span>
-                    <span id="progressText">1 / 6</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                    <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-violet-500 h-full transition-all duration-300" style="width: 16%"></div>
-                </div>
-            </div>
-
-            <!-- 3D Dönen Kart -->
-            <div class="perspective w-full h-80 cursor-pointer" onclick="flipCard()">
-                <div id="cardInner" class="preserve-3d relative w-full h-full">
-                    <!-- Ön Yüz (Hedef Dil) -->
-                    <div class="backface-hidden absolute inset-0 glass rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-2xl">
-                        <span id="wordCategory" class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-4">GÜNLÜK KONUŞMA</span>
-                        <h2 id="frontWord" class="text-4xl sm:text-5xl font-extrabold text-white mb-4">Serendipity</h2>
-                        <button onclick="event.stopPropagation(); speakWord()" class="mt-2 px-5 py-2.5 rounded-full bg-slate-800 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-slate-700 transition flex items-center gap-2 text-sm font-bold">
-                            <i class="fa-solid fa-volume-high"></i> Telaffuzu Dinle
-                        </button>
-                        <p class="text-xs text-slate-500 absolute bottom-6"><i class="fa-solid fa-rotate mr-1"></i> Çevirisini görmek için karta tıkla</p>
-                    </div>
-
-                    <!-- Arka Yüz (Türkçe Anlamı & Örnek Cümle) -->
-                    <div class="backface-hidden rotate-y-180 absolute inset-0 bg-gradient-to-br from-indigo-900/90 to-slate-900 border border-indigo-500/30 rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-2xl">
-                        <span class="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-2">TÜRKÇE ANLAMI</span>
-                        <h3 id="backMeaning" class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Mutlu Tesadüf</h3>
-                        <div class="bg-black/30 p-4 rounded-2xl border border-white/10 max-w-md w-full">
-                            <p id="exampleSentence" class="text-sm text-indigo-200 italic mb-1">"Finding this café was pure serendipity."</p>
-                            <p id="exampleTranslation" class="text-xs text-slate-400">"Bu kafeyi bulmak tam bir mutlu tesadüftü."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kontrol Butonları -->
-            <div class="flex items-center justify-between gap-4">
-                <button onclick="prevCard()" class="px-6 py-3.5 rounded-2xl glass hover:bg-slate-800 font-bold text-sm text-slate-300 transition flex items-center gap-2">
-                    <i class="fa-solid fa-arrow-left"></i> Önceki
-                </button>
-                <button onclick="markLearned()" class="px-8 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 font-bold text-sm text-white shadow-lg shadow-emerald-600/20 transition flex items-center gap-2">
-                    <i class="fa-solid fa-check"></i> Öğrendim (+10 XP)
-                </button>
-                <button onclick="nextCard()" class="px-6 py-3.5 rounded-2xl glass hover:bg-slate-800 font-bold text-sm text-slate-300 transition flex items-center gap-2">
-                    Sonraki <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- MOD 2: HIZLI TEST (QUIZ) -->
-        <div id="quiz-section" class="hidden space-y-6">
-            <div class="glass rounded-3xl p-8 text-center space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold">
-                    <i class="fa-solid fa-brain"></i> KELİME BİLGİSİNİ TEST ET
-                </div>
+        
+        <div class="grid">
+            <!-- Gamma App -->
+            <div class="card">
                 <div>
-                    <p class="text-sm text-slate-400 mb-2">Aşağıdaki kelimenin Türkçe karşılığı nedir?</p>
-                    <h2 id="quizWord" class="text-4xl font-extrabold text-white">Resilient</h2>
-                    <button onclick="speakQuizWord()" class="mt-3 text-indigo-400 hover:text-indigo-300 text-sm font-semibold">
-                        <i class="fa-solid fa-volume-high mr-1"></i> Tekrar Dinle
-                    </button>
+                    <span class="tool-badge">Sunum & Tasarım</span>
+                    <h3>Gamma App</h3>
+                    <p>Konu başlığınızı veya ders notlarınızı girerek saniyeler içinde etkileşimli slaytlar, görsel kartlar ve akademik sunumlar oluşturun.</p>
+                    <ul class="detail-list">
+                        <li><strong>Otomatik Yapılandırma:</strong> Karmaşık biyoloji, tarih veya fizik konularını slaytlara düzenli böler.</li>
+                        <li><strong>PDF Çıktısı:</strong> Tek tıkla ödev formatında PDF olarak indirme imkanı.</li>
+                        <li><strong>Görsel Estetik:</strong> Tasarım bilgisi gerektirmeden profesyonel grafikler hazırlar.</li>
+                    </ul>
                 </div>
+                <a href="https://gamma.app" target="_blank" class="btn">Gamma App'i Aç →</a>
+            </div>
 
-                <!-- Seçenekler -->
-                <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                    <!-- JS ile doldurulacak -->
+            <!-- ChatGPT-4o -->
+            <div class="card">
+                <div>
+                    <span class="tool-badge">Soru & Analiz</span>
+                    <h3>ChatGPT-4o</h3>
+                    <p>Görsel ve metin tanıma yeteneğiyle çözemediğiniz matematik sorularını veya sözel paragraf konularını adım adım analiz eder.</p>
+                    <ul class="detail-list">
+                        <li><strong>Fotoğraflı Çözüm:</strong> Soru görselini yükleyerek detaylı ve mantıklı açıklama alma.</li>
+                        <li><strong>Özel Test Üretimi:</strong> Sınav müfredatınıza uygun özelleştirilmiş alıştırma soruları hazırlatma.</li>
+                        <li><strong>Birebir Öğretmen Modu:</strong> "Bana doğrudan cevabı verme, ipucu vererek öğret" seçeneği.</li>
+                    </ul>
                 </div>
+                <a href="https://chatgpt.com" target="_blank" class="btn">ChatGPT-4o'yu Aç →</a>
+            </div>
 
-                <div id="quizFeedback" class="hidden p-4 rounded-2xl font-bold text-sm"></div>
+            <!-- DeepL -->
+            <div class="card">
+                <div>
+                    <span class="tool-badge">Akademik Çeviri</span>
+                    <h3>DeepL Translate</h3>
+                    <p>Yabancı dildeki makaleleri, ders materyallerini ve araştırma kaynaklarını anlam kaybı olmadan Türkçeye çevirin.</p>
+                    <ul class="detail-list">
+                        <li><strong>Doğal Dil İşleme:</strong> Kalıp ve deyimleri kelimesi kelimesine değil, bağlama uygun çevirir.</li>
+                        <li><strong>Doküman Çevirisi:</strong> Tüm PDF veya Word belgesinin yapısını bozmadan çevirme yeteneği.</li>
+                        <li><strong>Teknik Terim Uyumluğu:</strong> Akademik dilde en güvenilir çeviri standardı.</li>
+                    </ul>
+                </div>
+                <a href="https://www.deepl.com" target="_blank" class="btn">DeepL Çeviri'yi Aç →</a>
             </div>
         </div>
 
-    </main>
-
-    <!-- Alt Bilgi -->
-    <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
-        LinguaFlow İnteraktif Dil Öğrenme Stüdyosu • Tarayıcı Tabanlı Sesli Telaffuz Motoru Aktif
-    </footer>
-
-    <script>
-        // Çoklu Dil Kelime Veritabanı
-        const database = {
-            "en-US": [
-                { word: "Serendipity", meaning: "Mutlu Tesadüf", cat: "İleri Seviye", ex: "Meeting you here was pure serendipity.", exTr: "Seninle burada karşılaşmak tam bir mutlu tesadüftü." },
-                { word: "Resilient", meaning: "Dayanıklı, Çabuk Toparlanan", cat: "Kişilik", ex: "Children are often very resilient.", exTr: "Çocuklar genellikle çok çabuk toparlanırlar." },
-                { word: "Ephemeral", meaning: "Kısa Ömürlü, Geçici", cat: "Edebiyat", ex: "Fame in the digital age is often ephemeral.", exTr: "Dijital çağda şöhret genellikle geçicidir." },
-                { word: "Eloquent", meaning: "Akıcı ve Etkileyici Konuşan", cat: "İletişim", ex: "She gave an eloquent speech.", exTr: "Çok etkileyici bir konuşma yaptı." },
-                { word: "Ubiquitous", meaning: "Her Yerde Bulunan", cat: "Akademik", ex: "Smartphones have become ubiquitous.", exTr: "Akıllı telefonlar artık her yerde." },
-                { word: "Pragmatic", meaning: "Faydacı, Çözüm Odaklı", cat: "İş Dünyası", ex: "We need a pragmatic approach to this problem.", exTr: "Bu soruna çözüm odaklı yaklaşmalıyız." }
-            ],
-            "de-DE": [
-                { word: "Fernweh", meaning: "Uzaklara Gitme Özlemi", cat: "Kültürel", ex: "Ich habe wieder großes Fernweh.", exTr: "Yine uzaklara gitme özlemi çekiyorum." },
-                { word: "Geborgenheit", meaning: "Güvende ve Huzurlu Hissetme", cat: "Duygular", ex: "Zuhause fühle ich Geborgenheit.", exTr: "Evde kendimi güvende ve huzurlu hissediyorum." },
-                { word: "Entscheidung", meaning: "Karar", cat: "Günlük", ex: "Das war eine gute Entscheidung.", exTr: "Bu iyi bir karardı." },
-                { word: "Zuverlässig", meaning: "Güvenilir", cat: "İş Dünyası", ex: "Er ist ein sehr zuverlässiger Kollege.", exTr: "O çok güvenilir bir iş arkadaşıdır." }
-            ],
-            "es-ES": [
-                { word: "Sobremesa", meaning: "Yemek Sonrası Sohbet Keyfi", cat: "Kültürel", ex: "Me encanta la sobremesa con amigos.", exTr: "Arkadaşlarla yemek sonrası sohbetine bayılırım." },
-                { word: "Imprescindible", meaning: "Vazgeçilmez, Olmazsa Olmaz", cat: "Günlük", ex: "El agua es imprescindible para la vida.", exTr: "Su yaşam için vazgeçilmezdir." },
-                { word: "Madrugar", meaning: "Sabah Erken Kalkmak", cat: "Eylem", ex: "Mañana tengo que madrugar.", exTr: "Yarın sabah erken kalkmam gerekiyor." },
-                { word: "Aprovechar", meaning: "Fırsatı Değerlendirmek", cat: "İletişim", ex: "Hay que aprovechar el buen tiempo.", exTr: "Güzel havanın tadını çıkarmak gerek." }
-            ],
-            "fr-FR": [
-                { word: "Épanouissement", meaning: "Kişisel Gelişim ve Serpilme", cat: "Yaşam", ex: "Le travail contribue à son épanouissement.", exTr: "İşi onun kişisel gelişimine katkı sağlıyor." },
-                { word: "Quotidien", meaning: "Günlük, Gündelik", cat: "Günlük", ex: "C'est ma routine quotidienne.", exTr: "Bu benim günlük rutinim." },
-                { word: "Bienveillance", meaning: "İyi Niyet, Şefkat", cat: "Duygular", ex: "Elle agit toujours avec bienveillance.", exTr: "Her zaman iyi niyetle hareket eder." },
-                { word: "Incontournable", meaning: "Kaçınılmaz, Mutlaka Görülmesi Gereken", cat: "Seyahat", ex: "Paris est une destination incontournable.", exTr: "Paris mutlaka görülmesi gereken bir yerdir." }
-            ]
-        };
-
-        let currentLang = "en-US";
-        let currentIndex = 0;
-        let isFlipped = false;
-        let xp = 0;
-        let currentQuizItem = null;
-
-        function updateCard() {
-            const list = database[currentLang];
-            const item = list[currentIndex];
+        <!-- Neden Bizim Eğitim Koçluğumuz? (Detaylı & İkna Edici) -->
+        <div class="why-us-section">
+            <h2>🎓 Neden AI Campus Eğitim Koçluğunu Seçmelisiniz?</h2>
+            <p class="why-us-subtitle">Sadece ders çalıştırmıyoruz; öğrencilere doğru çalışma metodolojisini ve teknolojiyi doğru kullanmayı öğretiyoruz.</p>
             
-            isFlipped = false;
-            document.getElementById('cardInner').classList.remove('rotate-y-180');
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>1. Yapay Zekayı Doğru Kullanma Sanatı</h3>
+                    <p>Çoğu öğrenci yapay zekayı sadece ödev kopyalamak için kullanır ve gelişemez. Biz, yapay zekayı bir <strong>"Özel Öğretmen"</strong> ve <strong>"Soru Üretici"</strong> olarak kullanmayı öğreterek öğrencinin mantık yürütme kapasitesini artırıyoruz.</p>
+                </div>
+                <div class="why-card">
+                    <h3>2. Kişiselleştirilmiş Birebir Çalışma Programı</h3>
+                    <p>Kopyala-yapıştır matbu programlar kullanmıyoruz. Öğrencinin günlük uyku düzenine, okul saatlerine, eksik olduğu derslere ve öğrenme hızına özel haftalık dinamik takip çizelgesi hazırlıyoruz.</p>
+                </div>
+                <div class="why-card">
+                    <h3>3. Zaman Yönetimi ve Sınav Stresi Kontrolü</h3>
+                    <p>Sınav haftasında neye çalışacağını bilememe kaygısını ortadan kaldırıyoruz. Pomodoro tekniği, akıllı not tutma yöntemleri ve zaman bloklama ile saatlerce masada verimsiz oturmayı engelliyoruz.</p>
+                </div>
+            </div>
+
+            <div class="steps-box">
+                <h3>🚀 4 Adımda Başarıya Giden Koçluk Süreci:</h3>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <strong>Adım 1: Durum Analizi</strong>
+                        Öğrencinin mevcut netleri, eksik konuları ve öğrenme stili belirlenir.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 2: Özel Program</strong>
+                        Haftalık hedefler ve AI araçlarıyla entegre ders planı oluşturulur.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 3: Düzenli Takip</strong>
+                        Haftalık birebir görüşmelerle ilerleme ve net artışları denetlenir.
+                    </div>
+                    <div class="step-item">
+                        <strong>Adım 4: Sonuç & Başarı</strong>
+                        Sınav kaygısından arınmış, kendi kendine öğrenme becerisi kazanmış birey.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coaching & Lead Form Section -->
+        <div class="coaching-section">
+            <div class="coaching-info">
+                <h2>📩 Ücretsiz Ön Görüşme ve Detaylı Bilgi Alın</h2>
+                <p>Yapay zeka entegreli eğitim koçluğu programımız hakkında detaylı bilgi almak, öğrencinizin seviyesini değerlendirmek ve size özel çalışma haritası çıkarmak için formu doldurun.</p>
+                <p style="font-size: 0.88rem; color: #475569; font-weight: 500;">
+                    ✓ Başvurunuz doğrudan koçluk ekibimizin e-posta adresine iletilecek ve 24 saat içinde dönüş yapılacaktır[span_1](start_span)[span_1](end_span).
+                </p>
+            </div>
             
-            setTimeout(() => {
-                document.getElementById('wordCategory').innerText = item.cat;
-                document.getElementById('frontWord').innerText = item.word;
-                document.getElementById('backMeaning').innerText = item.meaning;
-                document.getElementById('exampleSentence').innerText = `"${item.ex}"`;
-                document.getElementById('exampleTranslation').innerText = `"${item.exTr}"`;
-                
-                document.getElementById('progressText').innerText = `${currentIndex + 1} / ${list.length}`;
-                document.getElementById('progressBar').style.width = `${((currentIndex + 1) / list.length) * 100}%`;
-            }, 150);
-        }
-
-        function flipCard() {
-            isFlipped = !isFlipped;
-            const inner = document.getElementById('cardInner');
-            if (isFlipped) inner.classList.add('rotate-y-180');
-            else inner.classList.remove('rotate-y-180');
-        }
-
-        function nextCard() {
-            const list = database[currentLang];
-            currentIndex = (currentIndex + 1) % list.length;
-            updateCard();
-        }
-
-        function prevCard() {
-            const list = database[currentLang];
-            currentIndex = (currentIndex - 1 + list.length) % list.length;
-            updateCard();
-        }
-
-        function markLearned() {
-            xp += 10;
-            document.getElementById('xpCount').innerText = xp;
-            nextCard();
-        }
-
-        function speakWord() {
-            const word = database[currentLang][currentIndex].word;
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = currentLang;
-            utterance.rate = 0.9;
-            window.speechSynthesis.speak(utterance);
-        }
-
-        function changeLanguage() {
-            currentLang = document.getElementById('langSelect').value;
-            currentIndex = 0;
-            updateCard();
-            generateQuiz();
-        }
-
-        function switchMode(mode) {
-            const flashSec = document.getElementById('flashcard-section');
-            const quizSec = document.getElementById('quiz-section');
-            const btnFlash = document.getElementById('btn-flashcard');
-            const btnQuiz = document.getElementById('btn-quiz');
-
-            if (mode === 'flashcard') {
-                flashSec.classList.remove('hidden');
-                quizSec.classList.add('hidden');
-                btnFlash.className = "px-6 py-2.5 rounded-full font-bold text-sm bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition";
-                btnQuiz.className = "px-6 py-2.5 rounded-full font-bold text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
-            } else {
-                flashSec.classList.add('hidden');
-                quizSec.classList.remove('hidden');
-                btnQuiz.className = "px-6 py-2.5 rounded-full font-bold text-sm bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition";
-                btnFlash.className = "px-6 py-2.5 rounded-full font-bold text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition";
-                generateQuiz();
-            }
-        }
-
-        function generateQuiz() {
-            const list = database[currentLang];
-            currentQuizItem = list[Math.floor(Math.random() * list.length)];
-            document.getElementById('quizWord').innerText = currentQuizItem.word;
-            document.getElementById('quizFeedback').classList.add('hidden');
-
-            // 4 şık oluştur (1 doğru + 3 yanlış)
-            let options = [currentQuizItem.meaning];
-            const allMeanings = Object.values(database).flat().map(i => i.meaning);
-            while (options.length < 4) {
-                const rand = allMeanings[Math.floor(Math.random() * allMeanings.length)];
-                if (!options.includes(rand)) options.push(rand);
-            }
-            options.sort(() => Math.random() - 0.5);
-
-            const container = document.getElementById('quizOptions');
-            container.innerHTML = options.map(opt => `
-                <button onclick="checkAnswer('${opt.replace(/'/g, "\\'")}')" class="p-4 rounded-2xl bg-slate-800/90 hover:bg-indigo-600/40 border border-slate-700 hover:border-indigo-400 font-bold text-sm text-white transition text-center">
-                    ${opt}
-                </button>
-            `).join('');
-        }
-
-        function checkAnswer(selected) {
-            const feedback = document.getElementById('quizFeedback');
-            feedback.classList.remove('hidden');
-            if (selected === currentQuizItem.meaning) {
-                xp += 15;
-                document.getElementById('xpCount').innerText = xp;
-                feedback.className = "p-4 rounded-2xl font-bold text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-                feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Harika! Doğru cevap (+15 XP). Yeni soru geliyor...`;
-                setTimeout(generateQuiz, 1400);
-            } else {
-                feedback.className = "p-4 rounded-2xl font-bold text-sm bg-rose-500/20 text-rose-300 border border-rose-500/30";
-                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-2"></i> Yanlış! Doğrusu: "${currentQuizItem.meaning}"`;
-            }
-        }
-
-        function speakQuizWord() {
-            if (!currentQuizItem) return;
-            const utterance = new SpeechSynthesisUtterance(currentQuizItem.word);
-            utterance.lang = currentLang;
-            window.speechSynthesis.speak(utterance);
-        }
-
-        updateCard();
-    </script>
-</body>
-</html>
+            <form class="coaching-form" action="https://formspree.io/f/xwllownd" method="POST">
+                <div class="form-group">
+                    <input type="text" name="ad_soyad" placeholder="Adınız Soyadınız" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="E-posta Adresiniz (örn: ornek@gmail.com)" required>
+                </div>
+                <div class="form-group">
+                    <select name="seviye" required>
+                        <option value="" disabled selected>Sınıf / Eğitim Seviyeniz</option>
+                        <option value="8. Sinif / LGS">8. Sınıf / LGS Hazırlık</option>
+                        <option value="9. Sinif">9. Sınıf</option>
+                        <option value="10. Sinif">10. Sınıf</option>
+                        <option value="11. Sinif">11. Sınıf</option>
+                        <option value="12. Sinif / YKS">12. Sınıf / YKS Hazırlık</option>
+                        <option value="Universite">Üniversite</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="not" rows="3" placeholder="Özellikle destek almak istediğiniz dersler veya sormak istedikleriniz (Opsiyonel)"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Detaylı Bilgi & Ön Görüşme İste →</button>
+            </form>
+        </div>
